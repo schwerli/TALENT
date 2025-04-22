@@ -175,7 +175,7 @@ Clone this GitHub repository:
 
 ```bash
 git clone https://github.com/LAMDA-Tabular/TALENT
-cd TALENt/tes
+cd TALENt/test
 ```
 
 ### 🔑 Run experiment
