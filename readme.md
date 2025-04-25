@@ -47,14 +47,21 @@ Welcome to **TALENT**, a benchmark with a comprehensive machine learning toolbox
 ```bibtex
 @article{ye2024closerlookdeeplearning,
          title={A Closer Look at Deep Learning on Tabular Data}, 
-         author={Han-Jia Ye and Si-Yang Liu and Hao-Run Cai and Qi-Le Zhou and De-Chuan Zhan},
+         author={Han-Jia Ye and 
+         		 Si-Yang Liu and 
+         		 Hao-Run Cai and 
+         		 Qi-Le Zhou and 
+         		 De-Chuan Zhan},
          journal={arXiv preprint arXiv:2407.00956},
          year={2024}
 }
 
 @article{liu2024talenttabularanalyticslearning,
          title={TALENT: A Tabular Analytics and Learning Toolbox}, 
-         author={Si-Yang Liu and Hao-Run Cai and Qi-Le Zhou and Han-Jia Ye},
+         author={Si-Yang Liu and 
+         		 Hao-Run Cai and 
+         		 Qi-Le Zhou and 
+         		 Han-Jia Ye},
          journal={arXiv preprint arXiv:2407.04057},
          year={2024}
 }
@@ -64,6 +71,7 @@ Welcome to **TALENT**, a benchmark with a comprehensive machine learning toolbox
 
 ## 📰 What's New
 
+- [2025-04]🌟  Check out our new survey [Representation Learning for Tabular Data: A Comprehensive Survey](https://arxiv.org/abs/2504.16109) ([Repo](https://github.com/LAMDA-Tabular/Tabular-Survey)). We organize existing methods into three main categories according to their generalization capabilities: specialized, transferable, and general models, which provides a comprehensive taxonomy for deep tabular representation methods.🚀🚀🚀
 - [2025-02]🌟 Add [T2Gformer](https://arxiv.org/abs/2211.16887) (AAAI 2023).
 - [2025-02]🌟 Add [TabPFN v2](https://doi.org/10.1038/s41586-024-08328-6) (Nature).
 - [2025-01]🌟 Check out our new baseline [ModernNCA](https://openreview.net/pdf?id=JytL2MrlLT) (**ICLR 2025**), inspired by traditional **Neighbor Component Analysis**, which outperforms both tree-based and other deep tabular models, while also reducing training time and model size!🚀🚀🚀
