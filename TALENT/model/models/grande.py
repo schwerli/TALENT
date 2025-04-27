@@ -30,8 +30,9 @@ class GRANDE(nn.Module):
         split_index_array = split_index_array - (split_index_array - nn.functional.one_hot(torch.argmax(split_index_array, dim=-1), num_classes=split_index_array.shape[-1]).double())
         X_estimator = X_estimator.double()
         split_index_array = split_index_array.to(inputs.device)
-        # print(self.split_values.dtype)
-        # print(split_index_array.dtype)
+        
+        
+        
         s1_sum = torch.einsum("ein,ein->ei", self.split_values, split_index_array)
         s2_sum = torch.einsum("ben,ein->bei", X_estimator, split_index_array)
 
@@ -39,8 +40,9 @@ class GRANDE(nn.Module):
         node_result_corrected = node_result - (node_result - torch.round(node_result))
 
         node_result_extended = node_result_corrected[:, :, self.internal_node_index_list]
-        # print(self.path_identifier_list.device)
-        # print(node_result_extended.device)
+        
+        
+        
         self.path_identifier_list = self.path_identifier_list.to(inputs.device)
         p = torch.prod(((1 - self.path_identifier_list) * node_result_extended + self.path_identifier_list * (1 - node_result_extended)), dim=3)
 
@@ -218,27 +220,7 @@ class GRANDE(nn.Module):
         X_val = X_val.astype(np.float64)
         X_train = X_train.values
         X_val = X_val.values
-        # quantile_noise = 1e-4
-        # quantile_train = np.copy(X_train.values).astype(np.float64)
         
-        # stds = np.std(quantile_train, axis=0, keepdims=True)
-        # noise_std = quantile_noise / np.maximum(stds, quantile_noise)
-        # quantile_train += noise_std * np.random.randn(*quantile_train.shape)
-
-        # quantile_train = pd.DataFrame(quantile_train, columns=X_train.columns, index=X_train.index)
-
-        # self.normalizer = sklearn.preprocessing.QuantileTransformer(
-        #     n_quantiles=min(quantile_train.shape[0], 1000),
-        #     output_distribution='normal',
-        # )
-
-        # self.normalizer.fit(quantile_train.values.astype(np.float64))
-        # X_train = self.normalizer.transform(X_train.values.astype(np.float64))
-        # X_val = self.normalizer.transform(X_val.values.astype(np.float64))
-
-        # self.mean = np.mean(y_train)
-        # self.std = np.std(y_train)
-        # print(self.mean, self.std)
 
         return X_train, y_train, X_val, y_val
 
