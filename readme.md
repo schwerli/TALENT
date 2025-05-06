@@ -4,6 +4,7 @@
 <p align="center">
     <a href='https://arxiv.org/abs/2407.04057'><img src='https://img.shields.io/badge/Arxiv-2407.04057-b31b1b.svg?logo=arXiv'></a>
     <a href='https://zhuanlan.zhihu.com/p/708721145'><img src='https://img.shields.io/badge/中文解读-b0.svg?logo=zhihu'></a>
+    <a href='https://huggingface.co/datasets/LAMDA-Tabular/TALENT'><img src='https://img.shields.io/badge/%F0%9F%A4%97-TALENT-green'></a>
   <a href=""><img src="https://img.shields.io/github/stars/qile2000/LAMDA-TALENT?color=4fb5ee"></a>
   <a href=""><img src="https://img.shields.io/github/last-commit/qile2000/LAMDA-TALENT?color=blue"></a>
    <br>
@@ -316,7 +317,7 @@ We thank the following repos for providing helpful components/functions in our w
 
 ## 🤗 Contact
 
-If there are any questions, please feel free to propose new features by opening an issue or contact the author: **Si-Yang Liu** ([liusy@lamda.nju.edu.cn](mailto:liusy@lamda.nju.edu.cn)) and **Hao-Run Cai** ([caihr@smail.nju.edu.cn](mailto:caihr@smail.nju.edu.cn)) and **Qile Zhou** ([zhouql@lamda.nju.edu.cn](mailto:zhouql@lamda.nju.edu.cn)) and **Jun-Peng Jiang** ([jiangjp@lamda.nju.edu.cn](mailto:jiangjp@lamda.nju.edu.cn)) and **Han-Jia Ye** ([yehj@lamda.nju.edu.cn](mailto:yehj@lamda.nju.edu.cn)). Enjoy the code.
+If there are any questions, please feel free to propose new features by opening an issue or contact the author: **Si-Yang Liu** ([liusy@lamda.nju.edu.cn](mailto:liusy@lamda.nju.edu.cn)) and **Hao-Run Cai** ([caihr@smail.nju.edu.cn](mailto:caihr@smail.nju.edu.cn)) and **Qile Zhou** ([zhouql@lamda.nju.edu.cn](mailto:zhouql@lamda.nju.edu.cn)) and **Jun-Peng Jiang** ([jiangjp@lamda.nju.edu.cn](mailto:jiangjp@lamda.nju.edu.cn))  and **Huai-Hong Yin** ([yinhh@lamda.nju.edu.cn](mailto:yinhh@lamda.nju.edu.cn)) and **Han-Jia Ye** ([yehj@lamda.nju.edu.cn](mailto:yehj@lamda.nju.edu.cn)). Enjoy the code.
 
 ## 🚀 Star History
 
