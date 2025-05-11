@@ -321,6 +321,6 @@ If there are any questions, please feel free to propose new features by opening 
 
 ## 🚀 Star History
 
-[![Star History Chart](https://api.star-history.com/svg?repos=qile2000/LAMDA-TALENT&type=Date)](https://star-history.com/#qile2000/LAMDA-TALENT&Date)
+[![Star History Chart](https://api.star-history.com/svg?repos=LAMDA-Tabular/TALENT&type=Date)](https://star-history.com/#qile2000/LAMDA-TALENT&Date)
 
 > Thanks [LAMDA-PILOT](https://github.com/sun-hailong/LAMDA-PILOT) and [LAMDA-ZhiJian](https://github.com/zhangyikaii/LAMDA-ZhiJian) for the template.
