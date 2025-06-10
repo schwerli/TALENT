@@ -216,23 +216,16 @@ For other methods that require changing the training process, partially override
 
 ### 📦 Dependencies
 
-1. [torch](https://github.com/pytorch/pytorch)
+```bash
+   pip install -r requirements.txt
+```
 
-2. [scikit-learn](https://github.com/scikit-learn/scikit-learn)
 
-3. [pandas](https://github.com/pandas-dev/pandas)
+If you want to use **TabR**, you have to manually install faiss, which is only available on **conda**:
 
-4. [tqdm](https://github.com/tqdm/tqdm)
-
-5. [numpy](https://github.com/numpy/numpy)
-
-6. [scipy](https://github.com/scipy/scipy)
-
-7. If you want to use **TabR**, you have to manually install faiss, which is only available on **conda**:
-
-   ```bash
-   conda install faiss-gpu -c pytorch
-   ```
+```bash
+conda install faiss-gpu -c pytorch
+```
 
 ## 🗂️ Benchmark Datasets
 
@@ -324,4 +317,4 @@ If there are any questions, please feel free to propose new features by opening 
 
 [![Star History Chart](https://api.star-history.com/svg?repos=LAMDA-Tabular/TALENT&type=Date)](https://star-history.com/#LAMDA-Tabular/TALENT&Date)
 
-> Thanks [LAMDA-PILOT](https://github.com/sun-hailong/LAMDA-PILOT) and [LAMDA-ZhiJian](https://github.com/zhangyikaii/LAMDA-ZhiJian) for the template.
+> Thanks [LAMDA-PILOT](https://github.com/LAMDA-CL/LAMDA-PILOT) and [LAMDA-ZhiJian](https://github.com/zhangyikaii/LAMDA-ZhiJian) for the template.
