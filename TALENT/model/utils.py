@@ -809,6 +809,9 @@ def get_method(model):
     elif model == 'PFN-v2':
         from TALENT.model.methods.PFN_v2 import TabPFNMethod
         return TabPFNMethod
+    elif model == 'tabicl':
+        from TALENT.model.methods.tabicl import TabICLMethod
+        return TabICLMethod
     elif model == 't2gformer':
         from TALENT.model.methods.t2gformer import T2GFormerMethod
         return T2GFormerMethod
