@@ -370,7 +370,7 @@ def get_deep_args():
                                  'dnnr', 'switchtab', 'grownet', 'tabr', 'modernNCA',
                                  'hyperfast', 'bishop', 'realmlp', 'protogate', 'mlp_plr',
                                  'excelformer', 'grande', 'amformer', 'tabptm', 'trompt', 'tabm',
-                                 'PFN-v2', 't2gformer', 'tabautopnpnet'
+                                 'PFN-v2', 't2gformer', 'tabautopnpnet','tabicl'
                                  ])
 
     # optimization parameters
