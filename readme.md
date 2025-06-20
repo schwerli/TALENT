@@ -73,9 +73,9 @@ Welcome to **TALENT**, a benchmark with a comprehensive machine learning toolbox
 ## 📰 What's New
 
 - [2025-06]🌟 Add [TabAutoPNPNet](https://www.mdpi.com/2079-9292/14/6/1165) (Electronics 2025)
-- [2025-06]🌟 Add [TabICL](https://arxiv.org/abs/2502.05564) (ICML 2025).
+- [2025-06]🌟 Add [TabICL](https://arxiv.org/abs/2502.05564) (ICML 2025). The current code is based on TabICL v0.0.6. An update to v0.1.2 is planned soon.
 - [2025-05]🌟 Check out our three papers **[MMTU](https://github.com/LAMDA-Tabular/MMTU)**, **[Tabular-Temporal-Shift](https://github.com/LAMDA-Tabular/Tabular-Temporal-Shift)**, and [**BETA**](https://github.com/LAMDA-Tabular/BETA) accepted at ICML 2025!
-- [2025-04]🌟  Check out our new survey [Representation Learning for Tabular Data: A Comprehensive Survey](https://arxiv.org/abs/2504.16109) ([Repo](https://github.com/LAMDA-Tabular/Tabular-Survey)). We organize existing methods into three main categories according to their generalization capabilities: specialized, transferable, and general models, which provides a comprehensive taxonomy for deep tabular representation methods.🚀🚀🚀
+- [2025-04]🌟 Check out our new survey [Representation Learning for Tabular Data: A Comprehensive Survey](https://arxiv.org/abs/2504.16109) ([Repo](https://github.com/LAMDA-Tabular/Tabular-Survey)). We organize existing methods into three main categories according to their generalization capabilities: specialized, transferable, and general models, which provides a comprehensive taxonomy for deep tabular representation methods.🚀🚀🚀
 - [2025-02]🌟 Add [T2Gformer](https://arxiv.org/abs/2211.16887) (AAAI 2023).
 - [2025-02]🌟 Add [TabPFN v2](https://doi.org/10.1038/s41586-024-08328-6) (Nature).
 - [2025-02]🌟 Thanks to [Hengzhe Zhang](https://hengzhe-zhang.github.io/) for providing a [Scikit-Learn compatible wrapper](https://github.com/hengzhe-zhang/scikit-TALENT) for TALENT!
