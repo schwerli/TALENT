@@ -131,7 +131,8 @@ TALENT integrates an extensive array of 30+ deep learning architectures for tabu
 31. **[TabM](https://arxiv.org/abs/2410.24210)** :  A model based on MLP and variations of BatchEnsemble.
 32. **[TabPFN v2](https://doi.org/10.1038/s41586-024-08328-6)**: A general model which involves the use of pre-trained deep neural networks that can be directly applied to any tabular task.
 33. **[T2Gformer](https://arxiv.org/abs/2211.16887)**: A Transformer network for tabular learning that processes data guided by relation graphs and uses a Cross-level Readout for global semantics in prediction.
-33. **[TabICL](https://arxiv.org/abs/2502.05564)**: A comparable tabular foundation model with performance on par with TabPFN v2.
+34. **[TabICL](https://arxiv.org/abs/2502.05564)**: A comparable tabular foundation model with performance on par with TabPFN v2.
+35. **[TabAutoPNPNet](https://www.mdpi.com/2079-9292/14/6/1165)**: A tabular model based on periodicity, particularly the Fourier transform and Chebyshev polynomials, with performance on par with or superior to FT-Transformer. 
 
 
 
@@ -313,6 +314,7 @@ We thank the following repos for providing helpful components/functions in our w
 - [AMFormer](https://github.com/aigc-apps/AMFormer)
 - [TabM](https://github.com/yandex-research/tabm)
 - [TabICL](https://github.com/soda-inria/tabicl)
+- [TabAutoPNPNet](https://github.com/matteo-rizzo/periodic-tabular-dl)
 
 ## 🤗 Contact
 
