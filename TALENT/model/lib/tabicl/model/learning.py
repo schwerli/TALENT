@@ -1,14 +1,14 @@
 from __future__ import annotations
-from typing import Optional
+
 from collections import OrderedDict
 import math
-
 import torch
 from torch import nn, Tensor
 
 from .layers import ClassNode, OneHotAndLinear
 from .encoders import Encoder
 from .inference import InferenceManager
+from .inference_config import MgrConfig
 
 
 class ICLearning(nn.Module):
@@ -79,15 +79,14 @@ class ICLearning(nn.Module):
         self.y_encoder = OneHotAndLinear(max_classes, d_model)
         self.decoder = nn.Sequential(nn.Linear(d_model, d_model * 2), nn.GELU(), nn.Linear(d_model * 2, max_classes))
 
-        self.inference_mgr = InferenceManager(
-            enc_name="tf_icl", out_dim=max_classes, min_batch_size=1, safety_factor=0.8, offload=False
-        )
+        self.inference_mgr = InferenceManager(enc_name="tf_icl", out_dim=max_classes)
 
     def _grouping(self, num_classes: int) -> tuple[Tensor, int]:
         """Divide classes into balanced groups for hierarchical classification.
 
         This method implements a balanced partitioning strategy that divides classes
-        into approximately equal-sized groups to minimize tree depth.
+        into approximately equal-sized groups to minimize tree depth. The number of
+        groups formed at this level will not exceed `max_classes`.
 
         Parameters
         ----------
@@ -98,20 +97,24 @@ class ICLearning(nn.Module):
         -------
         tuple[Tensor, int]
             - group_assignments: Tensor mapping each class index to its assigned group (0-indexed)
-            - num_groups: Total number of groups created
+            - num_groups: Total number of groups created (will be <= max_classes)
 
         Notes
         -----
         For example, with max_classes=10 and num_classes=25:
-        - Creates ceil(25/10) = 3 groups
-        - Distributes classes as [9, 8, 8] elements per group
-        - Returns assignments tensor [0,0,0,0,0,0,0,0,0,1,1,1,1,1,1,1,1,2,2,2,2,2,2,2,2]
+        - Distributes 25 classes into 3 groups. Sizes: [9, 8, 8].
+        - Returns assignments tensor and num_groups = 3.
+
+        With max_classes=10 and num_classes=101:
+        - Distributes 101 classes into 10 groups. Sizes: [11, 10, 10, 10, 10, 10, 10, 10, 10, 10].
+        - Returns assignments tensor and num_groups = 10.
+        - The child node receiving 11 classes will be further divided into 2 groups: [6, 5].
         """
 
         if num_classes <= self.max_classes:
             return torch.zeros(num_classes, dtype=torch.int), 1
 
-        num_groups = math.ceil(num_classes / self.max_classes)
+        num_groups = min(math.ceil(num_classes / self.max_classes), self.max_classes)
         group_assignments = torch.zeros(num_classes, dtype=torch.int)
         current_pos = 0
 
@@ -340,17 +343,15 @@ class ICLearning(nn.Module):
 
         return process_node(self.root, R_test)
 
-    def forward(
+    def _inference_forward(
         self,
         R: Tensor,
         y_train: Tensor,
         return_logits: bool = True,
         softmax_temperature: float = 0.9,
-        device: Optional[str | torch.device] = None,
-        use_amp: bool = True,
-        verbose: bool = False,
+        mgr_config: MgrConfig = None,
     ) -> Tensor:
-        """In-context learning based on learned row representations.
+        """In-context learning based on learned row representations for inference.
 
         Parameters
         ----------
@@ -370,15 +371,8 @@ class ICLearning(nn.Module):
         softmax_temperature : float, default=0.9
             Temperature for the softmax function
 
-        device : Optional[str or torch.device], default=None
-            Device to use for inference. If None, defaults to torch.device("cuda") if available,
-            else torch.device("cpu")
-
-        use_amp : bool, default=True
-            Whether to enable automatic mixed precision during inference
-
-        verbose : bool, default=False
-            Whether to print detailed information during inference
+        mgr_config : MgrConfig, default=None
+            Configuration for InferenceManager
 
         Returns
         -------
@@ -386,7 +380,17 @@ class ICLearning(nn.Module):
             Raw logits or probabilities for test samples of shape (B, T-train_size, num_classes)
         """
         # Configure inference parameters
-        self.inference_mgr.configure_inference(device=device, use_amp=use_amp, verbose=verbose)
+        if mgr_config is None:
+            mgr_config = MgrConfig(
+                min_batch_size=1,
+                safety_factor=0.8,
+                offload=False,
+                auto_offload_pct=0.5,
+                device=None,
+                use_amp=True,
+                verbose=False,
+            )
+        self.inference_mgr.configure(**mgr_config)
 
         num_classes = len(torch.unique(y_train[0]))
         assert all(
@@ -403,11 +407,65 @@ class ICLearning(nn.Module):
             out = []
             train_size = y_train.shape[1]
             for ri, yi in zip(R, y_train):
+                if mgr_config.offload:
+                    ri, yi = ri.cpu(), yi.cpu()
+                else:
+                    ri, yi = ri.to(mgr_config.device), yi.to(mgr_config.device)
                 self._fit_hierarchical(ri[:train_size], yi)
                 probs = self._predict_hierarchical(ri[train_size:])
                 out.append(probs)
             out = torch.stack(out, dim=0)
             if return_logits:
                 out = softmax_temperature * torch.log(out + 1e-6)
+
+        return out
+
+    def forward(
+        self,
+        R: Tensor,
+        y_train: Tensor,
+        return_logits: bool = True,
+        softmax_temperature: float = 0.9,
+        mgr_config: MgrConfig = None,
+    ) -> Tensor:
+        """In-context learning based on learned row representations.
+
+        Parameters
+        ----------
+        R : Tensor
+            Row representations of shape (B, T, D) where:
+             - B is the number of tables
+             - T is the number of samples (rows)
+             - D is the dimension of row representations
+
+        y_train : Tensor of shape (B, train_size)
+            Training targets, where train_size is the position to split
+            the input into training and test data
+
+        return_logits : bool, default=True
+            If True, return logits instead of probabilities. Used only in inference mode.
+
+        softmax_temperature : float, default=0.9
+            Temperature for the softmax function. Used only in inference mode.
+
+        mgr_config : MgrConfig, default=None
+            Configuration for InferenceManager. Used only in inference mode.
+
+        Returns
+        -------
+        Tensor
+            For training mode:
+              Raw logits of shape (B, T-train_size, max_classes), which will be further handled by the training code.
+
+            For inference mode:
+              Raw logits or probabilities for test samples of shape (B, T-train_size, num_classes).
+        """
+
+        if self.training:
+            train_size = y_train.shape[1]
+            out = self._icl_predictions(R, y_train)
+            out = out[:, train_size:]
+        else:
+            out = self._inference_forward(R, y_train, return_logits, softmax_temperature, mgr_config)
 
         return out

@@ -1,8 +1,8 @@
 from __future__ import annotations
 
+import sys
 import random
 import itertools
-import warnings
 from collections import OrderedDict
 from copy import deepcopy
 from typing import List, Optional
@@ -11,14 +11,45 @@ import numpy as np
 from sklearn.base import BaseEstimator, TransformerMixin
 from sklearn.compose import ColumnTransformer, make_column_selector
 from sklearn.impute import SimpleImputer
+from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import (
+    FunctionTransformer,
+    OrdinalEncoder,
+    StandardScaler,
+    PowerTransformer,
     QuantileTransformer,
     RobustScaler,
-    PowerTransformer,
-    OrdinalEncoder,
-    FunctionTransformer,
 )
 from sklearn.utils.validation import check_is_fitted
+
+
+class RecursionLimitManager:
+    """Context manager to temporarily set the recursion limit.
+
+    Parameters
+    ----------
+    limit : int
+        The recursion limit to set temporarily.
+
+    Example
+    -------
+    >>> with RecursionLimitManager(4000):
+    >>>     # Perform operations that require a higher recursion limit
+    >>>     pass
+    """
+
+    def __init__(self, limit):
+        self.limit = limit
+        self.original_limit = None
+
+    def __enter__(self):
+        self.original_limit = sys.getrecursionlimit()
+        sys.setrecursionlimit(self.limit)
+        return self
+
+    def __exit__(self, type, value, traceback):
+        sys.setrecursionlimit(self.original_limit)
+        return False  # Return False to propagate exceptions
 
 
 class TransformToNumerical(TransformerMixin, BaseEstimator):
@@ -29,7 +60,8 @@ class TransformToNumerical(TransformerMixin, BaseEstimator):
 
     Parameters
     ----------
-    None
+    verbose : bool, default=False
+        Whether to print information about column classifications.
 
     Attributes
     ----------
@@ -40,6 +72,9 @@ class TransformToNumerical(TransformerMixin, BaseEstimator):
          - If input is not a DataFrame: A FunctionTransformer that passes data through unchanged
     """
 
+    def __init__(self, verbose: bool = False):
+        self.verbose = verbose
+
     def fit(self, X, y=None):
         """Configure transformers for different column types in the input data.
 
@@ -48,6 +83,7 @@ class TransformToNumerical(TransformerMixin, BaseEstimator):
         X : array-like of shape (n_samples, n_features)
             The training data. If a DataFrame, column types are used to determine
             appropriate transformations.
+
         y : None
             Ignored.
 
@@ -61,6 +97,12 @@ class TransformToNumerical(TransformerMixin, BaseEstimator):
             self.tfm_ = FunctionTransformer()
             return self
 
+        cat_cols = make_column_selector(dtype_include=["string", "object", "category", "boolean"])(X)
+        cat_pos = [X.columns.get_loc(col) for col in cat_cols]
+
+        numeric_cols = make_column_selector(dtype_include="number")(X)
+        numeric_pos = [X.columns.get_loc(col) for col in numeric_cols]
+
         self.tfm_ = ColumnTransformer(
             transformers=[
                 (
@@ -68,22 +110,24 @@ class TransformToNumerical(TransformerMixin, BaseEstimator):
                     OrdinalEncoder(
                         dtype=np.int64, handle_unknown="use_encoded_value", unknown_value=-1, encoded_missing_value=-1
                     ),
-                    make_column_selector(dtype_include=["string", "object", "category", "boolean"]),
+                    cat_pos,
                 ),
-                ("continuous", SimpleImputer(), make_column_selector(dtype_include="number")),
+                ("continuous", SimpleImputer(), numeric_pos),
             ]
         )
         self.tfm_.fit(X)
 
-        selected_cols = []
-        for name, tfm, cols in self.tfm_.transformers_:
-            if tfm != "drop":
-                selected_cols.extend(list(cols))
-                print(f"Columns classified as {name}: {list(cols)}")
+        if self.verbose:
+            selected_cols = []
+            for name, tfm, pos in self.tfm_.transformers_:
+                if tfm != "drop":
+                    cols = list(X.columns[pos])
+                    selected_cols.extend(cols)
+                    print(f"Columns classified as {name}: {cols}")
 
-        non_selected_cols = set(X.columns).difference(set(selected_cols))
-        if len(non_selected_cols) >= 1:
-            warnings.warn(f"The following columns are not used due to their data type: {list(non_selected_cols)}")
+            dropped_cols = set(X.columns).difference(set(selected_cols))
+            if len(dropped_cols) >= 1:
+                print(f"The following columns are not used due to their data type: {list(dropped_cols)}")
 
         return self
 
@@ -141,6 +185,7 @@ class UniqueFeatureFilter(TransformerMixin, BaseEstimator):
         ----------
         X : array-like of shape (n_samples, n_features)
             The training data.
+
         y : None
             Ignored.
 
@@ -369,6 +414,138 @@ class CustomStandardScaler(TransformerMixin, BaseEstimator):
         return X_clipped
 
 
+class RTDLQuantileTransformer(BaseEstimator, TransformerMixin):
+    """Quantile transformer adapted for tabular deep learning models.
+
+    This implementation is based on research from the RTDL group and adds noise to training
+    data before applying quantile transformation, improving robustness and generalization.
+    It also dynamically adjusts the number of quantiles based on data size.
+
+    Parameters
+    ----------
+    noise : float, default=1e-3
+        Magnitude of Gaussian noise to add relative to feature standard deviations.
+        Set to 0 to disable noise addition.
+
+    n_quantiles : int, default=1000
+        Maximum number of quantiles to use. The actual number used is dynamically
+        determined as min(X.shape[0] // 30, n_quantiles) with a minimum of 10.
+
+    subsample : int, default=1_000_000_000
+        Maximum number of samples used to estimate the quantiles for computational efficiency.
+
+    output_distribution : {'uniform', 'normal'}, default='normal'
+        Marginal distribution for the transformed data.
+
+    random_state : int or None, default=None
+        Seed for random number generation for reproducible noise and quantile sampling.
+
+    Attributes
+    ----------
+    normalizer_ : QuantileTransformer
+        Fitted transformer used to transform the data.
+
+    Notes
+    -----
+    Adapted from https://github.com/yandex-research/tabular-dl-tabr/blob/75105013189c76bc4f247633c2fb856bc948e579/lib/data.py#L262
+    following https://github.com/dholzmueller/pytabkit/blob/949bf81e3964f65a33dd2c252c3713c239c17b2d/pytabkit/models/utils.py#L431
+    """
+
+    def __init__(
+        self,
+        noise: float = 1e-3,
+        n_quantiles: int = 1000,
+        subsample: int = 1_000_000_000,
+        output_distribution: str = "normal",
+        random_state: Optional[int] = None,
+    ):
+        self.noise = noise
+        self.n_quantiles = n_quantiles
+        self.subsample = subsample
+        self.output_distribution = output_distribution
+        self.random_state = random_state
+
+    def fit(self, X, y=None):
+        """Fit the quantile transformer to training data with optional noise addition.
+
+        Parameters
+        ----------
+        X : array-like of shape (n_samples, n_features)
+            The training data to fit the transformer.
+
+        y : None
+            Ignored. Kept for compatibility with scikit-learn's transformer interface.
+
+        Returns
+        -------
+        self : object
+            Returns self.
+        """
+        # Calculate the number of quantiles based on data size
+        n_quantiles = max(min(X.shape[0] // 30, self.n_quantiles), 10)
+
+        # Initialize QuantileTransformer
+        normalizer = QuantileTransformer(
+            output_distribution=self.output_distribution,
+            n_quantiles=n_quantiles,
+            subsample=self.subsample,
+            random_state=self.random_state,
+        )
+
+        # Add noise if required
+        X_modified = self._add_noise(X) if self.noise > 0 else X
+
+        # Fit the normalizer
+        normalizer.fit(X_modified)
+
+        # Show that it's fitted
+        self.normalizer_ = normalizer
+
+        return self
+
+    def transform(self, X, y=None):
+        """Transform data using the fitted quantile transformer.
+
+        Parameters
+        ----------
+        X : array-like of shape (n_samples, n_features)
+            The data to be transformed.
+
+        y : None
+            Ignored. Kept for compatibility with scikit-learn's transformer interface.
+
+        Returns
+        -------
+        X_transformed : ndarray of shape (n_samples, n_features)
+            The transformed data with distribution specified by output_distribution.
+        """
+        check_is_fitted(self)
+        return self.normalizer_.transform(X)
+
+    def _add_noise(self, X):
+        """Add noise to the input data proportional to feature standard deviations.
+
+        The noise magnitude is controlled by the 'noise' parameter and is scaled
+        inversely to the standard deviation of each feature to ensure
+        consistent noise levels across features of different scales.
+
+        Parameters
+        ----------
+        X : array-like of shape (n_samples, n_features)
+            The input data to add noise to.
+
+        Returns
+        -------
+        X_noisy : ndarray of shape (n_samples, n_features)
+            The input data with added Gaussian noise.
+        """
+        stds = np.std(X, axis=0, keepdims=True)
+        noise_std = self.noise / np.maximum(stds, self.noise)
+        rng = np.random.default_rng(self.random_state)
+        X_noisy = X + noise_std * rng.standard_normal(X.shape)
+        return X_noisy
+
+
 class PreprocessingPipeline(TransformerMixin, BaseEstimator):
     """Preprocessing pipeline for tabular data.
 
@@ -377,10 +554,13 @@ class PreprocessingPipeline(TransformerMixin, BaseEstimator):
     Parameters
     ----------
     normalization_method : str, default='power'
-        Method for normalization: 'power', 'quantile', 'robust', 'none'.
+        Method for normalization: 'power', 'quantile', 'quantile_tabr', 'robust', 'none'.
 
     outlier_threshold : float, default=4.0
         Z-score threshold for outlier detection.
+
+    random_state : int or None, default=None
+        Random seed for reproducible normalization.
 
     Attributes
     ----------
@@ -391,7 +571,7 @@ class PreprocessingPipeline(TransformerMixin, BaseEstimator):
         The fitted standard scaler.
 
     normalizer_ : sklearn transformers
-        The fitted normalization transformer (PowerTransformer, QuantileTransformer, RobustScaler).
+        The fitted normalization transformer (PowerTransformer, QuantileTransformer, RTDLQuantileTransformer, RobustScaler).
 
     outlier_remover_ : OutlierRemover
         The fitted outlier remover.
@@ -400,9 +580,12 @@ class PreprocessingPipeline(TransformerMixin, BaseEstimator):
         The transofrmed training input data. Save it for later use to avoid recomputation.
     """
 
-    def __init__(self, normalization_method: str = "power", outlier_threshold: float = 4.0):
+    def __init__(
+        self, normalization_method: str = "power", outlier_threshold: float = 4.0, random_state: Optional[int] = None
+    ):
         self.normalization_method = normalization_method
         self.outlier_threshold = outlier_threshold
+        self.random_state = random_state
 
     def fit(self, X, y=None):
         """Fit the preprocessing pipeline.
@@ -431,7 +614,17 @@ class PreprocessingPipeline(TransformerMixin, BaseEstimator):
             if self.normalization_method == "power":
                 self.normalizer_ = PowerTransformer(method="yeo-johnson", standardize=True)
             elif self.normalization_method == "quantile":
-                self.normalizer_ = QuantileTransformer(output_distribution="normal")
+                self.normalizer_ = QuantileTransformer(output_distribution="normal", random_state=self.random_state)
+            elif self.normalization_method == "quantile_rtdl":
+                self.normalizer_ = Pipeline(
+                    [
+                        (
+                            "quantile_rtdl",
+                            RTDLQuantileTransformer(output_distribution="normal", random_state=self.random_state),
+                        ),
+                        ("std", StandardScaler()),
+                    ]
+                )
             elif self.normalization_method == "robust":
                 self.normalizer_ = RobustScaler(unit_variance=True)
             else:
@@ -500,13 +693,24 @@ class FeatureShuffler:
         - 'latin': Latin square permutation
         - 'shift': Circular shift of features
 
+    max_features_for_latin : int, default=4000
+        Maximum number of features for which Latin square permutations are generated.
+        If the number of features exceeds this limit, random permutations are used instead.
+
     random_state : int or None, default=None
         Random seed for reproducible shuffling.
     """
 
-    def __init__(self, n_features: int, method: str = "latin", random_state: Optional[int] = None):
+    def __init__(
+        self,
+        n_features: int,
+        method: str = "latin",
+        max_features_for_latin: int = 4000,
+        random_state: Optional[int] = None,
+    ):
         self.n_features = n_features
         self.method = method
+        self.max_features_for_latin = max_features_for_latin
         self.random_state = random_state
 
     def shuffle(self, n_estimators: int) -> List[np.ndarray]:
@@ -535,26 +739,33 @@ class FeatureShuffler:
         self.rng_ = random.Random(self.random_state)
         feature_indices = list(range(self.n_features))
 
+        # Use the random method if n_features exceeds the limit for Latin square
+        if self.n_features > self.max_features_for_latin and self.method == "latin":
+            method = "random"
+        else:
+            method = self.method
+
         # No shuffling
-        if self.method == "none" or n_estimators == 1:
+        if method == "none" or n_estimators == 1:
             shuffle_patterns = [feature_indices]
 
         # Generate permutations based on method
-        if self.method == "shift":
+        if method == "shift":
             # All possible circular shifts
             shuffle_patterns = [feature_indices[-i:] + feature_indices[:-i] for i in range(self.n_features)]
-        elif self.method == "random":
+        elif method == "random":
             # Random permutations
             if self.n_features <= 5:
                 all_perms = [list(perm) for perm in itertools.permutations(feature_indices)]
                 shuffle_patterns = self.rng_.sample(all_perms, min(n_estimators, len(all_perms)))
             else:
                 shuffle_patterns = [self.rng_.sample(feature_indices, self.n_features) for _ in range(n_estimators)]
-        elif self.method == "latin":
+        elif method == "latin":
             # Latin square permutations
-            shuffle_patterns = self._latin_squares()
+            with RecursionLimitManager(100000):  # Set a higher recursion limit to avoid recursion error
+                shuffle_patterns = self._latin_squares()
         else:
-            raise ValueError(f"Unknown method: {self.method}. Use 'shift', 'random', 'latin', or 'none'.")
+            raise ValueError(f"Unknown method: {method}. Use 'shift', 'random', 'latin', or 'none'.")
 
         return shuffle_patterns
 
@@ -611,7 +822,8 @@ class EnsembleGenerator(TransformerMixin, BaseEstimator):
         Normalization methods to apply:
         - 'none': No normalization
         - 'power': Yeo-Johnson power transform
-        - 'quantile': Transform features using quantiles information
+        - 'quantile': Transform feature distribution to approximately Gaussian, using the empirical quantiles.
+        - 'quantile_rtdl': Version of the quantile transform used typically in papers by the RTDL group.
         - 'robust': Scale using median and quantiles
     If set to None, ['none', 'power'] will be applied.
 
@@ -727,7 +939,9 @@ class EnsembleGenerator(TransformerMixin, BaseEstimator):
         for norm_method in self.ensemble_configs_:
             if norm_method not in self.preprocessors_:
                 preprocessor = PreprocessingPipeline(
-                    normalization_method=norm_method, outlier_threshold=self.outlier_threshold
+                    normalization_method=norm_method,
+                    outlier_threshold=self.outlier_threshold,
+                    random_state=self.random_state,
                 )
                 preprocessor.fit(X)
                 self.preprocessors_[norm_method] = preprocessor
@@ -746,7 +960,9 @@ class EnsembleGenerator(TransformerMixin, BaseEstimator):
             - shift_offsets: OrderedDict mapping normalization methods to lists of class shift offsets
         """
 
-        shuffler = FeatureShuffler(self.n_features_in_, self.feat_shuffle_method, self.random_state)
+        shuffler = FeatureShuffler(
+            n_features=self.n_features_in_, method=self.feat_shuffle_method, random_state=self.random_state
+        )
         shuffle_patterns = shuffler.shuffle(self.n_estimators)
 
         if self.class_shift and self.n_estimators > 1:
