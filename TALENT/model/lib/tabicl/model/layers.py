@@ -581,8 +581,7 @@ class InducedSelfAttentionBlock(nn.Module):
         Tensor
             Output tensor with same shape as input
         """
-        # print(src.shape)
-        # print(train_size)
+
         # skip_mask = (src == self.skip_value).all(dim=(-2, -1))  # batch shape
         # if skip_mask.any():
         #     if skip_mask.all():
@@ -593,5 +592,7 @@ class InducedSelfAttentionBlock(nn.Module):
         #         out[skip_mask] = self.skip_value
         # else:
         #     out = self.induced_attention(src, train_size)
+
+        # return out
         out = self.induced_attention(src, train_size)
         return out

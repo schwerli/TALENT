@@ -1,12 +1,12 @@
 from __future__ import annotations
-from typing import Optional, List
 
-import torch
+from typing import Optional, List
 from torch import nn, Tensor
 
 from .embedding import ColEmbedding
 from .interaction import RowInteraction
 from .learning import ICLearning
+from .inference_config import InferenceConfig
 
 
 class TabICL(nn.Module):
@@ -143,7 +143,53 @@ class TabICL(nn.Module):
             norm_first=norm_first,
         )
 
-    def forward(
+    def _train_forward(
+        self, X: Tensor, y_train: Tensor, d: Optional[Tensor] = None, embed_with_test: bool = False
+    ) -> Tensor:
+        """Column-wise embedding -> row-wise interaction -> dataset-wise in-context learning for training.
+
+        Parameters
+        ----------
+        X : Tensor
+            Input tensor of shape (B, T, H) where:
+             - B is the number of tables
+             - T is the number of samples (rows)
+             - H is the number of features (columns)
+            The first train_size positions contain training samples, and the remaining positions contain test samples.
+
+        y_train : Tensor
+            Training labels of shape (B, train_size) where:
+             - B is the number of tables
+             - train_size is the number of training samples provided for in-context learning
+
+        d : Optional[Tensor], default=None
+            The number of features per dataset.
+
+        Returns
+        -------
+        Tensor
+            Raw logits of shape (B, T, max_classes), which will be further handled by the training code.
+        """
+
+        B, T, H = X.shape
+        train_size = y_train.shape[1]
+        assert train_size <= T, "Number of training samples exceeds total samples"
+
+        # Check if d is provided and has the same length as the number of features
+        if d is not None and len(d.unique()) == 1 and d[0] == H:
+            d = None
+
+        # Column-wise embedding -> Row-wise interaction
+        representations = self.row_interactor(
+            self.col_embedder(X, d=d, train_size=None if embed_with_test else train_size), d=d
+        )
+
+        # Dataset-wise in-context learning
+        out = self.icl_predictor(representations, y_train=y_train)
+
+        return out
+
+    def _inference_forward(
         self,
         X: Tensor,
         y_train: Tensor,
@@ -151,9 +197,7 @@ class TabICL(nn.Module):
         embed_with_test: bool = False,
         return_logits: bool = True,
         softmax_temperature: float = 0.9,
-        device: Optional[str | torch.device] = None,
-        use_amp: bool = True,
-        verbose: bool = False,
+        inference_config: InferenceConfig = None,
     ) -> Tensor:
         """Column-wise embedding -> row-wise interaction -> dataset-wise in-context learning.
 
@@ -185,15 +229,8 @@ class TabICL(nn.Module):
         softmax_temperature : float, default=0.9
             Temperature for the softmax function
 
-        device : Optional[str or torch.device], default=None
-            Device to use for inference. If None, defaults to torch.device("cuda") if available,
-            else torch.device("cpu")
-
-        use_amp : bool, default=True
-            Whether to enable automatic mixed precision during inference
-
-        verbose : bool, default=False
-            Whether to print detailed information during inference
+        inference_config: InferenceConfig
+            Inferenece configuration
 
         Returns
         -------
@@ -205,19 +242,18 @@ class TabICL(nn.Module):
         train_size = y_train.shape[1]
         assert train_size <= X.shape[1], "Number of training samples exceeds total samples"
 
+        if inference_config is None:
+            inference_config = InferenceConfig()
+
         # Column-wise embedding -> Row-wise interaction
         representations = self.row_interactor(
             self.col_embedder(
                 X,
                 train_size=None if embed_with_test else train_size,
                 feature_shuffles=feature_shuffles,
-                device=device,
-                use_amp=use_amp,
-                verbose=verbose,
+                mgr_config=inference_config.COL_CONFIG,
             ),
-            device=device,
-            use_amp=use_amp,
-            verbose=verbose,
+            mgr_config=inference_config.ROW_CONFIG,
         )
 
         # Dataset-wise in-context learning
@@ -226,9 +262,79 @@ class TabICL(nn.Module):
             y_train=y_train,
             return_logits=return_logits,
             softmax_temperature=softmax_temperature,
-            device=device,
-            use_amp=use_amp,
-            verbose=verbose,
+            mgr_config=inference_config.ICL_CONFIG,
         )
+
+        return out
+
+    def forward(
+        self,
+        X: Tensor,
+        y_train: Tensor,
+        d: Optional[Tensor] = None,
+        feature_shuffles: Optional[List[List[int]]] = None,
+        embed_with_test: bool = False,
+        return_logits: bool = True,
+        softmax_temperature: float = 0.9,
+        inference_config: InferenceConfig = None,
+    ) -> Tensor:
+        """Column-wise embedding -> row-wise interaction -> dataset-wise in-context learning.
+
+        Parameters
+        ----------
+        X : Tensor
+            Input tensor of shape (B, T, H) where:
+             - B is the number of tables
+             - T is the number of samples (rows)
+             - H is the number of features (columns)
+            The first train_size positions contain training samples, and the remaining positions contain test samples.
+
+        y_train : Tensor
+            Training labels of shape (B, train_size) where:
+             - B is the number of tables
+             - train_size is the number of training samples provided for in-context learning
+
+        d : Optional[Tensor], default=None
+            The number of features per dataset. Used only in training mode.
+
+        feature_shuffles : Optional[List[List[int]]], default=None
+            A list of feature shuffle patterns for each table in the batch. Used only in training mode.
+            When provided, indicates that X contains the same table with different feature orders.
+            In this case, column-wise embeddings are computed once and then shuffled accordingly.
+
+        embed_with_test : bool, default=False
+            If True, allow training samples to attend to test samples during embedding
+
+        return_logits : bool, default=True
+            If True, return raw logits instead of probabilities. Used only in training mode.
+
+        softmax_temperature : float, default=0.9
+            Temperature for the softmax function. Used only in training mode.
+
+        inference_config: InferenceConfig
+            Inferenece configuration. Used only in training mode.
+
+        Returns
+        -------
+        Tensor
+            For training mode:
+              Raw logits of shape (B, T-train_size, max_classes), which will be further handled by the training code.
+
+            For inference mode:
+              Raw logits or probabilities for test samples of shape (B, T-train_size, num_classes).
+        """
+
+        if self.training:
+            out = self._train_forward(X, y_train, d=d, embed_with_test=embed_with_test)
+        else:
+            out = self._inference_forward(
+                X,
+                y_train,
+                feature_shuffles=feature_shuffles,
+                embed_with_test=embed_with_test,
+                return_logits=return_logits,
+                softmax_temperature=softmax_temperature,
+                inference_config=inference_config,
+            )
 
         return out
