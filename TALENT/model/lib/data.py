@@ -144,20 +144,23 @@ def data_nan_process(N_data, C_data, num_nan_policy, cat_nan_policy, num_new_val
             if N['test'].ndim == 1:
                 N = {k: v.reshape(-1, 1) for k, v in N.items()}
         N = {k: v.astype(float) for k,v in N.items()}
+        
         num_nan_masks = {k: np.isnan(v) for k, v in N.items()}
+        if num_new_value is None:
+            if num_nan_policy == 'mean':
+                num_new_value = np.nanmean(N_data['train'], axis=0)
+            elif num_nan_policy == 'median':
+                num_new_value = np.nanmedian(N_data['train'], axis=0)
+            else:
+                raise_unknown('numerical NaN policy', num_nan_policy)
+            if np.isnan(num_new_value).any():  # exists feature with all NaN
+                num_new_value = np.nan_to_num(num_new_value)
+
         if any(x.any() for x in num_nan_masks.values()):
-            if num_new_value is None:
-                if num_nan_policy == 'mean':
-                    num_new_value = np.nanmean(N_data['train'], axis=0)
-                elif num_nan_policy == 'median':
-                    num_new_value = np.nanmedian(N_data['train'], axis=0)
-                else:
-                    raise_unknown('numerical NaN policy', num_nan_policy)
-                if np.isnan(num_new_value).any(): # exists feature with all NaN
-                    num_new_value = np.nan_to_num(num_new_value)
             for k, v in N.items():
                 num_nan_indices = np.where(num_nan_masks[k])
                 v[num_nan_indices] = np.take(num_new_value, num_nan_indices[1])
+        
     if C_data is None:
         C = None
     else:
@@ -170,20 +173,22 @@ def data_nan_process(N_data, C_data, num_nan_policy, cat_nan_policy, num_new_val
             if C['test'].ndim == 1:
                 C = {k: v.reshape(-1, 1) for k, v in C.items()}
         C = {k: v.astype(str) for k,v in C.items()}
+        
         # assume the cat nan condition
         cat_nan_masks = {k: np.isnan(v) if np.issubdtype(v.dtype, np.number) else np.isin(v, ['nan', 'NaN', '', None]) for k, v in C.items()}
-        if any(x.any() for x in cat_nan_masks.values()):  
-            if cat_nan_policy == 'new':
-                if cat_new_value is None:
-                    cat_new_value = '___null___'
-                    imputer = None
-            elif cat_nan_policy == 'most_frequent':
-                if imputer is None:
-                    cat_new_value = None
-                    imputer = SimpleImputer(strategy='most_frequent') 
-                    imputer.fit(C['train'])
-            else:
-                raise_unknown('categorical NaN policy', cat_nan_policy)
+        if cat_nan_policy == 'new':
+            if cat_new_value is None:
+                cat_new_value = '___null___'
+                imputer = None
+        elif cat_nan_policy == 'most_frequent':
+            if imputer is None:
+                cat_new_value = None
+                imputer = SimpleImputer(strategy='most_frequent') 
+                imputer.fit(C['train'])
+        else:
+            raise_unknown('categorical NaN policy', cat_nan_policy)
+        
+        if any(x.any() for x in cat_nan_masks.values()):
             if imputer:
                 C = {k: imputer.transform(v) for k, v in C.items()}
             else:
