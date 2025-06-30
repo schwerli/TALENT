@@ -5,6 +5,7 @@ import time
 import os.path as osp
 from tqdm import tqdm
 import sklearn.metrics as skm
+from sklearn.preprocessing import label_binarize
 
 from TALENT.model.utils import (
     Timer,
@@ -107,7 +108,7 @@ class Method(object, metaclass=abc.ABCMeta):
             if self.is_regression:
                 self.d_out = 1
             else:
-                self.d_out = len(np.unique(self.y['train']))
+                self.d_out = self.y_info['n_classes']
             self.d_in = 0 if self.N is None else self.N['train'].shape[1]
             self.categories = get_categories(self.C)
             self.N, self.C, self.y, self.train_loader, self.val_loader, self.criterion = data_loader_process(self.is_regression, (self.N, self.C), self.y, self.y_info, self.args.device, self.args.batch_size, is_train = True,is_float=self.args.use_float)
@@ -335,8 +336,8 @@ class Method(object, metaclass=abc.ABCMeta):
             avg_recall = skm.balanced_accuracy_score(labels, predictions.argmax(axis=-1))
             avg_precision = skm.precision_score(labels, predictions.argmax(axis=-1), average='macro')
             f1_score = skm.f1_score(labels, predictions.argmax(axis=-1), average='binary')
-            log_loss = skm.log_loss(labels, predictions)
-            auc = skm.roc_auc_score(labels, predictions[:, 1])
+            log_loss = skm.log_loss(labels, predictions, labels=y_info['classes'])
+            auc = skm.roc_auc_score(labels, predictions[:, 1], labels=y_info['classes']) if len(np.unique(labels)) == 2 else float("nan")
             return (accuracy, avg_recall, avg_precision, f1_score, log_loss, auc), ("Accuracy", "Avg_Recall", "Avg_Precision", "F1", "LogLoss", "AUC")
         elif self.is_multiclass:
             # if not softmax, convert to probabilities
@@ -345,8 +346,18 @@ class Method(object, metaclass=abc.ABCMeta):
             avg_recall = skm.balanced_accuracy_score(labels, predictions.argmax(axis=-1))
             avg_precision = skm.precision_score(labels, predictions.argmax(axis=-1), average='macro')
             f1_score = skm.f1_score(labels, predictions.argmax(axis=-1), average='macro')
-            log_loss = skm.log_loss(labels, predictions)
-            auc = skm.roc_auc_score(labels, predictions, average='macro', multi_class='ovr')
+            log_loss = skm.log_loss(labels, predictions, labels=y_info['classes'])
+            
+            present_classes = np.unique(labels)
+            if len(present_classes) < 2:
+                auc = float("nan")
+            else:
+                labels = label_binarize(labels, classes=y_info['classes'])
+                class_indices = [i for i, c in enumerate(y_info['classes']) if c in present_classes]
+                predictions = predictions[:, class_indices]
+                labels = labels[:, class_indices]
+                auc = skm.roc_auc_score(labels, predictions, labels=present_classes, average='macro', multi_class='ovr')
+            
             return (accuracy, avg_recall, avg_precision, f1_score, log_loss, auc), ("Accuracy", "Avg_Recall", "Avg_Precision", "F1", "LogLoss", "AUC")
         else:
             raise ValueError("Unknown tabular task type")
