@@ -448,7 +448,9 @@ def data_label_process(y_data, is_regression, info = None, encoder = None):
         if encoder is None:
             encoder = sklearn.preprocessing.LabelEncoder().fit(y['train'])
         y = {k:encoder.transform(v) for k, v in y.items()}
-        return y, {'policy': 'none'}, encoder
+        if info is None:
+            info = {'policy': 'none', 'classes': np.unique(y['train']), 'n_classes': len(np.unique(y['train']))}
+        return y, info, encoder
 
 def data_loader_process(is_regression, X, Y, y_info, device, batch_size, is_train,is_float = False):
     """
