@@ -1,6 +1,8 @@
 import abc
 import numpy as np
 import sklearn.metrics as skm
+from sklearn.preprocessing import label_binarize
+
 from TALENT.model.utils import (
     set_seeds,
     get_device
@@ -116,9 +118,18 @@ class classical_methods(object, metaclass=abc.ABCMeta):
             avg_recall = skm.balanced_accuracy_score(labels, predictions.argmax(axis=-1))
             avg_precision = skm.precision_score(labels, predictions.argmax(axis=-1), average='macro')
             f1_score = skm.f1_score(labels, predictions.argmax(axis=-1), average='macro')
-            log_loss = skm.log_loss(labels, predictions)
-            auc = skm.roc_auc_score(labels, predictions, average='macro', multi_class='ovr')
+            log_loss = skm.log_loss(labels, predictions, labels=y_info['classes'])
+            
+            present_classes = np.unique(labels)
+            if len(present_classes) < 2:
+                auc = float("nan")
+            else:
+                labels = label_binarize(labels, classes=y_info['classes'])
+                class_indices = [i for i, c in enumerate(y_info['classes']) if c in present_classes]
+                predictions = predictions[:, class_indices]
+                labels = labels[:, class_indices]
+                auc = skm.roc_auc_score(labels, predictions, labels=present_classes, average='macro', multi_class='ovr')
+            
             return (accuracy, avg_recall, avg_precision, f1_score, log_loss, auc), ("Accuracy", "Avg_Recall", "Avg_Precision", "F1", "LogLoss", "AUC")
         else:
             raise ValueError("Unknown tabular task type")
-        
