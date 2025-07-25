@@ -82,9 +82,7 @@
 <p class="caption" role="heading"><span class="caption-text">API Docs</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="api/core.html">Core Components</a></li>
-<li class="toctree-l1"><a class="reference internal" href="api/core.html#overview">Overview</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api/deep_learning.html">Deep Learning Models</a></li>
-<li class="toctree-l1"><a class="reference internal" href="api/deep_learning.html#overview">Overview</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api/classical_methods.html">Classical Methods</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api/lib.html">Library Components</a></li>
 </ul>
@@ -129,6 +127,7 @@
  | <a href="#G"><strong>G</strong></a>
  | <a href="#H"><strong>H</strong></a>
  | <a href="#I"><strong>I</strong></a>
+ | <a href="#J"><strong>J</strong></a>
  | <a href="#K"><strong>K</strong></a>
  | <a href="#L"><strong>L</strong></a>
  | <a href="#M"><strong>M</strong></a>
@@ -175,6 +174,8 @@
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="api/models.html#TALENT.model.models.grownet.SpLinearFunc.backward">backward() (TALENT.model.models.grownet.SpLinearFunc static method)</a>
 </li>
+      <li><a href="api/lib.html#TALENT.model.lib.num_embeddings.BinsEncoding">BinsEncoding (class in TALENT.model.lib.num_embeddings)</a>
+</li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="api/models.html#TALENT.model.models.bishop.BiSHop">BiSHop (class in TALENT.model.models.bishop)</a>
@@ -195,9 +196,11 @@
 </li>
       <li><a href="api/models.html#TALENT.model.models.ftt.Tokenizer.category_offsets">category_offsets (TALENT.model.models.ftt.Tokenizer attribute)</a>
 </li>
+      <li><a href="api/method_base.html#TALENT.model.methods.base.check_softmax">check_softmax() (in module TALENT.model.methods.base)</a>
+</li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="api/method_base.html#TALENT.model.methods.base.check_softmax">check_softmax() (in module TALENT.model.methods.base)</a>
+      <li><a href="api/lib.html#TALENT.model.lib.num_embeddings.compute_bins">compute_bins() (in module TALENT.model.lib.num_embeddings)</a>
 </li>
       <li><a href="api/models.html#TALENT.model.models.tabcaps.TabCapsClassifier.compute_loss">compute_loss() (TALENT.model.models.tabcaps.TabCapsClassifier method)</a>
 
@@ -285,9 +288,17 @@
         <li><a href="api/models.html#TALENT.model.models.tabpfn.TabPFNClassifier.fit">(TALENT.model.models.tabpfn.TabPFNClassifier method)</a>
 </li>
       </ul></li>
-      <li><a href="api/models.html#TALENT.model.models.bishop.BiSHop.forward">forward() (TALENT.model.models.bishop.BiSHop method)</a>
+      <li><a href="api/lib.html#TALENT.model.lib.num_embeddings.BinsEncoding.forward">forward() (TALENT.model.lib.num_embeddings.BinsEncoding method)</a>
 
       <ul>
+        <li><a href="api/lib.html#TALENT.model.lib.num_embeddings.JohnsonEncoding.forward">(TALENT.model.lib.num_embeddings.JohnsonEncoding method)</a>
+</li>
+        <li><a href="api/lib.html#TALENT.model.lib.num_embeddings.PiecewiseLinearEncoding.forward">(TALENT.model.lib.num_embeddings.PiecewiseLinearEncoding method)</a>
+</li>
+        <li><a href="api/lib.html#TALENT.model.lib.num_embeddings.UnaryEncoding.forward">(TALENT.model.lib.num_embeddings.UnaryEncoding method)</a>
+</li>
+        <li><a href="api/models.html#TALENT.model.models.bishop.BiSHop.forward">(TALENT.model.models.bishop.BiSHop method)</a>
+</li>
         <li><a href="api/models.html#TALENT.model.models.dcn2.CrossLayer.forward">(TALENT.model.models.dcn2.CrossLayer method)</a>
 </li>
         <li><a href="api/models.html#TALENT.model.models.dcn2.DCNv2.forward">(TALENT.model.models.dcn2.DCNv2 method)</a>
@@ -416,7 +427,11 @@
       <li><a href="api/models.html#TALENT.model.models.bishop.BiSHop.get_bins">get_bins() (TALENT.model.models.bishop.BiSHop method)</a>
 </li>
       <li><a href="api/data.html#TALENT.model.lib.data.get_categories">get_categories() (in module TALENT.model.lib.data)</a>
+
+      <ul>
+        <li><a href="api/lib.html#TALENT.model.lib.TData.TData.get_categories">(TALENT.model.lib.TData.TData method)</a>
 </li>
+      </ul></li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="api/utils.html#TALENT.model.utils.get_classical_args">get_classical_args() (in module TALENT.model.utils)</a>
@@ -426,6 +441,8 @@
       <li><a href="api/utils.html#TALENT.model.utils.get_deep_args">get_deep_args() (in module TALENT.model.utils)</a>
 </li>
       <li><a href="api/utils.html#TALENT.model.utils.get_device">get_device() (in module TALENT.model.utils)</a>
+</li>
+      <li><a href="api/lib.html#TALENT.model.lib.TData.TData.get_dim_in">get_dim_in() (TALENT.model.lib.TData.TData method)</a>
 </li>
       <li><a href="api/utils.html#TALENT.model.utils.get_method">get_method() (in module TALENT.model.utils)</a>
 </li>
@@ -474,6 +491,14 @@
       <li><a href="api/data.html#TALENT.model.lib.data.Dataset.is_regression">is_regression (TALENT.model.lib.data.Dataset property)</a>
 </li>
       <li><a href="api/utils.html#TALENT.model.utils.Averager.item">item() (TALENT.model.utils.Averager method)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="J">J</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api/lib.html#TALENT.model.lib.num_embeddings.JohnsonEncoding">JohnsonEncoding (class in TALENT.model.lib.num_embeddings)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -543,7 +568,47 @@
 </li>
         <li><a href="api/lib.html#module-TALENT.model.lib">TALENT.model.lib</a>
 </li>
+        <li><a href="api/lib.html#module-TALENT.model.lib.amformer">TALENT.model.lib.amformer</a>
+</li>
+        <li><a href="api/lib.html#module-TALENT.model.lib.bishop">TALENT.model.lib.bishop</a>
+</li>
+        <li><a href="api/lib.html#module-TALENT.model.lib.danets">TALENT.model.lib.danets</a>
+</li>
         <li><a href="api/data.html#module-TALENT.model.lib.data">TALENT.model.lib.data</a>
+</li>
+        <li><a href="api/lib.html#module-TALENT.model.lib.dnnr">TALENT.model.lib.dnnr</a>
+</li>
+        <li><a href="api/lib.html#module-TALENT.model.lib.excelformer">TALENT.model.lib.excelformer</a>
+</li>
+        <li><a href="api/lib.html#module-TALENT.model.lib.hyperfast">TALENT.model.lib.hyperfast</a>
+</li>
+        <li><a href="api/lib.html#module-TALENT.model.lib.node">TALENT.model.lib.node</a>
+</li>
+        <li><a href="api/lib.html#module-TALENT.model.lib.num_embeddings">TALENT.model.lib.num_embeddings</a>
+</li>
+        <li><a href="api/lib.html#module-TALENT.model.lib.periodic_tab_dl">TALENT.model.lib.periodic_tab_dl</a>
+</li>
+        <li><a href="api/lib.html#module-TALENT.model.lib.pfn_v2">TALENT.model.lib.pfn_v2</a>
+</li>
+        <li><a href="api/lib.html#module-TALENT.model.lib.ptarl">TALENT.model.lib.ptarl</a>
+</li>
+        <li><a href="api/lib.html#module-TALENT.model.lib.realmlp">TALENT.model.lib.realmlp</a>
+</li>
+        <li><a href="api/lib.html#module-TALENT.model.lib.tabcaps">TALENT.model.lib.tabcaps</a>
+</li>
+        <li><a href="api/lib.html#module-TALENT.model.lib.tabm">TALENT.model.lib.tabm</a>
+</li>
+        <li><a href="api/lib.html#module-TALENT.model.lib.tabnet">TALENT.model.lib.tabnet</a>
+</li>
+        <li><a href="api/lib.html#module-TALENT.model.lib.tabpfn">TALENT.model.lib.tabpfn</a>
+</li>
+        <li><a href="api/lib.html#module-TALENT.model.lib.tabptm">TALENT.model.lib.tabptm</a>
+</li>
+        <li><a href="api/lib.html#module-TALENT.model.lib.tabr">TALENT.model.lib.tabr</a>
+</li>
+        <li><a href="api/lib.html#module-TALENT.model.lib.TData">TALENT.model.lib.TData</a>
+</li>
+        <li><a href="api/lib.html#module-TALENT.model.lib.trompt">TALENT.model.lib.trompt</a>
 </li>
         <li><a href="api/methods.html#module-TALENT.model.methods">TALENT.model.methods</a>
 </li>
@@ -625,6 +690,8 @@
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="api/models.html#TALENT.model.models.grownet.DynamicNet.parameters">parameters() (TALENT.model.models.grownet.DynamicNet method)</a>
+</li>
+      <li><a href="api/lib.html#TALENT.model.lib.num_embeddings.PiecewiseLinearEncoding">PiecewiseLinearEncoding (class in TALENT.model.lib.num_embeddings)</a>
 </li>
       <li><a href="api/models.html#TALENT.model.models.protogate.PL">PL (class in TALENT.model.models.protogate)</a>
 </li>
@@ -795,10 +862,150 @@
 </li>
       </ul></li>
       <li>
+    TALENT.model.lib.amformer
+
+      <ul>
+        <li><a href="api/lib.html#module-TALENT.model.lib.amformer">module</a>
+</li>
+      </ul></li>
+      <li>
+    TALENT.model.lib.bishop
+
+      <ul>
+        <li><a href="api/lib.html#module-TALENT.model.lib.bishop">module</a>
+</li>
+      </ul></li>
+      <li>
+    TALENT.model.lib.danets
+
+      <ul>
+        <li><a href="api/lib.html#module-TALENT.model.lib.danets">module</a>
+</li>
+      </ul></li>
+      <li>
     TALENT.model.lib.data
 
       <ul>
         <li><a href="api/data.html#module-TALENT.model.lib.data">module</a>
+</li>
+      </ul></li>
+      <li>
+    TALENT.model.lib.dnnr
+
+      <ul>
+        <li><a href="api/lib.html#module-TALENT.model.lib.dnnr">module</a>
+</li>
+      </ul></li>
+      <li>
+    TALENT.model.lib.excelformer
+
+      <ul>
+        <li><a href="api/lib.html#module-TALENT.model.lib.excelformer">module</a>
+</li>
+      </ul></li>
+      <li>
+    TALENT.model.lib.hyperfast
+
+      <ul>
+        <li><a href="api/lib.html#module-TALENT.model.lib.hyperfast">module</a>
+</li>
+      </ul></li>
+      <li>
+    TALENT.model.lib.node
+
+      <ul>
+        <li><a href="api/lib.html#module-TALENT.model.lib.node">module</a>
+</li>
+      </ul></li>
+      <li>
+    TALENT.model.lib.num_embeddings
+
+      <ul>
+        <li><a href="api/lib.html#module-TALENT.model.lib.num_embeddings">module</a>
+</li>
+      </ul></li>
+      <li>
+    TALENT.model.lib.periodic_tab_dl
+
+      <ul>
+        <li><a href="api/lib.html#module-TALENT.model.lib.periodic_tab_dl">module</a>
+</li>
+      </ul></li>
+      <li>
+    TALENT.model.lib.pfn_v2
+
+      <ul>
+        <li><a href="api/lib.html#module-TALENT.model.lib.pfn_v2">module</a>
+</li>
+      </ul></li>
+      <li>
+    TALENT.model.lib.ptarl
+
+      <ul>
+        <li><a href="api/lib.html#module-TALENT.model.lib.ptarl">module</a>
+</li>
+      </ul></li>
+      <li>
+    TALENT.model.lib.realmlp
+
+      <ul>
+        <li><a href="api/lib.html#module-TALENT.model.lib.realmlp">module</a>
+</li>
+      </ul></li>
+      <li>
+    TALENT.model.lib.tabcaps
+
+      <ul>
+        <li><a href="api/lib.html#module-TALENT.model.lib.tabcaps">module</a>
+</li>
+      </ul></li>
+      <li>
+    TALENT.model.lib.tabm
+
+      <ul>
+        <li><a href="api/lib.html#module-TALENT.model.lib.tabm">module</a>
+</li>
+      </ul></li>
+      <li>
+    TALENT.model.lib.tabnet
+
+      <ul>
+        <li><a href="api/lib.html#module-TALENT.model.lib.tabnet">module</a>
+</li>
+      </ul></li>
+      <li>
+    TALENT.model.lib.tabpfn
+
+      <ul>
+        <li><a href="api/lib.html#module-TALENT.model.lib.tabpfn">module</a>
+</li>
+      </ul></li>
+      <li>
+    TALENT.model.lib.tabptm
+
+      <ul>
+        <li><a href="api/lib.html#module-TALENT.model.lib.tabptm">module</a>
+</li>
+      </ul></li>
+      <li>
+    TALENT.model.lib.tabr
+
+      <ul>
+        <li><a href="api/lib.html#module-TALENT.model.lib.tabr">module</a>
+</li>
+      </ul></li>
+      <li>
+    TALENT.model.lib.TData
+
+      <ul>
+        <li><a href="api/lib.html#module-TALENT.model.lib.TData">module</a>
+</li>
+      </ul></li>
+      <li>
+    TALENT.model.lib.trompt
+
+      <ul>
+        <li><a href="api/lib.html#module-TALENT.model.lib.trompt">module</a>
 </li>
       </ul></li>
       <li>
@@ -808,6 +1015,8 @@
         <li><a href="api/methods.html#module-TALENT.model.methods">module</a>
 </li>
       </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li>
     TALENT.model.methods.base
 
@@ -878,8 +1087,6 @@
         <li><a href="api/models.html#module-TALENT.model.models.protogate">module</a>
 </li>
       </ul></li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li>
     TALENT.model.models.resnet
 
@@ -957,6 +1164,8 @@
         <li><a href="api/utils.html#module-TALENT.model.utils">module</a>
 </li>
       </ul></li>
+      <li><a href="api/lib.html#TALENT.model.lib.TData.TData">TData (class in TALENT.model.lib.TData)</a>
+</li>
       <li><a href="api/models.html#TALENT.model.models.t2gformer.MultiheadGEAttention.threshold">threshold (TALENT.model.models.t2gformer.MultiheadGEAttention attribute)</a>
 </li>
       <li><a href="api/utils.html#TALENT.model.utils.Timer">Timer (class in TALENT.model.utils)</a>
@@ -993,6 +1202,8 @@
 <h2 id="U">U</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api/lib.html#TALENT.model.lib.num_embeddings.UnaryEncoding">UnaryEncoding (class in TALENT.model.lib.num_embeddings)</a>
+</li>
       <li><a href="api/models.html#TALENT.model.models.tabcaps.TabCapsClassifier.update_fit_params">update_fit_params() (TALENT.model.models.tabcaps.TabCapsClassifier method)</a>
 
       <ul>

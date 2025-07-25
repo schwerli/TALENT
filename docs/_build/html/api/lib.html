@@ -85,11 +85,41 @@
 <p class="caption" role="heading"><span class="caption-text">API Docs</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="core.html">Core Components</a></li>
-<li class="toctree-l1"><a class="reference internal" href="core.html#overview">Overview</a></li>
 <li class="toctree-l1"><a class="reference internal" href="deep_learning.html">Deep Learning Models</a></li>
-<li class="toctree-l1"><a class="reference internal" href="deep_learning.html#overview">Overview</a></li>
 <li class="toctree-l1"><a class="reference internal" href="classical_methods.html">Classical Methods</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Library Components</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Library Components</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#core-utility-modules">Core Utility Modules</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#numerical-embeddings">Numerical Embeddings</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#tdata-structure">TData Structure</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#model-specific-library-components">Model-Specific Library Components</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#module-TALENT.model.lib.tabnet">TabNet Components</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-TALENT.model.lib.tabpfn">TabPFN Components</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-TALENT.model.lib.pfn_v2">PFN v2 Components</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-TALENT.model.lib.tabr">TabR Components</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-TALENT.model.lib.tabm">TabM Components</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-TALENT.model.lib.realmlp">RealMLP Components</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-TALENT.model.lib.bishop">BiSHop Components</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-TALENT.model.lib.node">NODE Components</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-TALENT.model.lib.hyperfast">HyperFast Components</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-TALENT.model.lib.excelformer">ExcelFormer Components</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-TALENT.model.lib.danets">DANets Components</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-TALENT.model.lib.tabcaps">TabCaps Components</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#tabicl-components">TabICL Components</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#specialized-components">Specialized Components</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#module-TALENT.model.lib.periodic_tab_dl">Periodic Tabular DL</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-TALENT.model.lib.trompt">TROMPT Components</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-TALENT.model.lib.ptarl">PTARL Components</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-TALENT.model.lib.amformer">AmFormer Components</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-TALENT.model.lib.tabptm">TabPTM Components</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-TALENT.model.lib.dnnr">DNNR Components</a></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Acknowledgements</span></p>
 <ul>
@@ -123,7 +153,246 @@
   <section id="library-components">
 <h1>Library Components<a class="headerlink" href="#library-components" title="Permalink to this heading"></a></h1>
 <p>Core library components and utilities supporting the TALENT models.</p>
-<span class="target" id="module-TALENT.model.lib"></span></section>
+<span class="target" id="module-TALENT.model.lib"></span><section id="core-utility-modules">
+<h2>Core Utility Modules<a class="headerlink" href="#core-utility-modules" title="Permalink to this heading"></a></h2>
+<p>Core utilities including numerical embeddings and optimized data structures for efficient tabular data processing.</p>
+<section id="numerical-embeddings">
+<h3>Numerical Embeddings<a class="headerlink" href="#numerical-embeddings" title="Permalink to this heading"></a></h3>
+<p>Advanced numerical feature embedding techniques for better tabular data representation, including PLE, Unary encoding, and Johnson transformations.</p>
+<span class="target" id="module-TALENT.model.lib.num_embeddings"></span><dl class="py class">
+<dt class="sig sig-object py" id="TALENT.model.lib.num_embeddings.BinsEncoding">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">TALENT.model.lib.num_embeddings.</span></span><span class="sig-name descname"><span class="pre">BinsEncoding</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.13)"><span class="pre">Any</span></a></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.13)"><span class="pre">Any</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#TALENT.model.lib.num_embeddings.BinsEncoding" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code></p>
+<p>Bins encoding.</p>
+<p><strong>Shape</strong></p>
+<ul class="simple">
+<li><p>Input: <code class="docutils literal notranslate"><span class="pre">(*,</span> <span class="pre">n_features)</span></code></p></li>
+<li><p>Output: <code class="docutils literal notranslate"><span class="pre">(*,</span> <span class="pre">n_features,</span> <span class="pre">total_n_bins)</span></code>,
+where <code class="docutils literal notranslate"><span class="pre">total_n_bins</span></code> is the total number of bins for all features.</p></li>
+</ul>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>bins</strong> – the bins computed by <cite>compute_bins</cite>.</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="TALENT.model.lib.num_embeddings.BinsEncoding.forward">
+<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">torch.Tensor</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">torch.Tensor</span></span></span><a class="headerlink" href="#TALENT.model.lib.num_embeddings.BinsEncoding.forward" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="TALENT.model.lib.num_embeddings.JohnsonEncoding">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">TALENT.model.lib.num_embeddings.</span></span><span class="sig-name descname"><span class="pre">JohnsonEncoding</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.13)"><span class="pre">Any</span></a></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.13)"><span class="pre">Any</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#TALENT.model.lib.num_embeddings.JohnsonEncoding" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code></p>
+<p>Johnson encoding.</p>
+<p><strong>Shape</strong></p>
+<ul class="simple">
+<li><p>Input: <code class="docutils literal notranslate"><span class="pre">(*,</span> <span class="pre">n_features)</span></code></p></li>
+<li><p>Output: <code class="docutils literal notranslate"><span class="pre">(*,</span> <span class="pre">n_features,</span> <span class="pre">total_n_bits)</span></code>,
+where <code class="docutils literal notranslate"><span class="pre">total_n_bits</span></code> is the total number of bits for all features:
+<code class="docutils literal notranslate"><span class="pre">total_n_bits</span> <span class="pre">=</span> <span class="pre">sum((len(b)</span> <span class="pre">-</span> <span class="pre">1)</span> <span class="pre">//</span> <span class="pre">2</span> <span class="pre">for</span> <span class="pre">b</span> <span class="pre">in</span> <span class="pre">bins)</span></code>.</p></li>
+</ul>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>bins</strong> – the bins computed by <cite>compute_bins</cite>.</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="TALENT.model.lib.num_embeddings.JohnsonEncoding.forward">
+<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">torch.Tensor</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">torch.Tensor</span></span></span><a class="headerlink" href="#TALENT.model.lib.num_embeddings.JohnsonEncoding.forward" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="TALENT.model.lib.num_embeddings.PiecewiseLinearEncoding">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">TALENT.model.lib.num_embeddings.</span></span><span class="sig-name descname"><span class="pre">PiecewiseLinearEncoding</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.13)"><span class="pre">Any</span></a></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.13)"><span class="pre">Any</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#TALENT.model.lib.num_embeddings.PiecewiseLinearEncoding" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code></p>
+<p>Piecewise-linear encoding.</p>
+<p><strong>Shape</strong></p>
+<ul class="simple">
+<li><p>Input: <code class="docutils literal notranslate"><span class="pre">(*,</span> <span class="pre">n_features)</span></code></p></li>
+<li><p>Output: <code class="docutils literal notranslate"><span class="pre">(*,</span> <span class="pre">n_features,</span> <span class="pre">total_n_bins)</span></code>,
+where <code class="docutils literal notranslate"><span class="pre">total_n_bins</span></code> is the total number of bins for all features:
+<code class="docutils literal notranslate"><span class="pre">total_n_bins</span> <span class="pre">=</span> <span class="pre">sum(len(b)</span> <span class="pre">-</span> <span class="pre">1</span> <span class="pre">for</span> <span class="pre">b</span> <span class="pre">in</span> <span class="pre">bins)</span></code>.</p></li>
+</ul>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>bins</strong> – the bins computed by <cite>compute_bins</cite>.</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="TALENT.model.lib.num_embeddings.PiecewiseLinearEncoding.forward">
+<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">torch.Tensor</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">torch.Tensor</span></span></span><a class="headerlink" href="#TALENT.model.lib.num_embeddings.PiecewiseLinearEncoding.forward" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="TALENT.model.lib.num_embeddings.UnaryEncoding">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">TALENT.model.lib.num_embeddings.</span></span><span class="sig-name descname"><span class="pre">UnaryEncoding</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.13)"><span class="pre">Any</span></a></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.13)"><span class="pre">Any</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#TALENT.model.lib.num_embeddings.UnaryEncoding" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code></p>
+<p>Unary encoding.</p>
+<p><strong>Shape</strong></p>
+<ul class="simple">
+<li><p>Input: <code class="docutils literal notranslate"><span class="pre">(*,</span> <span class="pre">n_features)</span></code></p></li>
+<li><p>Output: <code class="docutils literal notranslate"><span class="pre">(*,</span> <span class="pre">n_features,</span> <span class="pre">total_n_bins)</span></code>,
+where <code class="docutils literal notranslate"><span class="pre">total_n_bins</span></code> is the total number of bins for all features:
+<code class="docutils literal notranslate"><span class="pre">total_n_bins</span> <span class="pre">=</span> <span class="pre">sum(len(b)</span> <span class="pre">-</span> <span class="pre">1</span> <span class="pre">for</span> <span class="pre">b</span> <span class="pre">in</span> <span class="pre">bins)</span></code>.</p></li>
+</ul>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>bins</strong> – the bins computed by <cite>compute_bins</cite>.</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="TALENT.model.lib.num_embeddings.UnaryEncoding.forward">
+<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">torch.Tensor</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">torch.Tensor</span></span></span><a class="headerlink" href="#TALENT.model.lib.num_embeddings.UnaryEncoding.forward" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="TALENT.model.lib.num_embeddings.compute_bins">
+<span class="sig-prename descclassname"><span class="pre">TALENT.model.lib.num_embeddings.</span></span><span class="sig-name descname"><span class="pre">compute_bins</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">torch.Tensor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_bins</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><span class="pre">int</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">48</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tree_kwargs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(in Python v3.13)"><span class="pre">Optional</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Dict" title="(in Python v3.13)"><span class="pre">Dict</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.13)"><span class="pre">Any</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(in Python v3.13)"><span class="pre">Optional</span></a><span class="p"><span class="pre">[</span></span><span class="pre">torch.Tensor</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">regression</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(in Python v3.13)"><span class="pre">Optional</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><span class="pre">bool</span></a><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><span class="pre">bool</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.13)"><span class="pre">List</span></a><span class="p"><span class="pre">[</span></span><span class="pre">torch.Tensor</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#TALENT.model.lib.num_embeddings.compute_bins" title="Permalink to this definition"></a></dt>
+<dd><p>Compute bin edges for <cite>PiecewiseLinearEmbeddings</cite>.</p>
+<p><strong>Usage</strong></p>
+<p>Computing the quantile-based bins (Section 3.2.1 in the paper):</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">X_train</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">10000</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">bins</span> <span class="o">=</span> <span class="n">compute_bins</span><span class="p">(</span><span class="n">X_train</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Computing the tree-based bins (Section 3.2.2 in the paper):</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">X_train</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">10000</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">y_train</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">X_train</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">bins</span> <span class="o">=</span> <span class="n">compute_bins</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="n">X_train</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">y</span><span class="o">=</span><span class="n">y_train</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">regression</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">tree_kwargs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;min_samples_leaf&#39;</span><span class="p">:</span> <span class="mi">64</span><span class="p">,</span> <span class="s1">&#39;min_impurity_decrease&#39;</span><span class="p">:</span> <span class="mf">1e-4</span><span class="p">},</span>
+<span class="gp">... </span><span class="p">)</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>X</strong> – the training features.</p></li>
+<li><p><strong>n_bins</strong> – the number of bins.</p></li>
+<li><p><strong>tree_kwargs</strong> – keyword arguments for <cite>sklearn.tree.DecisionTreeRegressor</cite>
+(if <code class="docutils literal notranslate"><span class="pre">regression</span></code> is <cite>True</cite>) or <cite>sklearn.tree.DecisionTreeClassifier</cite>
+(if <code class="docutils literal notranslate"><span class="pre">regression</span></code> is <cite>False</cite>).
+NOTE: requires <code class="docutils literal notranslate"><span class="pre">scikit-learn&gt;=1.0,&gt;2</span></code> to be installed.</p></li>
+<li><p><strong>y</strong> – the training labels (must be provided if <code class="docutils literal notranslate"><span class="pre">tree</span></code> is not None).</p></li>
+<li><p><strong>regression</strong> – whether the labels are regression labels
+(must be provided if <code class="docutils literal notranslate"><span class="pre">tree</span></code> is not None).</p></li>
+<li><p><strong>verbose</strong> – if True and <code class="docutils literal notranslate"><span class="pre">tree_kwargs</span></code> is not None, than <code class="docutils literal notranslate"><span class="pre">tqdm</span></code>
+(must be installed) will report the progress while fitting trees.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p>the maximum possible number of bin edges is <code class="docutils literal notranslate"><span class="pre">n_bins</span> <span class="pre">+</span> <span class="pre">1</span></code>.</p></li>
+<li><p>the minumum possible number of bin edges is <code class="docutils literal notranslate"><span class="pre">1</span></code>.</p></li>
+</ul>
+</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>A list of bin edges for all features. For one feature</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="tdata-structure">
+<h3>TData Structure<a class="headerlink" href="#tdata-structure" title="Permalink to this heading"></a></h3>
+<p>Optimized data structure for efficient tabular data handling with memory optimization and PyTorch integration.</p>
+<span class="target" id="module-TALENT.model.lib.TData"></span><dl class="py class">
+<dt class="sig sig-object py" id="TALENT.model.lib.TData.TData">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">TALENT.model.lib.TData.</span></span><span class="sig-name descname"><span class="pre">TData</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.13)"><span class="pre">Any</span></a></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.13)"><span class="pre">Any</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#TALENT.model.lib.TData.TData" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Dataset</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="TALENT.model.lib.TData.TData.get_categories">
+<span class="sig-name descname"><span class="pre">get_categories</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#TALENT.model.lib.TData.TData.get_categories" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="TALENT.model.lib.TData.TData.get_dim_in">
+<span class="sig-name descname"><span class="pre">get_dim_in</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#TALENT.model.lib.TData.TData.get_dim_in" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+</section>
+<section id="model-specific-library-components">
+<h2>Model-Specific Library Components<a class="headerlink" href="#model-specific-library-components" title="Permalink to this heading"></a></h2>
+<p>Specialized library components supporting individual model architectures, including attention mechanisms, feature transformers, and model-specific optimizations.</p>
+<section id="module-TALENT.model.lib.tabnet">
+<span id="tabnet-components"></span><h3>TabNet Components<a class="headerlink" href="#module-TALENT.model.lib.tabnet" title="Permalink to this heading"></a></h3>
+</section>
+<section id="module-TALENT.model.lib.tabpfn">
+<span id="tabpfn-components"></span><h3>TabPFN Components<a class="headerlink" href="#module-TALENT.model.lib.tabpfn" title="Permalink to this heading"></a></h3>
+</section>
+<section id="module-TALENT.model.lib.pfn_v2">
+<span id="pfn-v2-components"></span><h3>PFN v2 Components<a class="headerlink" href="#module-TALENT.model.lib.pfn_v2" title="Permalink to this heading"></a></h3>
+</section>
+<section id="module-TALENT.model.lib.tabr">
+<span id="tabr-components"></span><h3>TabR Components<a class="headerlink" href="#module-TALENT.model.lib.tabr" title="Permalink to this heading"></a></h3>
+</section>
+<section id="module-TALENT.model.lib.tabm">
+<span id="tabm-components"></span><h3>TabM Components<a class="headerlink" href="#module-TALENT.model.lib.tabm" title="Permalink to this heading"></a></h3>
+</section>
+<section id="module-TALENT.model.lib.realmlp">
+<span id="realmlp-components"></span><h3>RealMLP Components<a class="headerlink" href="#module-TALENT.model.lib.realmlp" title="Permalink to this heading"></a></h3>
+</section>
+<section id="module-TALENT.model.lib.bishop">
+<span id="bishop-components"></span><h3>BiSHop Components<a class="headerlink" href="#module-TALENT.model.lib.bishop" title="Permalink to this heading"></a></h3>
+</section>
+<section id="module-TALENT.model.lib.node">
+<span id="node-components"></span><h3>NODE Components<a class="headerlink" href="#module-TALENT.model.lib.node" title="Permalink to this heading"></a></h3>
+</section>
+<section id="module-TALENT.model.lib.hyperfast">
+<span id="hyperfast-components"></span><h3>HyperFast Components<a class="headerlink" href="#module-TALENT.model.lib.hyperfast" title="Permalink to this heading"></a></h3>
+</section>
+<section id="module-TALENT.model.lib.excelformer">
+<span id="excelformer-components"></span><h3>ExcelFormer Components<a class="headerlink" href="#module-TALENT.model.lib.excelformer" title="Permalink to this heading"></a></h3>
+</section>
+<section id="module-TALENT.model.lib.danets">
+<span id="danets-components"></span><h3>DANets Components<a class="headerlink" href="#module-TALENT.model.lib.danets" title="Permalink to this heading"></a></h3>
+</section>
+<section id="module-TALENT.model.lib.tabcaps">
+<span id="tabcaps-components"></span><h3>TabCaps Components<a class="headerlink" href="#module-TALENT.model.lib.tabcaps" title="Permalink to this heading"></a></h3>
+</section>
+<section id="tabicl-components">
+<h3>TabICL Components<a class="headerlink" href="#tabicl-components" title="Permalink to this heading"></a></h3>
+</section>
+</section>
+<section id="specialized-components">
+<h2>Specialized Components<a class="headerlink" href="#specialized-components" title="Permalink to this heading"></a></h2>
+<p>Advanced and experimental components for specialized tabular learning scenarios, including periodic embeddings, prompting mechanisms, and reinforcement learning.</p>
+<section id="module-TALENT.model.lib.periodic_tab_dl">
+<span id="periodic-tabular-dl"></span><h3>Periodic Tabular DL<a class="headerlink" href="#module-TALENT.model.lib.periodic_tab_dl" title="Permalink to this heading"></a></h3>
+</section>
+<section id="module-TALENT.model.lib.trompt">
+<span id="trompt-components"></span><h3>TROMPT Components<a class="headerlink" href="#module-TALENT.model.lib.trompt" title="Permalink to this heading"></a></h3>
+</section>
+<section id="module-TALENT.model.lib.ptarl">
+<span id="ptarl-components"></span><h3>PTARL Components<a class="headerlink" href="#module-TALENT.model.lib.ptarl" title="Permalink to this heading"></a></h3>
+</section>
+<section id="module-TALENT.model.lib.amformer">
+<span id="amformer-components"></span><h3>AmFormer Components<a class="headerlink" href="#module-TALENT.model.lib.amformer" title="Permalink to this heading"></a></h3>
+</section>
+<section id="module-TALENT.model.lib.tabptm">
+<span id="tabptm-components"></span><h3>TabPTM Components<a class="headerlink" href="#module-TALENT.model.lib.tabptm" title="Permalink to this heading"></a></h3>
+</section>
+<section id="module-TALENT.model.lib.dnnr">
+<span id="dnnr-components"></span><h3>DNNR Components<a class="headerlink" href="#module-TALENT.model.lib.dnnr" title="Permalink to this heading"></a></h3>
+<p>Top-level package for dnnr.</p>
+</section>
+</section>
+</section>
 
 
            </div>
