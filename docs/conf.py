@@ -9,10 +9,9 @@
 # If extensions (or modules to document with autodoc) are in another directory,
 # add these directories to sys.path here. If the directory is relative to the
 # documentation root, use os.path.abspath to make it absolute, like shown here.
-# #
-# import os
-# import sys
-# sys.path.insert(0, os.path.abspath('.'))
+import os
+import sys
+sys.path.insert(0, os.path.abspath('.'))
 
 
 # -- Project information -----------------------------------------------------
@@ -33,6 +32,26 @@ extensions = [
     "sphinx.ext.autosummary",
     "sphinx.ext.intersphinx",
 ]
+
+# Autodoc configuration
+autodoc_default_options = {
+    'members': True,
+    'undoc-members': True,
+    'show-inheritance': True,
+    'ignore-module-all': True,
+}
+
+# Mock imports for packages that might not be available during doc build
+autodoc_mock_imports = [
+    'torch', 'torchvision', 'sklearn', 'numpy', 'pandas', 'scipy',
+    'xgboost', 'lightgbm', 'catboost', 'optuna', 'faiss',
+    'category_encoders', 'tqdm', 'matplotlib', 'seaborn', 'delu',
+    'einops', 'qhoptim', 'statsmodels', 'patsy'
+]
+
+# Continue on import errors
+autodoc_inherit_docstrings = True
+autoclass_content = 'both'
 
 intersphinx_mapping = {
     "rtd": ("https://docs.readthedocs.io/en/stable/", None),
