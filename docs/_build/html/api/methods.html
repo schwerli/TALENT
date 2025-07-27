@@ -7,6 +7,7 @@
   <title>Methods &mdash; LAMDA-TALENT  documentation</title>
       <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
   <!--[if lt IE 9]>
     <script src="../_static/js/html5shiv.min.js"></script>
   <![endif]-->
@@ -16,6 +17,7 @@
         <script src="../_static/underscore.js"></script>
         <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../_static/doctools.js"></script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -87,7 +89,19 @@
 <li class="toctree-l1"><a class="reference internal" href="core.html">Core Components</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="deep_learning.html">Deep Learning Models</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="models.html">Models</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Methods</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Methods</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#base-method-class">Base Method Class</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#utility-functions">Utility Functions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#basic-neural-network-methods">Basic Neural Network Methods</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#transformer-based-methods">Transformer-Based Methods</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#advanced-tabular-methods">Advanced Tabular Methods</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#specialized-methods">Specialized Methods</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#tree-based-neural-methods">Tree-Based Neural Methods</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#high-performance-methods">High-Performance Methods</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#foundation-model-methods">Foundation Model Methods</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#method-usage-patterns">Method Usage Patterns</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="classical_methods.html">Classical Methods</a></li>
@@ -126,7 +140,683 @@
   <section id="methods">
 <h1>Methods<a class="headerlink" href="#methods" title="Permalink to this heading"></a></h1>
 <p>Deep learning method implementations that wrap model architectures with training logic.</p>
-<span class="target" id="module-TALENT.model.methods"></span></section>
+<p>This section contains method classes that provide a unified interface for training, validation, and prediction across all deep learning models in TALENT. Each method class inherits from the base <cite>Method</cite> class and implements model-specific logic while maintaining consistent APIs.</p>
+<span class="target" id="module-TALENT.model.methods"></span><section id="base-method-class">
+<h2>Base Method Class<a class="headerlink" href="#base-method-class" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">TALENT.model.methods.</span></span><span class="sig-name descname"><span class="pre">Method</span></span></dt>
+<dd><p>Abstract base class that provides a unified interface for all deep learning methods in TALENT.</p>
+<p><strong>Key Features:</strong></p>
+<ul class="simple">
+<li><p>Consistent training/validation/prediction workflow</p></li>
+<li><p>Automatic data preprocessing and formatting</p></li>
+<li><p>Model construction and optimization setup</p></li>
+<li><p>Early stopping and checkpoint management</p></li>
+<li><p>Comprehensive evaluation metrics</p></li>
+</ul>
+<p><strong>Core Methods:</strong></p>
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">is_regression</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Initialize the method with configuration and task type.</p>
+<p><strong>Parameters:</strong></p>
+<ul class="simple">
+<li><p><strong>args</strong> (<em>argparse.Namespace</em>) – Configuration arguments</p></li>
+<li><p><strong>is_regression</strong> (<em>bool</em>) – Whether the task is regression</p></li>
+</ul>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">construct_model</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model_config</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Abstract method to construct the specific model architecture.
+Must be implemented by each method subclass.</p>
+<p><strong>Parameters:</strong></p>
+<ul class="simple">
+<li><p><strong>model_config</strong> (<em>dict, optional</em>) – Model-specific configuration</p></li>
+</ul>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">data_format</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">is_train</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">N</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">C</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Format and preprocess data for training or inference.</p>
+<p><strong>Parameters:</strong></p>
+<ul class="simple">
+<li><p><strong>is_train</strong> (<em>bool</em>) – Whether formatting for training or inference</p></li>
+<li><p><strong>N</strong> (<em>dict, optional</em>) – Numerical features dictionary</p></li>
+<li><p><strong>C</strong> (<em>dict, optional</em>) – Categorical features dictionary</p></li>
+<li><p><strong>y</strong> (<em>dict, optional</em>) – Target labels dictionary</p></li>
+</ul>
+<p><strong>Processing Pipeline:</strong></p>
+<p><strong>Training Mode (`is_train=True`):</strong></p>
+<ol class="arabic simple">
+<li><p><strong>NaN Processing:</strong> Handle missing values using specified policies</p></li>
+<li><p><strong>Label Processing:</strong> Encode/normalize target variables</p></li>
+<li><p><strong>Numerical Encoding:</strong> Apply feature encoding (PLE, Unary, etc.)</p></li>
+<li><p><strong>Categorical Encoding:</strong> Apply categorical encoding (ordinal, one-hot, etc.)</p></li>
+<li><p><strong>Normalization:</strong> Apply feature normalization</p></li>
+<li><p><strong>DataLoader Creation:</strong> Create training and validation dataloaders</p></li>
+</ol>
+<p><strong>Inference Mode (`is_train=False`):</strong></p>
+<ol class="arabic simple">
+<li><p><strong>Apply Fitted Transformers:</strong> Use previously fitted encoders/normalizers</p></li>
+<li><p><strong>Create Test DataLoader:</strong> Prepare data for inference</p></li>
+<li><p><strong>Feature Formatting:</strong> Ensure compatibility with trained model</p></li>
+</ol>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">train_epoch</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">epoch</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Train the model for one epoch.</p>
+<p><strong>Parameters:</strong></p>
+<ul class="simple">
+<li><p><strong>epoch</strong> (<em>int</em>) – Current epoch number</p></li>
+</ul>
+<p><strong>Training Process:</strong></p>
+<ol class="arabic simple">
+<li><p><strong>Set Training Mode:</strong> <cite>model.train()</cite></p></li>
+<li><p><strong>Batch Processing:</strong> Iterate through training batches</p></li>
+<li><p><strong>Forward Pass:</strong> Compute model predictions</p></li>
+<li><p><strong>Loss Computation:</strong> Calculate training loss</p></li>
+<li><p><strong>Backward Pass:</strong> Compute gradients</p></li>
+<li><p><strong>Parameter Update:</strong> Apply optimizer step</p></li>
+<li><p><strong>Progress Logging:</strong> Track and display training progress</p></li>
+</ol>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">validate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">epoch</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Validate the model on validation set.</p>
+<p><strong>Parameters:</strong></p>
+<ul class="simple">
+<li><p><strong>epoch</strong> (<em>int</em>) – Current epoch number</p></li>
+</ul>
+<p><strong>Validation Process:</strong></p>
+<ol class="arabic simple">
+<li><p><strong>Set Evaluation Mode:</strong> <cite>model.eval()</cite></p></li>
+<li><p><strong>Inference:</strong> Process validation batches without gradients</p></li>
+<li><p><strong>Metric Computation:</strong> Calculate validation metrics</p></li>
+<li><p><strong>Best Model Tracking:</strong> Save model if performance improved</p></li>
+<li><p><strong>Early Stopping:</strong> Stop training if no improvement for 20 epochs</p></li>
+<li><p><strong>Logging:</strong> Record validation results</p></li>
+</ol>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">metric</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">predictions</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">labels</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_info</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Compute comprehensive evaluation metrics.</p>
+<p><strong>Parameters:</strong></p>
+<ul class="simple">
+<li><p><strong>predictions</strong> (<em>np.ndarray</em>) – Model predictions</p></li>
+<li><p><strong>labels</strong> (<em>np.ndarray</em>) – Ground truth labels</p></li>
+<li><p><strong>y_info</strong> (<em>dict</em>) – Label processing information</p></li>
+</ul>
+<p><strong>Returns:</strong></p>
+<ul class="simple">
+<li><p><strong>tuple</strong> – (metrics, metric_names)</p></li>
+</ul>
+<p><strong>Task-Specific Metrics:</strong></p>
+<p><strong>Regression Tasks:</strong></p>
+<ul class="simple">
+<li><p><strong>MAE:</strong> Mean Absolute Error</p></li>
+<li><p><strong>R²:</strong> Coefficient of determination</p></li>
+<li><p><strong>RMSE:</strong> Root Mean Squared Error</p></li>
+</ul>
+<p><strong>Binary Classification:</strong></p>
+<ul class="simple">
+<li><p><strong>Accuracy:</strong> Overall classification accuracy</p></li>
+<li><p><strong>Balanced Recall:</strong> Balanced accuracy score</p></li>
+<li><p><strong>Macro Precision:</strong> Macro-averaged precision</p></li>
+<li><p><strong>F1 Score:</strong> Binary F1 score</p></li>
+<li><p><strong>Log Loss:</strong> Cross-entropy loss</p></li>
+<li><p><strong>AUC:</strong> Area under ROC curve</p></li>
+</ul>
+<p><strong>Multi-class Classification:</strong></p>
+<ul class="simple">
+<li><p><strong>Accuracy:</strong> Overall classification accuracy</p></li>
+<li><p><strong>Balanced Recall:</strong> Balanced accuracy score</p></li>
+<li><p><strong>Macro Precision:</strong> Macro-averaged precision</p></li>
+<li><p><strong>Macro F1:</strong> Macro-averaged F1 score</p></li>
+<li><p><strong>Log Loss:</strong> Cross-entropy loss</p></li>
+<li><p><strong>Macro AUC:</strong> One-vs-Rest AUC</p></li>
+</ul>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="utility-functions">
+<h2>Utility Functions<a class="headerlink" href="#utility-functions" title="Permalink to this heading"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py">
+<span class="sig-prename descclassname"><span class="pre">TALENT.model.methods.</span></span><span class="sig-name descname"><span class="pre">check_softmax</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">logits</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Check if logits are probabilities and convert if necessary.</p>
+<p><strong>Parameters:</strong></p>
+<ul class="simple">
+<li><p><strong>logits</strong> (<em>np.ndarray</em>) – Array of shape (N, C) with logits or probabilities</p></li>
+</ul>
+<p><strong>Returns:</strong></p>
+<ul class="simple">
+<li><p><strong>np.ndarray</strong> – Properly normalized probabilities</p></li>
+</ul>
+<p><strong>Mathematical Process:</strong></p>
+<ol class="arabic">
+<li><p><strong>Probability Check:</strong> Verify if values are in [0,1] and sum to 1</p></li>
+<li><p><strong>Softmax Application:</strong> If not probabilities, apply softmax:</p>
+<div class="math notranslate nohighlight">
+\[p_i = \frac{\exp(x_i - \max(x))}{\sum_{j} \exp(x_j - \max(x))}\]</div>
+</li>
+<li><p><strong>Numerical Stability:</strong> Subtract max before exp to prevent overflow</p></li>
+</ol>
+</dd></dl>
+
+</section>
+<section id="basic-neural-network-methods">
+<h2>Basic Neural Network Methods<a class="headerlink" href="#basic-neural-network-methods" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">TALENT.model.methods.</span></span><span class="sig-name descname"><span class="pre">MLPMethod</span></span></dt>
+<dd><p>Method class for Multi-Layer Perceptron (MLP) models.</p>
+<p><strong>Features:</strong></p>
+<ul class="simple">
+<li><p>Simple feedforward neural network</p></li>
+<li><p>Configurable hidden layers and dropout</p></li>
+<li><p>Suitable for most tabular data tasks</p></li>
+<li><p>Fast training and inference</p></li>
+</ul>
+<p><strong>Requirements:</strong></p>
+<ul class="simple">
+<li><p><cite>cat_policy</cite> cannot be ‘indices’ (categorical features must be encoded)</p></li>
+</ul>
+<p><strong>Model Configuration:</strong></p>
+<ul class="simple">
+<li><p><strong>d_layers</strong> (<em>List[int]</em>) – Hidden layer dimensions</p></li>
+<li><p><strong>dropout</strong> (<em>float</em>) – Dropout probability</p></li>
+</ul>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">TALENT.model.methods.</span></span><span class="sig-name descname"><span class="pre">ResNetMethod</span></span></dt>
+<dd><p>Method class for Residual Networks adapted for tabular data.</p>
+<p><strong>Features:</strong></p>
+<ul class="simple">
+<li><p>Skip connections to prevent gradient vanishing</p></li>
+<li><p>Multiple activation functions (ReLU, GELU, ReGLU, GeGLU)</p></li>
+<li><p>Batch normalization or layer normalization</p></li>
+<li><p>Deep architecture support</p></li>
+</ul>
+<p><strong>Model Configuration:</strong></p>
+<ul class="simple">
+<li><p><strong>d_hidden</strong> (<em>int</em>) – Hidden dimension</p></li>
+<li><p><strong>n_layers</strong> (<em>int</em>) – Number of residual blocks</p></li>
+<li><p><strong>dropout</strong> (<em>float</em>) – Dropout probability</p></li>
+<li><p><strong>activation</strong> (<em>str</em>) – Activation function type</p></li>
+</ul>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">TALENT.model.methods.</span></span><span class="sig-name descname"><span class="pre">SNNMethod</span></span></dt>
+<dd><p>Method class for Self-Normalizing Networks (SNN).</p>
+<p><strong>Features:</strong></p>
+<ul class="simple">
+<li><p>SELU activation for self-normalization</p></li>
+<li><p>Suitable for deeper networks</p></li>
+<li><p>Automatic normalization properties</p></li>
+<li><p>Fast convergence</p></li>
+</ul>
+</dd></dl>
+
+</section>
+<section id="transformer-based-methods">
+<h2>Transformer-Based Methods<a class="headerlink" href="#transformer-based-methods" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">TALENT.model.methods.</span></span><span class="sig-name descname"><span class="pre">FTTMethod</span></span></dt>
+<dd><p>Method class for Feature Tokenizer Transformer (FT-Transformer).</p>
+<p><strong>Features:</strong></p>
+<ul class="simple">
+<li><p>Feature tokenization for tabular data</p></li>
+<li><p>Multi-head self-attention mechanism</p></li>
+<li><p>State-of-the-art performance on many datasets</p></li>
+<li><p>Configurable transformer architecture</p></li>
+</ul>
+<p><strong>Requirements:</strong></p>
+<ul class="simple">
+<li><p><cite>cat_policy</cite> must be ‘indices’ (uses raw categorical indices)</p></li>
+</ul>
+<p><strong>Model Configuration:</strong></p>
+<ul class="simple">
+<li><p><strong>n_blocks</strong> (<em>int</em>) – Number of transformer blocks</p></li>
+<li><p><strong>attention</strong> – Attention mechanism configuration</p></li>
+<li><p><strong>ffn_dropout</strong> (<em>float</em>) – Feed-forward network dropout</p></li>
+<li><p><strong>attention_dropout</strong> (<em>float</em>) – Attention dropout</p></li>
+</ul>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">TALENT.model.methods.</span></span><span class="sig-name descname"><span class="pre">SaintMethod</span></span></dt>
+<dd><p>Method class for Self-Attention and Intersample Attention Transformer (SAINT).</p>
+<p><strong>Features:</strong></p>
+<ul class="simple">
+<li><p>Row and column attention mechanisms</p></li>
+<li><p>Enhanced feature interaction modeling</p></li>
+<li><p>Token-based representation</p></li>
+<li><p>Improved performance on complex datasets</p></li>
+</ul>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">TALENT.model.methods.</span></span><span class="sig-name descname"><span class="pre">TabTransformerMethod</span></span></dt>
+<dd><p>Method class for TabTransformer.</p>
+<p><strong>Features:</strong></p>
+<ul class="simple">
+<li><p>Column-wise attention for categorical features</p></li>
+<li><p>Contextual embeddings</p></li>
+<li><p>Strong performance on datasets with categorical features</p></li>
+<li><p>Interpretable attention weights</p></li>
+</ul>
+</dd></dl>
+
+</section>
+<section id="advanced-tabular-methods">
+<h2>Advanced Tabular Methods<a class="headerlink" href="#advanced-tabular-methods" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">TALENT.model.methods.</span></span><span class="sig-name descname"><span class="pre">TabNetMethod</span></span></dt>
+<dd><p>Method class for TabNet with sequential attention.</p>
+<p><strong>Features:</strong></p>
+<ul class="simple">
+<li><p>Sequential feature selection</p></li>
+<li><p>Interpretable decision making</p></li>
+<li><p>Sparse feature selection</p></li>
+<li><p>Custom training workflow with TabNet-specific optimizers</p></li>
+</ul>
+<p><strong>Requirements:</strong></p>
+<ul class="simple">
+<li><p><cite>cat_policy</cite> cannot be ‘indices’ (requires encoded categorical features)</p></li>
+</ul>
+<p><strong>Custom Data Processing:</strong></p>
+<p>TabNet uses its own specialized data processing pipeline that differs from the base class:</p>
+<ol class="arabic simple">
+<li><p><strong>Direct Processing:</strong> Bypasses standard data_format method</p></li>
+<li><p><strong>TabNet-specific Encoding:</strong> Uses TabNet’s internal categorical handling</p></li>
+<li><p><strong>Custom DataLoaders:</strong> Creates TabNet-compatible data structures</p></li>
+</ol>
+<p><strong>Model Configuration:</strong></p>
+<ul class="simple">
+<li><p><strong>n_steps</strong> (<em>int</em>) – Number of decision steps</p></li>
+<li><p><strong>gamma</strong> (<em>float</em>) – Relaxation parameter</p></li>
+<li><p><strong>n_independent</strong> (<em>int</em>) – Number of independent GLU layers</p></li>
+<li><p><strong>n_shared</strong> (<em>int</em>) – Number of shared GLU layers</p></li>
+<li><p><strong>momentum</strong> (<em>float</em>) – Momentum for batch normalization</p></li>
+</ul>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">TALENT.model.methods.</span></span><span class="sig-name descname"><span class="pre">TabRMethod</span></span></dt>
+<dd><p>Method class for TabR (KNN-attention hybrid model).</p>
+<p><strong>Features:</strong></p>
+<ul class="simple">
+<li><p>Combines KNN with attention mechanisms</p></li>
+<li><p>Context-aware predictions</p></li>
+<li><p>Strong performance on various datasets</p></li>
+<li><p>Retrieval-based learning</p></li>
+</ul>
+<p><strong>Special Training Process:</strong></p>
+<p>TabR implements a unique training approach that combines retrieval and attention:</p>
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">info</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">train</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Custom fit method with retrieval-based training.</p>
+<p><strong>Special Features:</strong></p>
+<ul class="simple">
+<li><p><strong>Context Management:</strong> Maintains context_size=96 for retrieval</p></li>
+<li><p><strong>Index Management:</strong> Tracks training indices for efficient retrieval</p></li>
+<li><p><strong>Candidate Selection:</strong> Uses full training set as retrieval candidates</p></li>
+</ul>
+<p><strong>Training Process:</strong></p>
+<ol class="arabic simple">
+<li><p><strong>Setup Retrieval Context:</strong> Initialize training indices and context size</p></li>
+<li><p><strong>Model Construction:</strong> Build TabR with attention and KNN components</p></li>
+<li><p><strong>Training Loop:</strong> Standard epoch-based training with retrieval context</p></li>
+<li><p><strong>Candidate Updates:</strong> Dynamically update retrieval candidates</p></li>
+</ol>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">predict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">info</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model_name</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Prediction with retrieval-based inference.</p>
+<p><strong>Retrieval Process:</strong></p>
+<ol class="arabic simple">
+<li><p><strong>Load Training Data:</strong> Use training set as retrieval candidates</p></li>
+<li><p><strong>Neighbor Search:</strong> Find relevant training examples</p></li>
+<li><p><strong>Attention Computation:</strong> Apply attention over retrieved candidates</p></li>
+<li><p><strong>Prediction Generation:</strong> Combine retrieval and learned representations</p></li>
+</ol>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">TALENT.model.methods.</span></span><span class="sig-name descname"><span class="pre">ModernNCAMethod</span></span></dt>
+<dd><p>Method class for Modern Nearest Class Analysis.</p>
+<p><strong>Features:</strong></p>
+<ul class="simple">
+<li><p>Neighborhood Component Analysis-inspired</p></li>
+<li><p>Embedding-based predictions</p></li>
+<li><p>Effective for datasets with clear class structure</p></li>
+<li><p>Interpretable neighbor relationships</p></li>
+</ul>
+<p><strong>Special Training Features:</strong></p>
+<ul class="simple">
+<li><p><strong>Neighbor Sampling:</strong> Efficient sampling of training neighbors</p></li>
+<li><p><strong>Embedding Learning:</strong> Learn optimal embedding space for distance computation</p></li>
+<li><p><strong>Distance-based Loss:</strong> Optimize for neighborhood classification</p></li>
+</ul>
+</dd></dl>
+
+</section>
+<section id="specialized-methods">
+<h2>Specialized Methods<a class="headerlink" href="#specialized-methods" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">TALENT.model.methods.</span></span><span class="sig-name descname"><span class="pre">ProtoGateMethod</span></span></dt>
+<dd><p>Method class for ProtoGate (prototype-based gating).</p>
+<p><strong>Features:</strong></p>
+<ul class="simple">
+<li><p>Prototype-based learning</p></li>
+<li><p>Gating mechanisms for feature selection</p></li>
+<li><p>Suitable for high-dimensional low-sample-size data</p></li>
+<li><p>Enhanced interpretability through prototypes</p></li>
+</ul>
+<p><strong>Prototype Learning:</strong></p>
+<ul class="simple">
+<li><p><strong>Prototype Initialization:</strong> Learn representative prototypes from data</p></li>
+<li><p><strong>Gating Computation:</strong> Use prototypes to gate feature importance</p></li>
+<li><p><strong>Selection Mechanism:</strong> Adaptive feature selection based on prototypes</p></li>
+</ul>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">TALENT.model.methods.</span></span><span class="sig-name descname"><span class="pre">TromptMethod</span></span></dt>
+<dd><p>Method class for Trompt (prompt-based tabular learning).</p>
+<p><strong>Features:</strong></p>
+<ul class="simple">
+<li><p>Prompt-based neural architecture</p></li>
+<li><p>Separation of intrinsic and sample-specific features</p></li>
+<li><p>Multiple learning cycles for improved performance</p></li>
+<li><p>Custom training with repeated targets</p></li>
+</ul>
+<p><strong>Requirements:</strong></p>
+<ul class="simple">
+<li><p><cite>cat_policy</cite> must be ‘indices’</p></li>
+</ul>
+<p><strong>Custom Training Process:</strong></p>
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">train_epoch</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">epoch</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Custom training with prompt-based learning.</p>
+<p><strong>Prompt Learning Process:</strong></p>
+<ol class="arabic simple">
+<li><p><strong>Forward for Training:</strong> Use <cite>model.forward_for_training()</cite> instead of standard forward</p></li>
+<li><p><strong>Multiple Cycles:</strong> Model outputs multiple prediction cycles</p></li>
+<li><p><strong>Target Repetition:</strong> Repeat targets for each cycle</p></li>
+<li><p><strong>Cycle Loss:</strong> Compute loss across all cycles</p></li>
+</ol>
+<p><strong>Mathematical Formulation:</strong></p>
+<p>For n_cycles prediction cycles:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\text{output} = \text{model.forward_for_training}(X_{num}, X_{cat}) \\
+\text{output} = \text{output.view}(-1, d_{out}) \\
+y_{repeated} = y.\text{repeat_interleave}(n_{cycles})\end{split}\]</div>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">TALENT.model.methods.</span></span><span class="sig-name descname"><span class="pre">ExcelFormerMethod</span></span></dt>
+<dd><p>Method class for ExcelFormer with mixup training.</p>
+<p><strong>Features:</strong></p>
+<ul class="simple">
+<li><p>Semi-permeable attention mechanisms</p></li>
+<li><p>Multiple mixup strategies (feat_mix, hidden_mix, naive_mix)</p></li>
+<li><p>Mutual information-based feature selection</p></li>
+<li><p>Enhanced generalization through mixup</p></li>
+</ul>
+<p><strong>Custom Training Process:</strong></p>
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">info</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">train</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Enhanced fit method with mutual information preprocessing.</p>
+<p><strong>Preprocessing Steps:</strong></p>
+<ol class="arabic simple">
+<li><p><strong>MI Score Computation:</strong> Calculate mutual information scores between features and targets</p></li>
+<li><p><strong>Feature Ranking:</strong> Sort features by MI scores for mixup weighting</p></li>
+<li><p><strong>Mixup Configuration:</strong> Setup mixup parameters based on configuration</p></li>
+</ol>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">train_epoch</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">epoch</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Custom training with mixup strategies.</p>
+<p><strong>Mixup Training Process:</strong></p>
+<p><strong>No Mixup (`mix_type=’none’`):</strong></p>
+<div class="math notranslate nohighlight">
+\[\text{loss} = \text{criterion}(\text{model}(X_{num}, X_{cat}, \text{mix_up}=False), y)\]</div>
+<p><strong>Feature Mixup (`mix_type=’feat_mix’`):</strong></p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\lambda = \sum (\text{MI_scores} \odot \text{feat_masks}) \\
+\text{loss} = \lambda \cdot \text{criterion}(\text{pred}, y) + (1-\lambda) \cdot \text{criterion}(\text{pred}, y[\text{shuffled_ids}])\end{split}\]</div>
+<p><strong>Hidden Mixup (`mix_type=’hidden_mix’`):</strong></p>
+<div class="math notranslate nohighlight">
+\[\text{loss} = \text{feat_masks} \cdot \text{criterion}(\text{pred}, y) + (1-\text{feat_masks}) \cdot \text{criterion}(\text{pred}, y[\text{shuffled_ids}])\]</div>
+</dd></dl>
+
+<p><strong>Mixup Types:</strong></p>
+<ul class="simple">
+<li><p><strong>none</strong> – No mixup augmentation</p></li>
+<li><p><strong>feat_mix</strong> – Feature-level mixing weighted by mutual information scores</p></li>
+<li><p><strong>hidden_mix</strong> – Hidden representation mixing</p></li>
+<li><p><strong>naive_mix</strong> – Simple input-level mixing</p></li>
+</ul>
+</dd></dl>
+
+</section>
+<section id="tree-based-neural-methods">
+<h2>Tree-Based Neural Methods<a class="headerlink" href="#tree-based-neural-methods" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">TALENT.model.methods.</span></span><span class="sig-name descname"><span class="pre">NodeMethod</span></span></dt>
+<dd><p>Method class for Neural Oblivious Decision Ensembles (NODE).</p>
+<p><strong>Features:</strong></p>
+<ul class="simple">
+<li><p>Neural implementation of oblivious decision trees</p></li>
+<li><p>Ensemble learning approach</p></li>
+<li><p>Interpretable decision boundaries</p></li>
+<li><p>Effective for structured data</p></li>
+</ul>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">TALENT.model.methods.</span></span><span class="sig-name descname"><span class="pre">GrowNetMethod</span></span></dt>
+<dd><p>Method class for GrowNet (gradient boosting with neural networks).</p>
+<p><strong>Features:</strong></p>
+<ul class="simple">
+<li><p>Neural network weak learners</p></li>
+<li><p>Gradient boosting framework</p></li>
+<li><p>Dynamic model growth</p></li>
+<li><p>Strong performance on various tasks</p></li>
+</ul>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">TALENT.model.methods.</span></span><span class="sig-name descname"><span class="pre">GrandeMethod</span></span></dt>
+<dd><p>Method class for GRANDE (gradient-boosted neural decision ensembles).</p>
+<p><strong>Features:</strong></p>
+<ul class="simple">
+<li><p>Neural decision tree ensembles</p></li>
+<li><p>Gradient descent optimization</p></li>
+<li><p>Interpretable tree-like decisions</p></li>
+<li><p>Enhanced performance through ensembling</p></li>
+</ul>
+</dd></dl>
+
+</section>
+<section id="high-performance-methods">
+<h2>High-Performance Methods<a class="headerlink" href="#high-performance-methods" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">TALENT.model.methods.</span></span><span class="sig-name descname"><span class="pre">HyperFastMethod</span></span></dt>
+<dd><p>Method class for HyperFast networks.</p>
+<p><strong>Features:</strong></p>
+<ul class="simple">
+<li><p>Ultra-fast training and inference</p></li>
+<li><p>Optimized architecture for speed</p></li>
+<li><p>Meta-learning capabilities</p></li>
+<li><p>Suitable for real-time applications</p></li>
+</ul>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">TALENT.model.methods.</span></span><span class="sig-name descname"><span class="pre">RealMLPMethod</span></span></dt>
+<dd><p>Method class for RealMLP (enhanced MLP).</p>
+<p><strong>Features:</strong></p>
+<ul class="simple">
+<li><p>Improved MLP architecture</p></li>
+<li><p>Better numerical stability</p></li>
+<li><p>Enhanced performance on real-valued data</p></li>
+<li><p>Efficient implementation</p></li>
+</ul>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">TALENT.model.methods.</span></span><span class="sig-name descname"><span class="pre">SwitchTabMethod</span></span></dt>
+<dd><p>Method class for SwitchTab (switch transformer for tabular data).</p>
+<p><strong>Features:</strong></p>
+<ul class="simple">
+<li><p>Switch transformer architecture</p></li>
+<li><p>Mixture of experts approach</p></li>
+<li><p>Self-supervised learning components</p></li>
+<li><p>Enhanced model capacity through expert routing</p></li>
+</ul>
+</dd></dl>
+
+</section>
+<section id="foundation-model-methods">
+<h2>Foundation Model Methods<a class="headerlink" href="#foundation-model-methods" title="Permalink to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">TALENT.model.methods.</span></span><span class="sig-name descname"><span class="pre">TabPFNMethod</span></span></dt>
+<dd><p>Method class for TabPFN (prior-free neural networks).</p>
+<p><strong>Features:</strong></p>
+<ul class="simple">
+<li><p>Pre-trained foundation model for tabular data</p></li>
+<li><p>Zero-shot or few-shot learning capabilities</p></li>
+<li><p>No gradient-based training required</p></li>
+<li><p>Fast inference on new datasets</p></li>
+</ul>
+<p><strong>Special Characteristics:</strong></p>
+<ul class="simple">
+<li><p><strong>Pre-trained Weights:</strong> Uses pre-trained model weights</p></li>
+<li><p><strong>No Training:</strong> Typically used without additional training</p></li>
+<li><p><strong>Context Learning:</strong> Learns from context examples</p></li>
+<li><p><strong>Fast Deployment:</strong> Immediate application to new datasets</p></li>
+</ul>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">TALENT.model.methods.</span></span><span class="sig-name descname"><span class="pre">TabICLMethod</span></span></dt>
+<dd><p>Method class for TabICL (in-context learning for tabular data).</p>
+<p><strong>Features:</strong></p>
+<ul class="simple">
+<li><p>In-context learning capabilities</p></li>
+<li><p>Foundation model approach</p></li>
+<li><p>Meta-learning from diverse tabular datasets</p></li>
+<li><p>Adaptive to new domains without fine-tuning</p></li>
+</ul>
+</dd></dl>
+
+</section>
+<section id="method-usage-patterns">
+<h2>Method Usage Patterns<a class="headerlink" href="#method-usage-patterns" title="Permalink to this heading"></a></h2>
+<p><strong>Basic Usage:</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">TALENT.model.utils</span> <span class="kn">import</span> <span class="n">get_method</span>
+
+<span class="c1"># Get method class</span>
+<span class="n">MethodClass</span> <span class="o">=</span> <span class="n">get_method</span><span class="p">(</span><span class="s1">&#39;mlp&#39;</span><span class="p">)</span>
+
+<span class="c1"># Initialize method</span>
+<span class="n">method</span> <span class="o">=</span> <span class="n">MethodClass</span><span class="p">(</span><span class="n">args</span><span class="p">,</span> <span class="n">is_regression</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># Train the method</span>
+<span class="n">time_cost</span> <span class="o">=</span> <span class="n">method</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">train_data</span><span class="p">,</span> <span class="n">info</span><span class="p">)</span>
+
+<span class="c1"># Make predictions</span>
+<span class="n">loss</span><span class="p">,</span> <span class="n">metrics</span><span class="p">,</span> <span class="n">metric_names</span><span class="p">,</span> <span class="n">predictions</span> <span class="o">=</span> <span class="n">method</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">test_data</span><span class="p">,</span> <span class="n">info</span><span class="p">,</span> <span class="s1">&#39;best-val&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Advanced Usage with Custom Training:</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># For methods with custom training (e.g., Trompt, ExcelFormer)</span>
+<span class="n">method</span> <span class="o">=</span> <span class="n">TromptMethod</span><span class="p">(</span><span class="n">args</span><span class="p">,</span> <span class="n">is_regression</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="c1"># These methods override train_epoch for specialized training</span>
+<span class="n">time_cost</span> <span class="o">=</span> <span class="n">method</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">train_data</span><span class="p">,</span> <span class="n">info</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Retrieval-Based Methods:</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># TabR uses retrieval-based training</span>
+<span class="n">tabr_method</span> <span class="o">=</span> <span class="n">TabRMethod</span><span class="p">(</span><span class="n">args</span><span class="p">,</span> <span class="n">is_regression</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># Automatically handles candidate selection and context management</span>
+<span class="n">time_cost</span> <span class="o">=</span> <span class="n">tabr_method</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">train_data</span><span class="p">,</span> <span class="n">info</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Method Selection Guidelines:</strong></p>
+<ul class="simple">
+<li><p><strong>Beginners:</strong> Start with <cite>MLPMethod</cite> or <cite>ResNetMethod</cite></p></li>
+<li><p><strong>Best Performance:</strong> Try <cite>FTTMethod</cite>, <cite>TabNetMethod</cite>, or <cite>ModernNCAMethod</cite></p></li>
+<li><p><strong>Interpretability:</strong> Use <cite>TabNetMethod</cite>, <cite>NodeMethod</cite>, or <cite>ProtoGateMethod</cite></p></li>
+<li><p><strong>Speed:</strong> Choose <cite>HyperFastMethod</cite>, <cite>SNNMethod</cite>, or <cite>MLPMethod</cite></p></li>
+<li><p><strong>Complex Features:</strong> Consider <cite>SaintMethod</cite>, <cite>TabTransformerMethod</cite>, or <cite>ExcelFormerMethod</cite></p></li>
+<li><p><strong>Foundation Models:</strong> Use <cite>TabPFNMethod</cite> or <cite>TabICLMethod</cite> for quick deployment</p></li>
+<li><p><strong>Retrieval-Based:</strong> Use <cite>TabRMethod</cite> or <cite>ModernNCAMethod</cite> for similarity-based learning</p></li>
+</ul>
+<p><strong>Common Method Requirements:</strong></p>
+<ul class="simple">
+<li><p><strong>Categorical Policy:</strong> Some methods require specific <cite>cat_policy</cite> settings</p></li>
+<li><p><strong>Data Preprocessing:</strong> All methods inherit consistent preprocessing from base class</p></li>
+<li><p><strong>Model Configuration:</strong> Each method accepts model-specific configuration parameters</p></li>
+<li><p><strong>Training Workflow:</strong> All methods follow the same training/validation/prediction interface</p></li>
+</ul>
+<p><strong>Error Handling and Debugging:</strong></p>
+<ul class="simple">
+<li><p><strong>Configuration Validation:</strong> All methods validate configuration parameters</p></li>
+<li><p><strong>Data Compatibility:</strong> Automatic checks for data format compatibility</p></li>
+<li><p><strong>Memory Management:</strong> Efficient memory usage patterns across all methods</p></li>
+<li><p><strong>Progress Monitoring:</strong> Built-in progress tracking and logging</p></li>
+</ul>
+</section>
+</section>
 
 
            </div>

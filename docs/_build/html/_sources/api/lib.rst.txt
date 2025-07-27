@@ -1,5 +1,5 @@
 Library Components
-==================
+===================
 
 Core library components and utilities supporting the TALENT models.
 
@@ -7,7 +7,7 @@ Core library components and utilities supporting the TALENT models.
    :members:
 
 Core Utility Modules
----------------------
+----------------------
 
 Core utilities including numerical embeddings and optimized data structures for efficient tabular data processing.
 
@@ -28,7 +28,7 @@ Optimized data structure for efficient tabular data handling with memory optimiz
    :members:
 
 Model-Specific Library Components
-----------------------------------
+-----------------------------------
 
 Specialized library components supporting individual model architectures, including attention mechanisms, feature transformers, and model-specific optimizations.
 
