@@ -1,7 +1,7 @@
 .. TALENT documentation master file
 
 ========================================================
-TALENT: A Tabular Analytics and Learning Toolbox  
+TALENT: A Tabular Analytics and Learning Toolbox
 ========================================================
 
 .. image:: ../resources/TALENT-LOGO.png

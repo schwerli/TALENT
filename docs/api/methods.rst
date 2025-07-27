@@ -5,13 +5,10 @@ Deep learning method implementations that wrap model architectures with training
 
 This section contains method classes that provide a unified interface for training, validation, and prediction across all deep learning models in TALENT. Each method class inherits from the base `Method` class and implements model-specific logic while maintaining consistent APIs.
 
-.. automodule:: TALENT.model.methods
-   :members:
-   :undoc-members:
-   :show-inheritance:
+Base Method Class (method/base.py)
+===================================
 
-Base Method Class
-------------------
+All method implementations inherit from the base `Method` class which provides the core training, validation, and prediction workflow. Understanding this base class is essential for using any method in TALENT.
 
 .. class:: Method
    :noindex:
@@ -20,140 +17,207 @@ Base Method Class
    
    **Key Features:**
    
-   * Consistent training/validation/prediction workflow
-   * Automatic data preprocessing and formatting
-   * Model construction and optimization setup
-   * Early stopping and checkpoint management
-   * Comprehensive evaluation metrics
+   * Consistent training/validation/prediction workflow across all models
+   * Automatic data preprocessing and formatting with multiple encoding options
+   * Model construction and optimization setup with configurable parameters
+   * Early stopping and checkpoint management for robust training
+   * Comprehensive evaluation metrics for regression and classification tasks
+   * Flexible handling of numerical and categorical features
+
+Core Base Methods
+-----------------
+
+.. method:: __init__(args, is_regression)
+   :noindex:
    
-   **Core Methods:**
+   Initialize the method with configuration and task type.
    
-   .. method:: __init__(args, is_regression)
-      :noindex:
-      
-      Initialize the method with configuration and task type.
-      
-      **Parameters:**
-      
-      * **args** (*argparse.Namespace*) -- Configuration arguments
-      * **is_regression** (*bool*) -- Whether the task is regression
+   **Parameters:**
    
-   .. method:: construct_model(model_config=None)
-      :noindex:
-      
-      Abstract method to construct the specific model architecture.
-      Must be implemented by each method subclass.
-      
-      **Parameters:**
-      
-      * **model_config** (*dict, optional*) -- Model-specific configuration
+   * **args** (*argparse.Namespace*) -- Configuration arguments containing model, training, and data processing settings
+   * **is_regression** (*bool*) -- Whether the task is regression (True) or classification (False)
+   
+   **Initialization Process:**
+   
+   1. **Configuration Setup:** Store arguments and determine task type
+   2. **Statistics Reset:** Initialize training counters and timers
+   3. **Logging Setup:** Create training log dictionary with best performance tracking
+   4. **Device Setup:** Configure GPU/CPU device for training
 
-   .. method:: data_format(is_train=True, N=None, C=None, y=None)
-      :noindex:
-      
-      Format and preprocess data for training or inference.
-      
-      **Parameters:**
-      
-      * **is_train** (*bool*) -- Whether formatting for training or inference
-      * **N** (*dict, optional*) -- Numerical features dictionary
-      * **C** (*dict, optional*) -- Categorical features dictionary  
-      * **y** (*dict, optional*) -- Target labels dictionary
-      
-      **Processing Pipeline:**
-      
-      **Training Mode (`is_train=True`):**
-      
-      1. **NaN Processing:** Handle missing values using specified policies
-      2. **Label Processing:** Encode/normalize target variables
-      3. **Numerical Encoding:** Apply feature encoding (PLE, Unary, etc.)
-      4. **Categorical Encoding:** Apply categorical encoding (ordinal, one-hot, etc.)
-      5. **Normalization:** Apply feature normalization
-      6. **DataLoader Creation:** Create training and validation dataloaders
-      
-      **Inference Mode (`is_train=False`):**
-      
-      1. **Apply Fitted Transformers:** Use previously fitted encoders/normalizers
-      2. **Create Test DataLoader:** Prepare data for inference
-      3. **Feature Formatting:** Ensure compatibility with trained model
+.. method:: construct_model(model_config=None)
+   :noindex:
+   
+   Abstract method to construct the specific model architecture. Must be implemented by each method subclass.
+   
+   **Parameters:**
+   
+   * **model_config** (*dict, optional*) -- Model-specific configuration parameters. If None, uses `args.config['model']`
+   
+   **Implementation Notes:**
+   
+   * Each method class overrides this to create its specific model type
+   * Model is moved to appropriate device (GPU/CPU) and set to correct precision (float/double)
+   * Configuration parameters are model-specific (e.g., hidden dimensions, number of layers, etc.)
 
-   .. method:: train_epoch(epoch)
-      :noindex:
-      
-      Train the model for one epoch.
-      
-      **Parameters:**
-      
-      * **epoch** (*int*) -- Current epoch number
-      
-      **Training Process:**
-      
-      1. **Set Training Mode:** `model.train()`
-      2. **Batch Processing:** Iterate through training batches
-      3. **Forward Pass:** Compute model predictions
-      4. **Loss Computation:** Calculate training loss
-      5. **Backward Pass:** Compute gradients
-      6. **Parameter Update:** Apply optimizer step
-      7. **Progress Logging:** Track and display training progress
+.. method:: data_format(is_train=True, N=None, C=None, y=None)
+   :noindex:
+   
+   Format and preprocess data for training or inference. This is the core data processing pipeline.
+   
+   **Parameters:**
+   
+   * **is_train** (*bool*) -- Whether formatting for training (True) or inference (False)
+   * **N** (*dict, optional*) -- Numerical features dictionary with train/val/test splits
+   * **C** (*dict, optional*) -- Categorical features dictionary with train/val/test splits
+   * **y** (*dict, optional*) -- Target labels dictionary with train/val/test splits
+   
+   **Training Mode Processing Pipeline:**
+   
+   1. **NaN Handling:** 
+      .. code-block:: python
+         
+         self.N, self.C, self.num_new_value, self.imputer, self.cat_new_value = \
+             data_nan_process(self.N, self.C, self.args.num_nan_policy, self.args.cat_nan_policy)
+   
+   2. **Label Processing:**
+      .. code-block:: python
+         
+         self.y, self.y_info, self.label_encoder = \
+             data_label_process(self.y, self.is_regression)
+   
+   3. **Numerical Encoding:** Apply binning, quantile transformation, or other numerical policies
+   4. **Categorical Encoding:** Apply ordinal, one-hot, or other categorical encoding strategies
+   5. **Normalization:** Apply standardization, min-max scaling, or quantile normalization
+   6. **DataLoader Creation:** Create PyTorch DataLoaders for training and validation
+   
+   **Inference Mode Processing:**
+   
+   Uses previously fitted transformers (encoders, normalizers) to process test data consistently.
 
-   .. method:: validate(epoch)
-      :noindex:
-      
-      Validate the model on validation set.
-      
-      **Parameters:**
-      
-      * **epoch** (*int*) -- Current epoch number
-      
-      **Validation Process:**
-      
-      1. **Set Evaluation Mode:** `model.eval()`
-      2. **Inference:** Process validation batches without gradients
-      3. **Metric Computation:** Calculate validation metrics
-      4. **Best Model Tracking:** Save model if performance improved
-      5. **Early Stopping:** Stop training if no improvement for 20 epochs
-      6. **Logging:** Record validation results
+.. method:: fit(data, info, train=True, config=None)
+   :noindex:
+   
+   Main training method that orchestrates the entire training process.
+   
+   **Parameters:**
+   
+   * **data** (*tuple*) -- (N, C, y) containing numerical features, categorical features, and labels
+   * **info** (*dict*) -- Dataset information including feature names, types, and metadata
+   * **train** (*bool*) -- Whether to actually train the model (False for loading checkpoints only)
+   * **config** (*dict, optional*) -- Override configuration for hyperparameter tuning
+   
+   **Returns:**
+   
+   * **float** -- Total training time in seconds
+   
+   **Training Process:**
+   
+   1. **Data Setup:** Create Dataset object and extract feature information
+   2. **Data Processing:** Call `data_format()` to preprocess all data
+   3. **Model Construction:** Call `construct_model()` to build the neural network
+   4. **Optimizer Setup:** Initialize AdamW optimizer with configured learning rate and weight decay
+   5. **Training Loop:** For each epoch, call `train_epoch()` and `validate()`
+   6. **Early Stopping:** Stop training if validation performance doesn't improve for 20 epochs
+   7. **Checkpoint Saving:** Save best and final model weights
 
-   .. method:: metric(predictions, labels, y_info)
-      :noindex:
-      
-      Compute comprehensive evaluation metrics.
-      
-      **Parameters:**
-      
-      * **predictions** (*np.ndarray*) -- Model predictions
-      * **labels** (*np.ndarray*) -- Ground truth labels
-      * **y_info** (*dict*) -- Label processing information
-      
-      **Returns:**
-      
-      * **tuple** -- (metrics, metric_names)
-      
-      **Task-Specific Metrics:**
-      
-      **Regression Tasks:**
-      
-      * **MAE:** Mean Absolute Error
-      * **R²:** Coefficient of determination  
-      * **RMSE:** Root Mean Squared Error
-      
-      **Binary Classification:**
-      
-      * **Accuracy:** Overall classification accuracy
-      * **Balanced Recall:** Balanced accuracy score
-      * **Macro Precision:** Macro-averaged precision
-      * **F1 Score:** Binary F1 score
-      * **Log Loss:** Cross-entropy loss
-      * **AUC:** Area under ROC curve
-      
-      **Multi-class Classification:**
-      
-      * **Accuracy:** Overall classification accuracy
-      * **Balanced Recall:** Balanced accuracy score
-      * **Macro Precision:** Macro-averaged precision
-      * **Macro F1:** Macro-averaged F1 score
-      * **Log Loss:** Cross-entropy loss
-      * **Macro AUC:** One-vs-Rest AUC
+.. method:: train_epoch(epoch)
+   :noindex:
+   
+   Train the model for one epoch using the training data.
+   
+   **Parameters:**
+   
+   * **epoch** (*int*) -- Current epoch number for logging
+   
+   **Training Steps per Batch:**
+   
+   1. **Feature Extraction:** Handle numerical and categorical features appropriately
+   2. **Forward Pass:** Compute model predictions
+   3. **Loss Computation:** Calculate training loss using appropriate criterion
+   4. **Backward Pass:** Compute gradients via backpropagation
+   5. **Parameter Update:** Apply optimizer step
+   6. **Progress Logging:** Display training progress every 50 batches
+
+.. method:: validate(epoch)
+   :noindex:
+   
+   Validate the model on the validation set and handle early stopping.
+   
+   **Parameters:**
+   
+   * **epoch** (*int*) -- Current epoch number
+   
+   **Validation Process:**
+   
+   1. **Set Evaluation Mode:** `model.eval()` to disable dropout and batch norm updates
+   2. **Inference Loop:** Process validation batches without gradients
+   3. **Metric Computation:** Calculate validation metrics using `metric()` method
+   4. **Best Model Tracking:** Save model checkpoint if validation performance improved
+   5. **Early Stopping Logic:** Increment counter if no improvement; stop after 20 epochs
+   6. **Logging:** Record validation results and save training log
+
+.. method:: predict(data, info, model_name)
+   :noindex:
+   
+   Make predictions on test data using a trained model.
+   
+   **Parameters:**
+   
+   * **data** (*tuple*) -- (N, C, y) test data
+   * **info** (*dict*) -- Dataset information
+   * **model_name** (*str*) -- Model checkpoint name ('best-val' or 'epoch-last')
+   
+   **Returns:**
+   
+   * **tuple** -- (loss, metrics, metric_names, predictions)
+   
+   **Prediction Process:**
+   
+   1. **Model Loading:** Load trained weights from checkpoint
+   2. **Data Processing:** Apply fitted transformers to test data
+   3. **Inference:** Generate predictions in evaluation mode
+   4. **Metric Calculation:** Compute comprehensive evaluation metrics
+
+.. method:: metric(predictions, labels, y_info)
+   :noindex:
+   
+   Compute comprehensive evaluation metrics based on task type.
+   
+   **Parameters:**
+   
+   * **predictions** (*np.ndarray*) -- Model predictions
+   * **labels** (*np.ndarray*) -- Ground truth labels
+   * **y_info** (*dict*) -- Label processing information including classes and normalization details
+   
+   **Returns:**
+   
+   * **tuple** -- (metrics_values, metric_names)
+   
+   **Task-Specific Metrics:**
+   
+   **Regression Tasks:**
+   
+   * **MAE:** Mean Absolute Error - :math:`\frac{1}{n}\sum_{i=1}^{n}|y_i - \hat{y}_i|`
+   * **R²:** Coefficient of determination - :math:`1 - \frac{SS_{res}}{SS_{tot}}`
+   * **RMSE:** Root Mean Squared Error - :math:`\sqrt{\frac{1}{n}\sum_{i=1}^{n}(y_i - \hat{y}_i)^2}`
+   
+   **Binary Classification:**
+   
+   * **Accuracy:** Overall classification accuracy
+   * **Balanced Recall:** Balanced accuracy score handling class imbalance
+   * **Macro Precision:** Macro-averaged precision across classes
+   * **F1 Score:** Binary F1 score - :math:`2 \cdot \frac{precision \cdot recall}{precision + recall}`
+   * **Log Loss:** Cross-entropy loss
+   * **AUC:** Area under ROC curve for probability predictions
+   
+   **Multi-class Classification:**
+   
+   * **Accuracy:** Overall classification accuracy
+   * **Balanced Recall:** Balanced accuracy score
+   * **Macro Precision:** Macro-averaged precision
+   * **Macro F1:** Macro-averaged F1 score
+   * **Log Loss:** Cross-entropy loss
+   * **Macro AUC:** One-vs-Rest AUC score
 
 Utility Functions
 -----------------
@@ -161,20 +225,20 @@ Utility Functions
 .. function:: check_softmax(logits)
    :noindex:
 
-   Check if logits are probabilities and convert if necessary.
+   Ensure logits are properly normalized probabilities for classification tasks.
    
    **Parameters:**
    
-   * **logits** (*np.ndarray*) -- Array of shape (N, C) with logits or probabilities
+   * **logits** (*np.ndarray*) -- Array of shape (N, C) with raw logits or probabilities
    
    **Returns:**
    
-   * **np.ndarray** -- Properly normalized probabilities
+   * **np.ndarray** -- Properly normalized probabilities summing to 1
    
    **Mathematical Process:**
    
-   1. **Probability Check:** Verify if values are in [0,1] and sum to 1
-   2. **Softmax Application:** If not probabilities, apply softmax:
+   1. **Probability Check:** Verify if values are in [0,1] and sum to 1 per sample
+   2. **Softmax Application:** If not probabilities, apply numerically stable softmax:
       
       .. math::
          
@@ -182,260 +246,250 @@ Utility Functions
    
    3. **Numerical Stability:** Subtract max before exp to prevent overflow
 
-Basic Neural Network Methods
-----------------------------
+Method Implementations
+======================
+
+Methods are organized by complexity. Simple methods primarily use base class functionality, while advanced methods implement specialized training procedures.
+
+Simple Methods (Using Base Class Functions)
+-------------------------------------------
+
+These methods only override `construct_model()` and use all base class functionality for training, validation, and prediction.
 
 .. class:: MLPMethod
    :noindex:
 
-   Method class for Multi-Layer Perceptron (MLP) models.
+   Multi-Layer Perceptron method - the simplest and most widely applicable method.
    
-   **Features:**
+   **Features:** Fast training, good baseline performance, suitable for most tabular tasks
    
-   * Simple feedforward neural network
-   * Configurable hidden layers and dropout
-   * Suitable for most tabular data tasks
-   * Fast training and inference
+   **Requirements:** `cat_policy` cannot be 'indices' (categorical features must be encoded)
    
-   **Requirements:**
-   
-   * `cat_policy` cannot be 'indices' (categorical features must be encoded)
-   
-   **Model Configuration:**
-   
-   * **d_layers** (*List[int]*) -- Hidden layer dimensions
-   * **dropout** (*float*) -- Dropout probability
+   **Usage:** Ideal for beginners or when you need fast training with decent performance
 
 .. class:: ResNetMethod
    :noindex:
 
-   Method class for Residual Networks adapted for tabular data.
+   Residual Network method with skip connections for deeper networks.
    
-   **Features:**
+   **Features:** Prevents gradient vanishing, supports various activations (ReLU, GELU, ReGLU, GeGLU)
    
-   * Skip connections to prevent gradient vanishing
-   * Multiple activation functions (ReLU, GELU, ReGLU, GeGLU)
-   * Batch normalization or layer normalization
-   * Deep architecture support
-   
-   **Model Configuration:**
-   
-   * **d_hidden** (*int*) -- Hidden dimension
-   * **n_layers** (*int*) -- Number of residual blocks
-   * **dropout** (*float*) -- Dropout probability
-   * **activation** (*str*) -- Activation function type
+   **Usage:** When you need deeper networks than MLP without gradient problems
 
 .. class:: SNNMethod
    :noindex:
 
-   Method class for Self-Normalizing Networks (SNN).
+   Self-Normalizing Network method using SELU activation.
    
-   **Features:**
+   **Features:** Automatic normalization properties, suitable for deeper networks
    
-   * SELU activation for self-normalization
-   * Suitable for deeper networks
-   * Automatic normalization properties
-   * Fast convergence
+   **Usage:** Alternative to ResNet when you want self-normalizing properties
 
-Transformer-Based Methods
--------------------------
+.. class:: NodeMethod
+   :noindex:
+
+   Neural Oblivious Decision Ensembles method implementing neural decision trees.
+   
+   **Features:** Tree-like decision making with neural network flexibility
+   
+   **Usage:** When you want tree-like interpretability with neural network power
+
+.. class:: GrowNetMethod
+   :noindex:
+
+   Gradient boosting with neural network weak learners.
+   
+   **Features:** Combines gradient boosting with neural networks
+   
+   **Usage:** For ensemble-based approaches with neural components
+
+.. class:: GrandeMethod
+   :noindex:
+
+   Gradient-boosted neural decision ensembles for tree-mimic behavior.
+   
+   **Features:** Neural implementation of decision tree ensembles
+   
+   **Usage:** When you want tree ensemble performance with neural network flexibility
+
+Transformer-Based Methods (Using Base Class Functions)
+------------------------------------------------------
+
+These transformer methods use standard base class training but require specific categorical policies.
 
 .. class:: FTTMethod
    :noindex:
 
-   Method class for Feature Tokenizer Transformer (FT-Transformer).
+   Feature Tokenizer Transformer - one of the best performing methods.
    
-   **Features:**
+   **Features:** Feature tokenization, multi-head attention, state-of-the-art performance
    
-   * Feature tokenization for tabular data
-   * Multi-head self-attention mechanism
-   * State-of-the-art performance on many datasets
-   * Configurable transformer architecture
+   **Requirements:** `cat_policy` must be 'indices' (uses raw categorical indices)
    
-   **Requirements:**
-   
-   * `cat_policy` must be 'indices' (uses raw categorical indices)
-   
-   **Model Configuration:**
-   
-   * **n_blocks** (*int*) -- Number of transformer blocks
-   * **attention** -- Attention mechanism configuration
-   * **ffn_dropout** (*float*) -- Feed-forward network dropout
-   * **attention_dropout** (*float*) -- Attention dropout
+   **Usage:** First choice for best performance on most datasets
 
 .. class:: SaintMethod
    :noindex:
 
-   Method class for Self-Attention and Intersample Attention Transformer (SAINT).
+   Self-Attention and Intersample Attention Transformer.
    
-   **Features:**
+   **Features:** Row and column attention, enhanced feature interactions
    
-   * Row and column attention mechanisms
-   * Enhanced feature interaction modeling
-   * Token-based representation
-   * Improved performance on complex datasets
+   **Usage:** For complex datasets where feature interactions are important
 
 .. class:: TabTransformerMethod
    :noindex:
 
-   Method class for TabTransformer.
+   Transformer with column-wise attention for categorical features.
    
-   **Features:**
+   **Features:** Contextual embeddings, strong on categorical-heavy datasets
    
-   * Column-wise attention for categorical features
-   * Contextual embeddings
-   * Strong performance on datasets with categorical features
-   * Interpretable attention weights
+   **Usage:** When your dataset has many important categorical features
 
-Advanced Tabular Methods
-------------------------
+Advanced Methods with Custom Data Processing
+--------------------------------------------
+
+These methods override `data_format()` and implement specialized data handling.
 
 .. class:: TabNetMethod
    :noindex:
 
-   Method class for TabNet with sequential attention.
+   TabNet with sequential attention and custom data processing pipeline.
    
-   **Features:**
+   **Features:** 
+   * Interpretable sequential feature selection
+   * Custom TabNet-specific data processing
+   * Sparse feature selection with attention visualization
    
-   * Sequential feature selection
-   * Interpretable decision making
-   * Sparse feature selection
-   * Custom training workflow with TabNet-specific optimizers
+   **Requirements:** `cat_policy` cannot be 'indices' (requires encoded categorical features)
    
-   **Requirements:**
+   **Special Data Processing:**
    
-   * `cat_policy` cannot be 'indices' (requires encoded categorical features)
+   TabNet bypasses the standard `data_format()` method and implements its own data processing:
    
-   **Custom Data Processing:**
+   .. method:: data_format(is_train=True, N=None, C=None, y=None)
+      :noindex:
+      
+      Custom data processing optimized for TabNet's requirements.
+      
+      **Key Differences from Base:**
+      
+      * Direct integration with TabNet's internal categorical handling
+      * Specialized preprocessing for TabNet's attention mechanism
+      * Custom DataLoader creation for TabNet-compatible data structures
    
-   TabNet uses its own specialized data processing pipeline that differs from the base class:
-   
-   1. **Direct Processing:** Bypasses standard data_format method
-   2. **TabNet-specific Encoding:** Uses TabNet's internal categorical handling
-   3. **Custom DataLoaders:** Creates TabNet-compatible data structures
-   
-   **Model Configuration:**
-   
-   * **n_steps** (*int*) -- Number of decision steps
-   * **gamma** (*float*) -- Relaxation parameter
-   * **n_independent** (*int*) -- Number of independent GLU layers
-   * **n_shared** (*int*) -- Number of shared GLU layers
-   * **momentum** (*float*) -- Momentum for batch normalization
+   **Usage:** When you need interpretable predictions with attention visualization
+
+Methods with Custom Training Procedures
+---------------------------------------
+
+These methods implement specialized training workflows by overriding training-related methods.
 
 .. class:: TabRMethod
    :noindex:
 
-   Method class for TabR (KNN-attention hybrid model).
+   TabR method implementing KNN-attention hybrid with retrieval-based training.
    
    **Features:**
+   * Combines KNN retrieval with attention mechanisms
+   * Context-aware predictions using training set as retrieval candidates
+   * Custom fit method with retrieval context management
    
-   * Combines KNN with attention mechanisms
-   * Context-aware predictions
-   * Strong performance on various datasets
-   * Retrieval-based learning
+   **Requirements:** 
+   * `cat_policy` must be 'tabr_ohe' 
+   * `num_policy` must be 'none'
    
-   **Special Training Process:**
-   
-   TabR implements a unique training approach that combines retrieval and attention:
+   **Custom Methods:**
    
    .. method:: fit(data, info, train=True, config=None)
       :noindex:
       
-      Custom fit method with retrieval-based training.
+      Enhanced fit method with retrieval-based training setup.
       
       **Special Features:**
       
-      * **Context Management:** Maintains context_size=96 for retrieval
-      * **Index Management:** Tracks training indices for efficient retrieval
+      * **Context Management:** Maintains context_size=96 for efficient retrieval
       * **Candidate Selection:** Uses full training set as retrieval candidates
-      
-      **Training Process:**
-      
-      1. **Setup Retrieval Context:** Initialize training indices and context size
-      2. **Model Construction:** Build TabR with attention and KNN components
-      3. **Training Loop:** Standard epoch-based training with retrieval context
-      4. **Candidate Updates:** Dynamically update retrieval candidates
-
-   .. method:: predict(data, info, model_name)
-      :noindex:
-      
-      Prediction with retrieval-based inference.
+      * **Index Tracking:** Manages training indices for neighbor search
       
       **Retrieval Process:**
       
-      1. **Load Training Data:** Use training set as retrieval candidates
-      2. **Neighbor Search:** Find relevant training examples
-      3. **Attention Computation:** Apply attention over retrieved candidates
-      4. **Prediction Generation:** Combine retrieval and learned representations
+      1. **Setup Retrieval Context:** Initialize training indices and context size limits
+      2. **Model Construction:** Build TabR with both attention and KNN components  
+      3. **Candidate Management:** Store training data for runtime retrieval
+      4. **Training Loop:** Standard epoch-based training with retrieval context
+   
+   **Usage:** Excellent performance on many datasets, especially with clear patterns
 
-.. class:: ModernNCAMethod
+.. class:: ExcelFormerMethod
    :noindex:
 
-   Method class for Modern Nearest Class Analysis.
+   ExcelFormer with semi-permeable attention and mixup training strategies.
    
    **Features:**
+   * Multiple mixup strategies (feat_mix, hidden_mix, naive_mix)
+   * Mutual information-based feature importance scoring
+   * Custom training process with enhanced data augmentation
    
-   * Neighborhood Component Analysis-inspired
-   * Embedding-based predictions
-   * Effective for datasets with clear class structure
-   * Interpretable neighbor relationships
+   **Custom Methods:**
    
-   **Special Training Features:**
-   
-   * **Neighbor Sampling:** Efficient sampling of training neighbors
-   * **Embedding Learning:** Learn optimal embedding space for distance computation
-   * **Distance-based Loss:** Optimize for neighborhood classification
-
-Specialized Methods
--------------------
-
-.. class:: ProtoGateMethod
-   :noindex:
-
-   Method class for ProtoGate (prototype-based gating).
-   
-   **Features:**
-   
-   * Prototype-based learning
-   * Gating mechanisms for feature selection
-   * Suitable for high-dimensional low-sample-size data
-   * Enhanced interpretability through prototypes
-   
-   **Prototype Learning:**
-   
-   * **Prototype Initialization:** Learn representative prototypes from data
-   * **Gating Computation:** Use prototypes to gate feature importance
-   * **Selection Mechanism:** Adaptive feature selection based on prototypes
-
-.. class:: TromptMethod
-   :noindex:
-
-   Method class for Trompt (prompt-based tabular learning).
-   
-   **Features:**
-   
-   * Prompt-based neural architecture
-   * Separation of intrinsic and sample-specific features
-   * Multiple learning cycles for improved performance
-   * Custom training with repeated targets
-   
-   **Requirements:**
-   
-   * `cat_policy` must be 'indices'
-   
-   **Custom Training Process:**
+   .. method:: fit(data, info, train=True, config=None)
+      :noindex:
+      
+      Enhanced fit with mutual information preprocessing.
+      
+      **Preprocessing Steps:**
+      
+      1. **MI Score Computation:** Calculate mutual information between features and targets
+      2. **Feature Ranking:** Sort features by importance for mixup weighting
+      3. **Mixup Configuration:** Setup augmentation parameters based on MI scores
    
    .. method:: train_epoch(epoch)
       :noindex:
       
-      Custom training with prompt-based learning.
+      Custom training with mixup augmentation strategies.
+      
+      **Mixup Training Process:**
+      
+      **Feature Mixup (`mix_type='feat_mix'`):**
+      
+      .. math::
+         
+         \lambda = \sum (\text{MI_scores} \odot \text{feat_masks}) \\
+         \text{loss} = \lambda \cdot \text{criterion}(\text{pred}, y) + (1-\lambda) \cdot \text{criterion}(\text{pred}, y[\text{shuffled}])
+      
+      **Hidden Mixup (`mix_type='hidden_mix'`):**
+      
+      .. math::
+         
+         \text{loss} = \text{feat_masks} \cdot \text{criterion}(\text{pred}, y) + (1-\text{feat_masks}) \cdot \text{criterion}(\text{pred}, y[\text{shuffled}])
+   
+   **Usage:** When you need enhanced generalization through sophisticated data augmentation
+
+.. class:: TromptMethod
+   :noindex:
+
+   Trompt method with prompt-based learning and multiple prediction cycles.
+   
+   **Features:**
+   * Prompt-based neural architecture separating intrinsic and sample-specific features
+   * Multiple learning cycles for improved performance
+   * Custom training with repeated targets
+   
+   **Requirements:** `cat_policy` must be 'indices'
+   
+   **Custom Training:**
+   
+   .. method:: train_epoch(epoch)
+      :noindex:
+      
+      Custom training with prompt-based multi-cycle learning.
       
       **Prompt Learning Process:**
       
-      1. **Forward for Training:** Use `model.forward_for_training()` instead of standard forward
-      2. **Multiple Cycles:** Model outputs multiple prediction cycles
-      3. **Target Repetition:** Repeat targets for each cycle
-      4. **Cycle Loss:** Compute loss across all cycles
+      1. **Multi-cycle Forward:** Uses `model.forward_for_training()` for multiple prediction cycles
+      2. **Target Repetition:** Repeats targets for each prediction cycle
+      3. **Cycle Loss:** Computes loss across all cycles for robust learning
       
       **Mathematical Formulation:**
       
@@ -446,239 +500,95 @@ Specialized Methods
          \text{output} = \text{model.forward_for_training}(X_{num}, X_{cat}) \\
          \text{output} = \text{output.view}(-1, d_{out}) \\
          y_{repeated} = y.\text{repeat_interleave}(n_{cycles})
+   
+   **Usage:** For complex learning scenarios requiring prompt-based architectures
 
-.. class:: ExcelFormerMethod
+Methods with Specialized Architectures
+--------------------------------------
+
+.. class:: ModernNCAMethod
    :noindex:
 
-   Method class for ExcelFormer with mixup training.
+   Modern Nearest Class Analysis with embedding-based distance learning.
    
    **Features:**
+   * Embedding space optimization for distance-based classification
+   * Neighborhood sampling for efficient training
+   * Interpretable neighbor relationships
    
-   * Semi-permeable attention mechanisms
-   * Multiple mixup strategies (feat_mix, hidden_mix, naive_mix)
-   * Mutual information-based feature selection
-   * Enhanced generalization through mixup
-   
-   **Custom Training Process:**
-   
-   .. method:: fit(data, info, train=True, config=None)
-      :noindex:
-      
-      Enhanced fit method with mutual information preprocessing.
-      
-      **Preprocessing Steps:**
-      
-      1. **MI Score Computation:** Calculate mutual information scores between features and targets
-      2. **Feature Ranking:** Sort features by MI scores for mixup weighting
-      3. **Mixup Configuration:** Setup mixup parameters based on configuration
-      
-   .. method:: train_epoch(epoch)
-      :noindex:
-      
-      Custom training with mixup strategies.
-      
-      **Mixup Training Process:**
-      
-      **No Mixup (`mix_type='none'`):**
-      
-      .. math::
-         
-         \text{loss} = \text{criterion}(\text{model}(X_{num}, X_{cat}, \text{mix_up}=False), y)
-      
-      **Feature Mixup (`mix_type='feat_mix'`):**
-      
-      .. math::
-         
-         \lambda = \sum (\text{MI_scores} \odot \text{feat_masks}) \\
-         \text{loss} = \lambda \cdot \text{criterion}(\text{pred}, y) + (1-\lambda) \cdot \text{criterion}(\text{pred}, y[\text{shuffled_ids}])
-      
-      **Hidden Mixup (`mix_type='hidden_mix'`):**
-      
-      .. math::
-         
-         \text{loss} = \text{feat_masks} \cdot \text{criterion}(\text{pred}, y) + (1-\text{feat_masks}) \cdot \text{criterion}(\text{pred}, y[\text{shuffled_ids}])
-   
-   **Mixup Types:**
-   
-   * **none** -- No mixup augmentation
-   * **feat_mix** -- Feature-level mixing weighted by mutual information scores
-   * **hidden_mix** -- Hidden representation mixing
-   * **naive_mix** -- Simple input-level mixing
+   **Usage:** Excellent for datasets with clear class structure and when interpretability through neighbors is desired
 
-Tree-Based Neural Methods
--------------------------
-
-.. class:: NodeMethod
+.. class:: ProtoGateMethod
    :noindex:
 
-   Method class for Neural Oblivious Decision Ensembles (NODE).
+   Prototype-based gating method for interpretable feature selection.
    
    **Features:**
+   * Prototype-based learning with gating mechanisms
+   * Enhanced interpretability through learned prototypes
+   * Suitable for high-dimensional data with sparse relevant features
    
-   * Neural implementation of oblivious decision trees
-   * Ensemble learning approach
-   * Interpretable decision boundaries
-   * Effective for structured data
-
-.. class:: GrowNetMethod
-   :noindex:
-
-   Method class for GrowNet (gradient boosting with neural networks).
-   
-   **Features:**
-   
-   * Neural network weak learners
-   * Gradient boosting framework
-   * Dynamic model growth
-   * Strong performance on various tasks
-
-.. class:: GrandeMethod
-   :noindex:
-
-   Method class for GRANDE (gradient-boosted neural decision ensembles).
-   
-   **Features:**
-   
-
-   * Neural decision tree ensembles
-   * Gradient descent optimization
-   * Interpretable tree-like decisions
-   * Enhanced performance through ensembling
-
-High-Performance Methods
-------------------------
-
-.. class:: HyperFastMethod
-   :noindex:
-
-   Method class for HyperFast networks.
-   
-   **Features:**
-   
-   * Ultra-fast training and inference
-   * Optimized architecture for speed
-   * Meta-learning capabilities
-   * Suitable for real-time applications
-
-.. class:: RealMLPMethod
-   :noindex:
-
-   Method class for RealMLP (enhanced MLP).
-   
-   **Features:**
-   
-   * Improved MLP architecture
-   * Better numerical stability
-   * Enhanced performance on real-valued data
-   * Efficient implementation
-
-.. class:: SwitchTabMethod
-   :noindex:
-
-   Method class for SwitchTab (switch transformer for tabular data).
-   
-   **Features:**
-   
-   * Switch transformer architecture
-   * Mixture of experts approach
-   * Self-supervised learning components
-   * Enhanced model capacity through expert routing
+   **Usage:** When you need prototype-based explanations and adaptive feature selection
 
 Foundation Model Methods
--------------------------
+------------------------
 
 .. class:: TabPFNMethod
    :noindex:
 
-   Method class for TabPFN (prior-free neural networks).
+   Prior-free neural network method using pre-trained foundation models.
    
    **Features:**
-   
-   * Pre-trained foundation model for tabular data
-   * Zero-shot or few-shot learning capabilities
+   * Pre-trained weights for immediate deployment
+   * Zero-shot learning capabilities on new datasets
    * No gradient-based training required
-   * Fast inference on new datasets
    
-   **Special Characteristics:**
-   
-   * **Pre-trained Weights:** Uses pre-trained model weights
-   * **No Training:** Typically used without additional training
-   * **Context Learning:** Learns from context examples
-   * **Fast Deployment:** Immediate application to new datasets
+   **Usage:** For rapid deployment without training when you have limited data or time
 
 .. class:: TabICLMethod
    :noindex:
 
-   Method class for TabICL (in-context learning for tabular data).
+   In-context learning method for tabular data using foundation model approaches.
    
    **Features:**
-   
-   * In-context learning capabilities
-   * Foundation model approach
    * Meta-learning from diverse tabular datasets
    * Adaptive to new domains without fine-tuning
+   * Foundation model approach for tabular data
+   
+   **Usage:** When you need fast adaptation to new tabular domains
 
-Method Usage Patterns
----------------------
+Method Usage Guidelines
+=======================
 
-**Basic Usage:**
+**For Beginners:**
+Start with `MLPMethod` or `ResNetMethod` - they're simple, fast, and provide good baselines.
+
+**For Best Performance:**
+Try `FTTMethod`, `TabNetMethod`, or `ModernNCAMethod` - these often achieve state-of-the-art results.
+
+**For Interpretability:**
+Use `TabNetMethod` (attention visualization), `ProtoGateMethod` (prototypes), or `ModernNCAMethod` (neighbors).
+
+**For Speed:**
+Choose `MLPMethod`, `SNNMethod`, or simple foundation models like `TabPFNMethod`.
+
+**For Complex Features:**
+Consider `SaintMethod`, `TabTransformerMethod`, or `ExcelFormerMethod` with mixup.
+
+**Common Usage Pattern:**
 
 .. code-block:: python
    
    from TALENT.model.utils import get_method
    
    # Get method class
-   MethodClass = get_method('mlp')
+   MethodClass = get_method('ftt')  # or 'mlp', 'tabnet', etc.
    
    # Initialize method
    method = MethodClass(args, is_regression=True)
    
-   # Train the method
+   # Train the method  
    time_cost = method.fit(train_data, info)
    
    # Make predictions
-   loss, metrics, metric_names, predictions = method.predict(test_data, info, 'best-val')
-
-**Advanced Usage with Custom Training:**
-
-.. code-block:: python
-   
-   # For methods with custom training (e.g., Trompt, ExcelFormer)
-   method = TromptMethod(args, is_regression=False)
-   
-   # These methods override train_epoch for specialized training
-   time_cost = method.fit(train_data, info)
-
-**Retrieval-Based Methods:**
-
-.. code-block:: python
-   
-   # TabR uses retrieval-based training
-   tabr_method = TabRMethod(args, is_regression=True)
-   
-   # Automatically handles candidate selection and context management
-   time_cost = tabr_method.fit(train_data, info)
-
-**Method Selection Guidelines:**
-
-* **Beginners:** Start with `MLPMethod` or `ResNetMethod`
-* **Best Performance:** Try `FTTMethod`, `TabNetMethod`, or `ModernNCAMethod`
-* **Interpretability:** Use `TabNetMethod`, `NodeMethod`, or `ProtoGateMethod`
-* **Speed:** Choose `HyperFastMethod`, `SNNMethod`, or `MLPMethod`
-* **Complex Features:** Consider `SaintMethod`, `TabTransformerMethod`, or `ExcelFormerMethod`
-* **Foundation Models:** Use `TabPFNMethod` or `TabICLMethod` for quick deployment
-* **Retrieval-Based:** Use `TabRMethod` or `ModernNCAMethod` for similarity-based learning
-
-**Common Method Requirements:**
-
-* **Categorical Policy:** Some methods require specific `cat_policy` settings
-* **Data Preprocessing:** All methods inherit consistent preprocessing from base class
-* **Model Configuration:** Each method accepts model-specific configuration parameters
-* **Training Workflow:** All methods follow the same training/validation/prediction interface
-
-**Error Handling and Debugging:**
-
-* **Configuration Validation:** All methods validate configuration parameters
-* **Data Compatibility:** Automatic checks for data format compatibility
-* **Memory Management:** Efficient memory usage patterns across all methods
-* **Progress Monitoring:** Built-in progress tracking and logging 
+   loss, metrics, metric_names, predictions = method.predict(test_data, info, 'best-val') 

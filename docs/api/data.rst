@@ -20,9 +20,9 @@ Data Structures
    * **C** (*Optional[ArrayDict]*) -- Categorical features dictionary with 'train', 'val', 'test' keys  
    * **y** (*ArrayDict*) -- Target labels dictionary with 'train', 'val', 'test' keys
    * **info** (*Dict[str, Any]*) -- Dataset metadata including task type and feature counts
-   
-   **Properties:**
-   
+
+**Properties:**
+
    .. property:: is_binclass
       :noindex:
       

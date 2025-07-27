@@ -13,7 +13,7 @@ File and Path Utilities
    :noindex:
 
    Create a directory if it does not exist.
-   
+
    **Parameters:**
    
    * **path** (*str*) -- Path to the directory to create
@@ -170,7 +170,7 @@ Argument Parsing
    :noindex:
 
    Parse command line arguments for classical machine learning models.
-   
+
    **Returns:**
    
    * **tuple** -- (args, default_para, opt_space) where:
@@ -195,7 +195,7 @@ Argument Parsing
    :noindex:
 
    Parse command line arguments for deep learning models.
-   
+
    **Returns:**
    
    * **tuple** -- (args, default_para, opt_space) where:
