@@ -1,0 +1,819 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Models &mdash; LAMDA-TALENT  documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Methods" href="methods.html" />
+    <link rel="prev" title="Deep Learning Models" href="deep_learning.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> LAMDA-TALENT
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Tutorials</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials.html">How to Use TALENT</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials.html#cloning-the-repository">1. Cloning the Repository</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials.html#running-experiments">2. Running Experiments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials.html#adding-new-methods">3. Adding New Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials.html#configuring-hyperparameters">4. Configuring Hyperparameters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials.html#troubleshooting">5. Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials.html#conclusion">Conclusion</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Methods</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../methods.html">Methods in TALENT</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../methods.html#deep-learning-methods">Deep Learning Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../methods.html#classical-methods">Classical Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../methods.html#methodology-summary">Methodology Summary</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Dependencies</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../dependencies.html">Dependencies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dependencies.html#python-libraries">Python Libraries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dependencies.html#optional-dependencies">Optional Dependencies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dependencies.html#installation">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dependencies.html#additional-notes">Additional Notes</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Benchmark_Datasets</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../benchmark_datasets.html">Benchmark Datasets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../benchmark_datasets.html#available-datasets">Available Datasets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../benchmark_datasets.html#downloading-datasets">Downloading Datasets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../benchmark_datasets.html#dataset-structure">Dataset Structure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../benchmark_datasets.html#placing-datasets">Placing Datasets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../benchmark_datasets.html#using-datasets">Using Datasets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../benchmark_datasets.html#custom-datasets">Custom Datasets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../benchmark_datasets.html#task-types">Task Types</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../benchmark_datasets.html#conclusion">Conclusion</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Experimental_Results</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../experimental_results.html">Experimental Results</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../experimental_results.html#evaluation-metrics">Evaluation Metrics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../experimental_results.html#results-summary">Results Summary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../experimental_results.html#conclusion">Conclusion</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API Docs</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="core.html">Core Components</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="deep_learning.html">Deep Learning Models</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Models</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#basic-neural-networks">Basic Neural Networks</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#multi-layer-perceptron-mlp">Multi-Layer Perceptron (MLP)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#residual-network-resnet">Residual Network (ResNet)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#self-normalizing-network-snn">Self-Normalizing Network (SNN)</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#transformer-based-models">Transformer-Based Models</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#feature-tokenizer-transformer-ft-transformer">Feature Tokenizer Transformer (FT-Transformer)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#multiheadattention-module">MultiheadAttention Module</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#advanced-tabular-models">Advanced Tabular Models</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#tabnet">TabNet</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#grande-gradient-boosted-neural-decision-ensembles">GRANDE (Gradient-Boosted Neural Decision Ensembles)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#modern-nearest-class-analysis-modernnca">Modern Nearest Class Analysis (ModernNCA)</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#specialized-architectures">Specialized Architectures</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#excelformer-semi-permeable-attention">ExcelFormer (Semi-Permeable Attention)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#protogate-prototype-based-gating">ProtoGate (Prototype-Based Gating)</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#regularization-methods">Regularization Methods</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#tangos-regularization">TANGOS Regularization</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#activation-functions-reference">Activation Functions Reference</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#model-usage-examples">Model Usage Examples</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#model-selection-guidelines">Model Selection Guidelines</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="methods.html">Methods</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="classical_methods.html">Classical Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lib.html">Library Components</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Acknowledgements</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../acknowledgements.html">Acknowledgments</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">LAMDA-TALENT</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="deep_learning.html">Deep Learning Models</a> &raquo;</li>
+      <li>Models</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/api/models.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="models">
+<h1>Models<a class="headerlink" href="#models" title="Permalink to this heading"></a></h1>
+<p>Deep learning models for tabular data, implementing various state-of-the-art architectures.</p>
+<p>This section contains all the neural network architectures implemented in TALENT, ranging from simple MLPs to advanced transformer-based models specifically designed for tabular data. Each model implements specific forward pass computations and mathematical operations.</p>
+<span class="target" id="module-TALENT.model.models"></span><section id="basic-neural-networks">
+<h2>Basic Neural Networks<a class="headerlink" href="#basic-neural-networks" title="Permalink to this heading"></a></h2>
+<section id="multi-layer-perceptron-mlp">
+<h3>Multi-Layer Perceptron (MLP)<a class="headerlink" href="#multi-layer-perceptron-mlp" title="Permalink to this heading"></a></h3>
+<dl class="py class">
+<dt class="sig sig-object py">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">TALENT.model.models.</span></span><span class="sig-name descname"><span class="pre">MLP</span></span></dt>
+<dd><p>Simple feedforward neural network with multiple fully connected layers.</p>
+<p><strong>Mathematical Formulation:</strong></p>
+<p>For input <span class="math notranslate nohighlight">\(x \in \mathbb{R}^{d_{in}}\)</span>, the MLP computes:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}h_0 &amp;= x \\
+h_i &amp;= \text{ReLU}(\text{Linear}(h_{i-1})) = \text{ReLU}(W_i h_{i-1} + b_i) \\
+\text{output} &amp;= W_{\text{head}} h_L + b_{\text{head}}\end{split}\]</div>
+<p>where <span class="math notranslate nohighlight">\(L\)</span> is the number of hidden layers.</p>
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x_cat</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Forward pass through the MLP.</p>
+<p><strong>Parameters:</strong></p>
+<ul class="simple">
+<li><p><strong>x</strong> (<em>torch.Tensor</em>) – Input numerical features of shape (batch_size, d_in)</p></li>
+<li><p><strong>x_cat</strong> (<em>torch.Tensor, optional</em>) – Categorical features (not used in MLP)</p></li>
+</ul>
+<p><strong>Returns:</strong></p>
+<ul class="simple">
+<li><p><strong>torch.Tensor</strong> – Output predictions of shape (batch_size, d_out) or (batch_size,) for regression</p></li>
+</ul>
+<p><strong>Mathematical Implementation:</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">layer</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">layers</span><span class="p">:</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">layer</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>  <span class="c1"># Linear: x = W @ x + b</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">F</span><span class="o">.</span><span class="n">relu</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>  <span class="c1"># ReLU: x = max(0, x)</span>
+    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">dropout</span><span class="p">:</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">F</span><span class="o">.</span><span class="n">dropout</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">dropout</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">training</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The ReLU activation function:</p>
+<div class="math notranslate nohighlight">
+\[\text{ReLU}(x) = \max(0, x)\]</div>
+<p>For the final output:</p>
+<div class="math notranslate nohighlight">
+\[\text{logit} = W_{\text{head}} \cdot h_L + b_{\text{head}}\]</div>
+<p>If single output (regression), the tensor is squeezed:</p>
+<div class="math notranslate nohighlight">
+\[\text{output} = \text{logit.squeeze(-1)} \text{ if } d_{out} = 1\]</div>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="residual-network-resnet">
+<h3>Residual Network (ResNet)<a class="headerlink" href="#residual-network-resnet" title="Permalink to this heading"></a></h3>
+<dl class="py class">
+<dt class="sig sig-object py">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">TALENT.model.models.</span></span><span class="sig-name descname"><span class="pre">ResNet</span></span></dt>
+<dd><p>Deep residual network with skip connections for tabular data.</p>
+<p><strong>Mathematical Formulation:</strong></p>
+<p>ResNet uses residual blocks with skip connections:</p>
+<div class="math notranslate nohighlight">
+\[h_{i+1} = h_i + F(h_i, W_i)\]</div>
+<p>where <span class="math notranslate nohighlight">\(F(h_i, W_i)\)</span> is the residual function.</p>
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x_cat</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Forward pass through the ResNet.</p>
+<p><strong>Residual Block Mathematical Implementation:</strong></p>
+<p>For each residual block, the computation follows:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\text{residual} &amp;= \text{Norm}(h_i) \\
+\text{residual} &amp;= \text{Linear}(\text{residual}) \\
+\text{residual} &amp;= \text{Activation}(\text{residual}) \\
+\text{residual} &amp;= \text{Dropout}(\text{residual}) \\
+h_{i+1} &amp;= h_i + \text{residual}\end{split}\]</div>
+<p><strong>Activation Functions:</strong></p>
+<ul class="simple">
+<li><p><strong>ReLU:</strong> <span class="math notranslate nohighlight">\(\text{ReLU}(x) = \max(0, x)\)</span></p></li>
+<li><p><strong>GELU:</strong> <span class="math notranslate nohighlight">\(\text{GELU}(x) = x \cdot \Phi(x) = x \cdot \frac{1}{2}\left[1 + \text{erf}\left(\frac{x}{\sqrt{2}}\right)\right]\)</span></p></li>
+</ul>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="self-normalizing-network-snn">
+<h3>Self-Normalizing Network (SNN)<a class="headerlink" href="#self-normalizing-network-snn" title="Permalink to this heading"></a></h3>
+<dl class="py class">
+<dt class="sig sig-object py">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">TALENT.model.models.</span></span><span class="sig-name descname"><span class="pre">SNN</span></span></dt>
+<dd><p>Lightweight neural network with self-normalizing properties using SELU activation.</p>
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x_cat</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Forward pass with SELU activation for self-normalization.</p>
+<p><strong>SELU Activation Mathematical Definition:</strong></p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\text{SELU}(x) = \lambda \begin{cases}
+x &amp; \text{if } x &gt; 0 \\
+\alpha(e^x - 1) &amp; \text{if } x \leq 0
+\end{cases}\end{split}\]</div>
+<p>where <span class="math notranslate nohighlight">\(\lambda \approx 1.0507\)</span> and <span class="math notranslate nohighlight">\(\alpha \approx 1.6733\)</span>.</p>
+<p><strong>Self-Normalization Property:</strong></p>
+<p>SELU ensures that for normalized inputs:
+- Mean converges to 0
+- Variance converges to 1</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+</section>
+<section id="transformer-based-models">
+<h2>Transformer-Based Models<a class="headerlink" href="#transformer-based-models" title="Permalink to this heading"></a></h2>
+<section id="feature-tokenizer-transformer-ft-transformer">
+<h3>Feature Tokenizer Transformer (FT-Transformer)<a class="headerlink" href="#feature-tokenizer-transformer-ft-transformer" title="Permalink to this heading"></a></h3>
+<dl class="py class">
+<dt class="sig sig-object py">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">TALENT.model.models.</span></span><span class="sig-name descname"><span class="pre">Transformer</span></span></dt>
+<dd><p>Advanced transformer architecture specifically designed for tabular data.</p>
+<p><strong>Mathematical Formulation:</strong></p>
+<p><strong>Feature Tokenization:</strong></p>
+<p>For numerical features: <span class="math notranslate nohighlight">\(t_i^{\text{num}} = W_{\text{num}} x_i + b_{\text{num}}\)</span></p>
+<p>For categorical features: <span class="math notranslate nohighlight">\(t_i^{\text{cat}} = \text{Embedding}(x_i^{\text{cat}})\)</span></p>
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x_num</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x_cat</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Forward pass through the transformer.</p>
+<p><strong>Parameters:</strong></p>
+<ul class="simple">
+<li><p><strong>x_num</strong> (<em>torch.Tensor, optional</em>) – Numerical features</p></li>
+<li><p><strong>x_cat</strong> (<em>torch.Tensor, optional</em>) – Categorical features</p></li>
+</ul>
+<p><strong>Transformer Layer Mathematical Implementation:</strong></p>
+<p>For each transformer layer:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\text{attn_out} &amp;= \text{MultiHeadAttention}(x, x, x) \\
+x &amp;= \text{LayerNorm}(x + \text{attn_out}) \\
+\text{ffn_out} &amp;= \text{FFN}(x) \\
+x &amp;= \text{LayerNorm}(x + \text{ffn_out})\end{split}\]</div>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="multiheadattention-module">
+<h3>MultiheadAttention Module<a class="headerlink" href="#multiheadattention-module" title="Permalink to this heading"></a></h3>
+<dl class="py class">
+<dt class="sig sig-object py">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">TALENT.model.models.</span></span><span class="sig-name descname"><span class="pre">MultiheadAttention</span></span></dt>
+<dd><p>Multi-head attention mechanism for transformer models.</p>
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x_q</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x_kv</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">key_compression</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value_compression</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Compute multi-head attention.</p>
+<p><strong>Parameters:</strong></p>
+<ul class="simple">
+<li><p><strong>x_q</strong> (<em>torch.Tensor</em>) – Query input</p></li>
+<li><p><strong>x_kv</strong> (<em>torch.Tensor</em>) – Key and value input</p></li>
+<li><p><strong>key_compression</strong> (<em>nn.Linear, optional</em>) – Key compression layer</p></li>
+<li><p><strong>value_compression</strong> (<em>nn.Linear, optional</em>) – Value compression layer</p></li>
+</ul>
+<p><strong>Multi-Head Attention Mathematical Implementation:</strong></p>
+<ol class="arabic">
+<li><p><strong>Linear Projections:</strong></p>
+<div class="math notranslate nohighlight">
+\[Q = x_q W^Q, \quad K = x_{kv} W^K, \quad V = x_{kv} W^V\]</div>
+</li>
+<li><p><strong>Attention Score Computation:</strong></p>
+<div class="math notranslate nohighlight">
+\[\text{attention} = \text{softmax}\left(\frac{QK^T}{\sqrt{d_k}}\right)\]</div>
+</li>
+<li><p><strong>Output Computation:</strong></p>
+<div class="math notranslate nohighlight">
+\[\text{output} = \text{attention} \cdot V\]</div>
+</li>
+</ol>
+<p><strong>Multi-Head Formulation:</strong></p>
+<div class="math notranslate nohighlight">
+\[\text{MultiHead}(Q, K, V) = \text{Concat}(\text{head}_1, \ldots, \text{head}_h)W^O\]</div>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+</section>
+<section id="advanced-tabular-models">
+<h2>Advanced Tabular Models<a class="headerlink" href="#advanced-tabular-models" title="Permalink to this heading"></a></h2>
+<section id="tabnet">
+<h3>TabNet<a class="headerlink" href="#tabnet" title="Permalink to this heading"></a></h3>
+<dl class="py class">
+<dt class="sig sig-object py">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">TALENT.model.models.</span></span><span class="sig-name descname"><span class="pre">TabNetClassifier</span></span></dt>
+<dd><p>Interpretable deep learning model with sequential attention mechanism.</p>
+<p><strong>Mathematical Formulation:</strong></p>
+<p>TabNet uses sequential feature selection through sparsemax attention:</p>
+<p><strong>Feature Selection at Step i:</strong></p>
+<div class="math notranslate nohighlight">
+\[M^{[i]} = \text{sparsemax}(\text{AttentionTransformer}(f^{[i-1]}))\]</div>
+<p><strong>Feature Processing:</strong></p>
+<div class="math notranslate nohighlight">
+\[f^{[i]} = \gamma \odot M^{[i]} \odot h + (1-\gamma) \odot f^{[i-1]}\]</div>
+<p>where <span class="math notranslate nohighlight">\(\gamma\)</span> is the relaxation parameter.</p>
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">predict_proba</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Make probability predictions for classification.</p>
+<p><strong>Parameters:</strong></p>
+<ul class="simple">
+<li><p><strong>X</strong> (<em>torch.Tensor or scipy.sparse matrix</em>) – Input features</p></li>
+</ul>
+<p><strong>Returns:</strong></p>
+<ul class="simple">
+<li><p><strong>np.ndarray</strong> – Class probabilities of shape (n_samples, n_classes)</p></li>
+</ul>
+<p><strong>Softmax Application:</strong></p>
+<div class="math notranslate nohighlight">
+\[P(y=k|x) = \frac{\exp(o_k)}{\sum_{j=1}^K \exp(o_j)}\]</div>
+<p>where <span class="math notranslate nohighlight">\(o_k\)</span> is the raw output for class <span class="math notranslate nohighlight">\(k\)</span>.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">TALENT.model.models.</span></span><span class="sig-name descname"><span class="pre">TabNetRegressor</span></span></dt>
+<dd><p>TabNet for regression tasks.</p>
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">compute_loss</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">y_pred</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_true</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Compute mean squared error loss.</p>
+<p><strong>MSE Loss Mathematical Definition:</strong></p>
+<div class="math notranslate nohighlight">
+\[\mathcal{L}_{\text{MSE}} = \frac{1}{n} \sum_{i=1}^n (y_i - \hat{y}_i)^2\]</div>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="grande-gradient-boosted-neural-decision-ensembles">
+<h3>GRANDE (Gradient-Boosted Neural Decision Ensembles)<a class="headerlink" href="#grande-gradient-boosted-neural-decision-ensembles" title="Permalink to this heading"></a></h3>
+<dl class="py class">
+<dt class="sig sig-object py">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">TALENT.model.models.</span></span><span class="sig-name descname"><span class="pre">GRANDE</span></span></dt>
+<dd><p>Tree-mimic neural network using gradient descent for decision tree simulation.</p>
+<p><strong>Mathematical Formulation:</strong></p>
+<p>GRANDE simulates decision trees using neural operations with entmax for sparse selection.</p>
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inputs</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Forward pass through the GRANDE model.</p>
+<p><strong>Parameters:</strong></p>
+<ul class="simple">
+<li><p><strong>inputs</strong> (<em>torch.Tensor</em>) – Input features</p></li>
+</ul>
+<p><strong>Tree Simulation Mathematical Implementation:</strong></p>
+<ol class="arabic">
+<li><p><strong>Split Decision Computation:</strong></p>
+<div class="math notranslate nohighlight">
+\[\text{node_result} = \frac{\text{softsign}(s_1 - s_2) + 1}{2}\]</div>
+<p>where <span class="math notranslate nohighlight">\(s_1\)</span> are split values and <span class="math notranslate nohighlight">\(s_2\)</span> are feature values.</p>
+</li>
+<li><p><strong>Path Probability Calculation:</strong></p>
+<div class="math notranslate nohighlight">
+\[p = \prod_{j} ((1-\text{path_id}_j) \cdot \text{node_result}_j + \text{path_id}_j \cdot (1-\text{node_result}_j))\]</div>
+</li>
+<li><p><strong>Ensemble Output for Regression:</strong></p>
+<div class="math notranslate nohighlight">
+\[\text{output} = \sum_{e,l} w_e \cdot p_{e,l} \cdot v_{e,l}\]</div>
+<p>where <span class="math notranslate nohighlight">\(w_e\)</span> are estimator weights, <span class="math notranslate nohighlight">\(p_{e,l}\)</span> are leaf probabilities, and <span class="math notranslate nohighlight">\(v_{e,l}\)</span> are leaf values.</p>
+</li>
+</ol>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="modern-nearest-class-analysis-modernnca">
+<h3>Modern Nearest Class Analysis (ModernNCA)<a class="headerlink" href="#modern-nearest-class-analysis-modernnca" title="Permalink to this heading"></a></h3>
+<dl class="py class">
+<dt class="sig sig-object py">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">TALENT.model.models.</span></span><span class="sig-name descname"><span class="pre">ModernNCA</span></span></dt>
+<dd><p>Neighborhood Component Analysis-inspired model for tabular data.</p>
+<p><strong>Mathematical Formulation:</strong></p>
+<p>ModernNCA learns embeddings for distance-based classification.</p>
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">candidate_x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">candidate_y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">is_train</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Forward pass with neighborhood analysis.</p>
+<p><strong>Parameters:</strong></p>
+<ul class="simple">
+<li><p><strong>x</strong> (<em>torch.Tensor</em>) – Query features</p></li>
+<li><p><strong>y</strong> (<em>torch.Tensor</em>) – Query labels</p></li>
+<li><p><strong>candidate_x</strong> (<em>torch.Tensor</em>) – Candidate features for nearest neighbor search</p></li>
+<li><p><strong>candidate_y</strong> (<em>torch.Tensor</em>) – Candidate labels</p></li>
+<li><p><strong>is_train</strong> (<em>bool</em>) – Training mode flag</p></li>
+</ul>
+<p><strong>Distance-Based Prediction Mathematical Implementation:</strong></p>
+<ol class="arabic">
+<li><p><strong>Distance Computation:</strong></p>
+<div class="math notranslate nohighlight">
+\[d(x_i, x_j) = ||f(x_i) - f(x_j)||_2\]</div>
+<p>where <span class="math notranslate nohighlight">\(f\)</span> is the learned embedding function.</p>
+</li>
+<li><p><strong>Probability Assignment:</strong></p>
+<div class="math notranslate nohighlight">
+\[p_{ij} = \frac{\exp(-d(x_i, x_j))}{\sum_{k \neq i} \exp(-d(x_i, x_k))}\]</div>
+</li>
+<li><p><strong>Final Prediction:</strong></p>
+<div class="math notranslate nohighlight">
+\[\hat{y}_i = \sum_j p_{ij} y_j\]</div>
+</li>
+</ol>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+</section>
+<section id="specialized-architectures">
+<h2>Specialized Architectures<a class="headerlink" href="#specialized-architectures" title="Permalink to this heading"></a></h2>
+<section id="excelformer-semi-permeable-attention">
+<h3>ExcelFormer (Semi-Permeable Attention)<a class="headerlink" href="#excelformer-semi-permeable-attention" title="Permalink to this heading"></a></h3>
+<dl class="py class">
+<dt class="sig sig-object py">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">TALENT.model.models.</span></span><span class="sig-name descname"><span class="pre">ExcelFormer</span></span></dt>
+<dd><p>Transformer with semi-permeable attention and mixup training capabilities.</p>
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x_num</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x_cat</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mix_up</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">beta</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mtype</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Forward pass with optional mixup augmentation.</p>
+<p><strong>Parameters:</strong></p>
+<ul class="simple">
+<li><p><strong>x_num</strong> (<em>torch.Tensor</em>) – Numerical features</p></li>
+<li><p><strong>x_cat</strong> (<em>torch.Tensor, optional</em>) – Categorical features</p></li>
+<li><p><strong>mix_up</strong> (<em>bool</em>) – Whether to apply mixup</p></li>
+<li><p><strong>beta</strong> (<em>float</em>) – Mixup parameter (default: 0.5)</p></li>
+<li><p><strong>mtype</strong> (<em>str</em>) – Mixup type (‘feat_mix’, ‘hidden_mix’, ‘naive_mix’)</p></li>
+</ul>
+<p><strong>Mixup Mathematical Implementation:</strong></p>
+<p><strong>Feature Mixup:</strong></p>
+<div class="math notranslate nohighlight">
+\[\tilde{x} = \lambda x_i + (1-\lambda) x_j\]</div>
+<p><strong>Semi-Permeable Attention:</strong></p>
+<div class="math notranslate nohighlight">
+\[\text{Attention}_{\text{perm}}(Q, K, V) = \text{mask} \odot \text{softmax}\left(\frac{QK^T}{\sqrt{d_k}}\right)V\]</div>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="protogate-prototype-based-gating">
+<h3>ProtoGate (Prototype-Based Gating)<a class="headerlink" href="#protogate-prototype-based-gating" title="Permalink to this heading"></a></h3>
+<dl class="py class">
+<dt class="sig sig-object py">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">TALENT.model.models.</span></span><span class="sig-name descname"><span class="pre">GatingNet</span></span></dt>
+<dd><p>Gating network for prototype-based feature selection.</p>
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">hard_sigmoid</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Hard sigmoid activation for efficient gating.</p>
+<p><strong>Hard Sigmoid Mathematical Definition:</strong></p>
+<div class="math notranslate nohighlight">
+\[\text{hard_sigmoid}(x) = \max(0, \min(1, \frac{x + 1}{2}))\]</div>
+<p>This provides a piecewise linear approximation to the sigmoid function for computational efficiency.</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+</section>
+<section id="regularization-methods">
+<h2>Regularization Methods<a class="headerlink" href="#regularization-methods" title="Permalink to this heading"></a></h2>
+<section id="tangos-regularization">
+<h3>TANGOS Regularization<a class="headerlink" href="#tangos-regularization" title="Permalink to this heading"></a></h3>
+<dl class="py class">
+<dt class="sig sig-object py">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">TALENT.model.models.</span></span><span class="sig-name descname"><span class="pre">Tangos</span></span></dt>
+<dd><p>MLP with TANGOS regularization for neuron specialization.</p>
+<p><strong>Mathematical Formulation:</strong></p>
+<p>TANGOS applies spatial and spectral regularization to encourage neuron specialization:</p>
+<div class="math notranslate nohighlight">
+\[\mathcal{L}_{\text{TANGOS}} = \mathcal{L}_{\text{task}} + \lambda_1 \mathcal{L}_{\text{spatial}} + \lambda_2 \mathcal{L}_{\text{spectral}}\]</div>
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">cal_representation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Calculate intermediate representations for regularization.</p>
+<p><strong>Parameters:</strong></p>
+<ul class="simple">
+<li><p><strong>x</strong> (<em>torch.Tensor</em>) – Input features</p></li>
+</ul>
+<p><strong>Returns:</strong></p>
+<ul class="simple">
+<li><p><strong>torch.Tensor</strong> – Hidden representations before final layer</p></li>
+</ul>
+<p><strong>Representation Extraction:</strong></p>
+<p>The method extracts intermediate representations by stopping before the final layer:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">layer</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">layers</span><span class="p">):</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">layer</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">F</span><span class="o">.</span><span class="n">relu</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">dropout</span> <span class="ow">and</span> <span class="n">i</span> <span class="o">!=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">layers</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">F</span><span class="o">.</span><span class="n">dropout</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">dropout</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">training</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+</section>
+<section id="activation-functions-reference">
+<h2>Activation Functions Reference<a class="headerlink" href="#activation-functions-reference" title="Permalink to this heading"></a></h2>
+<p><strong>ReLU (Rectified Linear Unit):</strong></p>
+<div class="math notranslate nohighlight">
+\[\text{ReLU}(x) = \max(0, x)\]</div>
+<p><strong>GELU (Gaussian Error Linear Unit):</strong></p>
+<div class="math notranslate nohighlight">
+\[\text{GELU}(x) = x \cdot \Phi(x) = x \cdot \frac{1}{2}\left[1 + \text{erf}\left(\frac{x}{\sqrt{2}}\right)\right]\]</div>
+<p><strong>SELU (Scaled Exponential Linear Unit):</strong></p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\text{SELU}(x) = \lambda \begin{cases}
+x &amp; \text{if } x &gt; 0 \\
+\alpha(e^x - 1) &amp; \text{if } x \leq 0
+\end{cases}\end{split}\]</div>
+<p><strong>Softmax:</strong></p>
+<div class="math notranslate nohighlight">
+\[\text{softmax}(x_i) = \frac{\exp(x_i)}{\sum_{j=1}^K \exp(x_j)}\]</div>
+<p><strong>Sparsemax (used in TabNet):</strong></p>
+<div class="math notranslate nohighlight">
+\[\text{sparsemax}(z) = \arg\min_{p \in \Delta^{K-1}} ||p - z||_2^2\]</div>
+<p>where <span class="math notranslate nohighlight">\(\Delta^{K-1}\)</span> is the probability simplex.</p>
+</section>
+<section id="model-usage-examples">
+<h2>Model Usage Examples<a class="headerlink" href="#model-usage-examples" title="Permalink to this heading"></a></h2>
+<p><strong>Basic MLP Usage:</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">torch</span>
+<span class="kn">from</span> <span class="nn">TALENT.model.models.mlp</span> <span class="kn">import</span> <span class="n">MLP</span>
+
+<span class="c1"># Initialize MLP</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">MLP</span><span class="p">(</span>
+    <span class="n">d_in</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>           <span class="c1"># Input dimension</span>
+    <span class="n">d_out</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>           <span class="c1"># Output dimension (3 classes)</span>
+    <span class="n">d_layers</span><span class="o">=</span><span class="p">[</span><span class="mi">64</span><span class="p">,</span> <span class="mi">32</span><span class="p">],</span> <span class="c1"># Hidden layer sizes</span>
+    <span class="n">dropout</span><span class="o">=</span><span class="mf">0.1</span>        <span class="c1"># Dropout probability</span>
+<span class="p">)</span>
+
+<span class="c1"># Forward pass</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">32</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>  <span class="c1"># Batch of 32 samples, 10 features</span>
+<span class="n">output</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>        <span class="c1"># Shape: (32, 3)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Output shape: </span><span class="si">{</span><span class="n">output</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>ResNet with Different Activations:</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">TALENT.model.models.resnet</span> <span class="kn">import</span> <span class="n">ResNet</span>
+
+<span class="c1"># Initialize ResNet with GELU activation</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">ResNet</span><span class="p">(</span>
+    <span class="n">d_in</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span>
+    <span class="n">d_out</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>              <span class="c1"># Regression task</span>
+    <span class="n">d_hidden</span><span class="o">=</span><span class="mi">128</span><span class="p">,</span>
+    <span class="n">n_layers</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span>
+    <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;gelu&#39;</span><span class="p">,</span>
+    <span class="n">normalization</span><span class="o">=</span><span class="s1">&#39;layer_norm&#39;</span>
+<span class="p">)</span>
+
+<span class="c1"># Forward pass for regression</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">64</span><span class="p">,</span> <span class="mi">15</span><span class="p">)</span>
+<span class="n">output</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>  <span class="c1"># Shape: (64,) for regression</span>
+</pre></div>
+</div>
+<p><strong>FT-Transformer with Mixed Features:</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">TALENT.model.models.ftt</span> <span class="kn">import</span> <span class="n">Transformer</span>
+
+<span class="c1"># Initialize FT-Transformer</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">Transformer</span><span class="p">(</span>
+    <span class="n">d_numerical</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span>          <span class="c1"># 8 numerical features</span>
+    <span class="n">categories</span><span class="o">=</span><span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span>  <span class="c1"># 3 categorical features with cardinalities</span>
+    <span class="n">d_token</span><span class="o">=</span><span class="mi">64</span><span class="p">,</span>
+    <span class="n">n_layers</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
+    <span class="n">n_heads</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span>
+    <span class="n">d_ffn_factor</span><span class="o">=</span><span class="mf">2.0</span>
+<span class="p">)</span>
+
+<span class="c1"># Prepare mixed input</span>
+<span class="n">x_num</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">32</span><span class="p">,</span> <span class="mi">8</span><span class="p">)</span>    <span class="c1"># Numerical features</span>
+<span class="n">x_cat</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="p">(</span><span class="mi">32</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>  <span class="c1"># Categorical features (adjust for cardinalities)</span>
+
+<span class="n">output</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">x_num</span><span class="p">,</span> <span class="n">x_cat</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>TabNet for Classification:</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">TALENT.model.models.tabnet</span> <span class="kn">import</span> <span class="n">TabNetClassifier</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="c1"># Initialize TabNet</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">TabNetClassifier</span><span class="p">(</span>
+    <span class="n">n_steps</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
+    <span class="n">gamma</span><span class="o">=</span><span class="mf">1.3</span><span class="p">,</span>
+    <span class="n">n_independent</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+    <span class="n">n_shared</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+    <span class="n">momentum</span><span class="o">=</span><span class="mf">0.02</span>
+<span class="p">)</span>
+
+<span class="c1"># Prepare data</span>
+<span class="n">X_train</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">((</span><span class="mi">1000</span><span class="p">,</span> <span class="mi">20</span><span class="p">))</span>
+<span class="n">y_train</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span>
+
+<span class="c1"># Fit the model</span>
+<span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+
+<span class="c1"># Predict probabilities</span>
+<span class="n">X_test</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">((</span><span class="mi">100</span><span class="p">,</span> <span class="mi">20</span><span class="p">))</span>
+<span class="n">probabilities</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Predicted probabilities shape: </span><span class="si">{</span><span class="n">probabilities</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>GRANDE for Tree-like Decisions:</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">TALENT.model.models.grande</span> <span class="kn">import</span> <span class="n">GRANDE</span>
+
+<span class="c1"># Initialize GRANDE</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">GRANDE</span><span class="p">(</span>
+    <span class="n">batch_size</span><span class="o">=</span><span class="mi">64</span><span class="p">,</span>
+    <span class="n">task_type</span><span class="o">=</span><span class="s1">&#39;regression&#39;</span><span class="p">,</span>
+    <span class="n">depth</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span>              <span class="c1"># Tree depth</span>
+    <span class="n">n_estimators</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>      <span class="c1"># Number of trees</span>
+    <span class="n">dropout</span><span class="o">=</span><span class="mf">0.1</span>
+<span class="p">)</span>
+
+<span class="c1"># Forward pass</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">64</span><span class="p">,</span> <span class="mi">12</span><span class="p">)</span>
+<span class="n">output</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>ModernNCA with Candidate Selection:</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">TALENT.model.models.modernNCA</span> <span class="kn">import</span> <span class="n">ModernNCA</span>
+
+<span class="c1"># Initialize ModernNCA</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">ModernNCA</span><span class="p">(</span>
+    <span class="n">d_in</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span>
+    <span class="n">d_out</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span>  <span class="c1"># 4 classes</span>
+    <span class="n">k</span><span class="o">=</span><span class="mi">32</span>      <span class="c1"># Number of nearest neighbors</span>
+<span class="p">)</span>
+
+<span class="c1"># Training forward pass</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">32</span><span class="p">,</span> <span class="mi">15</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="p">(</span><span class="mi">32</span><span class="p">,))</span>
+<span class="n">candidate_x</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">15</span><span class="p">)</span>  <span class="c1"># Candidate pool</span>
+<span class="n">candidate_y</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="p">(</span><span class="mi">100</span><span class="p">,))</span>
+
+<span class="n">output</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">candidate_x</span><span class="p">,</span> <span class="n">candidate_y</span><span class="p">,</span> <span class="n">is_train</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>ExcelFormer with Mixup:</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">TALENT.model.models.excelformer</span> <span class="kn">import</span> <span class="n">ExcelFormer</span>
+
+<span class="c1"># Initialize ExcelFormer</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">ExcelFormer</span><span class="p">(</span>
+    <span class="n">d_numerical</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+    <span class="n">d_token</span><span class="o">=</span><span class="mi">64</span><span class="p">,</span>
+    <span class="n">n_blocks</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
+    <span class="n">attention_dropout</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span>
+    <span class="n">ffn_dropout</span><span class="o">=</span><span class="mf">0.1</span>
+<span class="p">)</span>
+
+<span class="c1"># Forward pass with feature mixup</span>
+<span class="n">x_num</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">32</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+<span class="n">output</span><span class="p">,</span> <span class="n">feat_masks</span><span class="p">,</span> <span class="n">shuffled_ids</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span>
+    <span class="n">x_num</span><span class="p">,</span>
+    <span class="n">mix_up</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">beta</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span>
+    <span class="n">mtype</span><span class="o">=</span><span class="s1">&#39;feat_mix&#39;</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Custom Loss with TANGOS Regularization:</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">TALENT.model.models.tangos</span> <span class="kn">import</span> <span class="n">Tangos</span>
+
+<span class="c1"># Initialize TANGOS</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">Tangos</span><span class="p">(</span>
+    <span class="n">d_in</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span>
+    <span class="n">d_out</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
+    <span class="n">d_layers</span><span class="o">=</span><span class="p">[</span><span class="mi">128</span><span class="p">,</span> <span class="mi">64</span><span class="p">],</span>
+    <span class="n">dropout</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span>
+    <span class="n">lambda1</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span>  <span class="c1"># Spatial regularization weight</span>
+    <span class="n">lambda2</span><span class="o">=</span><span class="mf">0.1</span>   <span class="c1"># Spectral regularization weight</span>
+<span class="p">)</span>
+
+<span class="c1"># Forward pass and representation extraction</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">32</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
+<span class="n">output</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="n">representations</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">cal_representation</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>  <span class="c1"># For regularization</span>
+
+<span class="c1"># Custom training loop would use both output and representations</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Output shape: </span><span class="si">{</span><span class="n">output</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Representations shape: </span><span class="si">{</span><span class="n">representations</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="model-selection-guidelines">
+<h2>Model Selection Guidelines<a class="headerlink" href="#model-selection-guidelines" title="Permalink to this heading"></a></h2>
+<p><strong>Performance-Oriented Models:</strong></p>
+<ul class="simple">
+<li><p><strong>FT-Transformer:</strong> Best overall performance, attention-based</p></li>
+<li><p><strong>TabNet:</strong> Interpretable with good performance</p></li>
+<li><p><strong>ModernNCA:</strong> Strong on many datasets, embedding-based</p></li>
+</ul>
+<p><strong>Speed-Oriented Models:</strong></p>
+<ul class="simple">
+<li><p><strong>MLP:</strong> Fastest training and inference</p></li>
+<li><p><strong>SNN:</strong> Lightweight with self-normalization</p></li>
+<li><p><strong>ResNet:</strong> Good balance of speed and performance</p></li>
+</ul>
+<p><strong>Interpretability-Focused Models:</strong></p>
+<ul class="simple">
+<li><p><strong>TabNet:</strong> Sequential attention provides interpretability</p></li>
+<li><p><strong>GRANDE:</strong> Tree-like decision process</p></li>
+<li><p><strong>ProtoGate:</strong> Prototype-based explanations</p></li>
+</ul>
+<p><strong>Specialized Use Cases:</strong></p>
+<ul class="simple">
+<li><p><strong>TANGOS:</strong> When regularization is important</p></li>
+<li><p><strong>ExcelFormer:</strong> For complex feature interactions with mixup</p></li>
+<li><p><strong>ModernNCA:</strong> When similarity-based predictions are desired</p></li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="deep_learning.html" class="btn btn-neutral float-left" title="Deep Learning Models" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="methods.html" class="btn btn-neutral float-right" title="Methods" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Read the Docs core team.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
