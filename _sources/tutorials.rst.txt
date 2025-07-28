@@ -74,7 +74,7 @@ TALENT is designed to be easily extendable. You can add new models by following 
 
 
 ===============================
-4. Configuring Hyperparameters  
+4. Configuring Hyperparameters
 ===============================
 
 TALENT allows you to fine-tune models through configuration files. These files are located in the `configs/default/` and `configs/opt_space/` directories.

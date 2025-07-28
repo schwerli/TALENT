@@ -41,8 +41,8 @@ Each dataset consists of the following files:
 
       {
         "task_type": "regression",  
-        "n_num_features": 10,
-        "n_cat_features": 10
+      "n_num_features": 10,
+      "n_cat_features": 10
       }
    
    **Note:** task_type can be "regression", "multiclass", or "binclass"
