@@ -1,0 +1,441 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TaBR &mdash; LAMDA-TALENT  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            LAMDA-TALENT
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Tutorials</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorials.html">How to Use TALENT</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorials.html#cloning-the-repository">1. Cloning the Repository</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorials.html#running-experiments">2. Running Experiments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorials.html#adding-new-methods">3. Adding New Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorials.html#configuring-hyperparameters">4. Configuring Hyperparameters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorials.html#troubleshooting">5. Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorials.html#conclusion">Conclusion</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Methods</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../methods.html">Methods in TALENT</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../methods.html#deep-learning-methods">Deep Learning Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../methods.html#classical-methods">Classical Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../methods.html#methodology-summary">Methodology Summary</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Dependencies</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../dependencies.html">Dependencies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dependencies.html#python-libraries">Python Libraries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dependencies.html#optional-dependencies">Optional Dependencies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dependencies.html#installation">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dependencies.html#additional-notes">Additional Notes</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Benchmark_Datasets</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../benchmark_datasets.html">Benchmark Datasets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../benchmark_datasets.html#available-datasets">Available Datasets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../benchmark_datasets.html#downloading-datasets">Downloading Datasets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../benchmark_datasets.html#dataset-structure">Dataset Structure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../benchmark_datasets.html#placing-datasets">Placing Datasets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../benchmark_datasets.html#using-datasets">Using Datasets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../benchmark_datasets.html#custom-datasets">Custom Datasets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../benchmark_datasets.html#task-types">Task Types</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../benchmark_datasets.html#conclusion">Conclusion</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Experimental_Results</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../experimental_results.html">Experimental Results</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../experimental_results.html#evaluation-metrics">Evaluation Metrics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../experimental_results.html#results-summary">Results Summary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../experimental_results.html#conclusion">Conclusion</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API Docs</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../core.html">Core Components</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../deep_learning.html">Deep Learning Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../classical_methods.html">Classical Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lib.html">Library Components</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Acknowledgements</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../acknowledgements.html">Acknowledgments</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">LAMDA-TALENT</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active"><strong>TaBR</strong></li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/api/lib/tabr.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="tabr">
+<h1><strong>TaBR</strong><a class="headerlink" href="#tabr" title="Link to this heading"></a></h1>
+<p>A deep learning model that integrates a KNN component to enhance tabular data predictions through an efficient attention-like mechanism.</p>
+<section id="embedding-utilities">
+<h2><strong>Embedding Utilities</strong><a class="headerlink" href="#embedding-utilities" title="Link to this heading"></a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">_initialize_embeddings</span><span class="p">(</span><span class="n">weight</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">d</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kc">None</span>
+</pre></div>
+</div>
+<p>Initializes embedding weights using a uniform distribution scaled by the reciprocal square root of the dimension.</p>
+<p><strong>Parameters:</strong></p>
+<ul class="simple">
+<li><p><strong>weight</strong> <em>(Tensor)</em> - Embedding weight tensor to initialize.</p></li>
+<li><p><strong>d</strong> <em>(Optional[int])</em> - Dimension for scaling (defaults to <cite>weight.shape[-1]</cite>).</p></li>
+</ul>
+<p><strong>Returns:</strong></p>
+<ul class="simple">
+<li><p><strong>None</strong> - Modifies <cite>weight</cite> in-place.</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">make_trainable_vector</span><span class="p">(</span><span class="n">d</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Parameter</span>
+</pre></div>
+</div>
+<p>Creates a trainable parameter vector with initialized embeddings.</p>
+<p><strong>Parameters:</strong></p>
+<ul class="simple">
+<li><p><strong>d</strong> <em>(int)</em> - Dimension of the vector.</p></li>
+</ul>
+<p><strong>Returns:</strong></p>
+<ul class="simple">
+<li><p><strong>Parameter</strong> - Trainable vector with shape <cite>(d,)</cite>.</p></li>
+</ul>
+</section>
+<section id="embedding-modules">
+<h2><strong>Embedding Modules</strong><a class="headerlink" href="#embedding-modules" title="Link to this heading"></a></h2>
+<section id="class-clsembedding-nn-module">
+<h3>class CLSEmbedding(nn.Module)<a class="headerlink" href="#class-clsembedding-nn-module" title="Link to this heading"></a></h3>
+<p>Appends a learnable [CLS] token to the input tensor (similar to BERT’s classification token).</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">d_embedding</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span>
+</pre></div>
+</div>
+<p><strong>Parameters:</strong></p>
+<ul class="simple">
+<li><p><strong>d_embedding</strong> <em>(int)</em> - Dimension of the embedding.</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span>
+</pre></div>
+</div>
+<p><strong>Parameters:</strong></p>
+<ul class="simple">
+<li><p><strong>x</strong> <em>(Tensor)</em> - Input tensor with shape <cite>(batch_size, seq_len, d_embedding)</cite>.</p></li>
+</ul>
+<p><strong>Returns:</strong></p>
+<ul class="simple">
+<li><p><strong>Tensor</strong> - Tensor with [CLS] token prepended, shape <cite>(batch_size, seq_len + 1, d_embedding)</cite>.</p></li>
+</ul>
+</section>
+<section id="class-linearembeddings-nn-module">
+<h3>class LinearEmbeddings(nn.Module)<a class="headerlink" href="#class-linearembeddings-nn-module" title="Link to this heading"></a></h3>
+<p>Applies linear transformation to each numerical feature to produce embeddings.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">n_features</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">d_embedding</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">bias</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Parameters:</strong></p>
+<ul class="simple">
+<li><p><strong>n_features</strong> <em>(int)</em> - Number of input features.</p></li>
+<li><p><strong>d_embedding</strong> <em>(int)</em> - Dimension of output embeddings.</p></li>
+<li><p><strong>bias</strong> <em>(bool, optional, Default is True)</em> - Whether to include a bias term.</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span>
+</pre></div>
+</div>
+<p><strong>Parameters:</strong></p>
+<ul class="simple">
+<li><p><strong>x</strong> <em>(Tensor)</em> - Input tensor with shape <cite>(batch_size, n_features)</cite>.</p></li>
+</ul>
+<p><strong>Returns:</strong></p>
+<ul class="simple">
+<li><p><strong>Tensor</strong> - Embedded tensor with shape <cite>(batch_size, n_features, d_embedding)</cite>.</p></li>
+</ul>
+</section>
+<section id="class-periodicembeddings-nn-module">
+<h3>class PeriodicEmbeddings(nn.Module)<a class="headerlink" href="#class-periodicembeddings-nn-module" title="Link to this heading"></a></h3>
+<p>Encodes numerical features using periodic functions (sine/cosine) to capture cyclic patterns.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">n_features</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">n_frequencies</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">frequency_scale</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span>
+</pre></div>
+</div>
+<p><strong>Parameters:</strong></p>
+<ul class="simple">
+<li><p><strong>n_features</strong> <em>(int)</em> - Number of input features.</p></li>
+<li><p><strong>n_frequencies</strong> <em>(int)</em> - Number of frequency components.</p></li>
+<li><p><strong>frequency_scale</strong> <em>(float)</em> - Scale for initializing frequency parameters.</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span>
+</pre></div>
+</div>
+<p><strong>Parameters:</strong></p>
+<ul class="simple">
+<li><p><strong>x</strong> <em>(Tensor)</em> - Input tensor with shape <cite>(batch_size, n_features)</cite>.</p></li>
+</ul>
+<p><strong>Returns:</strong></p>
+<ul class="simple">
+<li><p><strong>Tensor</strong> - Periodic embeddings with shape <cite>(batch_size, n_features, 2 * n_frequencies)</cite> (sine + cosine components).</p></li>
+</ul>
+</section>
+<section id="class-lrembeddings-nn-sequential">
+<h3>class LREmbeddings(nn.Sequential)<a class="headerlink" href="#class-lrembeddings-nn-sequential" title="Link to this heading"></a></h3>
+<p>Linear Regression-style embeddings (linear transformation + ReLU activation), from the paper <em>“On Embeddings for Numerical Features in Tabular Deep Learning”</em>.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">n_features</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">d_embedding</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span>
+</pre></div>
+</div>
+<p><strong>Parameters:</strong></p>
+<ul class="simple">
+<li><p><strong>n_features</strong> <em>(int)</em> - Number of input features.</p></li>
+<li><p><strong>d_embedding</strong> <em>(int)</em> - Dimension of output embeddings.</p></li>
+</ul>
+</section>
+<section id="class-plrembeddings-nn-sequential">
+<h3>class PLREmbeddings(nn.Sequential)<a class="headerlink" href="#class-plrembeddings-nn-sequential" title="Link to this heading"></a></h3>
+<p>Periodic Linear Regression embeddings (periodic encoding + linear transformation + ReLU), from the paper <em>“On Embeddings for Numerical Features in Tabular Deep Learning”</em>.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">n_features</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">n_frequencies</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">frequency_scale</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">d_embedding</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">lite</span><span class="p">:</span> <span class="nb">bool</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Parameters:</strong></p>
+<ul class="simple">
+<li><p><strong>n_features</strong> <em>(int)</em> - Number of input features.</p></li>
+<li><p><strong>n_frequencies</strong> <em>(int)</em> - Number of frequency components.</p></li>
+<li><p><strong>frequency_scale</strong> <em>(float)</em> - Scale for frequency initialization.</p></li>
+<li><p><strong>d_embedding</strong> <em>(int)</em> - Dimension of output embeddings.</p></li>
+<li><p><strong>lite</strong> <em>(bool)</em> - If True, uses a shared linear layer; if False, uses feature-specific linear layers.</p></li>
+</ul>
+</section>
+<section id="class-pbldembeddings-nn-module">
+<h3>class PBLDEmbeddings(nn.Module)<a class="headerlink" href="#class-pbldembeddings-nn-module" title="Link to this heading"></a></h3>
+<p>Periodic Binned Linear embeddings, extending PLR embeddings with densenet-style feature concatenation.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">n_features</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">n_frequencies</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">frequency_scale</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">d_embedding</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">lite</span><span class="p">:</span> <span class="nb">bool</span><span class="p">,</span> <span class="n">plr_act_name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;relu&#39;</span><span class="p">,</span> <span class="n">plr_use_densenet</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Parameters:</strong></p>
+<ul class="simple">
+<li><p><strong>n_features</strong> <em>(int)</em> - Number of input features.</p></li>
+<li><p><strong>n_frequencies</strong> <em>(int)</em> - Number of frequency components.</p></li>
+<li><p><strong>frequency_scale</strong> <em>(float)</em> - Scale for frequency initialization.</p></li>
+<li><p><strong>d_embedding</strong> <em>(int)</em> - Dimension of output embeddings.</p></li>
+<li><p><strong>lite</strong> <em>(bool)</em> - Unused in this implementation (retained for compatibility).</p></li>
+<li><p><strong>plr_act_name</strong> <em>(str, optional, Default is ‘relu’)</em> - Activation function (‘relu’ or ‘linear’).</p></li>
+<li><p><strong>plr_use_densenet</strong> <em>(bool, optional, Default is True)</em> - If True, concatenates original features to embeddings.</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span>
+</pre></div>
+</div>
+<p><strong>Parameters:</strong></p>
+<ul class="simple">
+<li><p><strong>x</strong> <em>(Tensor)</em> - Input tensor with shape <cite>(batch_size, n_features)</cite>.</p></li>
+</ul>
+<p><strong>Returns:</strong></p>
+<ul class="simple">
+<li><p><strong>Tensor</strong> - Embedded tensor with shape <cite>(batch_size, n_features * d_embedding)</cite> (or with original features concatenated if <cite>plr_use_densenet=True</cite>).</p></li>
+</ul>
+</section>
+</section>
+<section id="network-modules">
+<h2><strong>Network Modules</strong><a class="headerlink" href="#network-modules" title="Link to this heading"></a></h2>
+<section id="class-resnet-nn-module">
+<h3>class ResNet(nn.Module)<a class="headerlink" href="#class-resnet-nn-module" title="Link to this heading"></a></h3>
+<p>Residual network for tabular data, with configurable normalization and activation.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">d_in</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">d_out</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">n_blocks</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">d_block</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">dropout</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">d_hidden_multiplier</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">int</span><span class="p">],</span> <span class="n">n_linear_layers_per_block</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span> <span class="n">activation</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;ReLU&#39;</span><span class="p">,</span> <span class="n">normalization</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">first_normalization</span><span class="p">:</span> <span class="nb">bool</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Parameters:</strong></p>
+<ul class="simple">
+<li><p><strong>d_in</strong> <em>(Optional[int])</em> - Input dimension (None for no projection).</p></li>
+<li><p><strong>d_out</strong> <em>(Optional[int])</em> - Output dimension (None for no final layer).</p></li>
+<li><p><strong>n_blocks</strong> <em>(int)</em> - Number of residual blocks.</p></li>
+<li><p><strong>d_block</strong> <em>(int)</em> - Dimension of each block.</p></li>
+<li><p><strong>dropout</strong> <em>(float)</em> - Dropout rate.</p></li>
+<li><p><strong>d_hidden_multiplier</strong> <em>(Union[float, int])</em> - Multiplier for hidden dimension in 2-layer blocks.</p></li>
+<li><p><strong>n_linear_layers_per_block</strong> <em>(int, optional, Default is 2)</em> - Number of linear layers per block (1 or 2).</p></li>
+<li><p><strong>activation</strong> <em>(str, optional, Default is ‘ReLU’)</em> - Activation function name (from <cite>nn</cite>).</p></li>
+<li><p><strong>normalization</strong> <em>(str)</em> - Normalization layer name (from <cite>nn</cite> or ‘none’).</p></li>
+<li><p><strong>first_normalization</strong> <em>(bool)</em> - Whether to apply normalization in the first block.</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span>
+</pre></div>
+</div>
+<p><strong>Parameters:</strong></p>
+<ul class="simple">
+<li><p><strong>x</strong> <em>(Tensor)</em> - Input tensor with shape <cite>(batch_size, d_in)</cite> (or <cite>(batch_size, d_block)</cite> if <cite>d_in</cite> is None).</p></li>
+</ul>
+<p><strong>Returns:</strong></p>
+<ul class="simple">
+<li><p><strong>Tensor</strong> - Output tensor with shape <cite>(batch_size, d_out)</cite> (or <cite>(batch_size, d_block)</cite> if <cite>d_out</cite> is None).</p></li>
+</ul>
+</section>
+<section id="class-nlinear-nn-module">
+<h3>class NLinear(nn.Module)<a class="headerlink" href="#class-nlinear-nn-module" title="Link to this heading"></a></h3>
+<p>Applies feature-specific linear transformations.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">n_features</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">d_in</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">d_out</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">bias</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Parameters:</strong></p>
+<ul class="simple">
+<li><p><strong>n_features</strong> <em>(int)</em> - Number of features (each with a separate linear layer).</p></li>
+<li><p><strong>d_in</strong> <em>(int)</em> - Input dimension per feature.</p></li>
+<li><p><strong>d_out</strong> <em>(int)</em> - Output dimension per feature.</p></li>
+<li><p><strong>bias</strong> <em>(bool, optional, Default is True)</em> - Whether to include bias terms.</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span>
+</pre></div>
+</div>
+<p><strong>Parameters:</strong></p>
+<ul class="simple">
+<li><p><strong>x</strong> <em>(Tensor)</em> - Input tensor with shape <cite>(batch_size, n_features, d_in)</cite>.</p></li>
+</ul>
+<p><strong>Returns:</strong></p>
+<ul class="simple">
+<li><p><strong>Tensor</strong> - Output tensor with shape <cite>(batch_size, n_features, d_out)</cite>.</p></li>
+</ul>
+</section>
+<section id="class-mlp-nn-module">
+<h3>class MLP(nn.Module)<a class="headerlink" href="#class-mlp-nn-module" title="Link to this heading"></a></h3>
+<p>Multi-layer perceptron for tabular data with sequential blocks.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">d_in</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">d_out</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">n_blocks</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">d_block</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">dropout</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">activation</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;SELU&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Parameters:</strong></p>
+<ul class="simple">
+<li><p><strong>d_in</strong> <em>(Optional[int])</em> - Input dimension (uses <cite>d_block</cite> if None).</p></li>
+<li><p><strong>d_out</strong> <em>(Optional[int])</em> - Output dimension (None for no final layer).</p></li>
+<li><p><strong>n_blocks</strong> <em>(int)</em> - Number of MLP blocks.</p></li>
+<li><p><strong>d_block</strong> <em>(int)</em> - Dimension of each block.</p></li>
+<li><p><strong>dropout</strong> <em>(float)</em> - Dropout rate.</p></li>
+<li><p><strong>activation</strong> <em>(str, optional, Default is ‘SELU’)</em> - Activation function name (from <cite>nn</cite>).</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span>
+</pre></div>
+</div>
+<p><strong>Parameters:</strong></p>
+<ul class="simple">
+<li><p><strong>x</strong> <em>(Tensor)</em> - Input tensor with shape <cite>(batch_size, d_in)</cite> (or <cite>(batch_size, d_block)</cite> if <cite>d_in</cite> is None).</p></li>
+</ul>
+<p><strong>Returns:</strong></p>
+<ul class="simple">
+<li><p><strong>Tensor</strong> - Output tensor with shape <cite>(batch_size, d_out)</cite> (or <cite>(batch_size, d_block)</cite> if <cite>d_out</cite> is None).</p></li>
+</ul>
+</section>
+</section>
+<section id="module-creation-utilities">
+<h2><strong>Module Creation Utilities</strong><a class="headerlink" href="#module-creation-utilities" title="Link to this heading"></a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">make_module</span><span class="p">(</span><span class="n">spec</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">nn</span><span class="o">.</span><span class="n">Module</span>
+</pre></div>
+</div>
+<p>Creates a PyTorch module from a specification (string, dict, or callable).</p>
+<p><strong>Parameters:</strong></p>
+<ul class="simple">
+<li><p><strong>spec</strong> - Module specification:
+- String: Name of a module in <cite>nn</cite> or custom modules.
+- Dict: Must contain ‘type’ key with module name, plus other parameters.
+- Callable: Module class or function.</p></li>
+<li><p><strong>args</strong> - Positional arguments passed to the module.</p></li>
+<li><p><strong>kwargs</strong> - Keyword arguments passed to the module.</p></li>
+</ul>
+<p><strong>Returns:</strong></p>
+<ul class="simple">
+<li><p><strong>nn.Module</strong> - Instantiated module.</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">make_module1</span><span class="p">(</span><span class="nb">type</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">nn</span><span class="o">.</span><span class="n">Module</span>
+</pre></div>
+</div>
+<p>Simplified module creation from a type string.</p>
+<p><strong>Parameters:</strong></p>
+<ul class="simple">
+<li><p><strong>type</strong> <em>(str)</em> - Name of the module (in <cite>nn</cite> or custom modules).</p></li>
+<li><p><strong>args</strong> - Positional arguments passed to the module.</p></li>
+<li><p><strong>kwargs</strong> - Keyword arguments passed to the module.</p></li>
+</ul>
+<p><strong>Returns:</strong></p>
+<ul class="simple">
+<li><p><strong>nn.Module</strong> - Instantiated module.</p></li>
+</ul>
+<p>##References##</p>
+<div role="list" class="citation-list">
+<div class="citation" id="gorishniy2023tabr" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>Gorishniy2023TabR<span class="fn-bracket">]</span></span>
+<p>Yury Gorishniy, Ivan Rubachev, Nikolay Kartashev, Daniil Shlenskii, Akim Kotelnikov, and Artem Babenko.
+<em>TabR: Tabular Deep Learning Meets Nearest Neighbors in 2023</em>.
+arXiv preprint <a class="reference external" href="https://arxiv.org/abs/2307.14338">2307.14338</a>, 2023.</p>
+</div>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Read the Docs core team.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
