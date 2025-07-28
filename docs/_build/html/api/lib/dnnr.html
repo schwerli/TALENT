@@ -1,0 +1,506 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DNNR (Distance-Weighted Nearest Regression) &mdash; LAMDA-TALENT  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            LAMDA-TALENT
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Tutorials</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorials.html">How to Use TALENT</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorials.html#cloning-the-repository">1. Cloning the Repository</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorials.html#running-experiments">2. Running Experiments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorials.html#adding-new-methods">3. Adding New Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorials.html#configuring-hyperparameters">4. Configuring Hyperparameters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorials.html#troubleshooting">5. Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorials.html#conclusion">Conclusion</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Methods</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../methods.html">Methods in TALENT</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../methods.html#deep-learning-methods">Deep Learning Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../methods.html#classical-methods">Classical Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../methods.html#methodology-summary">Methodology Summary</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Dependencies</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../dependencies.html">Dependencies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dependencies.html#python-libraries">Python Libraries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dependencies.html#optional-dependencies">Optional Dependencies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dependencies.html#installation">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dependencies.html#additional-notes">Additional Notes</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Benchmark_Datasets</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../benchmark_datasets.html">Benchmark Datasets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../benchmark_datasets.html#available-datasets">Available Datasets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../benchmark_datasets.html#downloading-datasets">Downloading Datasets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../benchmark_datasets.html#dataset-structure">Dataset Structure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../benchmark_datasets.html#placing-datasets">Placing Datasets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../benchmark_datasets.html#using-datasets">Using Datasets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../benchmark_datasets.html#custom-datasets">Custom Datasets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../benchmark_datasets.html#task-types">Task Types</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../benchmark_datasets.html#conclusion">Conclusion</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Experimental_Results</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../experimental_results.html">Experimental Results</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../experimental_results.html#evaluation-metrics">Evaluation Metrics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../experimental_results.html#results-summary">Results Summary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../experimental_results.html#conclusion">Conclusion</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API Docs</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../core.html">Core Components</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../deep_learning.html">Deep Learning Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../classical_methods.html">Classical Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lib.html">Library Components</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Acknowledgements</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../acknowledgements.html">Acknowledgments</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">LAMDA-TALENT</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active"><strong>DNNR (Distance-Weighted Nearest Regression)</strong></li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/api/lib/dnnr.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="dnnr-distance-weighted-nearest-regression">
+<h1><strong>DNNR (Distance-Weighted Nearest Regression)</strong><a class="headerlink" href="#dnnr-distance-weighted-nearest-regression" title="Link to this heading"></a></h1>
+<p>K-nearest neighbors (KNN) is one of the earliest and most established algorithms in machine learning. For regression tasks, KNN averages the targets within a neighborhood which poses a number of challenges: the neighborhood definition is crucial for the predictive performance as neighbors might be selected based on uninformative features, and averaging does not account for how the function changes locally. We propose a novel method called Differential Nearest Neighbors Regression (DNNR) that addresses both issues simultaneously: during training, DNNR estimates local gradients to scale the features; during inference, it performs an n-th order Taylor approximation using estimated gradients. In a large-scale evaluation on over 250 datasets, we find that DNNR performs comparably to state-of-the-art gradient boosting methods and MLPs while maintaining the simplicity and transparency of KNN. This allows us to derive theoretical error bounds and inspect failures. In times that call for transparency of ML models, DNNR provides a good balance between performance and interpretability.</p>
+<section id="data-classes-for-predictions">
+<h2><strong>Data Classes for Predictions</strong><a class="headerlink" href="#data-classes-for-predictions" title="Link to this heading"></a></h2>
+<p>&#64;dataclasses.dataclass
+class NeighborPrediction
+~~~~~~~~~~~~~~~~~~~~~~~~~~</p>
+<p>Stores detailed prediction information from a single neighbor.</p>
+<p><strong>Fields:</strong></p>
+<ul class="simple">
+<li><p><strong>neighbor_x</strong> <em>(np.ndarray)</em> - Feature vector of the neighbor point.</p></li>
+<li><p><strong>neighbor_y</strong> <em>(np.ndarray)</em> - Target value of the neighbor point.</p></li>
+<li><p><strong>neighbors_xs</strong> <em>(np.ndarray)</em> - Feature vectors of the neighbor’s own neighbors.</p></li>
+<li><p><strong>neighbors_ys</strong> <em>(np.ndarray)</em> - Target values of the neighbor’s own neighbors.</p></li>
+<li><p><strong>query</strong> <em>(np.ndarray)</em> - The query point being predicted.</p></li>
+<li><p><strong>local_prediction</strong> <em>(np.ndarray)</em> - Prediction for the query point based on this neighbor.</p></li>
+<li><p><strong>derivative</strong> <em>(np.ndarray)</em> - Derivatives (e.g., gradients, Hessians) used in the prediction.</p></li>
+<li><p><strong>prediction_fn</strong> <em>(Callable[[np.ndarray], np.ndarray])</em> - Function to generate predictions for new points using this neighbor’s parameters.</p></li>
+<li><p><strong>intercept</strong> <em>(Optional[np.ndarray], Default is None)</em> - Intercept term for the local prediction model (if applicable).</p></li>
+</ul>
+<p>&#64;dataclasses.dataclass
+class DNNRPrediction
+~~~~~~~~~~~~~~~~~~~~</p>
+<p>Aggregates prediction results for a single query point.</p>
+<p><strong>Fields:</strong>
+* <strong>query</strong> <em>(np.ndarray)</em> - The query point being predicted.
+* <strong>y_pred</strong> <em>(np.ndarray)</em> - Final aggregated prediction for the query point.
+* <strong>neighbor_predictions</strong> <em>(list[NeighborPrediction])</em> - Collection of predictions from individual neighbors.
+* <strong>y_true</strong> <em>(Optional[np.ndarray], Default is None)</em> - Ground truth target value (if provided during analysis).</p>
+</section>
+<section id="core-dnnr-model">
+<h2><strong>Core DNNR Model</strong><a class="headerlink" href="#core-dnnr-model" title="Link to this heading"></a></h2>
+<p>&#64;dataclasses.dataclass
+class DNNR(sklearn.base.BaseEstimator, sklearn.base.RegressorMixin)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</p>
+<p>The primary DNNR model class, implementing distance-weighted nearest neighbor regression with Taylor series approximations.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">n_neighbors</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">n_derivative_neighbors</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="s2">&quot;1&quot;</span><span class="p">,</span> <span class="n">fit_intercept</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">solver</span><span class="o">=</span><span class="s2">&quot;linear_regression&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="s2">&quot;annoy&quot;</span><span class="p">,</span> <span class="n">index_kwargs</span><span class="o">=</span><span class="n">dataclasses</span><span class="o">.</span><span class="n">field</span><span class="p">(</span><span class="n">default_factory</span><span class="o">=</span><span class="nb">dict</span><span class="p">),</span> <span class="n">scaling</span><span class="o">=</span><span class="s2">&quot;learned&quot;</span><span class="p">,</span> <span class="n">scaling_kwargs</span><span class="o">=</span><span class="n">dataclasses</span><span class="o">.</span><span class="n">field</span><span class="p">(</span><span class="n">default_factory</span><span class="o">=</span><span class="nb">dict</span><span class="p">),</span> <span class="n">precompute_derivatives</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">clip</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Parameters:</strong></p>
+<ul class="simple">
+<li><p><strong>n_neighbors</strong> <em>(int, optional, Default is 3)</em> - Number of nearest neighbors to use for predicting each query point.</p></li>
+<li><p><strong>n_derivative_neighbors</strong> <em>(int, optional, Default is -1)</em> - Number of neighbors used to approximate derivatives (gradients, Hessians). Defaults to <cite>3 * input_dimension</cite> if set to -1.</p></li>
+<li><p><strong>order</strong> <em>(str, optional, Default is “1”)</em> - Order of the Taylor series approximation:
+- “1”: First-order approximation (uses gradients only)
+- “2diag”: First-order + diagonal elements of second-order derivatives
+- “2”: First-order + full second-order matrix (gradient and Hessian)
+- “3diag”: First-order + diagonal elements of second and third-order derivatives</p></li>
+<li><p><strong>fit_intercept</strong> <em>(bool, optional, Default is False)</em> - Whether to estimate an intercept term in the local prediction models.</p></li>
+<li><p><strong>solver</strong> <em>(Union[str, Solver], optional, Default is “linear_regression”)</em> - Method for solving linear systems to estimate derivatives. Can be a string identifier (e.g., “linear_regression”, “ridge”) or a <cite>Solver</cite> subclass instance.</p></li>
+<li><p><strong>index</strong> <em>(Union[str, BaseIndex], optional, Default is “annoy”)</em> - Type of nearest neighbor index to use. Options include “annoy” (Approximate Nearest Neighbors) or “kd_tree” (exact KD-Tree), or a custom <cite>BaseIndex</cite> subclass.</p></li>
+<li><p><strong>index_kwargs</strong> <em>(dict, optional)</em> - Keyword arguments passed to the nearest neighbor index constructor.</p></li>
+<li><p><strong>scaling</strong> <em>(Union[None, str, InputScaling], optional, Default is “learned”)</em> - Strategy for input feature scaling:
+- None/”no_scaling”: No scaling applied.
+- “learned”: Scaling factors learned to maximize prediction performance.</p></li>
+<li><p><strong>scaling_kwargs</strong> <em>(dict, optional)</em> - Keyword arguments passed to the scaling mechanism.</p></li>
+<li><p><strong>precompute_derivatives</strong> <em>(bool, optional, Default is False)</em> - Whether to precompute derivatives for all training points during <cite>fit</cite> (speeds up prediction but increases memory usage).</p></li>
+<li><p><strong>clip</strong> <em>(bool, optional, Default is False)</em> - Whether to clip predicted values to the range of training target values (<cite>[min(y_train), max(y_train)]</cite>).</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">fit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X_train</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">y_train</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">DNNR</span>
+</pre></div>
+</div>
+<p>Trains the DNNR model on training data.</p>
+<p><strong>Parameters:</strong></p>
+<ul class="simple">
+<li><p><strong>X_train</strong> <em>(np.ndarray)</em> - Training features with shape <cite>(n_samples, n_features)</cite>.</p></li>
+<li><p><strong>y_train</strong> <em>(np.ndarray)</em> - Training target values with shape <cite>(n_samples,)</cite>.</p></li>
+</ul>
+<p><strong>Returns:</strong></p>
+<ul class="simple">
+<li><p><strong>DNNR</strong> - The fitted model instance.</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">predict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X_test</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span>
+</pre></div>
+</div>
+<p>Generates predictions for test data.</p>
+<p><strong>Parameters:</strong></p>
+<ul class="simple">
+<li><p><strong>X_test</strong> <em>(np.ndarray)</em> - Test features with shape <cite>(n_test_samples, n_features)</cite>.</p></li>
+</ul>
+<p><strong>Returns:</strong></p>
+<ul class="simple">
+<li><p><strong>np.ndarray</strong> - Predicted target values with shape <cite>(n_test_samples,)</cite>.</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">point_analysis</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X_test</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">y_test</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">DNNRPrediction</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>Performs in-depth analysis of predictions for individual test points, including breakdowns by neighbor.</p>
+<p><strong>Parameters:</strong></p>
+<ul class="simple">
+<li><p><strong>X_test</strong> <em>(np.ndarray)</em> - Test features with shape <cite>(n_test_samples, n_features)</cite>.</p></li>
+<li><p><strong>y_test</strong> <em>(Optional[np.ndarray], Default is None)</em> - True target values for test points, with shape <cite>(n_test_samples,)</cite>.</p></li>
+</ul>
+<p><strong>Returns:</strong></p>
+<ul class="simple">
+<li><p><strong>list[DNNRPrediction]</strong> - Detailed prediction results for each test point.</p></li>
+</ul>
+</section>
+<section id="input-scaling-mechanisms">
+<h2><strong>Input Scaling Mechanisms</strong><a class="headerlink" href="#input-scaling-mechanisms" title="Link to this heading"></a></h2>
+<section id="class-inputscaling-sklearn-base-baseestimator-metaclass-abc-abcmeta">
+<h3>class InputScaling(sklearn.base.BaseEstimator, metaclass=abc.ABCMeta)<a class="headerlink" href="#class-inputscaling-sklearn-base-baseestimator-metaclass-abc-abcmeta" title="Link to this heading"></a></h3>
+<p>Abstract base class for input feature scaling strategies.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">fit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X_train</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">y_train</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">X_test</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">y_test</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span>
+</pre></div>
+</div>
+<p>Fits scaling parameters to training (and optionally validation) data.</p>
+<p><strong>Parameters:</strong></p>
+<ul class="simple">
+<li><p><strong>X_train</strong> <em>(np.ndarray)</em> - Training features.</p></li>
+<li><p><strong>y_train</strong> <em>(np.ndarray)</em> - Training target values.</p></li>
+<li><p><strong>X_test</strong> <em>(Optional[np.ndarray])</em> - Validation features (if used for fitting).</p></li>
+<li><p><strong>y_test</strong> <em>(Optional[np.ndarray])</em> - Validation target values (if used for fitting).</p></li>
+</ul>
+<p><strong>Returns:</strong></p>
+<ul class="simple">
+<li><p><strong>np.ndarray</strong> - Learned scaling vector.</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">transform</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span>
+</pre></div>
+</div>
+<p>Applies the learned scaling to input data.</p>
+<p><strong>Parameters:</strong></p>
+<ul class="simple">
+<li><p><strong>X</strong> <em>(np.ndarray)</em> - Input features to scale.</p></li>
+</ul>
+<p><strong>Returns:</strong></p>
+<ul class="simple">
+<li><p><strong>np.ndarray</strong> - Scaled features.</p></li>
+</ul>
+</section>
+<section id="class-noscaling-inputscaling">
+<h3>class NoScaling(InputScaling)<a class="headerlink" href="#class-noscaling-inputscaling" title="Link to this heading"></a></h3>
+<p>A scaling strategy that applies no scaling (identity transformation).</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">fit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X_train</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">y_train</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">X_test</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">y_test</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span>
+</pre></div>
+</div>
+<p>Fits the scaling (returns a vector of ones).</p>
+<p><strong>Returns:</strong></p>
+<ul class="simple">
+<li><p><strong>np.ndarray</strong> - Vector of ones with shape <cite>(n_features,)</cite>.</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">transform</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span>
+</pre></div>
+</div>
+<p>Returns the input data unchanged.</p>
+<p><strong>Parameters:</strong></p>
+<ul class="simple">
+<li><p><strong>X</strong> <em>(np.ndarray)</em> - Input features.</p></li>
+</ul>
+<p><strong>Returns:</strong></p>
+<ul class="simple">
+<li><p><strong>np.ndarray</strong> - Unmodified input features.</p></li>
+</ul>
+</section>
+<section id="class-learnedscaling-inputscaling">
+<h3>class LearnedScaling(InputScaling)<a class="headerlink" href="#class-learnedscaling-inputscaling" title="Link to this heading"></a></h3>
+<p>A scaling strategy that learns feature scaling factors to optimize prediction performance via a cosine similarity objective.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">n_epochs</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">optimizer</span><span class="o">=</span><span class="n">SGD</span><span class="p">,</span> <span class="n">optimizer_params</span><span class="o">=</span><span class="n">dataclasses</span><span class="o">.</span><span class="n">field</span><span class="p">(</span><span class="n">default_factory</span><span class="o">=</span><span class="nb">dict</span><span class="p">),</span> <span class="n">shuffle</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">epsilon</span><span class="o">=</span><span class="mf">1e-6</span><span class="p">,</span> <span class="n">random</span><span class="o">=</span><span class="n">dataclasses</span><span class="o">.</span><span class="n">field</span><span class="p">(</span><span class="n">default_factory</span><span class="o">=</span><span class="k">lambda</span><span class="p">:</span> <span class="n">random_mod</span><span class="o">.</span><span class="n">Random</span><span class="p">(</span><span class="n">random_mod</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="o">**</span><span class="mi">32</span> <span class="o">-</span> <span class="mi">1</span><span class="p">))),</span> <span class="n">show_progress</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">fail_on_nan</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="s1">&#39;annoy&#39;</span><span class="p">,</span> <span class="n">index_kwargs</span><span class="o">=</span><span class="n">dataclasses</span><span class="o">.</span><span class="n">field</span><span class="p">(</span><span class="n">default_factory</span><span class="o">=</span><span class="nb">dict</span><span class="p">))</span>
+</pre></div>
+</div>
+<p><strong>Parameters:</strong></p>
+<ul class="simple">
+<li><p><strong>n_epochs</strong> <em>(int, optional, Default is 1)</em> - Number of epochs to train the scaling factors.</p></li>
+<li><p><strong>optimizer</strong> <em>(Union[str, Type[_Optimizer]], optional, Default is SGD)</em> - Optimization algorithm for learning scaling factors. Can be “sgd”, “rmsprop”, or a custom <cite>_Optimizer</cite> subclass.</p></li>
+<li><p><strong>optimizer_params</strong> <em>(dict, optional)</em> - Hyperparameters for the optimizer (e.g., learning rate).</p></li>
+<li><p><strong>shuffle</strong> <em>(bool, optional, Default is True)</em> - Whether to shuffle training data during optimization.</p></li>
+<li><p><strong>epsilon</strong> <em>(float, optional, Default is 1e-6)</em> - Small value to prevent division by zero.</p></li>
+<li><p><strong>random</strong> <em>(random_mod.Random)</em> - Random number generator for reproducibility.</p></li>
+<li><p><strong>show_progress</strong> <em>(bool, optional, Default is False)</em> - Whether to display a progress bar during training.</p></li>
+<li><p><strong>fail_on_nan</strong> <em>(bool, optional, Default is False)</em> - Whether to raise an error if NaN values appear in gradients.</p></li>
+<li><p><strong>index</strong> <em>(Union[str, Type[BaseIndex]], optional, Default is ‘annoy’)</em> - Nearest neighbor index type used during scaling training.</p></li>
+<li><p><strong>index_kwargs</strong> <em>(dict, optional)</em> - Keyword arguments for the nearest neighbor index.</p></li>
+</ul>
+</section>
+</section>
+<section id="optimizers">
+<h2><strong>Optimizers</strong><a class="headerlink" href="#optimizers" title="Link to this heading"></a></h2>
+<p>&#64;dataclasses.dataclass
+class SGD(_Optimizer)
+~~~~~~~~~~~~~~~~~~~~~</p>
+<p>Stochastic Gradient Descent optimizer for updating parameters.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parameters</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">],</span> <span class="n">lr</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.01</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Parameters:</strong></p>
+<ul class="simple">
+<li><p><strong>parameters</strong> <em>(List[np.ndarray])</em> - List of parameters to optimize.</p></li>
+<li><p><strong>lr</strong> <em>(float, optional, Default is 0.01)</em> - Learning rate.</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">step</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">gradients</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kc">None</span>
+</pre></div>
+</div>
+<p>Updates parameters using computed gradients.</p>
+<p><strong>Parameters:</strong></p>
+<ul class="simple">
+<li><p><strong>gradients</strong> <em>(List[np.ndarray])</em> - Gradients of the loss with respect to each parameter.</p></li>
+</ul>
+<p>&#64;dataclasses.dataclass
+class RMSPROP(_Optimizer)
+~~~~~~~~~~~~~~~~~~~~~~~~</p>
+<p>RMSPROP optimizer, which adapts learning rates using a moving average of squared gradients.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parameters</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">],</span> <span class="n">lr</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">1e-4</span><span class="p">,</span> <span class="n">γ</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.99</span><span class="p">,</span> <span class="n">eps</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">1e-08</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Parameters:</strong></p>
+<ul class="simple">
+<li><p><strong>parameters</strong> <em>(List[np.ndarray])</em> - List of parameters to optimize.</p></li>
+<li><p><strong>lr</strong> <em>(float, optional, Default is 1e-4)</em> - Learning rate.</p></li>
+<li><p><strong>γ</strong> <em>(float, optional, Default is 0.99)</em> - Decay rate for the moving average of squared gradients.</p></li>
+<li><p><strong>eps</strong> <em>(float, optional, Default is 1e-08)</em> - Small value to prevent division by zero.</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">step</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">gradients</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kc">None</span>
+</pre></div>
+</div>
+<p>Updates parameters using computed gradients and adaptive learning rates.</p>
+<p><strong>Parameters:</strong></p>
+<ul class="simple">
+<li><p><strong>gradients</strong> <em>(List[np.ndarray])</em> - Gradients of the loss with respect to each parameter.</p></li>
+</ul>
+</section>
+<section id="nearest-neighbor-indices">
+<h2><strong>Nearest Neighbor Indices</strong><a class="headerlink" href="#nearest-neighbor-indices" title="Link to this heading"></a></h2>
+<section id="class-baseindex-sklearn-base-baseestimator-metaclass-abc-abcmeta">
+<h3>class BaseIndex(sklearn.base.BaseEstimator, metaclass=abc.ABCMeta)<a class="headerlink" href="#class-baseindex-sklearn-base-baseestimator-metaclass-abc-abcmeta" title="Link to this heading"></a></h3>
+<p>Abstract base class for nearest neighbor indexing structures.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">fit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span>
+</pre></div>
+</div>
+<p>Builds the index from input data.</p>
+<p><strong>Parameters:</strong></p>
+<ul class="simple">
+<li><p><strong>x</strong> <em>(np.ndarray)</em> - Data to index, with shape <cite>(n_samples, n_features)</cite>.</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">query_knn</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">v</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">k</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>Retrieves the k nearest neighbors of a query point.</p>
+<p><strong>Parameters:</strong></p>
+<ul class="simple">
+<li><p><strong>v</strong> <em>(np.ndarray)</em> - Query point with shape <cite>(n_features,)</cite>.</p></li>
+<li><p><strong>k</strong> <em>(int)</em> - Number of neighbors to retrieve.</p></li>
+</ul>
+<p><strong>Returns:</strong></p>
+<ul class="simple">
+<li><p><strong>tuple[np.ndarray, np.ndarray]</strong> - Tuple containing:
+- Indices of the k nearest neighbors (shape <cite>(k,)</cite>)
+- Distances to the k nearest neighbors (shape <cite>(k,)</cite>)</p></li>
+</ul>
+<p>&#64;dataclasses.dataclass
+class KDTreeIndex(BaseIndex)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~</p>
+<p>KD-Tree based index for exact nearest neighbor search (uses <cite>sklearn.neighbors.KDTree</cite>).</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">metric</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;euclidean&quot;</span><span class="p">,</span> <span class="n">leaf_size</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">40</span><span class="p">,</span> <span class="n">kwargs</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">=</span> <span class="n">dataclasses</span><span class="o">.</span><span class="n">field</span><span class="p">(</span><span class="n">default_factory</span><span class="o">=</span><span class="nb">dict</span><span class="p">))</span>
+</pre></div>
+</div>
+<p><strong>Parameters:</strong></p>
+<ul class="simple">
+<li><p><strong>metric</strong> <em>(str, optional, Default is “euclidean”)</em> - Distance metric to use (e.g., “euclidean”, “manhattan”).</p></li>
+<li><p><strong>leaf_size</strong> <em>(int, optional, Default is 40)</em> - Size of leaves in the KD-Tree (affects memory and speed).</p></li>
+<li><p><strong>kwargs</strong> <em>(dict, optional)</em> - Additional keyword arguments passed to <cite>sklearn.neighbors.KDTree</cite>.</p></li>
+</ul>
+<p>&#64;dataclasses.dataclass
+class AnnoyIndex(BaseIndex)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~</p>
+<p>Annoy (Approximate Nearest Neighbors Oh Yeah) index for fast approximate nearest neighbor search.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">metric</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;euclidean&quot;</span><span class="p">,</span> <span class="n">n_trees</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">50</span><span class="p">,</span> <span class="n">n_features</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Parameters:</strong></p>
+<ul class="simple">
+<li><p><strong>metric</strong> <em>(str, optional, Default is “euclidean”)</em> - Distance metric to use.</p></li>
+<li><p><strong>n_trees</strong> <em>(int, optional, Default is 50)</em> - Number of trees in the Annoy index (trades off speed and accuracy).</p></li>
+<li><p><strong>n_features</strong> <em>(Optional[int])</em> - Dimensionality of input features (inferred from data during <cite>fit</cite> if None).</p></li>
+</ul>
+</section>
+</section>
+<section id="linear-solvers">
+<h2><strong>Linear Solvers</strong><a class="headerlink" href="#linear-solvers" title="Link to this heading"></a></h2>
+<section id="class-solver-abc">
+<h3>class Solver(ABC)<a class="headerlink" href="#class-solver-abc" title="Link to this heading"></a></h3>
+<p>Abstract base class for solving linear systems to estimate derivatives.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">solve</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">a</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">b</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">w</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span>
+</pre></div>
+</div>
+<p>Solves the weighted linear system <cite>a^T * diag(w) * a * x = a^T * diag(w) * b</cite>.</p>
+<p><strong>Parameters:</strong></p>
+<ul class="simple">
+<li><p><strong>a</strong> <em>(np.ndarray)</em> - Design matrix with shape <cite>(n_samples, n_features)</cite>.</p></li>
+<li><p><strong>b</strong> <em>(np.ndarray)</em> - Target vector with shape <cite>(n_samples,)</cite>.</p></li>
+<li><p><strong>w</strong> <em>(np.ndarray)</em> - Weights for each sample with shape <cite>(n_samples,)</cite>.</p></li>
+</ul>
+<p><strong>Returns:</strong></p>
+<ul class="simple">
+<li><p><strong>np.ndarray</strong> - Solution vector <cite>x</cite> with shape <cite>(n_features,)</cite>.</p></li>
+</ul>
+</section>
+<section id="class-sklinearregression-solver">
+<h3>class SKLinearRegression(Solver)<a class="headerlink" href="#class-sklinearregression-solver" title="Link to this heading"></a></h3>
+<p>Solver using <cite>sklearn.linear_model.LinearRegression</cite> (ordinary least squares).</p>
+</section>
+<section id="class-skridge-solver">
+<h3>class SKRidge(Solver)<a class="headerlink" href="#class-skridge-solver" title="Link to this heading"></a></h3>
+<p>Solver using <cite>sklearn.linear_model.Ridge</cite> (ridge regression with L2 regularization).</p>
+</section>
+<section id="class-sklasso-solver">
+<h3>class SKLasso(Solver)<a class="headerlink" href="#class-sklasso-solver" title="Link to this heading"></a></h3>
+<p>Solver using <cite>sklearn.linear_model.Lasso</cite> (L1 regularization).</p>
+</section>
+<section id="class-scipylsqr-solver">
+<h3>class ScipyLsqr(Solver)<a class="headerlink" href="#class-scipylsqr-solver" title="Link to this heading"></a></h3>
+<p>Solver using <cite>scipy.sparse.linalg.lsqr</cite> (iterative least squares for sparse systems).</p>
+</section>
+<section id="class-npsolver-solver">
+<h3>class NPSolver(Solver)<a class="headerlink" href="#class-npsolver-solver" title="Link to this heading"></a></h3>
+<p>Solver using numpy’s pseudoinverse (<cite>np.linalg.pinv</cite>) for solving linear systems.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">create_solver</span><span class="p">(</span><span class="n">solver</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Solver</span>
+</pre></div>
+</div>
+<p>Creates a <cite>Solver</cite> instance from a string identifier.</p>
+<p><strong>Parameters:</strong></p>
+<ul class="simple">
+<li><p><strong>solver</strong> <em>(str)</em> - Name of the solver (“linear_regression”, “ridge”, “lasso”, “scipy_lsqr”, or “numpy”).</p></li>
+</ul>
+<p><strong>Returns:</strong></p>
+<ul class="simple">
+<li><p><strong>Solver</strong> - Instance of the requested solver.</p></li>
+</ul>
+</section>
+</section>
+<section id="helper-functions">
+<h2><strong>Helper Functions</strong><a class="headerlink" href="#helper-functions" title="Link to this heading"></a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">get_index_class</span><span class="p">(</span><span class="n">index</span><span class="p">:</span> <span class="nb">type</span><span class="p">[</span><span class="n">BaseIndex</span><span class="p">]</span> <span class="o">|</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">type</span><span class="p">[</span><span class="n">BaseIndex</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>Retrieves the nearest neighbor index class corresponding to a string or class.</p>
+<p><strong>Parameters:</strong></p>
+<ul class="simple">
+<li><p><strong>index</strong> <em>(Union[str, type[BaseIndex]])</em> - Index name (“annoy” or “kd_tree”) or a <cite>BaseIndex</cite> subclass.</p></li>
+</ul>
+<p><strong>Returns:</strong></p>
+<ul class="simple">
+<li><p><strong>type[BaseIndex]</strong> - Nearest neighbor index class.</p></li>
+</ul>
+<p><strong>Referencses:</strong></p>
+<p>DNNR: Differential Nearest Neighbors Regression
+Youssef Nader, Leon Sixt, Tim Landgraf
+In Proceedings of the 39th International Conference on Machine Learning (ICML 2022),
+PMLR 162:16296–16317, 2022.
+PDF &lt;<a class="reference external" href="https://proceedings.mlr.press/v162/nader22a/nader22a.pdf">https://proceedings.mlr.press/v162/nader22a/nader22a.pdf</a>&gt;_
+Project page &lt;<a class="reference external" href="https://proceedings.mlr.press/v162/nader22a.html">https://proceedings.mlr.press/v162/nader22a.html</a>&gt;_</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Read the Docs core team.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
