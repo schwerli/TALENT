@@ -1,11 +1,11 @@
 **Data**
-=====================================
+========
 
 A collection of functions for loading, preprocessing, and preparing tabular data for machine learning tasks, including handling missing values, encoding features, and creating data loaders.
 
 
-**Dataset Loading**
--------------------
+Functions
+~~~~~~~~~
 
 .. code-block:: python
 
@@ -46,9 +46,6 @@ Splits loaded data into training/validation and test sets.
   - Dataset metadata.
 
 
-**Missing Value Handling**
---------------------------
-
 .. code-block:: python
 
     def data_nan_process(N_data, C_data, num_nan_policy, cat_nan_policy, num_new_value=None, imputer=None, cat_new_value=None) -> Tuple[ArrayDict, ArrayDict, Optional[np.ndarray], Optional[SimpleImputer], Optional[str]]
@@ -75,9 +72,6 @@ Processes missing values in numerical and categorical features.
   - Value used to fill categorical NaNs (if used).
 
 
-**Numerical Feature Encoding**
-------------------------------
-
 .. code-block:: python
 
     def num_enc_process(N_data, num_policy, n_bins=2, y_train=None, is_regression=False, encoder=None) -> Tuple[ArrayDict, Optional[Union[PiecewiseLinearEncoding, UnaryEncoding, BinsEncoding, JohnsonEncoding]]]
@@ -99,30 +93,6 @@ Encodes numerical features using various strategies (e.g., piecewise linear, una
   - Encoded numerical features.
   - Fitted encoder.
 
-
-**Categorical Feature Encoding**
----------------------------------
-
-.. code-block:: python
-
-    def num_enc_process(N_data, num_policy, n_bins=2, y_train=None, is_regression=False, encoder=None) -> Tuple[ArrayDict, Optional[Any]]
-
-Encodes numerical features using various strategies (e.g., piecewise linear, bins, Johnson transformations).
-
-**Parameters:**
-
-* **N_data** *(ArrayDict)* - Numerical data (or None).
-* **num_policy** *(str)* - Encoding strategy (e.g., `Q_PLE` for quantile-based piecewise linear, `T_bins` for tree-based binning).
-* **n_bins** *(int, optional, Default is 2)* - Number of bins for discretization.
-* **y_train** *(Optional[np.ndarray])* - Training labels (for supervised encoding).
-* **is_regression** *(bool, optional, Default is False)* - Whether the task is regression.
-* **encoder** *(Optional)* - Pre-fitted encoder (if None, fits a new one).
-
-**Returns:**
-
-* **Tuple** containing:
-  - Encoded numerical data.
-  - Fitted encoder.
 
 .. code-block:: python
 
@@ -158,9 +128,6 @@ Encodes categorical features using various strategies (e.g., one-hot, target enc
   - Fitted categorical encoder.
 
 
-**Feature Normalization**
--------------------------
-
 .. code-block:: python
 
     def data_norm_process(N_data, normalization, seed, normalizer=None) -> Tuple[ArrayDict, Optional[TransformerMixin]]
@@ -188,9 +155,6 @@ Applies normalization to numerical features.
   - Fitted normalizer.
 
 
-**Label Processing**
---------------------
-
 .. code-block:: python
 
     def data_label_process(y_data, is_regression, info=None, encoder=None) -> Tuple[ArrayDict, Dict[str, Any], Optional[LabelEncoder]]
@@ -211,11 +175,6 @@ Processes labels for regression or classification tasks.
   - Metadata (mean/std for regression; classes for classification).
   - Fitted label encoder (for classification).
 
-**Data Loader and Utility Functions**
-=====================================
-
-**Data Loader Preparation**
----------------------------
 
 .. code-block:: python
 
@@ -224,6 +183,7 @@ Processes labels for regression or classification tasks.
 Prepares PyTorch DataLoaders for training/validation or test data, with proper type casting and device placement.
 
 **Parameters:**
+
 * **is_regression** *(bool)* - Whether the task is regression (vs. classification).
 * **X** *(Tuple[ArrayDict, ArrayDict])* - Tuple of numerical and categorical data (each as `ArrayDict`).
 * **Y** *(ArrayDict)* - Label data.
@@ -234,6 +194,7 @@ Prepares PyTorch DataLoaders for training/validation or test data, with proper t
 * **is_float** *(bool, optional, Default is False)* - If True, casts data to `float32`; otherwise uses `float64`.
 
 **Returns:**
+
 * If `is_train=True`:
   - Tuple containing:
     - Processed numerical data (on device).
@@ -251,7 +212,6 @@ Prepares PyTorch DataLoaders for training/validation or test data, with proper t
     - Loss function.
 
 
-
 .. code-block:: python
 
     def to_tensors(data: ArrayDict) -> Dict[str, torch.Tensor]
@@ -267,9 +227,6 @@ Converts numpy arrays in an `ArrayDict` to PyTorch tensors.
 * **Dict[str, torch.Tensor]** - Dictionary with the same keys, where numpy arrays are converted to PyTorch tensors.
 
 
-**Categorical Feature Cardinality**
------------------------------------
-
 .. code-block:: python
 
     def get_categories(X_cat: Optional[Dict[str, torch.Tensor]]) -> Optional[List[int]]
@@ -283,3 +240,26 @@ Computes the number of unique categories for each categorical feature.
 **Returns:**
 
 * **Optional[List[int]]** - List where each element is the number of unique categories for the corresponding feature. Returns `None` if `X_cat` is `None`.
+
+
+.. code-block:: python
+
+    class Dataset
+
+A dataclass for storing tabular dataset information.
+
+**Fields:**
+
+* **N** *(Optional[ArrayDict])* - Numerical features (or None if not available).
+* **C** *(Optional[ArrayDict])* - Categorical features (or None if not available).
+* **y** *(ArrayDict)* - Labels for all splits.
+* **info** *(Dict[str, Any])* - Dataset metadata.
+
+**Properties:**
+
+* **is_binclass** *(bool)* - Whether the task is binary classification.
+* **is_multiclass** *(bool)* - Whether the task is multiclass classification.
+* **is_regression** *(bool)* - Whether the task is regression.
+* **n_num_features** *(int)* - Number of numerical features.
+* **n_cat_features** *(int)* - Number of categorical features.
+* **n_features** *(int)* - Total number of features. 

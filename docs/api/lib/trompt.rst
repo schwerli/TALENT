@@ -1,11 +1,11 @@
 **Trompt**
-===========================================
+==========
 
 A prompt-based deep neural network for tabular data that separates learning into intrinsic column features and sample-specific feature importance.
 
 
-**Embedding Layers**
---------------------
+Functions
+~~~~~~~~~
 
 .. code-block:: python
 
@@ -46,9 +46,6 @@ Embeddings for categorical features with support for unknown categories.
 
 `(*, n_cat_features, d_embedding)`
 
-
-**Trompt Components**
----------------------
 
 .. code-block:: python
 
@@ -153,20 +150,11 @@ Decodes the output of the Trompt cells into final predictions.
 
 **Output:**
 
-* **Tensor** - Decoded predictions.
+* **Tensor** - Decoded predictions. 
 
 
-**Key Architecture Features**
------------------------------
+**Reference**
 
-1. **Feature Importance Calculation**: Uses prompts to dynamically weight features.
-2. **Modular Design**: Separates embedding, importance calculation, and decoding.
-3. **Support for Mixed Data**: Handles both numerical and categorical features.
-4. **Dynamic Feature Selection**: Adapts to input data using learned prompts.
-5. **Residual Connections**: Maintains information flow through the network.
+Kuan-Yu Chen, Ping-Han Chiang, Hsin-Rung Chou, Ting-Wei Chen, and Tien-Hao Chang. **Trompt: Towards a Better Deep Neural Network for Tabular Data**. arXiv:2305.18446 [cs.LG], 2023. `<https://arxiv.org/abs/2305.18446>`_
 
-This architecture is particularly suitable for tabular data tasks where feature importance may vary across samples.
 
-##References##
-
-K.-Y. Chen, P.-H. Chiang, H.-R. Chou, T.-W. Chen, and T.-H. Chang, “Trompt: Towards a Better Deep Neural Network for Tabular Data,” arXiv preprint arXiv:2305.18446, 2023. [Online]. Available: `<https://arxiv.org/abs/2305.18446>`_
