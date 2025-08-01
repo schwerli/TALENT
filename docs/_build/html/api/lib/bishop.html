@@ -18,7 +18,9 @@
       <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
-    <link rel="search" title="Search" href="../../search.html" /> 
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="DANet" href="danets.html" />
+    <link rel="prev" title="AMFormer" href="amformer.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -85,11 +87,42 @@
 <li class="toctree-l1"><a class="reference internal" href="../../experimental_results.html#conclusion">Conclusion</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">API Docs</span></p>
-<ul>
+<ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../core.html">Core Components</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../deep_learning.html">Deep Learning Models</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../classical_methods.html">Classical Methods</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../lib.html">Library Components</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../classical_model/index.html">Classical Methods</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Library Components</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="amformer.html"><strong>AMFormer</strong></a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#"><strong>BiSHop</strong></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#functions">Functions</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="danets.html"><strong>DANet</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="dnnr.html"><strong>DNNR</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="excelformer.html"><strong>ExcelFormer</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="hyperfast.html"><strong>HyperFast</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="node.html"><strong>NODE</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="num_embeddings.html"><strong>num_embeddings</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="periodic_tab_dl.html"><strong>Periodic Tab DL</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="pfn_v2.html"><strong>PFN v2</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="ptarl.html"><strong>PTaRL</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="realmlp.html"><strong>RealMLP</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="tabcaps.html"><strong>TabCaps</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="tabicl.html"><strong>TabICL</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="tabm.html"><strong>TabM</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="tabnet.html"><strong>TabNet</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="tabpfn.html"><strong>TabPFN</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="tabptm.html"><strong>TabPTM</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="tabr.html"><strong>TabR</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="TData.html"><strong>TData</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="trompt.html"><strong>Trompt</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#available-components">Available Components</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#common-features">Common Features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#usage-example">Usage Example</a></li>
+</ul>
+</li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Acknowledgements</span></p>
 <ul>
@@ -110,6 +143,7 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Library Components</a></li>
       <li class="breadcrumb-item active"><strong>BiSHop</strong></li>
       <li class="wy-breadcrumbs-aside">
             <a href="../../_sources/api/lib/bishop.rst.txt" rel="nofollow"> View page source</a>
@@ -122,835 +156,120 @@
              
   <section id="bishop">
 <h1><strong>BiSHop</strong><a class="headerlink" href="#bishop" title="Link to this heading"></a></h1>
-<p>BiSHop leverages a sparse Hopfield model with adaptable sparsity, enhanced by column-wise and row-wise modules. It’s specifically designed to address challenges in processing rotationally invariant and sparse tabular data.</p>
-<section id="class-gsh-torch-nn-module">
-<h2>class GSH(torch.nn.Module)<a class="headerlink" href="#class-gsh-torch-nn-module" title="Link to this heading"></a></h2>
-<p><strong>Generalized Sparse Hopfield module</strong></p>
-<p>A generic sparse Hopfield module that implements an attention mechanism based on generalized sparse activation functions.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">dropout</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">actv</span><span class="o">=</span><span class="s1">&#39;sparsemax&#39;</span><span class="p">)</span>
+<p>An end-to-end framework for deep tabular learning which leverages a sparse Hopfield model with adaptable sparsity, enhanced by column-wise and row-wise modules.</p>
+<section id="functions">
+<h2>Functions<a class="headerlink" href="#functions" title="Link to this heading"></a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">NumEmb</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">)</span>
 </pre></div>
 </div>
-<p><strong>Parameters:</strong></p>
-<ul class="simple">
-<li><p><strong>scale</strong> <em>(float, optional, Default is None)</em> - Scaling factor for attention scores. If None, it is automatically set to 1/√(feature dimension).</p></li>
-<li><p><strong>dropout</strong> <em>(float, optional, Default is 0.1)</em> - Dropout ratio applied to attention weights.</p></li>
-<li><p><strong>actv</strong> <em>(str, optional, Default is ‘sparsemax’)</em> - Type of activation function. Options:
-- ‘softmax’: Uses standard Softmax.
-- ‘sparsemax’: Uses Sparsemax sparse activation.
-- Other: Uses EntmaxAlpha activation.</p></li>
-</ul>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">queries</span><span class="p">,</span> <span class="n">keys</span><span class="p">,</span> <span class="n">values</span><span class="p">)</span>
-</pre></div>
-</div>
-<p><strong>Parameters:</strong></p>
-<ul class="simple">
-<li><p><strong>queries</strong> <em>(torch.Tensor)</em> - Query tensor with shape [batch_size, query_seq_len, num_heads, head_dim].</p></li>
-<li><p><strong>keys</strong> <em>(torch.Tensor)</em> - Key tensor with shape [batch_size, key_seq_len, num_heads, head_dim].</p></li>
-<li><p><strong>values</strong> <em>(torch.Tensor)</em> - Value tensor with shape [batch_size, value_seq_len, num_heads, value_dim].</p></li>
-</ul>
-<p><strong>Returns:</strong></p>
-<ul class="simple">
-<li><p><strong>torch.Tensor</strong> - Attention output tensor with shape [batch_size, query_seq_len, num_heads, value_dim], in contiguous memory layout.</p></li>
-</ul>
-</section>
-<section id="class-gshlayer-torch-nn-module">
-<h2>class GSHLayer(torch.nn.Module)<a class="headerlink" href="#class-gshlayer-torch-nn-module" title="Link to this heading"></a></h2>
-<p><strong>Generalized Sparse Hopfield (GSH) layer</strong></p>
-<p>A generalized sparse Hopfield attention layer that encapsulates the complete implementation of multi-head attention mechanism.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">d_model</span><span class="o">=</span><span class="mi">512</span><span class="p">,</span> <span class="n">n_heads</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">d_keys</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">d_values</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">mix</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">dropout</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">actv</span><span class="o">=</span><span class="s1">&#39;entmax&#39;</span><span class="p">,</span> <span class="n">hopfield</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-</pre></div>
-</div>
-<p><strong>Parameters:</strong></p>
-<ul class="simple">
-<li><p><strong>d_model</strong> <em>(int, optional, Default is 512)</em> - Hidden feature dimension.</p></li>
-<li><p><strong>n_heads</strong> <em>(int, optional, Default is 8)</em> - Number of attention heads.</p></li>
-<li><p><strong>d_keys</strong> <em>(int, optional, Default is None)</em> - Projection dimension for queries and keys. If None, set to d_model//n_heads.</p></li>
-<li><p><strong>d_values</strong> <em>(int, optional, Default is None)</em> - Projection dimension for values. If None, set to d_model//n_heads.</p></li>
-<li><p><strong>mix</strong> <em>(bool, optional, Default is True)</em> - Whether to mix the dimension order of the output in the forward pass.</p></li>
-<li><p><strong>dropout</strong> <em>(float, optional, Default is 0.1)</em> - Dropout ratio.</p></li>
-<li><p><strong>actv</strong> <em>(str, optional, Default is ‘entmax’)</em> - Type of activation function (same as GSH module).</p></li>
-<li><p><strong>hopfield</strong> <em>(bool, optional, Default is True)</em> - Whether to use the Hopfield attention mechanism. If False, uses classical Transformer attention.</p></li>
-</ul>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">queries</span><span class="p">,</span> <span class="n">keys</span><span class="p">,</span> <span class="n">values</span><span class="p">)</span>
-</pre></div>
-</div>
-<p><strong>Parameters:</strong></p>
-<ul class="simple">
-<li><p><strong>queries</strong> <em>(torch.Tensor)</em> - Query input tensor with shape [batch_size, query_seq_len, d_model].</p></li>
-<li><p><strong>keys</strong> <em>(torch.Tensor)</em> - Key input tensor with shape [batch_size, key_seq_len, d_model].</p></li>
-<li><p><strong>values</strong> <em>(torch.Tensor)</em> - Value input tensor with shape [batch_size, value_seq_len, d_model].</p></li>
-</ul>
-<p><strong>Returns:</strong></p>
-<ul class="simple">
-<li><p><strong>torch.Tensor</strong> - Attention layer output tensor with shape [batch_size, query_seq_len, d_model].</p></li>
-</ul>
-</section>
-<section id="class-bamodule-torch-nn-module">
-<h2>class BAModule(torch.nn.Module)<a class="headerlink" href="#class-bamodule-torch-nn-module" title="Link to this heading"></a></h2>
-<p><strong>BAModule (Feature and Embedding Interaction Module)</strong></p>
-<p>A feature and embedding interaction module that combines cross-feature attention and cross-embedding attention to achieve complex feature interactions.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">n_pool</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">factor</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">d_model</span><span class="o">=</span><span class="mi">512</span><span class="p">,</span> <span class="n">n_heads</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">d_ff</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">dropout</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">actv</span><span class="o">=</span><span class="s1">&#39;entmax&#39;</span><span class="p">,</span> <span class="n">hopfield</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-</pre></div>
-</div>
-<p><strong>Parameters:</strong></p>
-<ul class="simple">
-<li><p><strong>n_pool</strong> <em>(int, optional, Default is 10)</em> - Number of pooling vectors.</p></li>
-<li><p><strong>factor</strong> <em>(int, optional, Default is 8)</em> - Factor dimension for pooling vectors.</p></li>
-<li><p><strong>d_model</strong> <em>(int, optional, Default is 512)</em> - Hidden feature dimension.</p></li>
-<li><p><strong>n_heads</strong> <em>(int, optional, Default is 8)</em> - Number of attention heads.</p></li>
-<li><p><strong>d_ff</strong> <em>(int, optional, Default is None)</em> - Hidden layer dimension for the feedforward network. If None, set to 4*d_model.</p></li>
-<li><p><strong>dropout</strong> <em>(float, optional, Default is 0.1)</em> - Dropout ratio.</p></li>
-<li><p><strong>actv</strong> <em>(str, optional, Default is ‘entmax’)</em> - Type of activation function (same as GSH module).</p></li>
-<li><p><strong>hopfield</strong> <em>(bool, optional, Default is True)</em> - Whether to use the Hopfield attention mechanism.</p></li>
-</ul>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
-</pre></div>
-</div>
-<p><strong>Parameters:</strong></p>
-<ul class="simple">
-<li><p><strong>x</strong> <em>(torch.Tensor)</em> - Input patched embedded tabular data with shape [batch_size, embedding_dim, num_patches, d_model].</p></li>
-</ul>
-<p><strong>Returns:</strong></p>
-<ul class="simple">
-<li><p><strong>torch.Tensor</strong> - Processed patched embedded tabular data with shape [batch_size, embedding_dim, n_pool, d_model].</p></li>
-</ul>
-</section>
-<section id="class-decoderlayer-torch-nn-module">
-<h2>class DecoderLayer(torch.nn.Module)<a class="headerlink" href="#class-decoderlayer-torch-nn-module" title="Link to this heading"></a></h2>
-<p>A single decoder layer combining BAModule and GSHLayer for cross-attention and feature refinement.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">patch_dim</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">n_pool</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">factor</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">actv</span><span class="o">=</span><span class="s1">&#39;entmax&#39;</span><span class="p">,</span> <span class="n">hopfield</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">d_model</span><span class="o">=</span><span class="mi">512</span><span class="p">,</span> <span class="n">n_heads</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">d_ff</span><span class="o">=</span><span class="mi">1024</span><span class="p">,</span> <span class="n">dropout</span><span class="o">=</span><span class="mf">0.2</span><span class="p">)</span>
-</pre></div>
-</div>
-<p><strong>Parameters:</strong></p>
-<ul class="simple">
-<li><p><strong>patch_dim</strong> <em>(int, optional, Default is 10)</em> - Dimension of output patches (segment length).</p></li>
-<li><p><strong>n_pool</strong> <em>(int, optional, Default is 10)</em> - Number of pooling vectors for BAModule.</p></li>
-<li><p><strong>factor</strong> <em>(int, optional, Default is 10)</em> - Factor dimension for pooling vectors in BAModule.</p></li>
-<li><p><strong>actv</strong> <em>(str, optional, Default is ‘entmax’)</em> - Activation function type for attention mechanisms.</p></li>
-<li><p><strong>hopfield</strong> <em>(bool, optional, Default is True)</em> - Whether to use Hopfield attention (True) or classical Transformer attention (False).</p></li>
-<li><p><strong>d_model</strong> <em>(int, optional, Default is 512)</em> - Hidden feature dimension.</p></li>
-<li><p><strong>n_heads</strong> <em>(int, optional, Default is 8)</em> - Number of attention heads.</p></li>
-<li><p><strong>d_ff</strong> <em>(int, optional, Default is 1024)</em> - Hidden layer dimension for feedforward networks in BAModule.</p></li>
-<li><p><strong>dropout</strong> <em>(float, optional, Default is 0.2)</em> - Dropout probability applied throughout the layer.</p></li>
-</ul>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">enc_x</span><span class="p">)</span>
-</pre></div>
-</div>
-<p><strong>Parameters:</strong></p>
-<ul class="simple">
-<li><p><strong>x</strong> <em>(torch.Tensor)</em> - Input tensor to the decoder layer, shape: [batch_size, embedding_dim, num_patches, d_model].</p></li>
-<li><p><strong>enc_x</strong> <em>(torch.Tensor)</em> - Encoded input tensor from the encoder, shape: [batch_size, embedding_dim, n_pool, d_model].</p></li>
-</ul>
-<p><strong>Returns:</strong></p>
-<ul class="simple">
-<li><p><strong>dec_out</strong> <em>(torch.Tensor)</em> - Refined decoder output before final projection, shape: [batch_size, embedding_dim, n_out, d_model].</p></li>
-<li><p><strong>layer_predict</strong> <em>(torch.Tensor)</em> - Layer-specific prediction tensor, shape: [batch_size, (embedding_dim * n_out), patch_dim].</p></li>
-</ul>
-<p><strong>Description:</strong>
-1. Processes input through BAModule to enhance feature interactions.
-2. Applies cross-attention (via GSHLayer) between decoder input and encoder output.
-3. Refines features with residual connections, layer normalization, and a small MLP.
-4. Projects outputs to the target patch dimension for prediction.</p>
-</section>
-<section id="class-decoder-torch-nn-module">
-<h2>class Decoder(torch.nn.Module)<a class="headerlink" href="#class-decoder-torch-nn-module" title="Link to this heading"></a></h2>
-<p>A stacked decoder consisting of multiple DecoderLayer instances for iterative refinement.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">d_layer</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">patch_dim</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">n_pool</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">factor</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">actv</span><span class="o">=</span><span class="s1">&#39;entmax&#39;</span><span class="p">,</span> <span class="n">hopfield</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">d_model</span><span class="o">=</span><span class="mi">512</span><span class="p">,</span> <span class="n">n_heads</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">d_ff</span><span class="o">=</span><span class="mi">1024</span><span class="p">,</span> <span class="n">dropout</span><span class="o">=</span><span class="mf">0.2</span><span class="p">)</span>
-</pre></div>
-</div>
-<p><strong>Parameters:</strong></p>
-<ul class="simple">
-<li><p><strong>d_layer</strong> <em>(int, optional, Default is 3)</em> - Number of stacked DecoderLayer instances.</p></li>
-<li><p><strong>patch_dim</strong> <em>(int, optional, Default is 10)</em> - Dimension of output patches (passed to DecoderLayer).</p></li>
-<li><p><strong>n_pool</strong> <em>(int, optional, Default is 10)</em> - Number of pooling vectors (passed to DecoderLayer).</p></li>
-<li><p><strong>factor</strong> <em>(int, optional, Default is 10)</em> - Factor dimension for pooling vectors (passed to DecoderLayer).</p></li>
-<li><p><strong>actv</strong> <em>(str, optional, Default is ‘entmax’)</em> - Activation function type for attention mechanisms.</p></li>
-<li><p><strong>hopfield</strong> <em>(bool, optional, Default is True)</em> - Whether to use Hopfield attention in submodules.</p></li>
-<li><p><strong>d_model</strong> <em>(int, optional, Default is 512)</em> - Hidden feature dimension.</p></li>
-<li><p><strong>n_heads</strong> <em>(int, optional, Default is 8)</em> - Number of attention heads.</p></li>
-<li><p><strong>d_ff</strong> <em>(int, optional, Default is 1024)</em> - Feedforward network dimension (passed to DecoderLayer).</p></li>
-<li><p><strong>dropout</strong> <em>(float, optional, Default is 0.2)</em> - Dropout probability applied in all submodules.</p></li>
-</ul>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">enc</span><span class="p">)</span>
-</pre></div>
-</div>
-<p><strong>Parameters:</strong></p>
-<ul class="simple">
-<li><p><strong>x</strong> <em>(torch.Tensor)</em> - Initial decoder input tensor, shape: [batch_size, embedding_dim, num_patches, d_model].</p></li>
-<li><p><strong>enc</strong> <em>(list of torch.Tensor)</em> - List of encoder outputs, with length equal to <cite>d_layer</cite>. Each tensor has shape: [batch_size, embedding_dim, n_pool, d_model].</p></li>
-</ul>
-<p><strong>Returns:</strong></p>
-<ul class="simple">
-<li><p><strong>final_predict</strong> <em>(torch.Tensor)</em> - Aggregated final prediction, shape: [batch_size, (n_patch * patch_dim), embedding_dim].</p></li>
-</ul>
-</section>
-<section id="class-numemb-torch-nn-module">
-<h2>class NumEmb(torch.nn.Module)<a class="headerlink" href="#class-numemb-torch-nn-module" title="Link to this heading"></a></h2>
-<p><strong>Numerical embedding for tabular data</strong></p>
-<p>Converts numerical features into continuous embeddings using quantile-based binning and linear interpolation.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">n_num</span><span class="p">,</span> <span class="n">emb_dim</span><span class="p">)</span>
-</pre></div>
-</div>
+<p>Numerical embedding layer for tabular data using quantile-based binning.</p>
 <p><strong>Parameters:</strong></p>
 <ul class="simple">
 <li><p><strong>n_num</strong> <em>(int)</em> - Number of numerical features.</p></li>
-<li><p><strong>emb_dim</strong> <em>(int)</em> - Dimension of the output embedding for each numerical feature. Must be greater than 0.</p></li>
+<li><p><strong>emb_dim</strong> <em>(int)</em> - Embedding dimension (number of bins).</p></li>
 </ul>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">get_bins</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">identifier</span><span class="o">=</span><span class="s1">&#39;num&#39;</span><span class="p">)</span>
+<p><strong>Methods:</strong></p>
+<ul class="simple">
+<li><p><strong>get_bins(self, data, identifier=’num’)</strong> - Compute quantile bins from data.</p></li>
+<li><p><strong>forward(self, x)</strong> - Forward pass through numerical embedding.</p></li>
+<li><p><strong>_to(self, device)</strong> - Move model to specified device.</p></li>
+</ul>
+<p><strong>Input Shape:</strong></p>
+<p><cite>(batch_size, n_num)</cite></p>
+<p><strong>Output Shape:</strong></p>
+<p><cite>(batch_size, n_num, emb_dim)</cite></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">FullEmbDropout</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Computes quantile bins for numerical features based on input data.</p>
+<p>Full embedding dropout layer.</p>
 <p><strong>Parameters:</strong></p>
 <ul class="simple">
-<li><p><strong>data</strong> <em>(torch.utils.data.DataLoader or torch.Tensor)</em> - Input data containing numerical features. If DataLoader, batches are concatenated.</p></li>
-<li><p><strong>identifier</strong> <em>(str, optional, Default is ‘num’)</em> - Key for numerical features if <cite>data</cite> is a DataLoader of dictionaries.</p></li>
+<li><p><strong>dropout</strong> <em>(float, optional, Default is 0.1)</em> - Dropout rate.</p></li>
 </ul>
-<p><strong>Description:</strong>
-Calculates quantiles for each numerical feature using linearly spaced bins (from 0 to 1). These quantiles are stored in <cite>self.quantiles</cite> for use in the forward pass.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+<p><strong>Input:</strong></p>
+<ul class="simple">
+<li><p><strong>X</strong> <em>(torch.Tensor)</em> - Input tensor.</p></li>
+</ul>
+<p><strong>Output:</strong></p>
+<ul class="simple">
+<li><p><strong>torch.Tensor</strong> - Tensor with dropout applied.</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">_trunc_normal_</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">mean</span><span class="o">=</span><span class="mf">0.</span><span class="p">,</span> <span class="n">std</span><span class="o">=</span><span class="mf">1.</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Generates embeddings for numerical features using precomputed quantile bins.</p>
+<p>Truncated normal initialization approximation.</p>
 <p><strong>Parameters:</strong></p>
 <ul class="simple">
-<li><p><strong>x</strong> <em>(torch.Tensor)</em> - Input numerical tensor of shape [batch_size, n_num].</p></li>
+<li><p><strong>x</strong> <em>(Tensor)</em> - Tensor to initialize.</p></li>
+<li><p><strong>mean</strong> <em>(float, optional, Default is 0.)</em> - Mean of normal distribution.</p></li>
+<li><p><strong>std</strong> <em>(float, optional, Default is 1.)</em> - Standard deviation.</p></li>
 </ul>
 <p><strong>Returns:</strong></p>
 <ul class="simple">
-<li><p><strong>torch.Tensor</strong> - Embedded numerical features of shape [batch_size, n_num, emb_dim], with values in [0, 1].</p></li>
+<li><p><strong>Tensor</strong> - Initialized tensor.</p></li>
 </ul>
-<p><strong>Description:</strong>
-Maps each numerical value to a continuous embedding by:
-- Checking its position relative to precomputed quantile bins.
-- Assigning 0 if below the lower bin, 1 if above the upper bin, and linear interpolation between bins otherwise.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">_to</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">device</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">_Embedding</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Embedding</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Moves internal bins and quantiles to the specified device.</p>
+<p>Embedding layer with truncated normal initialization.</p>
 <p><strong>Parameters:</strong></p>
 <ul class="simple">
-<li><p><strong>device</strong> - Target device (e.g., ‘cpu’ or ‘cuda’).</p></li>
+<li><p><strong>ni</strong> <em>(int)</em> - Number of input features.</p></li>
+<li><p><strong>nf</strong> <em>(int)</em> - Number of output features.</p></li>
+<li><p><strong>std</strong> <em>(float, optional, Default is 0.01)</em> - Standard deviation for initialization.</p></li>
 </ul>
-</section>
-<section id="class-fullembdropout-torch-nn-module">
-<h2>class FullEmbDropout(torch.nn.Module)<a class="headerlink" href="#class-fullembdropout-torch-nn-module" title="Link to this heading"></a></h2>
-<p>Applies dropout to entire embedding features (full feature dropout).</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dropout</span><span class="p">:</span> <span class="nb">float</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">CatEmb</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">)</span>
 </pre></div>
 </div>
-<p><strong>Parameters:</strong></p>
-<ul class="simple">
-<li><p><strong>dropout</strong> <em>(float, optional, Default is 0.1)</em> - Probability of dropping an entire feature.</p></li>
-</ul>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span>
-</pre></div>
-</div>
-<p>Applies full feature dropout to the input tensor.</p>
-<p><strong>Parameters:</strong></p>
-<ul class="simple">
-<li><p><strong>X</strong> <em>(torch.Tensor)</em> - Input tensor of shape [batch_size, num_features, emb_dim].</p></li>
-</ul>
-<p><strong>Returns:</strong></p>
-<ul class="simple">
-<li><p><strong>torch.Tensor</strong> - Tensor with full feature dropout applied, same shape as input.</p></li>
-</ul>
-<p><strong>Description:</strong>
-Generates a binary mask (per feature) to drop entire features with probability <cite>dropout</cite>, scaled by 1/(1 - dropout) to maintain mean.</p>
-</section>
-<section id="class-embedding-torch-nn-embedding">
-<h2>class _Embedding(torch.nn.Embedding)<a class="headerlink" href="#class-embedding-torch-nn-embedding" title="Link to this heading"></a></h2>
-<p>Custom embedding layer with truncated normal initialization.</p>
-<p><strong>Description:</strong>
-Inherits from <cite>torch.nn.Embedding</cite> but initializes weights using a truncated normal distribution (approximation) for better stability.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ni</span><span class="p">,</span> <span class="n">nf</span><span class="p">,</span> <span class="n">std</span><span class="o">=</span><span class="mf">0.01</span><span class="p">)</span>
-</pre></div>
-</div>
-<p><strong>Parameters:</strong>
-* <strong>ni</strong> <em>(int)</em> - Number of input classes (vocabulary size).
-* <strong>nf</strong> <em>(int)</em> - Size of each embedding vector.
-* <strong>std</strong> <em>(float, optional, Default is 0.01)</em> - Standard deviation for truncated normal initialization.</p>
-</section>
-<section id="class-sharedembedding-torch-nn-module">
-<h2>class SharedEmbedding(torch.nn.Module)<a class="headerlink" href="#class-sharedembedding-torch-nn-module" title="Link to this heading"></a></h2>
-<p>Embedding layer with optional shared components across all classes.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">n_class</span><span class="p">,</span> <span class="n">emb_dim</span><span class="p">,</span> <span class="n">share</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">share_add</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">share_div</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
-</pre></div>
-</div>
-<p><strong>Parameters:</strong></p>
-<ul class="simple">
-<li><p><strong>n_class</strong> <em>(int)</em> - Number of classes for embedding.</p></li>
-<li><p><strong>emb_dim</strong> <em>(int)</em> - Total dimension of the output embedding.</p></li>
-<li><p><strong>share</strong> <em>(bool, optional, Default is True)</em> - Whether to include a shared embedding component.</p></li>
-<li><p><strong>share_add</strong> <em>(bool, optional, Default is False)</em> - If True, adds the shared component to class-specific embeddings; if False, concatenates them.</p></li>
-<li><p><strong>share_div</strong> <em>(int, optional, Default is 8)</em> - Factor to determine the size of the shared component (only used if <cite>share_add</cite> is False).</p></li>
-</ul>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
-</pre></div>
-</div>
-<p>Generates embeddings with optional shared components.</p>
-<p><strong>Parameters:</strong></p>
-<ul class="simple">
-<li><p><strong>x</strong> <em>(torch.Tensor)</em> - Input class indices of shape [batch_size].</p></li>
-</ul>
-<p><strong>Returns:</strong></p>
-<ul class="simple">
-<li><p><strong>torch.Tensor</strong> - Embedded tensor of shape [batch_size, 1, emb_dim].</p></li>
-</ul>
-<p><strong>Description:</strong>
-- If <cite>share</cite> is True, combines class-specific embeddings with a learnable shared component (either via addition or concatenation).
-- If <cite>share</cite> is False, behaves like a standard embedding layer.</p>
-</section>
-<section id="class-catemb-torch-nn-module">
-<h2>class CatEmb(torch.nn.Module)<a class="headerlink" href="#class-catemb-torch-nn-module" title="Link to this heading"></a></h2>
-<p><strong>Categorical embedding for tabular data</strong></p>
-<p>Handles embedding for multiple categorical features, with options for shared components and dropout.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">n_cat</span><span class="p">,</span> <span class="n">emb_dim</span><span class="p">,</span> <span class="n">n_class</span><span class="p">,</span> <span class="n">share</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">share_add</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">share_div</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">full_dropout</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">emb_dropout</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>
-</pre></div>
-</div>
+<p>Categorical embedding layer with sharing options.</p>
 <p><strong>Parameters:</strong></p>
 <ul class="simple">
 <li><p><strong>n_cat</strong> <em>(int)</em> - Number of categorical features.</p></li>
-<li><p><strong>emb_dim</strong> <em>(int)</em> - Dimension of the output embedding for each categorical feature.</p></li>
-<li><p><strong>n_class</strong> <em>(int)</em> - Number of classes for each categorical feature.</p></li>
-<li><p><strong>share</strong> <em>(bool, optional, Default is True)</em> - Whether to use <cite>SharedEmbedding</cite> for each feature.</p></li>
-<li><p><strong>share_add</strong> <em>(bool, optional, Default is False)</em> - Passed to <cite>SharedEmbedding</cite> (add vs. concatenate shared component).</p></li>
-<li><p><strong>share_div</strong> <em>(int, optional, Default is 8)</em> - Passed to <cite>SharedEmbedding</cite> (determines shared component size).</p></li>
-<li><p><strong>full_dropout</strong> <em>(bool, optional, Default is False)</em> - If True, uses <cite>FullEmbDropout</cite>; otherwise, standard dropout.</p></li>
-<li><p><strong>emb_dropout</strong> <em>(float, optional, Default is 0.1)</em> - Dropout probability for embeddings.</p></li>
+<li><p><strong>emb_dim</strong> <em>(int)</em> - Embedding dimension.</p></li>
+<li><p><strong>n_class</strong> <em>(list)</em> - List of number of classes for each categorical feature.</p></li>
+<li><p><strong>share</strong> <em>(bool, optional, Default is True)</em> - Whether to share embeddings.</p></li>
+<li><p><strong>share_add</strong> <em>(bool, optional, Default is False)</em> - Whether to add shared embeddings.</p></li>
+<li><p><strong>share_div</strong> <em>(int, optional, Default is 8)</em> - Division factor for shared embeddings.</p></li>
+<li><p><strong>full_dropout</strong> <em>(bool, optional, Default is False)</em> - Whether to use full dropout.</p></li>
+<li><p><strong>emb_dropout</strong> <em>(float, optional, Default is 0.1)</em> - Embedding dropout rate.</p></li>
 </ul>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+<p><strong>Input:</strong></p>
+<ul class="simple">
+<li><p><strong>x</strong> <em>(torch.Tensor)</em> - Categorical feature tensor.</p></li>
+</ul>
+<p><strong>Output:</strong></p>
+<ul class="simple">
+<li><p><strong>torch.Tensor</strong> - Embedded categorical features.</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">PatchEmb</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Generates embeddings for multiple categorical features.</p>
+<p>Patch embedding layer for transformer architectures.</p>
 <p><strong>Parameters:</strong></p>
 <ul class="simple">
-<li><p><strong>x</strong> <em>(torch.Tensor)</em> - Input categorical indices of shape [batch_size, n_cat].</p></li>
+<li><p><strong>patch_dim</strong> <em>(int)</em> - Patch dimension.</p></li>
+<li><p><strong>d_model</strong> <em>(int)</em> - Model dimension.</p></li>
 </ul>
-<p><strong>Returns:</strong></p>
+<p><strong>Input:</strong></p>
 <ul class="simple">
-<li><p><strong>torch.Tensor</strong> - Embedded categorical features of shape [batch_size, n_cat, emb_dim].</p></li>
+<li><p><strong>x</strong> <em>(torch.Tensor)</em> - Input tensor.</p></li>
 </ul>
-<p><strong>Description:</strong>
-- Applies embedding layers (either <cite>SharedEmbedding</cite> or standard <cite>Embedding</cite>) to each categorical feature.
-- Concatenates embeddings across features and applies dropout (full feature dropout or standard dropout).</p>
-</section>
-<section id="class-patchemb-torch-nn-module">
-<h2>class PatchEmb(torch.nn.Module)<a class="headerlink" href="#class-patchemb-torch-nn-module" title="Link to this heading"></a></h2>
-<p><strong>Patch embedding for aggregating features</strong></p>
-<p>Splits embedded features into patches and projects them to a target dimension for attention mechanisms.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">patch_dim</span><span class="p">,</span> <span class="n">d_model</span><span class="p">)</span>
-</pre></div>
-</div>
-<p><strong>Parameters:</strong></p>
+<p><strong>Output:</strong></p>
 <ul class="simple">
-<li><p><strong>patch_dim</strong> <em>(int)</em> - Number of features per patch.</p></li>
-<li><p><strong>d_model</strong> <em>(int)</em> - Dimension of the projected patch embeddings (matches the attention mechanism’s input dimension).</p></li>
-</ul>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
-</pre></div>
-</div>
-<p>Converts embedded features into patched embeddings.</p>
-<p><strong>Parameters:</strong></p>
-<ul class="simple">
-<li><p><strong>x</strong> <em>(torch.Tensor)</em> - Input embedded tabular data of shape [batch_size, feature_dim, embedding_dim].</p></li>
-</ul>
-<p><strong>Returns:</strong></p>
-<ul class="simple">
-<li><p><strong>torch.Tensor</strong> - Patched embedded data of shape [batch_size, embedding_dim, num_patches, d_model], where <cite>num_patches = feature_dim // patch_dim</cite>.</p></li>
-</ul>
-<p><strong>Description:</strong>
-1. Splits the input features into non-overlapping patches, each containing <cite>patch_dim</cite> features.
-2. Projects each patch to <cite>d_model</cite> dimension using a linear layer.
-3. Rearranges the output to align with the expected input shape for attention mechanisms.</p>
-</section>
-<section id="class-patchmerge-torch-nn-module">
-<h2>class PatchMerge(torch.nn.Module)<a class="headerlink" href="#class-patchmerge-torch-nn-module" title="Link to this heading"></a></h2>
-<p><strong>Merge adjacent patches together</strong></p>
-<p>Aggregates multiple adjacent patches into a single patch using linear projection.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">d_model</span><span class="o">=</span><span class="mi">512</span><span class="p">,</span> <span class="n">n_agg</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
-</pre></div>
-</div>
-<p><strong>Parameters:</strong></p>
-<ul class="simple">
-<li><p><strong>d_model</strong> <em>(int, optional, Default is 512)</em> - Number of features in each patch.</p></li>
-<li><p><strong>n_agg</strong> <em>(int, optional, Default is 4)</em> - Number of adjacent patches to aggregate.</p></li>
-</ul>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
-</pre></div>
-</div>
-<p>Merges adjacent patches into aggregated patches.</p>
-<p><strong>Parameters:</strong></p>
-<ul class="simple">
-<li><p><strong>x</strong> <em>(torch.Tensor)</em> - Input patched tensor of shape [batch_size, emb_dim, n_patch, d_model]</p></li>
-</ul>
-<p><strong>Returns:</strong></p>
-<ul class="simple">
-<li><p><strong>torch.Tensor</strong> - Merged patched tensor of shape [batch_size, emb_dim, merged_n_patch, d_model], where merged_n_patch = ceil(n_patch / n_agg)</p></li>
-</ul>
-<p><strong>Description:</strong>
-1. Handles cases where the number of patches (n_patch) is less than n_agg by repeating patches to meet n_agg.
-2. Pads patches with the last few patches if n_patch is not divisible by n_agg.
-3. Splits patches into n_agg groups, concatenates them along the feature dimension, and projects to d_model using a linear layer with pre-normalization.</p>
-</section>
-<section id="class-encoderlayer-torch-nn-module">
-<h2>class EncoderLayer(torch.nn.Module)<a class="headerlink" href="#class-encoderlayer-torch-nn-module" title="Link to this heading"></a></h2>
-<p><strong>The encoder layer</strong></p>
-<p>A single encoder layer combining patch merging (optional) and BAModule for feature refinement.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">n_agg</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">n_pool</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">factor</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">actv</span><span class="o">=</span><span class="s1">&#39;entmax&#39;</span><span class="p">,</span> <span class="n">hopfield</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">d_model</span><span class="o">=</span><span class="mi">512</span><span class="p">,</span> <span class="n">n_heads</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">d_ff</span><span class="o">=</span><span class="mi">1024</span><span class="p">,</span> <span class="n">dropout</span><span class="o">=</span><span class="mf">0.2</span><span class="p">)</span>
-</pre></div>
-</div>
-<p><strong>Parameters:</strong></p>
-<ul class="simple">
-<li><p><strong>n_agg</strong> <em>(int, optional, Default is 4)</em> - Number of patches to aggregate (1 means no merging).</p></li>
-<li><p><strong>n_pool</strong> <em>(int, optional, Default is 10)</em> - Number of pooling vectors for BAModule.</p></li>
-<li><p><strong>factor</strong> <em>(int, optional, Default is 10)</em> - Factor dimension for pooling vectors in BAModule.</p></li>
-<li><p><strong>actv</strong> <em>(str, optional, Default is ‘entmax’)</em> - Activation function type for BAModule.</p></li>
-<li><p><strong>hopfield</strong> <em>(bool, optional, Default is True)</em> - Whether to use Hopfield attention in BAModule.</p></li>
-<li><p><strong>d_model</strong> <em>(int, optional, Default is 512)</em> - Number of features in each patch.</p></li>
-<li><p><strong>n_heads</strong> <em>(int, optional, Default is 8)</em> - Number of attention heads in BAModule.</p></li>
-<li><p><strong>d_ff</strong> <em>(int, optional, Default is 1024)</em> - Hidden dimension of feedforward networks in BAModule.</p></li>
-<li><p><strong>dropout</strong> <em>(float, optional, Default is 0.2)</em> - Dropout probability for BAModule.</p></li>
-</ul>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
-</pre></div>
-</div>
-<p>Processes input through optional patch merging and BAModule.</p>
-<p><strong>Parameters:</strong></p>
-<ul class="simple">
-<li><p><strong>x</strong> <em>(torch.Tensor)</em> - Input tensor of shape [batch_size, emb_dim, n_patch, d_model]</p></li>
-</ul>
-<p><strong>Returns:</strong></p>
-<ul class="simple">
-<li><p><strong>torch.Tensor</strong> - Encoded tensor after patch merging (if enabled) and BAModule processing, shape [batch_size, emb_dim, processed_n_patch, d_model]</p></li>
-</ul>
-</section>
-<section id="class-encoder-torch-nn-module">
-<h2>class Encoder(torch.nn.Module)<a class="headerlink" href="#class-encoder-torch-nn-module" title="Link to this heading"></a></h2>
-<p><strong>Full encoder stack with multiple layers</strong></p>
-<p>A stack of encoder layers that progressively processes patches, with optional patch merging in deeper layers.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">e_layers</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">n_agg</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">d_model</span><span class="o">=</span><span class="mi">512</span><span class="p">,</span> <span class="n">n_heads</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">d_ff</span><span class="o">=</span><span class="mi">1024</span><span class="p">,</span> <span class="n">dropout</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">n_pool</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">factor</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">actv</span><span class="o">=</span><span class="s1">&#39;entmax&#39;</span><span class="p">,</span> <span class="n">hopfield</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-</pre></div>
-</div>
-<p><strong>Parameters:</strong></p>
-<ul class="simple">
-<li><p><strong>e_layers</strong> <em>(int, optional, Default is 3)</em> - Number of encoder layers.</p></li>
-<li><p><strong>n_agg</strong> <em>(int, optional, Default is 4)</em> - Number of patches to aggregate in layers after the first.</p></li>
-<li><p><strong>d_model</strong> <em>(int, optional, Default is 512)</em> - Number of features in each patch.</p></li>
-<li><p><strong>n_heads</strong> <em>(int, optional, Default is 8)</em> - Number of attention heads in BAModule.</p></li>
-<li><p><strong>d_ff</strong> <em>(int, optional, Default is 1024)</em> - Hidden dimension of feedforward networks in BAModule.</p></li>
-<li><p><strong>dropout</strong> <em>(float, optional, Default is 0.2)</em> - Dropout probability for BAModule.</p></li>
-<li><p><strong>n_pool</strong> <em>(int, optional, Default is 10)</em> - Number of pooling vectors for BAModule in the first layer.</p></li>
-<li><p><strong>factor</strong> <em>(int, optional, Default is 10)</em> - Factor dimension for pooling vectors in BAModule.</p></li>
-<li><p><strong>actv</strong> <em>(str, optional, Default is ‘entmax’)</em> - Activation function type for BAModule.</p></li>
-<li><p><strong>hopfield</strong> <em>(bool, optional, Default is True)</em> - Whether to use Hopfield attention in BAModule.</p></li>
-</ul>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
-</pre></div>
-</div>
-<p>Encodes input through a stack of encoder layers, capturing intermediate outputs.</p>
-<p><strong>Parameters:</strong></p>
-<ul class="simple">
-<li><p><strong>x</strong> <em>(torch.Tensor)</em> - Initial input tensor of shape [batch_size, emb_dim, initial_n_patch, d_model]</p></li>
-</ul>
-<p><strong>Returns:</strong></p>
-<ul class="simple">
-<li><p><strong>list of torch.Tensor</strong> - List of encoded tensors at each stage (including initial input). Each tensor has shape [batch_size, emb_dim, stage_n_patch, d_model], with stage_n_patch decreasing with deeper layers due to patch merging.</p></li>
-</ul>
-<p><strong>Description:</strong>
-1. The first encoder layer does not perform patch merging (n_agg=1).
-2. Subsequent layers apply patch merging with n_agg, reducing the number of patches progressively.
-3. Collects and returns outputs from all stages (initial input + outputs after each encoder layer) for use in decoding.</p>
-</section>
-<section id="core-utility-functions">
-<h2><strong>Core Utility Functions</strong><a class="headerlink" href="#core-utility-functions" title="Link to this heading"></a></h2>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">_make_ix_like</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">dim</span><span class="p">)</span>
-</pre></div>
-</div>
-<p>Generates an index tensor matching the specified dimension of the input tensor.</p>
-<p><strong>Parameters:</strong></p>
-<ul class="simple">
-<li><p><strong>X</strong> <em>(torch.Tensor)</em> - Input tensor used to determine the shape and device of the output.</p></li>
-<li><p><strong>dim</strong> <em>(int)</em> - Dimension to match.</p></li>
-</ul>
-<p><strong>Returns:</strong></p>
-<ul class="simple">
-<li><p><strong>torch.Tensor</strong> - Index tensor with the same shape as X, where values along the specified dimension are 1, 2, …, X.size(dim).</p></li>
-</ul>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">_roll_last</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">dim</span><span class="p">)</span>
-</pre></div>
-</div>
-<p>Moves the specified dimension to the last position of the tensor.</p>
-<p><strong>Parameters:</strong></p>
-<ul class="simple">
-<li><p><strong>X</strong> <em>(torch.Tensor)</em> - Input tensor.</p></li>
-<li><p><strong>dim</strong> <em>(int)</em> - Dimension to move.</p></li>
-</ul>
-<p><strong>Returns:</strong></p>
-<ul class="simple">
-<li><p><strong>torch.Tensor</strong> - Tensor with the specified dimension moved to the last position.</p></li>
-</ul>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">_sparsemax_threshold_and_support</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">dim</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
-</pre></div>
-</div>
-<p>Computes the optimal threshold and support size (number of non-zero elements) for Sparsemax.</p>
-<p><strong>Parameters:</strong></p>
-<ul class="simple">
-<li><p><strong>X</strong> <em>(torch.Tensor)</em> - Input tensor.</p></li>
-<li><p><strong>dim</strong> <em>(int, optional, Default is -1)</em> - Dimension along which to compute.</p></li>
-<li><p><strong>k</strong> <em>(int or None, optional, Default is None)</em> - Number of largest elements to partially sort. If None, full sorting is performed.</p></li>
-</ul>
-<p><strong>Returns:</strong></p>
-<ul class="simple">
-<li><p><strong>tau</strong> <em>(torch.Tensor)</em> - Threshold tensor, with the same shape as X except for the specified dimension.</p></li>
-<li><p><strong>support_size</strong> <em>(torch.LongTensor)</em> - Number of non-zero elements for each vector, with the same shape as tau.</p></li>
-</ul>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">_entmax_threshold_and_support</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">dim</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
-</pre></div>
-</div>
-<p>Computes the optimal threshold and support size (number of non-zero elements) for 1.5-Entmax.</p>
-<p><strong>Parameters:</strong></p>
-<ul class="simple">
-<li><p><strong>X</strong> <em>(torch.Tensor)</em> - Input tensor.</p></li>
-<li><p><strong>dim</strong> <em>(int, optional, Default is -1)</em> - Dimension along which to compute.</p></li>
-<li><p><strong>k</strong> <em>(int or None, optional, Default is None)</em> - Number of largest elements to partially sort. If None, full sorting is performed.</p></li>
-</ul>
-<p><strong>Returns:</strong></p>
-<ul class="simple">
-<li><p><strong>tau_star</strong> <em>(torch.Tensor)</em> - Threshold tensor, with the same shape as X except for the specified dimension.</p></li>
-<li><p><strong>support_size</strong> <em>(torch.LongTensor)</em> - Number of non-zero elements for each vector, with the same shape as tau_star.</p></li>
-</ul>
-</section>
-<section id="sparse-activation-function-classes">
-<h2><strong>Sparse Activation Function Classes</strong><a class="headerlink" href="#sparse-activation-function-classes" title="Link to this heading"></a></h2>
-<section id="class-sparsemaxfunction-torch-autograd-function">
-<h3>class SparsemaxFunction(torch.autograd.Function)<a class="headerlink" href="#class-sparsemaxfunction-torch-autograd-function" title="Link to this heading"></a></h3>
-<p>Autograd function implementing the Sparsemax transformation, a sparse normalization.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">forward</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">ctx</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">dim</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
-</pre></div>
-</div>
-<p>Forward pass: Computes the Sparsemax transformation.</p>
-<p><strong>Parameters:</strong></p>
-<ul class="simple">
-<li><p><strong>ctx</strong> - Context object to store information for backward pass.</p></li>
-<li><p><strong>X</strong> <em>(torch.Tensor)</em> - Input tensor.</p></li>
-<li><p><strong>dim</strong> <em>(int, optional, Default is -1)</em> - Dimension along which to compute.</p></li>
-<li><p><strong>k</strong> <em>(int or None, optional, Default is None)</em> - Number of largest elements to partially sort.</p></li>
-</ul>
-<p><strong>Returns:</strong></p>
-<ul class="simple">
-<li><p><strong>torch.Tensor</strong> - Result of Sparsemax transformation, non-negative with sum 1 along the specified dimension.</p></li>
-</ul>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">backward</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">ctx</span><span class="p">,</span> <span class="n">grad_output</span><span class="p">)</span>
-</pre></div>
-</div>
-<p>Backward pass: Computes gradients for the input tensor.</p>
-<p><strong>Parameters:</strong></p>
-<ul class="simple">
-<li><p><strong>ctx</strong> - Context object containing stored information from forward pass.</p></li>
-<li><p><strong>grad_output</strong> <em>(torch.Tensor)</em> - Gradient of the loss with respect to the output.</p></li>
-</ul>
-<p><strong>Returns:</strong></p>
-<ul class="simple">
-<li><p><strong>torch.Tensor</strong> - Gradient of the loss with respect to the input tensor X.</p></li>
-</ul>
-</section>
-<section id="class-entmax15function-torch-autograd-function">
-<h3>class Entmax15Function(torch.autograd.Function)<a class="headerlink" href="#class-entmax15function-torch-autograd-function" title="Link to this heading"></a></h3>
-<p>Autograd function implementing the 1.5-Entmax transformation, a sparse normalization based on Tsallis entropy.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">forward</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">ctx</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
-</pre></div>
-</div>
-<p>Forward pass: Computes the 1.5-Entmax transformation.</p>
-<p><strong>Parameters:</strong></p>
-<ul class="simple">
-<li><p><strong>ctx</strong> - Context object to store information for backward pass.</p></li>
-<li><p><strong>X</strong> <em>(torch.Tensor)</em> - Input tensor.</p></li>
-<li><p><strong>dim</strong> <em>(int, optional, Default is 0)</em> - Dimension along which to compute.</p></li>
-<li><p><strong>k</strong> <em>(int or None, optional, Default is None)</em> - Number of largest elements to partially sort.</p></li>
-</ul>
-<p><strong>Returns:</strong></p>
-<ul class="simple">
-<li><p><strong>torch.Tensor</strong> - Result of 1.5-Entmax transformation, non-negative with sum 1 along the specified dimension.</p></li>
-</ul>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">backward</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">ctx</span><span class="p">,</span> <span class="n">dY</span><span class="p">)</span>
-</pre></div>
-</div>
-<p>Backward pass: Computes gradients for the input tensor.</p>
-<p><strong>Parameters:</strong></p>
-<ul class="simple">
-<li><p><strong>ctx</strong> - Context object containing stored information from forward pass.</p></li>
-<li><p><strong>dY</strong> <em>(torch.Tensor)</em> - Gradient of the loss with respect to the output.</p></li>
-</ul>
-<p><strong>Returns:</strong></p>
-<ul class="simple">
-<li><p><strong>torch.Tensor</strong> - Gradient of the loss with respect to the input tensor X.</p></li>
-</ul>
-</section>
-<section id="class-sparsemax-torch-nn-module">
-<h3>class Sparsemax(torch.nn.Module)<a class="headerlink" href="#class-sparsemax-torch-nn-module" title="Link to this heading"></a></h3>
-<p>Module wrapping the Sparsemax transformation.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dim</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
-</pre></div>
-</div>
-<p><strong>Parameters:</strong></p>
-<ul class="simple">
-<li><p><strong>dim</strong> <em>(int, optional, Default is -1)</em> - Dimension along which to compute.</p></li>
-<li><p><strong>k</strong> <em>(int or None, optional, Default is None)</em> - Number of largest elements to partially sort.</p></li>
-</ul>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">)</span>
-</pre></div>
-</div>
-<p>Applies the Sparsemax transformation.</p>
-<p><strong>Parameters:</strong></p>
-<ul class="simple">
-<li><p><strong>X</strong> <em>(torch.Tensor)</em> - Input tensor.</p></li>
-</ul>
-<p><strong>Returns:</strong></p>
-<ul class="simple">
-<li><p><strong>torch.Tensor</strong> - Result of Sparsemax transformation.</p></li>
-</ul>
-</section>
-<section id="class-entmax15-torch-nn-module">
-<h3>class Entmax15(torch.nn.Module)<a class="headerlink" href="#class-entmax15-torch-nn-module" title="Link to this heading"></a></h3>
-<p>Module wrapping the 1.5-Entmax transformation.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dim</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
-</pre></div>
-</div>
-<p><strong>Parameters:</strong></p>
-<ul class="simple">
-<li><p><strong>dim</strong> <em>(int, optional, Default is -1)</em> - Dimension along which to compute.</p></li>
-<li><p><strong>k</strong> <em>(int or None, optional, Default is None)</em> - Number of largest elements to partially sort.</p></li>
-</ul>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">)</span>
-</pre></div>
-</div>
-<p>Applies the 1.5-Entmax transformation.</p>
-<p><strong>Parameters:</strong></p>
-<ul class="simple">
-<li><p><strong>X</strong> <em>(torch.Tensor)</em> - Input tensor.</p></li>
-</ul>
-<p><strong>Returns:</strong></p>
-<ul class="simple">
-<li><p><strong>torch.Tensor</strong> - Result of 1.5-Entmax transformation.</p></li>
-</ul>
-</section>
-<section id="class-alphachooser-torch-nn-module">
-<h3>class AlphaChooser(torch.nn.Module)<a class="headerlink" href="#class-alphachooser-torch-nn-module" title="Link to this heading"></a></h3>
-<p>Module for choosing alpha parameters in EntmaxAlpha, constraining alpha to (1, 2].</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">head_count</span><span class="p">)</span>
-</pre></div>
-</div>
-<p><strong>Parameters:</strong></p>
-<ul class="simple">
-<li><p><strong>head_count</strong> <em>(int)</em> - Number of attention heads, determining the number of alpha parameters.</p></li>
-</ul>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
-</pre></div>
-</div>
-<p>Computes and returns alpha parameters.</p>
-<p><strong>Returns:</strong></p>
-<ul class="simple">
-<li><p><strong>torch.Tensor</strong> - Alpha parameter tensor with shape [head_count], values in (1, 2].</p></li>
-</ul>
-</section>
-<section id="class-entmaxalpha-torch-nn-module">
-<h3>class EntmaxAlpha(torch.nn.Module)<a class="headerlink" href="#class-entmaxalpha-torch-nn-module" title="Link to this heading"></a></h3>
-<p>Module implementing Entmax with learnable alpha parameters.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">head_count</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">dim</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
-</pre></div>
-</div>
-<p><strong>Parameters:</strong></p>
-<ul class="simple">
-<li><p><strong>head_count</strong> <em>(int, optional, Default is 1)</em> - Number of attention heads.</p></li>
-<li><p><strong>dim</strong> <em>(int, optional, Default is -1)</em> - Dimension along which to compute.</p></li>
-</ul>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">att_scores</span><span class="p">)</span>
-</pre></div>
-</div>
-<p>Applies Entmax transformation to attention scores.</p>
-<p><strong>Parameters:</strong></p>
-<ul class="simple">
-<li><p><strong>att_scores</strong> <em>(torch.Tensor)</em> - Attention scores tensor with shape [batch_size, head_count, query_len, key_len].</p></li>
-</ul>
-<p><strong>Returns:</strong></p>
-<ul class="simple">
-<li><p><strong>torch.Tensor</strong> - Normalized attention weights with the same shape as att_scores.</p></li>
-</ul>
-</section>
-<section id="class-entmaxbisectfunction-torch-autograd-function">
-<h3>class EntmaxBisectFunction(torch.autograd.Function)<a class="headerlink" href="#class-entmaxbisectfunction-torch-autograd-function" title="Link to this heading"></a></h3>
-<p>Autograd function implementing alpha-Entmax via bisection (root finding), supporting arbitrary alpha &gt; 1.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">forward</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">ctx</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">1.5</span><span class="p">,</span> <span class="n">dim</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">n_iter</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">ensure_sum_one</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-</pre></div>
-</div>
-<p>Forward pass: Computes the alpha-Entmax transformation.</p>
-<p><strong>Parameters:</strong></p>
-<ul class="simple">
-<li><p><strong>ctx</strong> - Context object to store information for backward pass.</p></li>
-<li><p><strong>X</strong> <em>(torch.Tensor)</em> - Input tensor.</p></li>
-<li><p><strong>alpha</strong> <em>(float or torch.Tensor, optional, Default is 1.5)</em> - Alpha parameter, must be &gt; 1.</p></li>
-<li><p><strong>dim</strong> <em>(int, optional, Default is -1)</em> - Dimension along which to compute.</p></li>
-<li><p><strong>n_iter</strong> <em>(int, optional, Default is 50)</em> - Number of bisection iterations.</p></li>
-<li><p><strong>ensure_sum_one</strong> <em>(bool, optional, Default is True)</em> - Whether to ensure the result sums to 1 along the specified dimension.</p></li>
-</ul>
-<p><strong>Returns:</strong></p>
-<ul class="simple">
-<li><p><strong>torch.Tensor</strong> - Result of alpha-Entmax transformation.</p></li>
-</ul>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">backward</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">ctx</span><span class="p">,</span> <span class="n">dY</span><span class="p">)</span>
-</pre></div>
-</div>
-<p>Backward pass: Computes gradients for the input tensor and alpha parameter.</p>
-<p><strong>Parameters:</strong></p>
-<ul class="simple">
-<li><p><strong>ctx</strong> - Context object containing stored information from forward pass.</p></li>
-<li><p><strong>dY</strong> <em>(torch.Tensor)</em> - Gradient of the loss with respect to the output.</p></li>
-</ul>
-<p><strong>Returns:</strong></p>
-<ul class="simple">
-<li><p><strong>torch.Tensor</strong> - Gradient of the loss with respect to the input tensor X.</p></li>
-<li><p><strong>torch.Tensor or None</strong> - Gradient of the loss with respect to alpha (if required).</p></li>
-</ul>
-</section>
-</section>
-<section id="utility-functions">
-<h2><strong>Utility Functions</strong><a class="headerlink" href="#utility-functions" title="Link to this heading"></a></h2>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">sparsemax</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">dim</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
-</pre></div>
-</div>
-<p>Function interface for Sparsemax transformation.</p>
-<p><strong>Parameters:</strong></p>
-<ul class="simple">
-<li><p><strong>X</strong> <em>(torch.Tensor)</em> - Input tensor.</p></li>
-<li><p><strong>dim</strong> <em>(int, optional, Default is -1)</em> - Dimension along which to compute.</p></li>
-<li><p><strong>k</strong> <em>(int or None, optional, Default is None)</em> - Number of largest elements to partially sort.</p></li>
-</ul>
-<p><strong>Returns:</strong></p>
-<ul class="simple">
-<li><p><strong>torch.Tensor</strong> - Result of Sparsemax transformation.</p></li>
-</ul>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">entmax15</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">dim</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
-</pre></div>
-</div>
-<p>Function interface for 1.5-Entmax transformation.</p>
-<p><strong>Parameters:</strong></p>
-<ul class="simple">
-<li><p><strong>X</strong> <em>(torch.Tensor)</em> - Input tensor.</p></li>
-<li><p><strong>dim</strong> <em>(int, optional, Default is -1)</em> - Dimension along which to compute.</p></li>
-<li><p><strong>k</strong> <em>(int or None, optional, Default is None)</em> - Number of largest elements to partially sort.</p></li>
-</ul>
-<p><strong>Returns:</strong></p>
-<ul class="simple">
-<li><p><strong>torch.Tensor</strong> - Result of 1.5-Entmax transformation.</p></li>
-</ul>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">entmax_bisect</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">1.5</span><span class="p">,</span> <span class="n">dim</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">n_iter</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">ensure_sum_one</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-</pre></div>
-</div>
-<p>Function interface for alpha-Entmax transformation via bisection.</p>
-<p><strong>Parameters:</strong></p>
-<ul class="simple">
-<li><p><strong>X</strong> <em>(torch.Tensor)</em> - Input tensor.</p></li>
-<li><p><strong>alpha</strong> <em>(float or torch.Tensor, optional, Default is 1.5)</em> - Alpha parameter, must be &gt; 1.</p></li>
-<li><p><strong>dim</strong> <em>(int, optional, Default is -1)</em> - Dimension along which to compute.</p></li>
-<li><p><strong>n_iter</strong> <em>(int, optional, Default is 50)</em> - Number of bisection iterations.</p></li>
-<li><p><strong>ensure_sum_one</strong> <em>(bool, optional, Default is True)</em> - Whether to ensure the result sums to 1 along the specified dimension.</p></li>
-</ul>
-<p><strong>Returns:</strong></p>
-<ul class="simple">
-<li><p><strong>torch.Tensor</strong> - Result of alpha-Entmax transformation.</p></li>
-</ul>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">ifnone</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
-</pre></div>
-</div>
-<p>Returns b if a is None, otherwise returns a.</p>
-<p><strong>Parameters:</strong></p>
-<ul class="simple">
-<li><p><strong>a</strong> - First value.</p></li>
-<li><p><strong>b</strong> - Value to return if a is None.</p></li>
-</ul>
-<p><strong>Returns:</strong></p>
-<ul class="simple">
-<li><p>a if a is not None else b.</p></li>
-</ul>
-</section>
-<section id="mlp-and-full-model">
-<h2><strong>MLP and Full Model</strong><a class="headerlink" href="#mlp-and-full-model" title="Link to this heading"></a></h2>
-<section id="class-mlp-torch-nn-module">
-<h3>class MLP(torch.nn.Module)<a class="headerlink" href="#class-mlp-torch-nn-module" title="Link to this heading"></a></h3>
-<p>Multi-layer perceptron (MLP) layer for final prediction.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">input_dim</span><span class="p">,</span> <span class="n">output_dim</span><span class="p">,</span> <span class="n">actv</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">bn</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">bn_final</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">dropout</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">hidden</span><span class="o">=</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">skip_connect</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">softmax</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-</pre></div>
-</div>
-<p><strong>Parameters:</strong></p>
-<ul class="simple">
-<li><p><strong>input_dim</strong> <em>(int)</em> - Input data dimension.</p></li>
-<li><p><strong>output_dim</strong> <em>(int)</em> - Output data dimension (e.g., 1 for regression).</p></li>
-<li><p><strong>actv</strong> <em>(torch.nn.Module or None, optional, Default is None)</em> - Activation function, default is ReLU.</p></li>
-<li><p><strong>bn</strong> <em>(bool, optional, Default is True)</em> - Whether to use batch normalization in each layer.</p></li>
-<li><p><strong>bn_final</strong> <em>(bool, optional, Default is False)</em> - Whether to use batch normalization in the final layer.</p></li>
-<li><p><strong>dropout</strong> <em>(float, optional, Default is 0.2)</em> - Dropout ratio.</p></li>
-<li><p><strong>hidden</strong> <em>(tuple, optional, Default is (4, 2, 1))</em> - Hidden layer configuration, each element is a multiple of the input dimension.</p></li>
-<li><p><strong>skip_connect</strong> <em>(bool, optional, Default is False)</em> - Whether to add skip connections.</p></li>
-<li><p><strong>softmax</strong> <em>(bool, optional, Default is False)</em> - If True and output_dim &gt; 1, applies Softmax to the output.</p></li>
-</ul>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
-</pre></div>
-</div>
-<p>MLP forward pass.</p>
-<p><strong>Parameters:</strong></p>
-<ul class="simple">
-<li><p><strong>x</strong> <em>(torch.Tensor)</em> - Input tensor with shape [batch_size, input_dim].</p></li>
-</ul>
-<p><strong>Returns:</strong></p>
-<ul class="simple">
-<li><p><strong>torch.Tensor</strong> - Output tensor with shape [batch_size, output_dim].</p></li>
-</ul>
-</section>
-<section id="class-bamodel-torch-nn-module">
-<h3>class BAModel(torch.nn.Module)<a class="headerlink" href="#class-bamodel-torch-nn-module" title="Link to this heading"></a></h3>
-<p>BAModel integrates patch embedding, encoder, and decoder to form a complete model.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">feat_dim</span><span class="p">,</span> <span class="n">emb_dim</span><span class="o">=</span><span class="mi">32</span><span class="p">,</span> <span class="n">out_dim</span><span class="o">=</span><span class="mi">24</span><span class="p">,</span> <span class="n">patch_dim</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">factor</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">n_agg</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">actv</span><span class="o">=</span><span class="s1">&#39;entmax&#39;</span><span class="p">,</span> <span class="n">hopfield</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">d_model</span><span class="o">=</span><span class="mi">512</span><span class="p">,</span> <span class="n">d_ff</span><span class="o">=</span><span class="mi">1024</span><span class="p">,</span> <span class="n">n_heads</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">e_layer</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">d_layer</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">dropout</span><span class="o">=</span><span class="mf">0.2</span><span class="p">)</span>
-</pre></div>
-</div>
-<p><strong>Parameters:</strong></p>
-<ul class="simple">
-<li><p><strong>feat_dim</strong> <em>(int)</em> - Input feature dimension.</p></li>
-<li><p><strong>emb_dim</strong> <em>(int, optional, Default is 32)</em> - Embedding dimension.</p></li>
-<li><p><strong>out_dim</strong> <em>(int, optional, Default is 24)</em> - Output dimension.</p></li>
-<li><p><strong>patch_dim</strong> <em>(int, optional, Default is 8)</em> - Number of features per patch.</p></li>
-<li><p><strong>factor</strong> <em>(int, optional, Default is 8)</em> - Factor dimension for pooling vectors.</p></li>
-<li><p><strong>n_agg</strong> <em>(int, optional, Default is 4)</em> - Number of patches to aggregate.</p></li>
-<li><p><strong>actv</strong> <em>(str, optional, Default is ‘entmax’)</em> - Type of activation function.</p></li>
-<li><p><strong>hopfield</strong> <em>(bool, optional, Default is True)</em> - Whether to use Hopfield attention.</p></li>
-<li><p><strong>d_model</strong> <em>(int, optional, Default is 512)</em> - Feature dimension for attention mechanisms.</p></li>
-<li><p><strong>d_ff</strong> <em>(int, optional, Default is 1024)</em> - Hidden layer dimension for feedforward networks.</p></li>
-<li><p><strong>n_heads</strong> <em>(int, optional, Default is 8)</em> - Number of attention heads.</p></li>
-<li><p><strong>e_layer</strong> <em>(int, optional, Default is 3)</em> - Number of encoder layers.</p></li>
-<li><p><strong>d_layer</strong> <em>(int, optional, Default is 4)</em> - Number of decoder layers.</p></li>
-<li><p><strong>dropout</strong> <em>(float, optional, Default is 0.2)</em> - Dropout ratio.</p></li>
-</ul>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
-</pre></div>
-</div>
-<p>Model forward pass.</p>
-<p><strong>Parameters:</strong></p>
-<ul class="simple">
-<li><p><strong>x</strong> <em>(torch.Tensor)</em> - Input tensor with shape [batch_size, feat_dim, emb_dim].</p></li>
-</ul>
-<p><strong>Returns:</strong></p>
-<ul class="simple">
-<li><p><strong>torch.Tensor</strong> - Model output tensor, shape depends on decoder configuration, ultimately [batch_size, out_dim, emb_dim] or similar.</p></li>
+<li><p><strong>torch.Tensor</strong> - Patch embedded tensor.</p></li>
 </ul>
 <p><strong>Referencses:</strong></p>
 <p>Xu, C., Huang, Y.-C., Hu, J. Y.-C., Li, W., Gilani, A., Goan, H.-S., &amp; Liu, H. (2024). BiSHop: Bi-Directional Cellular Learning for Tabular Data with Generalized Sparse Modern Hopfield Model. In Proceedings of the 41st International Conference on Machine Learning (ICML). <a class="reference external" href="https://arxiv.org/abs/2404.03830">https://arxiv.org/abs/2404.03830</a></p>
-</section>
 </section>
 </section>
 
 
            </div>
           </div>
-          <footer>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="amformer.html" class="btn btn-neutral float-left" title="AMFormer" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="danets.html" class="btn btn-neutral float-right" title="DANet" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
 
   <hr/>
 

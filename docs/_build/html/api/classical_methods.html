@@ -19,8 +19,8 @@
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Library Components" href="lib.html" />
-    <link rel="prev" title="Methods" href="methods.html" /> 
+    <link rel="next" title="Deep Learning Models" href="deep_learning.html" />
+    <link rel="prev" title="Method Base" href="method_base.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -89,8 +89,12 @@
 <p class="caption" role="heading"><span class="caption-text">API Docs</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="core.html">Core Components</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Classical Methods</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#available-methods">Available Methods</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="deep_learning.html">Deep Learning Models</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Classical Methods</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lib.html">Library Components</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Acknowledgements</span></p>
@@ -124,15 +128,51 @@
              
   <section id="classical-methods">
 <h1>Classical Methods<a class="headerlink" href="#classical-methods" title="Link to this heading"></a></h1>
-<p>Classical machine learning algorithms optimized for tabular data.</p>
+<section id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Link to this heading"></a></h2>
+<p>The classical methods module provides implementations of traditional machine learning algorithms for tabular data analysis. All methods inherit from the base <cite>classical_methods</cite> class and provide a unified interface for training, prediction, and evaluation.</p>
+</section>
+<section id="available-methods">
+<h2>Available Methods<a class="headerlink" href="#available-methods" title="Link to this heading"></a></h2>
+<p><strong>Base Components:</strong></p>
+<ul class="simple">
+<li><p><a class="reference internal" href="classical_model/base.html"><span class="doc">Base</span></a>: Base class for all classical machine learning methods, providing common interface and utilities</p></li>
+</ul>
+<p><strong>Tree-Based Methods:</strong></p>
+<ul class="simple">
+<li><p><a class="reference internal" href="classical_model/randomforest.html"><span class="doc">Random Forest</span></a>: Ensemble learning method using multiple decision trees</p></li>
+<li><p><a class="reference internal" href="classical_model/xgboost.html"><span class="doc">XGBoost</span></a>: Gradient boosting framework with optimized implementation</p></li>
+<li><p><a class="reference internal" href="classical_model/lightgbm.html"><span class="doc">LightGBM</span></a>: Light gradient boosting machine with high efficiency</p></li>
+<li><p><a class="reference internal" href="classical_model/catboost.html"><span class="doc">CatBoost</span></a>: Gradient boosting with categorical features support</p></li>
+</ul>
+<p><strong>Linear Methods:</strong></p>
+<ul class="simple">
+<li><p><a class="reference internal" href="classical_model/logreg.html"><span class="doc">Logistic Regression</span></a>: Linear model for classification tasks</p></li>
+<li><p><a class="reference internal" href="classical_model/lr.html"><span class="doc">Linear Regression</span></a>: Linear model for regression tasks</p></li>
+<li><p><a class="reference internal" href="classical_model/svm.html"><span class="doc">Support Vector Machine</span></a>: SVM classifier with kernel methods</p></li>
+</ul>
+<p><strong>Distance-Based Methods:</strong></p>
+<ul class="simple">
+<li><p><a class="reference internal" href="classical_model/knn.html"><span class="doc">K-Nearest Neighbors</span></a>: Instance-based learning using nearest neighbors</p></li>
+<li><p><a class="reference internal" href="classical_model/ncm.html"><span class="doc">Nearest Centroid Method</span></a>: Classification based on centroid distances</p></li>
+</ul>
+<p><strong>Probabilistic Methods:</strong></p>
+<ul class="simple">
+<li><p><a class="reference internal" href="classical_model/naivebayes.html"><span class="doc">Naive Bayes</span></a>: Probabilistic classifier based on Bayes theorem</p></li>
+</ul>
+<p><strong>Utility Methods:</strong></p>
+<ul class="simple">
+<li><p><a class="reference internal" href="classical_model/dummy.html"><span class="doc">Dummy Classifier</span></a>: Baseline classifier for comparison and testing</p></li>
+</ul>
+</section>
 </section>
 
 
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="methods.html" class="btn btn-neutral float-left" title="Methods" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="lib.html" class="btn btn-neutral float-right" title="Library Components" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="method_base.html" class="btn btn-neutral float-left" title="Method Base" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="deep_learning.html" class="btn btn-neutral float-right" title="Deep Learning Models" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

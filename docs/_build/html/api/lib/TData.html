@@ -18,7 +18,9 @@
       <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
-    <link rel="search" title="Search" href="../../search.html" /> 
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Trompt" href="trompt.html" />
+    <link rel="prev" title="TabR" href="tabr.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -85,11 +87,42 @@
 <li class="toctree-l1"><a class="reference internal" href="../../experimental_results.html#conclusion">Conclusion</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">API Docs</span></p>
-<ul>
+<ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../core.html">Core Components</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../deep_learning.html">Deep Learning Models</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../classical_methods.html">Classical Methods</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../lib.html">Library Components</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../classical_model/index.html">Classical Methods</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Library Components</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="amformer.html"><strong>AMFormer</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="bishop.html"><strong>BiSHop</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="danets.html"><strong>DANet</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="dnnr.html"><strong>DNNR</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="excelformer.html"><strong>ExcelFormer</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="hyperfast.html"><strong>HyperFast</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="node.html"><strong>NODE</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="num_embeddings.html"><strong>num_embeddings</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="periodic_tab_dl.html"><strong>Periodic Tab DL</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="pfn_v2.html"><strong>PFN v2</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="ptarl.html"><strong>PTaRL</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="realmlp.html"><strong>RealMLP</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="tabcaps.html"><strong>TabCaps</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="tabicl.html"><strong>TabICL</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="tabm.html"><strong>TabM</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="tabnet.html"><strong>TabNet</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="tabpfn.html"><strong>TabPFN</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="tabptm.html"><strong>TabPTM</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="tabr.html"><strong>TabR</strong></a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#"><strong>TData</strong></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#functions">Functions</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="trompt.html"><strong>Trompt</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#available-components">Available Components</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#common-features">Common Features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#usage-example">Usage Example</a></li>
+</ul>
+</li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Acknowledgements</span></p>
 <ul>
@@ -110,6 +143,7 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Library Components</a></li>
       <li class="breadcrumb-item active"><strong>TData</strong></li>
       <li class="wy-breadcrumbs-aside">
             <a href="../../_sources/api/lib/TData.rst.txt" rel="nofollow"> View page source</a>
@@ -123,65 +157,57 @@
   <section id="tdata">
 <h1><strong>TData</strong><a class="headerlink" href="#tdata" title="Link to this heading"></a></h1>
 <p>A PyTorch Dataset implementation designed for handling tabular data with numerical and categorical features.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">TData</span><span class="p">(</span><span class="n">Dataset</span><span class="p">):</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">is_regression</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">y_info</span><span class="p">,</span> <span class="n">part</span><span class="p">):</span>
-        <span class="o">...</span>
+<section id="functions">
+<h2>Functions<a class="headerlink" href="#functions" title="Link to this heading"></a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">TData</span><span class="p">(</span><span class="n">Dataset</span><span class="p">)</span>
 </pre></div>
 </div>
-<p><strong>Parameters</strong></p>
+<p>A PyTorch Dataset implementation for tabular data with numerical and categorical features.</p>
+<p><strong>Parameters:</strong></p>
 <ul class="simple">
-<li><p><strong>is_regression</strong> <em>(bool)</em>:
-Flag indicating if the task is regression. Used to determine label processing and metadata.</p></li>
-<li><p><strong>X</strong> <em>(Tuple[Optional[Tensor], Optional[Tensor]])</em>:
-Tuple containing numerical and categorical features.
+<li><p><strong>is_regression</strong> <em>(bool)</em> - Flag indicating if the task is regression. Used to determine label processing and metadata.</p></li>
+<li><p><strong>X</strong> <em>(Tuple[Optional[Tensor], Optional[Tensor]])</em> - Tuple containing numerical and categorical features.
 - <cite>X[0]</cite>: Numerical features (shape: <cite>[n_samples, n_num_features]</cite>).
 - <cite>X[1]</cite>: Categorical features (shape: <cite>[n_samples, n_cat_features]</cite>).</p></li>
-<li><p><strong>Y</strong> <em>(Dict[str, Tensor])</em>:
-Dictionary with labels for train/val/test splits. Keys must include <cite>part</cite>.</p></li>
-<li><p><strong>y_info</strong> <em>(Dict[str, Any])</em>:
-Metadata about the labels. For regression, typically contains <cite>mean</cite> and <cite>std</cite> for de-normalization.</p></li>
-<li><p><strong>part</strong> <em>(str)</em>:
-Data split to use. Must be one of <cite>[‘train’, ‘val’, ‘test’]</cite>.</p></li>
+<li><p><strong>Y</strong> <em>(Dict[str, Tensor])</em> - Dictionary with labels for train/val/test splits. Keys must include <cite>part</cite>.</p></li>
+<li><p><strong>y_info</strong> <em>(Dict[str, Any])</em> - Metadata about the labels. For regression, typically contains <cite>mean</cite> and <cite>std</cite> for de-normalization.</p></li>
+<li><p><strong>part</strong> <em>(str)</em> - Data split to use. Must be one of <cite>[‘train’, ‘val’, ‘test’]</cite>.</p></li>
 </ul>
-<section id="core-methods">
-<h2><strong>Core Methods</strong><a class="headerlink" href="#core-methods" title="Link to this heading"></a></h2>
-<p><strong>Feature Dimension Retrieval</strong></p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_dim_in</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_dim_in</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span>
 </pre></div>
 </div>
-<p><strong>Returns</strong>:</p>
+<p>Returns the input feature dimension.</p>
+<p><strong>Returns:</strong></p>
 <ul class="simple">
-<li><p><strong>int</strong>: Number of numerical features (<cite>self.X_num.shape[1]</cite>), or 0 if <cite>self.X_num</cite> is <cite>None</cite>.</p></li>
+<li><p><strong>int</strong> - Number of numerical features (<cite>self.X_num.shape[1]</cite>), or 0 if <cite>self.X_num</cite> is <cite>None</cite>.</p></li>
 </ul>
-<p><strong>Categorical Feature Cardinality</strong></p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_categories</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">]]:</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_categories</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">]]</span>
 </pre></div>
 </div>
-<p><strong>Returns</strong>:</p>
+<p>Returns categorical feature cardinality information.</p>
+<p><strong>Returns:</strong></p>
 <ul class="simple">
-<li><p><strong>Optional[List[int]]</strong>:
-List where each element is the number of unique categories for a categorical feature.
-Returns <cite>None</cite> if <cite>self.X_cat</cite> is <cite>None</cite>.</p></li>
+<li><p><strong>Optional[List[int]]</strong> - List where each element is the number of unique categories for a categorical feature. Returns <cite>None</cite> if <cite>self.X_cat</cite> is <cite>None</cite>.</p></li>
 </ul>
-<p><strong>Dataset Size</strong></p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="fm">__len__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="fm">__len__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span>
 </pre></div>
 </div>
-<p><strong>Returns</strong>:</p>
+<p>Returns the number of samples in the dataset.</p>
+<p><strong>Returns:</strong></p>
 <ul class="simple">
-<li><p><strong>int</strong>: Number of samples in the dataset (<cite>len(self.Y)</cite>).</p></li>
+<li><p><strong>int</strong> - Number of samples in the dataset (<cite>len(self.Y)</cite>).</p></li>
 </ul>
-<p><strong>Sample Retrieval</strong></p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="fm">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">Union</span><span class="p">[</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">Tensor</span><span class="p">]],</span> <span class="n">Tensor</span><span class="p">]:</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="fm">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">Union</span><span class="p">[</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">Tensor</span><span class="p">]],</span> <span class="n">Tensor</span><span class="p">]</span>
 </pre></div>
 </div>
-<p><strong>Parameters</strong>:</p>
+<p>Retrieves a data sample and its label.</p>
+<p><strong>Parameters:</strong></p>
 <ul class="simple">
-<li><p><strong>i</strong> <em>(int)</em>: Sample index.</p></li>
+<li><p><strong>i</strong> <em>(int)</em> - Sample index.</p></li>
 </ul>
-<p><strong>Returns</strong>:</p>
+<p><strong>Returns:</strong></p>
 <ul>
-<li><p><strong>Tuple[Union[Tensor, Tuple[Tensor, Tensor]], Tensor]</strong>:
+<li><p><strong>Tuple[Union[Tensor, Tuple[Tensor, Tensor]], Tensor]</strong> -
 - <strong>data</strong>: Feature tensor(s):</p>
 <blockquote>
 <div><ul class="simple">
@@ -196,28 +222,15 @@ Returns <cite>None</cite> if <cite>self.X_cat</cite> is <cite>None</cite>.</p></
 </li>
 </ul>
 </section>
-<section id="usage-notes">
-<h2><strong>Usage Notes</strong><a class="headerlink" href="#usage-notes" title="Link to this heading"></a></h2>
-<ol class="arabic simple">
-<li><p><strong>Data Structure</strong>:
-- Expects numerical and categorical features to be provided as tensors (or <cite>None</cite> if not applicable).
-- Labels should be provided as a dictionary with keys ‘train’, ‘val’, ‘test’.</p></li>
-<li><p><strong>Feature Handling</strong>:
-- Automatically handles datasets with numerical-only, categorical-only, or mixed features.
-- Categorical feature counts are computed using CPU conversion for set operations.</p></li>
-<li><p><strong>Metadata</strong>:
-- Stores label metadata (<cite>y_info</cite>) which can be used for tasks like de-normalizing regression predictions.</p></li>
-<li><p><strong>Compatibility</strong>:
-- Works with PyTorch DataLoader for efficient batching and parallel data loading.
-- The <cite>get_categories</cite> method is useful for initializing embeddings for categorical features.</p></li>
-</ol>
-</section>
 </section>
 
 
            </div>
           </div>
-          <footer>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="tabr.html" class="btn btn-neutral float-left" title="TabR" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="trompt.html" class="btn btn-neutral float-right" title="Trompt" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
 
   <hr/>
 

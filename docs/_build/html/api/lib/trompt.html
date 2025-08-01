@@ -88,7 +88,6 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../core.html">Core Components</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../deep_learning.html">Deep Learning Models</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../classical_methods.html">Classical Methods</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../lib.html">Library Components</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Acknowledgements</span></p>
@@ -123,8 +122,8 @@
   <section id="trompt">
 <h1><strong>Trompt</strong><a class="headerlink" href="#trompt" title="Link to this heading"></a></h1>
 <p>A prompt-based deep neural network for tabular data that separates learning into intrinsic column features and sample-specific feature importance.</p>
-<section id="embedding-layers">
-<h2><strong>Embedding Layers</strong><a class="headerlink" href="#embedding-layers" title="Link to this heading"></a></h2>
+<section id="functions">
+<h2>Functions<a class="headerlink" href="#functions" title="Link to this heading"></a></h2>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">LinearEmbeddings</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -151,9 +150,6 @@
 <p><cite>(*, n_cat_features)</cite></p>
 <p><strong>Output Shape:</strong></p>
 <p><cite>(*, n_cat_features, d_embedding)</cite></p>
-</section>
-<section id="trompt-components">
-<h2><strong>Trompt Components</strong><a class="headerlink" href="#trompt-components" title="Link to this heading"></a></h2>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">ImportanceGetter</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -245,19 +241,8 @@
 <ul class="simple">
 <li><p><strong>Tensor</strong> - Decoded predictions.</p></li>
 </ul>
-</section>
-<section id="key-architecture-features">
-<h2><strong>Key Architecture Features</strong><a class="headerlink" href="#key-architecture-features" title="Link to this heading"></a></h2>
-<ol class="arabic simple">
-<li><p><strong>Feature Importance Calculation</strong>: Uses prompts to dynamically weight features.</p></li>
-<li><p><strong>Modular Design</strong>: Separates embedding, importance calculation, and decoding.</p></li>
-<li><p><strong>Support for Mixed Data</strong>: Handles both numerical and categorical features.</p></li>
-<li><p><strong>Dynamic Feature Selection</strong>: Adapts to input data using learned prompts.</p></li>
-<li><p><strong>Residual Connections</strong>: Maintains information flow through the network.</p></li>
-</ol>
-<p>This architecture is particularly suitable for tabular data tasks where feature importance may vary across samples.</p>
-<p>##References##</p>
-<p>K.-Y. Chen, P.-H. Chiang, H.-R. Chou, T.-W. Chen, and T.-H. Chang, “Trompt: Towards a Better Deep Neural Network for Tabular Data,” arXiv preprint arXiv:2305.18446, 2023. [Online]. Available: <a class="reference external" href="https://arxiv.org/abs/2305.18446">https://arxiv.org/abs/2305.18446</a></p>
+<p><strong>Reference</strong></p>
+<p>Kuan-Yu Chen, Ping-Han Chiang, Hsin-Rung Chou, Ting-Wei Chen, and Tien-Hao Chang. <strong>Trompt: Towards a Better Deep Neural Network for Tabular Data</strong>. arXiv:2305.18446 [cs.LG], 2023. <a class="reference external" href="https://arxiv.org/abs/2305.18446">https://arxiv.org/abs/2305.18446</a></p>
 </section>
 </section>
 

@@ -1,180 +1,149 @@
-**amformer**
-==============
+**AMFormer**
+===========
 
-A modified transformer architecture enabling arithmetical feature interactions
+A token-based method which improves the transformer architecture for tabular data by incorporating parallel addition and multiplication attention mechanisms, utilizing prompt tokens to constrain feature interactions.
 
-
-Class GEGLU (nn.Module)
----------------------------
 
 Functions
 ~~~~~~~~~
 
 .. code-block:: python
 
-    forward(self, x)
+    class GEGLU(nn.Module)
+
+GEGLU (Gated Exponential Linear Unit) activation function.
+
+**Input:**
+
+* **x** *(Tensor)* - Input tensor.
+
+**Output:**
+
+* **Tensor** - GEGLU output.
+
+
+.. code-block:: python
+
+    def FeedForward(dim, mult=4, dropout=0.)
+
+Creates a feedforward network with GEGLU activation.
 
 **Parameters:**
 
-* **x** *(torch.Tensor)* - Input tensor
+* **dim** *(int)* - Input/output dimension.
+* **mult** *(int, optional, Default is 4)* - Multiplier for hidden dimension.
+* **dropout** *(float, optional, Default is 0.)* - Dropout rate.
 
 **Returns:**
 
-* **torch.Tensor** - Output tensor after applying GEGLU activation
+* **nn.Sequential** - Feedforward network.
 
 
 .. code-block:: python
 
-    def FeedForward(dim, mult = 4, dropout = 0.)
+    class Attention(nn.Module)
+
+Multi-head attention mechanism.
 
 **Parameters:**
 
-* **dim** *(int)* - Input dimension
-* **mult** *(int, optional, Default is 4)* - Expansion factor for the hidden layer size relative to `dim`
-* **dropout** *(float, optional, Default is 0)* - Dropout probability applied between the two linear layers
+* **heads** *(int, optional, Default is 8)* - Number of attention heads.
+* **dim** *(int, optional, Default is 64)* - Input dimension.
+* **dropout** *(float, optional, Default is 0.)* - Dropout rate.
+* **inner_dim** *(int, optional, Default is 0)* - Inner dimension (0 for same as dim).
 
-**Returns:**
+**Input:**
 
-* **FeedForward** *(nn.Module)* - A feed-forward block that applies two linear transformations with an activation and optional dropout in between
+* **x** *(Tensor)* - Input tensor.
+* **attn_out** *(bool, optional, Default is False)* - Whether to return attention weights.
 
+**Output:**
 
-class Attention(nn.Module)
----------------------------
-
-.. code-block:: python
-
-    __init__(self, heads = 8, dim = 64, dropout = 0., inner_dim = 0)
-
-**Parameters:**
-
-* **heads** *(int, optional, Default is 8)* - Number of attention heads
-* **dim** *(int, optional, Default is 64)* - Size of the input embedding
-* **dropout** *(float, optional, Default is 0)* - Dropout probability applied to the attention weights
-* **inner_dim** *(int, optional, Default is 0)* - Size of the inner dimension for the attention block. If set to 0, it will be set to `dim`
+* **Tensor** - Attention output, or tuple (output, attention_weights) if attn_out=True.
 
 
 .. code-block:: python
 
-    forward(self, x, attn_out = False)
+    class MemoryBlock(nn.Module)
 
-Computes the forward pass of the attention mechanism using scaled dot-product attention.
+Memory block with grouped attention mechanism.
 
 **Parameters:**
 
-* **x** *(torch.Tensor)* - Input tensor of shape [batch_size, seq_len, dim]
-* **attn_out** *(bool, optional, Default is False)* - If True, returns both the output tensor and the attention weights
+* **token_num** *(int)* - Number of tokens.
+* **heads** *(int)* - Number of attention heads.
+* **dim** *(int)* - Input dimension.
+* **attn_dropout** *(float)* - Attention dropout rate.
+* **cluster** *(bool)* - Whether to use clustering.
+* **target_mode** *(str)* - Target mode for attention.
+* **groups** *(int)* - Number of groups.
+* **num_per_group** *(int)* - Number of tokens per group.
+* **use_cls_token** *(bool)* - Whether to use CLS token.
+* **sum_or_prod** *(str, optional)* - Sum or product operation.
+* **qk_relu** *(bool, optional, Default is False)* - Whether to use ReLU in QK computation.
 
-**Returns:**
+**Input:**
 
-* **torch.Tensor** - Output tensor after applying attention mechanism of shape [batch_size, seq_len, dim]
-* **torch.Tensor** - Attention weights (only returned if `attn_out` is True) of shape [batch_size, heads, seq_len, seq_len]
+* **x** *(Tensor)* - Input tensor.
 
+**Output:**
 
+* **Tensor** - Memory block output.
 
-class MemoryBlock(nn.Module)
-------------------------------
-
-Functions
-~~~~~~~~~
 
 .. code-block:: python
 
-    __init__(self, token_num, heads, dim, attn_dropout, cluster, target_mode, groups, num_per_group, use_cls_token, sum_or_prod = None, qk_relu = False)
+    class Transformer(nn.Module)
+
+Transformer model with memory blocks.
 
 **Parameters:**
 
-* **token_num** *(int)* - Number of tokens
-* **heads** *(int)* - Number of attention heads
-* **dim** *(int)* - Dimension of the input embedding
-* **attn_dropout** *(float)* - Dropout probability for attention weights
-* **cluster** *(bool)* - Whether to use clustering for target tokens
-* **target_mode** *(str)* - Mode for target token generation ('mix' or other)
-* **groups** *(int)* - Number of groups for token processing
-* **num_per_group** *(int)* - Number of tokens to gather per group. If -1, no grouping is applied
-* **use_cls_token** *(bool)* - Whether to use a classification token
-* **sum_or_prod** *(str, optional, Default is None)* - Specifies if the block performs 'sum' or 'prod' aggregation. Must be 'sum' or 'prod'
-* **qk_relu** *(bool, optional, Default is False)* - Whether to apply ReLU activation to query (Q) and key (K) tensors
+* **dim** *(int)* - Input dimension.
+* **depth** *(int)* - Number of transformer layers.
+* **heads** *(int)* - Number of attention heads.
+* **attn_dropout** *(float)* - Attention dropout rate.
+* **ff_dropout** *(float)* - Feedforward dropout rate.
+* **use_cls_token** *(bool)* - Whether to use CLS token.
+* **groups** *(int)* - Number of groups.
+* **sum_num_per_group** *(int)* - Number per group for sum operation.
+* **prod_num_per_group** *(int)* - Number per group for product operation.
+* **cluster** *(bool)* - Whether to use clustering.
+* **target_mode** *(str)* - Target mode.
+* **token_num** *(int)* - Number of tokens.
+* **token_descent** *(bool, optional, Default is False)* - Whether to use token descent.
+* **use_prod** *(bool, optional, Default is True)* - Whether to use product operation.
+* **qk_relu** *(bool, optional, Default is False)* - Whether to use ReLU in QK.
+
+**Input:**
+
+* **x** *(Tensor)* - Input tensor.
+
+**Output:**
+
+* **Tensor** - Transformer output.
+
 
 .. code-block:: python
 
-    forward(self, x)
+    class NumericalEmbedder(nn.Module)
+
+Numerical feature embedder.
 
 **Parameters:**
 
-* **x** *(torch.Tensor)* - Input tensor
+* **dim** *(int)* - Embedding dimension.
+* **num_numerical_types** *(int)* - Number of numerical feature types.
 
-**Returns:**
+**Input:**
 
-* **torch.Tensor** - Output tensor after applying MemoryBlock operations
+* **x** *(Tensor)* - Numerical feature tensor.
 
+**Output:**
 
-class Transformer(nn.Module)
--------------------------------
-
-Functions
-~~~~~~~~~
-
-.. code-block:: python
-
-    __init__(self, dim, depth, heads, attn_dropout, ff_dropout, use_cls_token, groups, sum_num_per_group, prod_num_per_group, cluster, target_mode, token_num, token_descent=False, use_prod=True, qk_relu = False)
-
-**Parameters:**
-
-* **dim** *(int)* - Dimension of the input embedding
-* **depth** *(int)* - Number of transformer layers
-* **heads** *(int)* - Number of attention heads
-* **attn_dropout** *(float)* - Dropout probability for attention weights in MemoryBlocks
-* **ff_dropout** *(float)* - Dropout probability for feed-forward layers
-* **use_cls_token** *(bool)* - Whether to use a classification token in MemoryBlocks
-* **groups** *(list of int)* - List of group numbers for each layer
-* **sum_num_per_group** *(list of int)* - List of `num_per_group` for 'sum' MemoryBlocks in each layer
-* **prod_num_per_group** *(list of int)* - List of `num_per_group` for 'prod' MemoryBlocks in each layer
-* **cluster** *(bool)* - Whether to use clustering in MemoryBlocks
-* **target_mode** *(str)* - Mode for target token generation in MemoryBlocks
-* **token_num** *(int)* - Initial number of tokens
-* **token_descent** *(bool, optional, Default is False)* - If True, the number of tokens can decrease across layers
-* **use_prod** *(bool, optional, Default is True)* - Whether to include product-based MemoryBlocks in the transformer layers
-* **qk_relu** *(bool, optional, Default is False)* - Whether to apply ReLU activation to query (Q) and key (K) tensors in MemoryBlocks
-
-.. code-block:: python
-
-    forward(self, x)
-
-**Parameters:**
-
-* **x** *(torch.Tensor)* - Input tensor
-
-**Returns:**
-
-* **torch.Tensor** - Output tensor after applying transformer layers
+* **Tensor** - Embedded numerical features. 
 
 
-class NumericalEmbedder(nn.Module)
-------------------------------------
-
-Functions
-~~~~~~~~~
-
-.. code-block:: python
-
-    __init__(self, dim, num_numerical_types)
-
-**Parameters:**
-
-* **dim** *(int)* - Dimension of the output embedding
-* **num_numerical_types** *(int)* - Number of different numerical features to embed
-
-.. code-block:: python
-
-    forward(self, x)
-
-**Parameters:**
-
-* **x** *(torch.Tensor)* - Input numerical tensor
-
-**Returns:**
-
-* **torch.Tensor** - Embedded numerical features
 
 **Referencses:**
 

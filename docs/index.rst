@@ -93,8 +93,8 @@ Contents
    :caption: API Docs
 
    api/core
-   api/deep_learning
    api/classical_methods
+   api/deep_learning
    api/lib
 
 .. toctree::

@@ -1,0 +1,207 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>classical_methods.ncm &mdash; LAMDA-TALENT  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            LAMDA-TALENT
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Tutorials</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorials.html">How to Use TALENT</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorials.html#cloning-the-repository">1. Cloning the Repository</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorials.html#running-experiments">2. Running Experiments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorials.html#adding-new-methods">3. Adding New Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorials.html#configuring-hyperparameters">4. Configuring Hyperparameters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorials.html#troubleshooting">5. Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorials.html#conclusion">Conclusion</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Methods</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../methods.html">Methods in TALENT</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../methods.html#deep-learning-methods">Deep Learning Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../methods.html#classical-methods">Classical Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../methods.html#methodology-summary">Methodology Summary</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Dependencies</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../dependencies.html">Dependencies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dependencies.html#python-libraries">Python Libraries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dependencies.html#optional-dependencies">Optional Dependencies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dependencies.html#installation">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dependencies.html#additional-notes">Additional Notes</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Benchmark_Datasets</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../benchmark_datasets.html">Benchmark Datasets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../benchmark_datasets.html#available-datasets">Available Datasets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../benchmark_datasets.html#downloading-datasets">Downloading Datasets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../benchmark_datasets.html#dataset-structure">Dataset Structure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../benchmark_datasets.html#placing-datasets">Placing Datasets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../benchmark_datasets.html#using-datasets">Using Datasets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../benchmark_datasets.html#custom-datasets">Custom Datasets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../benchmark_datasets.html#task-types">Task Types</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../benchmark_datasets.html#conclusion">Conclusion</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Experimental_Results</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../experimental_results.html">Experimental Results</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../experimental_results.html#evaluation-metrics">Evaluation Metrics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../experimental_results.html#results-summary">Results Summary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../experimental_results.html#conclusion">Conclusion</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">API Docs</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../core.html">Core Components</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../deep_learning.html">Deep Learning Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lib.html">Library Components</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Acknowledgements</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../acknowledgements.html">Acknowledgments</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">LAMDA-TALENT</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active"><strong>classical_methods.ncm</strong></li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/api/classical_model/ncm.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="classical-methods-ncm">
+<h1><strong>classical_methods.ncm</strong><a class="headerlink" href="#classical-methods-ncm" title="Link to this heading"></a></h1>
+<p>Nearest Centroid Method (NCM) classical method implementation</p>
+<section id="classes">
+<h2>Classes<a class="headerlink" href="#classes" title="Link to this heading"></a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">NCMMethod</span><span class="p">(</span><span class="n">classical_methods</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Nearest Centroid Method for classification tasks using centroid-based classification.</p>
+</section>
+<section id="methods">
+<h2>Methods<a class="headerlink" href="#methods" title="Link to this heading"></a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">NCMMethod</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">args</span><span class="p">,</span> <span class="n">is_regression</span><span class="p">)</span>
+<span class="n">NCMMethod</span><span class="o">.</span><span class="n">construct_model</span><span class="p">(</span><span class="n">model_config</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+<span class="n">NCMMethod</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">info</span><span class="p">,</span> <span class="n">train</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">config</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+<span class="n">NCMMethod</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">info</span><span class="p">,</span> <span class="n">model_name</span><span class="p">)</span>
+<span class="n">NCMMethod</span><span class="o">.</span><span class="n">metric</span><span class="p">(</span><span class="n">predictions</span><span class="p">,</span> <span class="n">labels</span><span class="p">,</span> <span class="n">y_info</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Parameters:</strong></p>
+<ul class="simple">
+<li><p><strong>args</strong> <em>(object)</em> - Configuration arguments containing model settings</p></li>
+<li><p><strong>is_regression</strong> <em>(bool)</em> - Must be False for NCM (classification only)</p></li>
+<li><p><strong>model_config</strong> <em>(dict, optional)</em> - Model configuration parameters (not used for NearestCentroid)</p></li>
+<li><p><strong>data</strong> <em>(tuple)</em> - Tuple containing (N, C, y) where N is numerical features, C is categorical features, y is labels</p></li>
+<li><p><strong>info</strong> <em>(dict)</em> - Dataset information</p></li>
+<li><p><strong>train</strong> <em>(bool, default=True)</em> - Whether to train the model or just load from checkpoint</p></li>
+<li><p><strong>config</strong> <em>(dict, optional)</em> - Additional configuration parameters</p></li>
+<li><p><strong>model_name</strong> <em>(str)</em> - Name of the model for saving/loading</p></li>
+<li><p><strong>predictions</strong> <em>(array-like)</em> - Model predictions</p></li>
+<li><p><strong>labels</strong> <em>(array-like)</em> - True labels</p></li>
+<li><p><strong>y_info</strong> <em>(dict)</em> - Label information</p></li>
+</ul>
+<p><strong>Returns:</strong></p>
+<ul class="simple">
+<li><p><strong>time_cost</strong> <em>(float)</em> - Training time in seconds (for fit method)</p></li>
+<li><p><strong>vres</strong> <em>(tuple)</em> - Evaluation metrics values</p></li>
+<li><p><strong>metric_name</strong> <em>(tuple)</em> - Names of the evaluation metrics</p></li>
+<li><p><strong>test_logit</strong> <em>(array-like)</em> - Test predictions</p></li>
+</ul>
+<p><strong>Notes:</strong></p>
+<ul class="simple">
+<li><p>Uses sklearn’s NearestCentroid for classification tasks only</p></li>
+<li><p>Requires cat_policy to be different from ‘indices’</p></li>
+<li><p>Does not support hyperparameter tuning (tune must be False)</p></li>
+<li><p>Supports both binary and multiclass classification</p></li>
+<li><p>Automatically handles data preprocessing including normalization and encoding</p></li>
+<li><p>Saves trained model to pickle file for later use</p></li>
+<li><p>Returns Accuracy, Avg_Precision, Avg_Recall, F1 metrics</p></li>
+<li><p>Distance-based classifier that finds the nearest class centroid</p></li>
+<li><p>Simple and interpretable classification method</p></li>
+</ul>
+<p><strong>References:</strong></p>
+<p><code class="docutils literal notranslate"><span class="pre">[1]</span> <span class="pre">Tibshirani,</span> <span class="pre">R.,</span> <span class="pre">Hastie,</span> <span class="pre">T.,</span> <span class="pre">Narasimhan,</span> <span class="pre">B.,</span> <span class="pre">&amp;</span> <span class="pre">Chu,</span> <span class="pre">G.</span> <span class="pre">(2002).</span> <span class="pre">Diagnosis</span> <span class="pre">of</span> <span class="pre">multiple</span> <span class="pre">cancer</span> <span class="pre">types</span> <span class="pre">by</span> <span class="pre">shrunken</span> <span class="pre">centroids</span> <span class="pre">of</span> <span class="pre">gene</span> <span class="pre">expression.</span> <span class="pre">Proceedings</span> <span class="pre">of</span> <span class="pre">the</span> <span class="pre">National</span> <span class="pre">Academy</span> <span class="pre">of</span> <span class="pre">Sciences,</span> <span class="pre">99(10),</span> <span class="pre">6567-6572.</span></code></p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Read the Docs core team.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>amformer &mdash; LAMDA-TALENT  documentation</title>
+  <title>AMFormer &mdash; LAMDA-TALENT  documentation</title>
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=80d5e7a1" />
       <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=e59714d7" />
 
@@ -18,7 +18,9 @@
       <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
-    <link rel="search" title="Search" href="../../search.html" /> 
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="BiSHop" href="bishop.html" />
+    <link rel="prev" title="Library Components" href="index.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -85,11 +87,42 @@
 <li class="toctree-l1"><a class="reference internal" href="../../experimental_results.html#conclusion">Conclusion</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">API Docs</span></p>
-<ul>
+<ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../core.html">Core Components</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../deep_learning.html">Deep Learning Models</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../classical_methods.html">Classical Methods</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../lib.html">Library Components</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../classical_model/index.html">Classical Methods</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Library Components</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#"><strong>AMFormer</strong></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#functions">Functions</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="bishop.html"><strong>BiSHop</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="danets.html"><strong>DANet</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="dnnr.html"><strong>DNNR</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="excelformer.html"><strong>ExcelFormer</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="hyperfast.html"><strong>HyperFast</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="node.html"><strong>NODE</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="num_embeddings.html"><strong>num_embeddings</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="periodic_tab_dl.html"><strong>Periodic Tab DL</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="pfn_v2.html"><strong>PFN v2</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="ptarl.html"><strong>PTaRL</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="realmlp.html"><strong>RealMLP</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="tabcaps.html"><strong>TabCaps</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="tabicl.html"><strong>TabICL</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="tabm.html"><strong>TabM</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="tabnet.html"><strong>TabNet</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="tabpfn.html"><strong>TabPFN</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="tabptm.html"><strong>TabPTM</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="tabr.html"><strong>TabR</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="TData.html"><strong>TData</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="trompt.html"><strong>Trompt</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#available-components">Available Components</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#common-features">Common Features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#usage-example">Usage Example</a></li>
+</ul>
+</li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Acknowledgements</span></p>
 <ul>
@@ -110,7 +143,8 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
-      <li class="breadcrumb-item active"><strong>amformer</strong></li>
+          <li class="breadcrumb-item"><a href="index.html">Library Components</a></li>
+      <li class="breadcrumb-item active"><strong>AMFormer</strong></li>
       <li class="wy-breadcrumbs-aside">
             <a href="../../_sources/api/lib/amformer.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -121,170 +155,141 @@
            <div itemprop="articleBody">
              
   <section id="amformer">
-<h1><strong>amformer</strong><a class="headerlink" href="#amformer" title="Link to this heading"></a></h1>
-<p>A modified transformer architecture enabling arithmetical feature interactions</p>
-<section id="class-geglu-nn-module">
-<h2>Class GEGLU (nn.Module)<a class="headerlink" href="#class-geglu-nn-module" title="Link to this heading"></a></h2>
+<h1><strong>AMFormer</strong><a class="headerlink" href="#amformer" title="Link to this heading"></a></h1>
+<p>A token-based method which improves the transformer architecture for tabular data by incorporating parallel addition and multiplication attention mechanisms, utilizing prompt tokens to constrain feature interactions.</p>
 <section id="functions">
-<h3>Functions<a class="headerlink" href="#functions" title="Link to this heading"></a></h3>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+<h2>Functions<a class="headerlink" href="#functions" title="Link to this heading"></a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">GEGLU</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">)</span>
 </pre></div>
 </div>
+<p>GEGLU (Gated Exponential Linear Unit) activation function.</p>
+<p><strong>Input:</strong></p>
+<ul class="simple">
+<li><p><strong>x</strong> <em>(Tensor)</em> - Input tensor.</p></li>
+</ul>
+<p><strong>Output:</strong></p>
+<ul class="simple">
+<li><p><strong>Tensor</strong> - GEGLU output.</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">FeedForward</span><span class="p">(</span><span class="n">dim</span><span class="p">,</span> <span class="n">mult</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">dropout</span><span class="o">=</span><span class="mf">0.</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Creates a feedforward network with GEGLU activation.</p>
 <p><strong>Parameters:</strong></p>
 <ul class="simple">
-<li><p><strong>x</strong> <em>(torch.Tensor)</em> - Input tensor</p></li>
+<li><p><strong>dim</strong> <em>(int)</em> - Input/output dimension.</p></li>
+<li><p><strong>mult</strong> <em>(int, optional, Default is 4)</em> - Multiplier for hidden dimension.</p></li>
+<li><p><strong>dropout</strong> <em>(float, optional, Default is 0.)</em> - Dropout rate.</p></li>
 </ul>
 <p><strong>Returns:</strong></p>
 <ul class="simple">
-<li><p><strong>torch.Tensor</strong> - Output tensor after applying GEGLU activation</p></li>
+<li><p><strong>nn.Sequential</strong> - Feedforward network.</p></li>
 </ul>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">FeedForward</span><span class="p">(</span><span class="n">dim</span><span class="p">,</span> <span class="n">mult</span> <span class="o">=</span> <span class="mi">4</span><span class="p">,</span> <span class="n">dropout</span> <span class="o">=</span> <span class="mf">0.</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Attention</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">)</span>
 </pre></div>
 </div>
+<p>Multi-head attention mechanism.</p>
 <p><strong>Parameters:</strong></p>
 <ul class="simple">
-<li><p><strong>dim</strong> <em>(int)</em> - Input dimension</p></li>
-<li><p><strong>mult</strong> <em>(int, optional, Default is 4)</em> - Expansion factor for the hidden layer size relative to <cite>dim</cite></p></li>
-<li><p><strong>dropout</strong> <em>(float, optional, Default is 0)</em> - Dropout probability applied between the two linear layers</p></li>
+<li><p><strong>heads</strong> <em>(int, optional, Default is 8)</em> - Number of attention heads.</p></li>
+<li><p><strong>dim</strong> <em>(int, optional, Default is 64)</em> - Input dimension.</p></li>
+<li><p><strong>dropout</strong> <em>(float, optional, Default is 0.)</em> - Dropout rate.</p></li>
+<li><p><strong>inner_dim</strong> <em>(int, optional, Default is 0)</em> - Inner dimension (0 for same as dim).</p></li>
 </ul>
-<p><strong>Returns:</strong></p>
+<p><strong>Input:</strong></p>
 <ul class="simple">
-<li><p><strong>FeedForward</strong> <em>(nn.Module)</em> - A feed-forward block that applies two linear transformations with an activation and optional dropout in between</p></li>
+<li><p><strong>x</strong> <em>(Tensor)</em> - Input tensor.</p></li>
+<li><p><strong>attn_out</strong> <em>(bool, optional, Default is False)</em> - Whether to return attention weights.</p></li>
 </ul>
-</section>
-</section>
-<section id="class-attention-nn-module">
-<h2>class Attention(nn.Module)<a class="headerlink" href="#class-attention-nn-module" title="Link to this heading"></a></h2>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">heads</span> <span class="o">=</span> <span class="mi">8</span><span class="p">,</span> <span class="n">dim</span> <span class="o">=</span> <span class="mi">64</span><span class="p">,</span> <span class="n">dropout</span> <span class="o">=</span> <span class="mf">0.</span><span class="p">,</span> <span class="n">inner_dim</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span>
+<p><strong>Output:</strong></p>
+<ul class="simple">
+<li><p><strong>Tensor</strong> - Attention output, or tuple (output, attention_weights) if attn_out=True.</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">MemoryBlock</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">)</span>
 </pre></div>
 </div>
+<p>Memory block with grouped attention mechanism.</p>
 <p><strong>Parameters:</strong></p>
 <ul class="simple">
-<li><p><strong>heads</strong> <em>(int, optional, Default is 8)</em> - Number of attention heads</p></li>
-<li><p><strong>dim</strong> <em>(int, optional, Default is 64)</em> - Size of the input embedding</p></li>
-<li><p><strong>dropout</strong> <em>(float, optional, Default is 0)</em> - Dropout probability applied to the attention weights</p></li>
-<li><p><strong>inner_dim</strong> <em>(int, optional, Default is 0)</em> - Size of the inner dimension for the attention block. If set to 0, it will be set to <cite>dim</cite></p></li>
+<li><p><strong>token_num</strong> <em>(int)</em> - Number of tokens.</p></li>
+<li><p><strong>heads</strong> <em>(int)</em> - Number of attention heads.</p></li>
+<li><p><strong>dim</strong> <em>(int)</em> - Input dimension.</p></li>
+<li><p><strong>attn_dropout</strong> <em>(float)</em> - Attention dropout rate.</p></li>
+<li><p><strong>cluster</strong> <em>(bool)</em> - Whether to use clustering.</p></li>
+<li><p><strong>target_mode</strong> <em>(str)</em> - Target mode for attention.</p></li>
+<li><p><strong>groups</strong> <em>(int)</em> - Number of groups.</p></li>
+<li><p><strong>num_per_group</strong> <em>(int)</em> - Number of tokens per group.</p></li>
+<li><p><strong>use_cls_token</strong> <em>(bool)</em> - Whether to use CLS token.</p></li>
+<li><p><strong>sum_or_prod</strong> <em>(str, optional)</em> - Sum or product operation.</p></li>
+<li><p><strong>qk_relu</strong> <em>(bool, optional, Default is False)</em> - Whether to use ReLU in QK computation.</p></li>
 </ul>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">attn_out</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span>
+<p><strong>Input:</strong></p>
+<ul class="simple">
+<li><p><strong>x</strong> <em>(Tensor)</em> - Input tensor.</p></li>
+</ul>
+<p><strong>Output:</strong></p>
+<ul class="simple">
+<li><p><strong>Tensor</strong> - Memory block output.</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Transformer</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Computes the forward pass of the attention mechanism using scaled dot-product attention.</p>
+<p>Transformer model with memory blocks.</p>
 <p><strong>Parameters:</strong></p>
 <ul class="simple">
-<li><p><strong>x</strong> <em>(torch.Tensor)</em> - Input tensor of shape [batch_size, seq_len, dim]</p></li>
-<li><p><strong>attn_out</strong> <em>(bool, optional, Default is False)</em> - If True, returns both the output tensor and the attention weights</p></li>
+<li><p><strong>dim</strong> <em>(int)</em> - Input dimension.</p></li>
+<li><p><strong>depth</strong> <em>(int)</em> - Number of transformer layers.</p></li>
+<li><p><strong>heads</strong> <em>(int)</em> - Number of attention heads.</p></li>
+<li><p><strong>attn_dropout</strong> <em>(float)</em> - Attention dropout rate.</p></li>
+<li><p><strong>ff_dropout</strong> <em>(float)</em> - Feedforward dropout rate.</p></li>
+<li><p><strong>use_cls_token</strong> <em>(bool)</em> - Whether to use CLS token.</p></li>
+<li><p><strong>groups</strong> <em>(int)</em> - Number of groups.</p></li>
+<li><p><strong>sum_num_per_group</strong> <em>(int)</em> - Number per group for sum operation.</p></li>
+<li><p><strong>prod_num_per_group</strong> <em>(int)</em> - Number per group for product operation.</p></li>
+<li><p><strong>cluster</strong> <em>(bool)</em> - Whether to use clustering.</p></li>
+<li><p><strong>target_mode</strong> <em>(str)</em> - Target mode.</p></li>
+<li><p><strong>token_num</strong> <em>(int)</em> - Number of tokens.</p></li>
+<li><p><strong>token_descent</strong> <em>(bool, optional, Default is False)</em> - Whether to use token descent.</p></li>
+<li><p><strong>use_prod</strong> <em>(bool, optional, Default is True)</em> - Whether to use product operation.</p></li>
+<li><p><strong>qk_relu</strong> <em>(bool, optional, Default is False)</em> - Whether to use ReLU in QK.</p></li>
 </ul>
-<p><strong>Returns:</strong></p>
+<p><strong>Input:</strong></p>
 <ul class="simple">
-<li><p><strong>torch.Tensor</strong> - Output tensor after applying attention mechanism of shape [batch_size, seq_len, dim]</p></li>
-<li><p><strong>torch.Tensor</strong> - Attention weights (only returned if <cite>attn_out</cite> is True) of shape [batch_size, heads, seq_len, seq_len]</p></li>
+<li><p><strong>x</strong> <em>(Tensor)</em> - Input tensor.</p></li>
 </ul>
-</section>
-<section id="class-memoryblock-nn-module">
-<h2>class MemoryBlock(nn.Module)<a class="headerlink" href="#class-memoryblock-nn-module" title="Link to this heading"></a></h2>
-<section id="id1">
-<h3>Functions<a class="headerlink" href="#id1" title="Link to this heading"></a></h3>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">token_num</span><span class="p">,</span> <span class="n">heads</span><span class="p">,</span> <span class="n">dim</span><span class="p">,</span> <span class="n">attn_dropout</span><span class="p">,</span> <span class="n">cluster</span><span class="p">,</span> <span class="n">target_mode</span><span class="p">,</span> <span class="n">groups</span><span class="p">,</span> <span class="n">num_per_group</span><span class="p">,</span> <span class="n">use_cls_token</span><span class="p">,</span> <span class="n">sum_or_prod</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">qk_relu</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span>
+<p><strong>Output:</strong></p>
+<ul class="simple">
+<li><p><strong>Tensor</strong> - Transformer output.</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">NumericalEmbedder</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">)</span>
 </pre></div>
 </div>
+<p>Numerical feature embedder.</p>
 <p><strong>Parameters:</strong></p>
 <ul class="simple">
-<li><p><strong>token_num</strong> <em>(int)</em> - Number of tokens</p></li>
-<li><p><strong>heads</strong> <em>(int)</em> - Number of attention heads</p></li>
-<li><p><strong>dim</strong> <em>(int)</em> - Dimension of the input embedding</p></li>
-<li><p><strong>attn_dropout</strong> <em>(float)</em> - Dropout probability for attention weights</p></li>
-<li><p><strong>cluster</strong> <em>(bool)</em> - Whether to use clustering for target tokens</p></li>
-<li><p><strong>target_mode</strong> <em>(str)</em> - Mode for target token generation (‘mix’ or other)</p></li>
-<li><p><strong>groups</strong> <em>(int)</em> - Number of groups for token processing</p></li>
-<li><p><strong>num_per_group</strong> <em>(int)</em> - Number of tokens to gather per group. If -1, no grouping is applied</p></li>
-<li><p><strong>use_cls_token</strong> <em>(bool)</em> - Whether to use a classification token</p></li>
-<li><p><strong>sum_or_prod</strong> <em>(str, optional, Default is None)</em> - Specifies if the block performs ‘sum’ or ‘prod’ aggregation. Must be ‘sum’ or ‘prod’</p></li>
-<li><p><strong>qk_relu</strong> <em>(bool, optional, Default is False)</em> - Whether to apply ReLU activation to query (Q) and key (K) tensors</p></li>
+<li><p><strong>dim</strong> <em>(int)</em> - Embedding dimension.</p></li>
+<li><p><strong>num_numerical_types</strong> <em>(int)</em> - Number of numerical feature types.</p></li>
 </ul>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
-</pre></div>
-</div>
-<p><strong>Parameters:</strong></p>
+<p><strong>Input:</strong></p>
 <ul class="simple">
-<li><p><strong>x</strong> <em>(torch.Tensor)</em> - Input tensor</p></li>
+<li><p><strong>x</strong> <em>(Tensor)</em> - Numerical feature tensor.</p></li>
 </ul>
-<p><strong>Returns:</strong></p>
+<p><strong>Output:</strong></p>
 <ul class="simple">
-<li><p><strong>torch.Tensor</strong> - Output tensor after applying MemoryBlock operations</p></li>
-</ul>
-</section>
-</section>
-<section id="class-transformer-nn-module">
-<h2>class Transformer(nn.Module)<a class="headerlink" href="#class-transformer-nn-module" title="Link to this heading"></a></h2>
-<section id="id2">
-<h3>Functions<a class="headerlink" href="#id2" title="Link to this heading"></a></h3>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dim</span><span class="p">,</span> <span class="n">depth</span><span class="p">,</span> <span class="n">heads</span><span class="p">,</span> <span class="n">attn_dropout</span><span class="p">,</span> <span class="n">ff_dropout</span><span class="p">,</span> <span class="n">use_cls_token</span><span class="p">,</span> <span class="n">groups</span><span class="p">,</span> <span class="n">sum_num_per_group</span><span class="p">,</span> <span class="n">prod_num_per_group</span><span class="p">,</span> <span class="n">cluster</span><span class="p">,</span> <span class="n">target_mode</span><span class="p">,</span> <span class="n">token_num</span><span class="p">,</span> <span class="n">token_descent</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">use_prod</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">qk_relu</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span>
-</pre></div>
-</div>
-<p><strong>Parameters:</strong></p>
-<ul class="simple">
-<li><p><strong>dim</strong> <em>(int)</em> - Dimension of the input embedding</p></li>
-<li><p><strong>depth</strong> <em>(int)</em> - Number of transformer layers</p></li>
-<li><p><strong>heads</strong> <em>(int)</em> - Number of attention heads</p></li>
-<li><p><strong>attn_dropout</strong> <em>(float)</em> - Dropout probability for attention weights in MemoryBlocks</p></li>
-<li><p><strong>ff_dropout</strong> <em>(float)</em> - Dropout probability for feed-forward layers</p></li>
-<li><p><strong>use_cls_token</strong> <em>(bool)</em> - Whether to use a classification token in MemoryBlocks</p></li>
-<li><p><strong>groups</strong> <em>(list of int)</em> - List of group numbers for each layer</p></li>
-<li><p><strong>sum_num_per_group</strong> <em>(list of int)</em> - List of <cite>num_per_group</cite> for ‘sum’ MemoryBlocks in each layer</p></li>
-<li><p><strong>prod_num_per_group</strong> <em>(list of int)</em> - List of <cite>num_per_group</cite> for ‘prod’ MemoryBlocks in each layer</p></li>
-<li><p><strong>cluster</strong> <em>(bool)</em> - Whether to use clustering in MemoryBlocks</p></li>
-<li><p><strong>target_mode</strong> <em>(str)</em> - Mode for target token generation in MemoryBlocks</p></li>
-<li><p><strong>token_num</strong> <em>(int)</em> - Initial number of tokens</p></li>
-<li><p><strong>token_descent</strong> <em>(bool, optional, Default is False)</em> - If True, the number of tokens can decrease across layers</p></li>
-<li><p><strong>use_prod</strong> <em>(bool, optional, Default is True)</em> - Whether to include product-based MemoryBlocks in the transformer layers</p></li>
-<li><p><strong>qk_relu</strong> <em>(bool, optional, Default is False)</em> - Whether to apply ReLU activation to query (Q) and key (K) tensors in MemoryBlocks</p></li>
-</ul>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
-</pre></div>
-</div>
-<p><strong>Parameters:</strong></p>
-<ul class="simple">
-<li><p><strong>x</strong> <em>(torch.Tensor)</em> - Input tensor</p></li>
-</ul>
-<p><strong>Returns:</strong></p>
-<ul class="simple">
-<li><p><strong>torch.Tensor</strong> - Output tensor after applying transformer layers</p></li>
-</ul>
-</section>
-</section>
-<section id="class-numericalembedder-nn-module">
-<h2>class NumericalEmbedder(nn.Module)<a class="headerlink" href="#class-numericalembedder-nn-module" title="Link to this heading"></a></h2>
-<section id="id3">
-<h3>Functions<a class="headerlink" href="#id3" title="Link to this heading"></a></h3>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dim</span><span class="p">,</span> <span class="n">num_numerical_types</span><span class="p">)</span>
-</pre></div>
-</div>
-<p><strong>Parameters:</strong></p>
-<ul class="simple">
-<li><p><strong>dim</strong> <em>(int)</em> - Dimension of the output embedding</p></li>
-<li><p><strong>num_numerical_types</strong> <em>(int)</em> - Number of different numerical features to embed</p></li>
-</ul>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
-</pre></div>
-</div>
-<p><strong>Parameters:</strong></p>
-<ul class="simple">
-<li><p><strong>x</strong> <em>(torch.Tensor)</em> - Input numerical tensor</p></li>
-</ul>
-<p><strong>Returns:</strong></p>
-<ul class="simple">
-<li><p><strong>torch.Tensor</strong> - Embedded numerical features</p></li>
+<li><p><strong>Tensor</strong> - Embedded numerical features.</p></li>
 </ul>
 <p><strong>Referencses:</strong></p>
 <p>Cheng, Y., Hu, R., Ying, H., Shi, X., Wu, J., &amp; Lin, W. (2024). Arithmetic Feature Interaction Is Necessary for Deep Tabular Learning. arXiv:2402.02334. <a class="reference external" href="https://arxiv.org/abs/2402.02334">https://arxiv.org/abs/2402.02334</a></p>
-</section>
 </section>
 </section>
 
 
            </div>
           </div>
-          <footer>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="index.html" class="btn btn-neutral float-left" title="Library Components" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="bishop.html" class="btn btn-neutral float-right" title="BiSHop" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
 
   <hr/>
 

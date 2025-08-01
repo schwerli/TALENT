@@ -18,7 +18,9 @@
       <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
-    <link rel="search" title="Search" href="../../search.html" /> 
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="TabNet" href="tabnet.html" />
+    <link rel="prev" title="TabICL" href="tabicl.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -85,11 +87,42 @@
 <li class="toctree-l1"><a class="reference internal" href="../../experimental_results.html#conclusion">Conclusion</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">API Docs</span></p>
-<ul>
+<ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../core.html">Core Components</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../deep_learning.html">Deep Learning Models</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../classical_methods.html">Classical Methods</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../lib.html">Library Components</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../classical_model/index.html">Classical Methods</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Library Components</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="amformer.html"><strong>AMFormer</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="bishop.html"><strong>BiSHop</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="danets.html"><strong>DANet</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="dnnr.html"><strong>DNNR</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="excelformer.html"><strong>ExcelFormer</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="hyperfast.html"><strong>HyperFast</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="node.html"><strong>NODE</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="num_embeddings.html"><strong>num_embeddings</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="periodic_tab_dl.html"><strong>Periodic Tab DL</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="pfn_v2.html"><strong>PFN v2</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="ptarl.html"><strong>PTaRL</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="realmlp.html"><strong>RealMLP</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="tabcaps.html"><strong>TabCaps</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="tabicl.html"><strong>TabICL</strong></a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#"><strong>TabM</strong></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#functions">Functions</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="tabnet.html"><strong>TabNet</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="tabpfn.html"><strong>TabPFN</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="tabptm.html"><strong>TabPTM</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="tabr.html"><strong>TabR</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="TData.html"><strong>TData</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="trompt.html"><strong>Trompt</strong></a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#available-components">Available Components</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#common-features">Common Features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#usage-example">Usage Example</a></li>
+</ul>
+</li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Acknowledgements</span></p>
 <ul>
@@ -110,6 +143,7 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Library Components</a></li>
       <li class="breadcrumb-item active"><strong>TabM</strong></li>
       <li class="wy-breadcrumbs-aside">
             <a href="../../_sources/api/lib/tabm.rst.txt" rel="nofollow"> View page source</a>
@@ -123,163 +157,168 @@
   <section id="tabm">
 <h1><strong>TabM</strong><a class="headerlink" href="#tabm" title="Link to this heading"></a></h1>
 <p>A model based on MLP and variations of BatchEnsemble.</p>
-<section id="memory-management">
-<h2><strong>Memory Management</strong><a class="headerlink" href="#memory-management" title="Link to this heading"></a></h2>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">is_oom_exception</span><span class="p">(</span><span class="n">err</span><span class="p">:</span> <span class="ne">RuntimeError</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span>
+<section id="functions">
+<h2>Functions<a class="headerlink" href="#functions" title="Link to this heading"></a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">_init_scaling_by_sections</span><span class="p">(</span><span class="n">weight</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">distribution</span><span class="p">:</span> <span class="n">Literal</span><span class="p">[</span><span class="s1">&#39;normal&#39;</span><span class="p">,</span> <span class="s1">&#39;random-signs&#39;</span><span class="p">],</span> <span class="n">init_sections</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kc">None</span>
 </pre></div>
 </div>
-<p>Checks if a RuntimeError is caused by CUDA out-of-memory conditions.</p>
-<p><strong>Parameters:</strong>
-* <strong>err</strong> <em>(RuntimeError)</em> - The exception to check.</p>
-<p><strong>Returns:</strong>
-* <strong>bool</strong> - True if the error is a CUDA OOM error, False otherwise.</p>
-</section>
-<section id="tensor-initialization">
-<h2><strong>Tensor Initialization</strong><a class="headerlink" href="#tensor-initialization" title="Link to this heading"></a></h2>
+<p>Initializes scaling weights by sections for efficient ensemble members.</p>
+<p><strong>Parameters:</strong></p>
+<ul class="simple">
+<li><p><strong>weight</strong> <em>(Tensor)</em> - Weight tensor to initialize.</p></li>
+<li><p><strong>distribution</strong> <em>(str)</em> - Initialization distribution (‘normal’ or ‘random-signs’).</p></li>
+<li><p><strong>init_sections</strong> <em>(list[int])</em> - List of section sizes.</p></li>
+</ul>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">init_rsqrt_uniform_</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">d</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span>
 </pre></div>
 </div>
-<p>Initializes a tensor with values sampled from a uniform distribution scaled by the reciprocal square root of <cite>d</cite>.</p>
-<p><strong>Parameters:</strong>
-* <strong>x</strong> <em>(torch.Tensor)</em> - Tensor to initialize.
-* <strong>d</strong> <em>(int)</em> - Scaling factor (typically input dimension).</p>
-<p><strong>Returns:</strong>
-* <strong>torch.Tensor</strong> - Initialized tensor.</p>
+<p>Initializes tensor with uniform distribution scaled by reciprocal square root.</p>
+<p><strong>Parameters:</strong></p>
+<ul class="simple">
+<li><p><strong>x</strong> <em>(Tensor)</em> - Tensor to initialize.</p></li>
+<li><p><strong>d</strong> <em>(int)</em> - Dimension for scaling.</p></li>
+</ul>
+<p><strong>Returns:</strong></p>
+<ul class="simple">
+<li><p><strong>Tensor</strong> - Initialized tensor.</p></li>
+</ul>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">init_random_signs_</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span>
 </pre></div>
 </div>
-<p>Initializes a tensor with random +1/-1 values.</p>
+<p>Initializes tensor with random signs (-1 or 1).</p>
 <p><strong>Parameters:</strong></p>
 <ul class="simple">
-<li><p><strong>x</strong> <em>(torch.Tensor)</em> - Tensor to initialize.</p></li>
+<li><p><strong>x</strong> <em>(Tensor)</em> - Tensor to initialize.</p></li>
 </ul>
 <p><strong>Returns:</strong></p>
 <ul class="simple">
-<li><p><strong>torch.Tensor</strong> - Tensor with random signs.</p></li>
+<li><p><strong>Tensor</strong> - Tensor with random signs.</p></li>
 </ul>
-</section>
-<section id="basic-modules">
-<h2><strong>Basic Modules</strong><a class="headerlink" href="#basic-modules" title="Link to this heading"></a></h2>
-<section id="identity">
-<h3><strong>Identity</strong><a class="headerlink" href="#identity" title="Link to this heading"></a></h3>
-<p>A module that returns its input unchanged.</p>
-<p><strong>Parameters:</strong></p>
-<ul class="simple">
-<li><p><strong>args</strong> - Ignored.</p></li>
-<li><p><strong>kwargs</strong> - Ignored.</p></li>
-</ul>
-</section>
-<section id="mean">
-<h3><strong>Mean</strong><a class="headerlink" href="#mean" title="Link to this heading"></a></h3>
-<p>Computes the mean along a specified dimension.</p>
-<p><strong>Parameters:</strong></p>
-<ul class="simple">
-<li><p><strong>dim</strong> <em>(int)</em> - Dimension to compute the mean over.</p></li>
-</ul>
-</section>
-</section>
-<section id="ensemble-modules">
-<h2><strong>Ensemble Modules</strong><a class="headerlink" href="#ensemble-modules" title="Link to this heading"></a></h2>
-<section id="scaleensemble">
-<h3><strong>ScaleEnsemble</strong><a class="headerlink" href="#scaleensemble" title="Link to this heading"></a></h3>
-<p>Scales input tensors element-wise with learnable weights.</p>
-<p><strong>Parameters:</strong></p>
-<ul class="simple">
-<li><p><strong>k</strong> <em>(int)</em> - Number of ensemble members.</p></li>
-<li><p><strong>d</strong> <em>(int)</em> - Feature dimension.</p></li>
-<li><p><strong>init</strong> <em>(str)</em> - Initialization method (‘ones’, ‘normal’, ‘random-signs’).</p></li>
-</ul>
-</section>
-<section id="elementwiseaffineensemble">
-<h3><strong>ElementwiseAffineEnsemble</strong><a class="headerlink" href="#elementwiseaffineensemble" title="Link to this heading"></a></h3>
-<p>Applies element-wise affine transformation with learnable weights and biases.</p>
-<p><strong>Parameters:</strong></p>
-<ul class="simple">
-<li><p><strong>k</strong> <em>(int)</em> - Number of ensemble members.</p></li>
-<li><p><strong>d</strong> <em>(int)</em> - Feature dimension.</p></li>
-<li><p><strong>weight</strong> <em>(bool)</em> - Whether to include weight parameters.</p></li>
-<li><p><strong>bias</strong> <em>(bool)</em> - Whether to include bias parameters.</p></li>
-<li><p><strong>weight_init</strong> <em>(str)</em> - Weight initialization method.</p></li>
-</ul>
-</section>
-<section id="linearefficientensemble">
-<h3><strong>LinearEfficientEnsemble</strong><a class="headerlink" href="#linearefficientensemble" title="Link to this heading"></a></h3>
-<p>Efficient implementation of BatchEnsemble linear layer with configurable scaling and bias.</p>
-<p><strong>Parameters:</strong></p>
-<ul class="simple">
-<li><p><strong>in_features</strong> <em>(int)</em> - Input dimension.</p></li>
-<li><p><strong>out_features</strong> <em>(int)</em> - Output dimension.</p></li>
-<li><p><strong>bias</strong> <em>(bool)</em> - Whether to include bias.</p></li>
-<li><p><strong>k</strong> <em>(int)</em> - Number of ensemble members.</p></li>
-<li><p><strong>ensemble_scaling_in</strong> <em>(bool)</em> - Whether to scale inputs.</p></li>
-<li><p><strong>ensemble_scaling_out</strong> <em>(bool)</em> - Whether to scale outputs.</p></li>
-<li><p><strong>ensemble_bias</strong> <em>(bool)</em> - Whether to use ensemble-specific biases.</p></li>
-<li><p><strong>scaling_init</strong> <em>(str)</em> - Scaling initialization method.</p></li>
-</ul>
-</section>
-<section id="onehotencoding0d">
-<h3><strong>OneHotEncoding0d</strong><a class="headerlink" href="#onehotencoding0d" title="Link to this heading"></a></h3>
-<p>Performs one-hot encoding for categorical features, handling out-of-vocabulary values.</p>
-<p><strong>Parameters:</strong></p>
-<ul class="simple">
-<li><p><strong>cardinalities</strong> <em>(list[int])</em> - List of category cardinalities for each feature.</p></li>
-</ul>
-<p><strong>Input Shape:</strong>
-<cite>(*, n_cat_features)</cite> where <cite>n_cat_features</cite> is the number of categorical features.</p>
-<p><strong>Output Shape:</strong>
-<cite>(*, sum(cardinalities))</cite> where each feature is one-hot encoded.</p>
-<p><strong>Note:</strong>
-- Handles out-of-vocabulary values by encoding them as all zeros.
-- Assumes categorical values are encoded such that unknown categories are assigned the maximum possible index for that feature.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nd">@torch</span><span class="o">.</span><span class="n">inference_mode</span><span class="p">()</span>
-<span class="k">def</span> <span class="nf">_init_scaling_by_sections</span><span class="p">(</span>
-    <span class="n">weight</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span>
-    <span class="n">distribution</span><span class="p">:</span> <span class="n">Literal</span><span class="p">[</span><span class="s1">&#39;normal&#39;</span><span class="p">,</span> <span class="s1">&#39;random-signs&#39;</span><span class="p">],</span>
-    <span class="n">init_sections</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">],</span>
-<span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Identity</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Initializes a weight tensor in sections, where all elements within a section share the same initial value. This is typically used for scaling parameters in efficient ensemble models, ensuring consistent initialization within feature sections.</p>
+<p>Identity module that returns input unchanged.</p>
+<p><strong>Input:</strong></p>
+<ul class="simple">
+<li><p><strong>x</strong> <em>(Tensor)</em> - Input tensor.</p></li>
+</ul>
+<p><strong>Output:</strong></p>
+<ul class="simple">
+<li><p><strong>Tensor</strong> - Same as input.</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Mean</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Computes mean along specified dimension.</p>
 <p><strong>Parameters:</strong></p>
 <ul class="simple">
-<li><p><strong>weight</strong> <em>(Tensor)</em> - 2D tensor to initialize, with shape <cite>(num_ensemble_members, total_features)</cite>.</p></li>
-<li><p><strong>distribution</strong> <em>(Literal[‘normal’, ‘random-signs’])</em> - Distribution to use for initialization:
-- ‘normal’: Initializes using a normal distribution via <cite>nn.init.normal_</cite>.
-- ‘random-signs’: Initializes with random ±1 values via <cite>init_random_signs_</cite>.</p></li>
-<li><p><strong>init_sections</strong> <em>(list[int])</em> - List of integers specifying the size of each section. The sum of sections must equal the total number of features (<cite>weight.shape[1]</cite>).</p></li>
+<li><p><strong>dim</strong> <em>(int)</em> - Dimension to compute mean along.</p></li>
 </ul>
-<p><strong>Returns:</strong></p>
+<p><strong>Input:</strong></p>
 <ul class="simple">
-<li><p><strong>None</strong> - Modifies the input tensor <cite>weight</cite> in-place.</p></li>
+<li><p><strong>x</strong> <em>(Tensor)</em> - Input tensor.</p></li>
 </ul>
-<p><strong>Behavior:</strong></p>
-<ol class="arabic simple">
-<li><p><strong>Section Boundaries</strong>: Computes cumulative sums of <cite>init_sections</cite> to determine the start and end indices of each section.</p></li>
-<li><p><strong>Per-Section Initialization</strong>: For each section:
-- Creates a 1D tensor of shape <cite>(num_ensemble_members, 1)</cite> initialized from the specified distribution.
-- Assigns this tensor to the corresponding section in <cite>weight</cite>, ensuring all elements within the section share the same value.</p></li>
-</ol>
-<p><strong>Notes:</strong></p>
+<p><strong>Output:</strong></p>
 <ul class="simple">
-<li><p>Requires <cite>weight</cite> to be a 2D tensor.</p></li>
-<li><p>Ensures <cite>sum(init_sections) == weight.shape[1]</cite> (asserted).</p></li>
-<li><p>Runs in inference mode to disable gradient tracking during initialization.</p></li>
-<li><p>Uses <cite>init_random_signs_</cite> for ‘random-signs’ distribution (assumed to be imported).</p></li>
+<li><p><strong>Tensor</strong> - Mean along specified dimension.</p></li>
 </ul>
-<p>##References##</p>
-<blockquote>
-<div><p>Yury Gorishniy, Akim Kotelnikov, and Artem Babenko.
-<em>TabM: Advancing Tabular Deep Learning with Parameter-Efficient Ensembling</em>.
-<a class="reference external" href="https://arxiv.org/abs/2410.24210">arXiv:2410.24210</a>, 2025.</p>
-</div></blockquote>
-</section>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">ScaleEnsemble</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Scales ensemble members with learnable weights.</p>
+<p><strong>Parameters:</strong></p>
+<ul class="simple">
+<li><p><strong>k</strong> <em>(int)</em> - Number of ensemble members.</p></li>
+<li><p><strong>d</strong> <em>(int)</em> - Feature dimension.</p></li>
+<li><p><strong>init</strong> <em>(str)</em> - Weight initialization (‘ones’, ‘normal’, ‘random-signs’).</p></li>
+</ul>
+<p><strong>Input:</strong></p>
+<ul class="simple">
+<li><p><strong>x</strong> <em>(Tensor)</em> - Input tensor of shape (B, K, D).</p></li>
+</ul>
+<p><strong>Output:</strong></p>
+<ul class="simple">
+<li><p><strong>Tensor</strong> - Scaled tensor.</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">ElementwiseAffineEnsemble</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Element-wise affine transformation for ensemble members.</p>
+<p><strong>Parameters:</strong></p>
+<ul class="simple">
+<li><p><strong>k</strong> <em>(int)</em> - Number of ensemble members.</p></li>
+<li><p><strong>d</strong> <em>(int)</em> - Feature dimension.</p></li>
+<li><p><strong>bias</strong> <em>(bool)</em> - Whether to use bias.</p></li>
+<li><p><strong>weight_init</strong> <em>(str)</em> - Weight initialization method.</p></li>
+</ul>
+<p><strong>Input:</strong></p>
+<ul class="simple">
+<li><p><strong>x</strong> <em>(Tensor)</em> - Input tensor of shape (B, K, D).</p></li>
+</ul>
+<p><strong>Output:</strong></p>
+<ul class="simple">
+<li><p><strong>Tensor</strong> - Transformed tensor.</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">LinearEfficientEnsemble</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Efficient ensemble linear layer with configurable scaling.</p>
+<p><strong>Parameters:</strong></p>
+<ul class="simple">
+<li><p><strong>in_features</strong> <em>(int)</em> - Input feature dimension.</p></li>
+<li><p><strong>out_features</strong> <em>(int)</em> - Output feature dimension.</p></li>
+<li><p><strong>bias</strong> <em>(bool, optional, Default is True)</em> - Whether to use bias.</p></li>
+<li><p><strong>k</strong> <em>(int)</em> - Number of ensemble members.</p></li>
+<li><p><strong>ensemble_scaling_in</strong> <em>(bool)</em> - Whether to ensemble input scaling.</p></li>
+<li><p><strong>ensemble_scaling_out</strong> <em>(bool)</em> - Whether to ensemble output scaling.</p></li>
+<li><p><strong>ensemble_bias</strong> <em>(bool)</em> - Whether to ensemble bias.</p></li>
+<li><p><strong>scaling_init</strong> <em>(str)</em> - Scaling initialization method.</p></li>
+</ul>
+<p><strong>Input:</strong></p>
+<ul class="simple">
+<li><p><strong>x</strong> <em>(Tensor)</em> - Input tensor of shape (B, K, D).</p></li>
+</ul>
+<p><strong>Output:</strong></p>
+<ul class="simple">
+<li><p><strong>Tensor</strong> - Linear transformation result.</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">make_efficient_ensemble</span><span class="p">(</span><span class="n">module</span><span class="p">:</span> <span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span>
+</pre></div>
+</div>
+<p>Converts a module to use efficient ensemble methods.</p>
+<p><strong>Parameters:</strong></p>
+<ul class="simple">
+<li><p><strong>module</strong> <em>(nn.Module)</em> - Module to convert.</p></li>
+<li><p><strong>kwargs</strong> - Ensemble configuration parameters.</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">OneHotEncoding0d</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>One-hot encoding for categorical features.</p>
+<p><strong>Parameters:</strong></p>
+<ul class="simple">
+<li><p><strong>cardinalities</strong> <em>(list[int])</em> - List of category counts for each feature.</p></li>
+</ul>
+<p><strong>Input:</strong></p>
+<ul class="simple">
+<li><p><strong>x</strong> <em>(Tensor)</em> - Categorical feature tensor.</p></li>
+</ul>
+<p><strong>Output:</strong></p>
+<ul class="simple">
+<li><p><strong>Tensor</strong> - One-hot encoded tensor.</p></li>
+</ul>
+<p><strong>References:</strong></p>
+<p>Yury Gorishniy, Akim Kotelnikov, and Artem Babenko. <strong>TabM: Advancing Tabular Deep Learning with Parameter-Efficient Ensembling</strong>. arXiv:2410.24210 [cs.LG], 2025. <a class="reference external" href="https://arxiv.org/abs/2410.24210">https://arxiv.org/abs/2410.24210</a></p>
 </section>
 </section>
 
 
            </div>
           </div>
-          <footer>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="tabicl.html" class="btn btn-neutral float-left" title="TabICL" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="tabnet.html" class="btn btn-neutral float-right" title="TabNet" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
 
   <hr/>
 
