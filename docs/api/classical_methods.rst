@@ -41,4 +41,10 @@ Available Methods
 
 - :doc:`Dummy Classifier <classical_model/dummy>`: Baseline classifier for comparison and testing
 
+.. toctree::
+   :maxdepth: 2
+   :caption: Classical Methods:
+
+   classical_model/index
+
 

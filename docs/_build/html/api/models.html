@@ -1,22 +1,22 @@
-
-
 <!DOCTYPE html>
-<html class="writer-html5" lang="en" data-content_root="../">
+<html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Models &mdash; LAMDA-TALENT  documentation</title>
-      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
-      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
-
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
   
-      <script src="../_static/jquery.js?v=5d32c60e"></script>
-      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-      <script src="../_static/documentation_options.js?v=5929fcd5"></script>
-      <script src="../_static/doctools.js?v=9bcbadda"></script>
-      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
-      <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -29,15 +29,11 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-
-          
-          
-          <a href="../index.html" class="icon icon-home">
-            LAMDA-TALENT
+            <a href="../index.html" class="icon icon-home"> LAMDA-TALENT
           </a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -94,23 +90,23 @@
 <li class="toctree-l1 current"><a class="reference internal" href="deep_learning.html">Deep Learning Models</a><ul class="current">
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Models</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#basic-neural-networks">Basic Neural Networks</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#multi-layer-perceptron-mlp">Multi-Layer Perceptron (MLP)</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#residual-network-resnet">Residual Network (ResNet)</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#self-normalizing-network-snn">Self-Normalizing Network (SNN)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-TALENT.model.models.mlp">Multi-Layer Perceptron (MLP)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-TALENT.model.models.resnet">Residual Network (ResNet)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-TALENT.model.models.snn">Self-Normalizing Network (SNN)</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#transformer-based-models">Transformer-Based Models</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#feature-tokenizer-transformer-ft-transformer">Feature Tokenizer Transformer (FT-Transformer)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-TALENT.model.models.ftt">Feature Tokenizer Transformer (FT-Transformer)</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#advanced-tabular-models">Advanced Tabular Models</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#tabnet">TabNet</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-TALENT.model.models.tabnet">TabNet</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#tree-based-neural-models">Tree-Based Neural Models</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#grande-gradient-boosted-neural-decision-ensembles">GRANDE (Gradient-Boosted Neural Decision Ensembles)</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#neural-oblivious-decision-ensembles-node">Neural Oblivious Decision Ensembles (NODE)</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#grownet-gradient-boosting-with-neural-networks">GrowNet (Gradient Boosting with Neural Networks)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-TALENT.model.models.grande">GRANDE (Gradient-Boosted Neural Decision Ensembles)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-TALENT.model.models.node">Neural Oblivious Decision Ensembles (NODE)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-TALENT.model.models.grownet">GrowNet (Gradient Boosting with Neural Networks)</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#distance-based-models">Distance-Based Models</a><ul>
@@ -118,16 +114,16 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#specialized-architectures">Specialized Architectures</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#excelformer-semi-permeable-attention">ExcelFormer (Semi-Permeable Attention)</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#protogate-prototype-based-gating">ProtoGate (Prototype-Based Gating)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-TALENT.model.models.excelformer">ExcelFormer (Semi-Permeable Attention)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-TALENT.model.models.protogate">ProtoGate (Prototype-Based Gating)</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#retrieval-based-models">Retrieval-Based Models</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#tabr-tabular-retrieval">TabR (Tabular Retrieval)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-TALENT.model.models.tabr">TabR (Tabular Retrieval)</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#foundation-models">Foundation Models</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#tabpfn-tabular-prior-fitting-networks">TabPFN (Tabular Prior-Fitting Networks)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-TALENT.model.models.tabpfn">TabPFN (Tabular Prior-Fitting Networks)</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#regularization-methods">Regularization Methods</a><ul>
@@ -165,9 +161,9 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
-          <li class="breadcrumb-item"><a href="deep_learning.html">Deep Learning Models</a></li>
-      <li class="breadcrumb-item active">Models</li>
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="deep_learning.html">Deep Learning Models</a> &raquo;</li>
+      <li>Models</li>
       <li class="wy-breadcrumbs-aside">
             <a href="../_sources/api/models.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -178,16 +174,27 @@
            <div itemprop="articleBody">
              
   <section id="models">
-<h1>Models<a class="headerlink" href="#models" title="Link to this heading"></a></h1>
+<h1>Models<a class="headerlink" href="#models" title="Permalink to this heading"></a></h1>
 <p>Deep learning models for tabular data, implementing various state-of-the-art architectures.</p>
 <p>This section contains all the neural network architectures implemented in TALENT, ranging from simple MLPs to advanced transformer-based models specifically designed for tabular data. Each model implements specific forward pass computations, mathematical operations, and architectural innovations.</p>
 <section id="basic-neural-networks">
-<h2>Basic Neural Networks<a class="headerlink" href="#basic-neural-networks" title="Link to this heading"></a></h2>
-<section id="multi-layer-perceptron-mlp">
-<h3>Multi-Layer Perceptron (MLP)<a class="headerlink" href="#multi-layer-perceptron-mlp" title="Link to this heading"></a></h3>
+<h2>Basic Neural Networks<a class="headerlink" href="#basic-neural-networks" title="Permalink to this heading"></a></h2>
+<section id="module-TALENT.model.models.mlp">
+<span id="multi-layer-perceptron-mlp"></span><h3>Multi-Layer Perceptron (MLP)<a class="headerlink" href="#module-TALENT.model.models.mlp" title="Permalink to this heading"></a></h3>
+<dl class="py class">
+<dt class="sig sig-object py" id="TALENT.model.models.mlp.MLP">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">TALENT.model.models.mlp.</span></span><span class="sig-name descname"><span class="pre">MLP</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.13)"><span class="pre">Any</span></a></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.13)"><span class="pre">Any</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#TALENT.model.models.mlp.MLP" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="TALENT.model.models.mlp.MLP.forward">
+<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x_cat</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#TALENT.model.models.mlp.MLP.forward" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
 <dl class="py class">
 <dt class="sig sig-object py">
-<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">MLP</span></span></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">TALENT.model.models.mlp.</span></span><span class="sig-name descname"><span class="pre">MLP</span></span></dt>
 <dd><p>Simple feedforward neural network with multiple fully connected layers and ReLU activations.</p>
 <p><strong>Mathematical Formulation:</strong></p>
 <p>For input <span class="math notranslate nohighlight">\(x \in \mathbb{R}^{d_{in}}\)</span>, the MLP computes:</p>
@@ -255,11 +262,42 @@ h_i &amp;= \text{ReLU}(\text{Linear}(h_{i-1})) = \text{ReLU}(W_i h_{i-1} + b_i) 
 </dd></dl>
 
 </section>
-<section id="residual-network-resnet">
-<h3>Residual Network (ResNet)<a class="headerlink" href="#residual-network-resnet" title="Link to this heading"></a></h3>
+<section id="module-TALENT.model.models.resnet">
+<span id="residual-network-resnet"></span><h3>Residual Network (ResNet)<a class="headerlink" href="#module-TALENT.model.models.resnet" title="Permalink to this heading"></a></h3>
+<dl class="py class">
+<dt class="sig sig-object py" id="TALENT.model.models.resnet.ResNet">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">TALENT.model.models.resnet.</span></span><span class="sig-name descname"><span class="pre">ResNet</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.13)"><span class="pre">Any</span></a></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.13)"><span class="pre">Any</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#TALENT.model.models.resnet.ResNet" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="TALENT.model.models.resnet.ResNet.forward">
+<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">torch.Tensor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x_cat</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">torch.Tensor</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">torch.Tensor</span></span></span><a class="headerlink" href="#TALENT.model.models.resnet.ResNet.forward" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="TALENT.model.models.resnet.geglu">
+<span class="sig-prename descclassname"><span class="pre">TALENT.model.models.resnet.</span></span><span class="sig-name descname"><span class="pre">geglu</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#TALENT.model.models.resnet.geglu" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="TALENT.model.models.resnet.get_activation_fn">
+<span class="sig-prename descclassname"><span class="pre">TALENT.model.models.resnet.</span></span><span class="sig-name descname"><span class="pre">get_activation_fn</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#TALENT.model.models.resnet.get_activation_fn" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="TALENT.model.models.resnet.get_nonglu_activation_fn">
+<span class="sig-prename descclassname"><span class="pre">TALENT.model.models.resnet.</span></span><span class="sig-name descname"><span class="pre">get_nonglu_activation_fn</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#TALENT.model.models.resnet.get_nonglu_activation_fn" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="TALENT.model.models.resnet.reglu">
+<span class="sig-prename descclassname"><span class="pre">TALENT.model.models.resnet.</span></span><span class="sig-name descname"><span class="pre">reglu</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#TALENT.model.models.resnet.reglu" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
 <dl class="py class">
 <dt class="sig sig-object py">
-<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">ResNet</span></span></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">TALENT.model.models.resnet.</span></span><span class="sig-name descname"><span class="pre">ResNet</span></span></dt>
 <dd><p>Deep residual network with skip connections for tabular data, preventing gradient vanishing in deep architectures.</p>
 <p><strong>Mathematical Formulation:</strong></p>
 <p>ResNet uses residual blocks with skip connections:</p>
@@ -339,11 +377,37 @@ h_{i+1} &amp;= h_i + \text{residual}\end{split}\]</div>
 </dd></dl>
 
 </section>
-<section id="self-normalizing-network-snn">
-<h3>Self-Normalizing Network (SNN)<a class="headerlink" href="#self-normalizing-network-snn" title="Link to this heading"></a></h3>
+<section id="module-TALENT.model.models.snn">
+<span id="self-normalizing-network-snn"></span><h3>Self-Normalizing Network (SNN)<a class="headerlink" href="#module-TALENT.model.models.snn" title="Permalink to this heading"></a></h3>
+<dl class="py class">
+<dt class="sig sig-object py" id="TALENT.model.models.snn.SNN">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">TALENT.model.models.snn.</span></span><span class="sig-name descname"><span class="pre">SNN</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.13)"><span class="pre">Any</span></a></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.13)"><span class="pre">Any</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#TALENT.model.models.snn.SNN" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="TALENT.model.models.snn.SNN.calculate_output">
+<span class="sig-name descname"><span class="pre">calculate_output</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">torch.Tensor</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">torch.Tensor</span></span></span><a class="headerlink" href="#TALENT.model.models.snn.SNN.calculate_output" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="TALENT.model.models.snn.SNN.d_embedding">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">d_embedding</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><span class="pre">int</span></a></em><a class="headerlink" href="#TALENT.model.models.snn.SNN.d_embedding" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="TALENT.model.models.snn.SNN.encode">
+<span class="sig-name descname"><span class="pre">encode</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x_num</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x_cat</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#TALENT.model.models.snn.SNN.encode" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="TALENT.model.models.snn.SNN.forward">
+<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x_num</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">torch.Tensor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x_cat</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">torch.Tensor</span></span></span><a class="headerlink" href="#TALENT.model.models.snn.SNN.forward" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
 <dl class="py class">
 <dt class="sig sig-object py">
-<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">SNN</span></span></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">TALENT.model.models.snn.</span></span><span class="sig-name descname"><span class="pre">SNN</span></span></dt>
 <dd><p>Lightweight neural network with self-normalizing properties using SELU activation.</p>
 <dl class="py method">
 <dt class="sig sig-object py">
@@ -381,12 +445,80 @@ x &amp; \text{if } x &gt; 0 \\
 </section>
 </section>
 <section id="transformer-based-models">
-<h2>Transformer-Based Models<a class="headerlink" href="#transformer-based-models" title="Link to this heading"></a></h2>
-<section id="feature-tokenizer-transformer-ft-transformer">
-<h3>Feature Tokenizer Transformer (FT-Transformer)<a class="headerlink" href="#feature-tokenizer-transformer-ft-transformer" title="Link to this heading"></a></h3>
+<h2>Transformer-Based Models<a class="headerlink" href="#transformer-based-models" title="Permalink to this heading"></a></h2>
+<section id="module-TALENT.model.models.ftt">
+<span id="feature-tokenizer-transformer-ft-transformer"></span><h3>Feature Tokenizer Transformer (FT-Transformer)<a class="headerlink" href="#module-TALENT.model.models.ftt" title="Permalink to this heading"></a></h3>
+<dl class="py class">
+<dt class="sig sig-object py" id="TALENT.model.models.ftt.MultiheadAttention">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">TALENT.model.models.ftt.</span></span><span class="sig-name descname"><span class="pre">MultiheadAttention</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.13)"><span class="pre">Any</span></a></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.13)"><span class="pre">Any</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#TALENT.model.models.ftt.MultiheadAttention" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="TALENT.model.models.ftt.MultiheadAttention.forward">
+<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x_q</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">torch.Tensor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x_kv</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">torch.Tensor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">key_compression</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(in Python v3.13)"><span class="pre">Optional</span></a><span class="p"><span class="pre">[</span></span><span class="pre">torch.nn.Linear</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value_compression</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(in Python v3.13)"><span class="pre">Optional</span></a><span class="p"><span class="pre">[</span></span><span class="pre">torch.nn.Linear</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">torch.Tensor</span></span></span><a class="headerlink" href="#TALENT.model.models.ftt.MultiheadAttention.forward" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="TALENT.model.models.ftt.Tokenizer">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">TALENT.model.models.ftt.</span></span><span class="sig-name descname"><span class="pre">Tokenizer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.13)"><span class="pre">Any</span></a></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.13)"><span class="pre">Any</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#TALENT.model.models.ftt.Tokenizer" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="TALENT.model.models.ftt.Tokenizer.category_offsets">
+<span class="sig-name descname"><span class="pre">category_offsets</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(in Python v3.13)"><span class="pre">Optional</span></a><span class="p"><span class="pre">[</span></span><span class="pre">torch.Tensor</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#TALENT.model.models.ftt.Tokenizer.category_offsets" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="TALENT.model.models.ftt.Tokenizer.forward">
+<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x_num</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">torch.Tensor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x_cat</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(in Python v3.13)"><span class="pre">Optional</span></a><span class="p"><span class="pre">[</span></span><span class="pre">torch.Tensor</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">torch.Tensor</span></span></span><a class="headerlink" href="#TALENT.model.models.ftt.Tokenizer.forward" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="TALENT.model.models.ftt.Tokenizer.n_tokens">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">n_tokens</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><span class="pre">int</span></a></em><a class="headerlink" href="#TALENT.model.models.ftt.Tokenizer.n_tokens" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="TALENT.model.models.ftt.Transformer">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">TALENT.model.models.ftt.</span></span><span class="sig-name descname"><span class="pre">Transformer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.13)"><span class="pre">Any</span></a></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.13)"><span class="pre">Any</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#TALENT.model.models.ftt.Transformer" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code></p>
+<p>Transformer.</p>
+<p>References:
+- <a class="reference external" href="https://pytorch.org/docs/stable/generated/torch.nn.Transformer.html">https://pytorch.org/docs/stable/generated/torch.nn.Transformer.html</a>
+- <a class="reference external" href="https://github.com/facebookresearch/pytext/tree/master/pytext/models/representations/transformer">https://github.com/facebookresearch/pytext/tree/master/pytext/models/representations/transformer</a>
+- <a class="reference external" href="https://github.com/pytorch/fairseq/blob/1bba712622b8ae4efb3eb793a8a40da386fe11d0/examples/linformer/linformer_src/modules/multihead_linear_attention.py#L19">https://github.com/pytorch/fairseq/blob/1bba712622b8ae4efb3eb793a8a40da386fe11d0/examples/linformer/linformer_src/modules/multihead_linear_attention.py#L19</a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="TALENT.model.models.ftt.Transformer.forward">
+<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x_num</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">torch.Tensor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x_cat</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(in Python v3.13)"><span class="pre">Optional</span></a><span class="p"><span class="pre">[</span></span><span class="pre">torch.Tensor</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">torch.Tensor</span></span></span><a class="headerlink" href="#TALENT.model.models.ftt.Transformer.forward" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="TALENT.model.models.ftt.geglu">
+<span class="sig-prename descclassname"><span class="pre">TALENT.model.models.ftt.</span></span><span class="sig-name descname"><span class="pre">geglu</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#TALENT.model.models.ftt.geglu" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="TALENT.model.models.ftt.get_activation_fn">
+<span class="sig-prename descclassname"><span class="pre">TALENT.model.models.ftt.</span></span><span class="sig-name descname"><span class="pre">get_activation_fn</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#TALENT.model.models.ftt.get_activation_fn" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="TALENT.model.models.ftt.get_nonglu_activation_fn">
+<span class="sig-prename descclassname"><span class="pre">TALENT.model.models.ftt.</span></span><span class="sig-name descname"><span class="pre">get_nonglu_activation_fn</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#TALENT.model.models.ftt.get_nonglu_activation_fn" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="TALENT.model.models.ftt.reglu">
+<span class="sig-prename descclassname"><span class="pre">TALENT.model.models.ftt.</span></span><span class="sig-name descname"><span class="pre">reglu</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#TALENT.model.models.ftt.reglu" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
 <dl class="py class">
 <dt class="sig sig-object py">
-<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Transformer</span></span></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">TALENT.model.models.ftt.</span></span><span class="sig-name descname"><span class="pre">Transformer</span></span></dt>
 <dd><p>Advanced transformer architecture specifically designed for tabular data with feature tokenization.</p>
 <p><strong>Mathematical Formulation:</strong></p>
 <p><strong>Feature Tokenization:</strong></p>
@@ -446,7 +578,7 @@ x &amp;= \text{LayerNorm}(x + \text{ffn_out})\end{split}\]</div>
 
 <dl class="py class">
 <dt class="sig sig-object py">
-<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Tokenizer</span></span></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">TALENT.model.models.ftt.</span></span><span class="sig-name descname"><span class="pre">Tokenizer</span></span></dt>
 <dd><p>Converts numerical and categorical features into token embeddings for transformer processing.</p>
 <dl class="py method">
 <dt class="sig sig-object py">
@@ -479,7 +611,7 @@ x &amp;= \text{LayerNorm}(x + \text{ffn_out})\end{split}\]</div>
 
 <dl class="py property">
 <dt class="sig sig-object py">
-<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">n_tokens</span></span></dt>
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">n_tokens</span></span></dt>
 <dd><p>Total number of tokens (numerical + categorical + CLS).</p>
 <p><strong>Returns:</strong></p>
 <ul class="simple">
@@ -491,7 +623,7 @@ x &amp;= \text{LayerNorm}(x + \text{ffn_out})\end{split}\]</div>
 
 <dl class="py class">
 <dt class="sig sig-object py">
-<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">MultiheadAttention</span></span></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">TALENT.model.models.ftt.</span></span><span class="sig-name descname"><span class="pre">MultiheadAttention</span></span></dt>
 <dd><p>Multi-head attention mechanism optimized for tabular data.</p>
 <dl class="py method">
 <dt class="sig sig-object py">
@@ -547,12 +679,186 @@ x &amp;= \text{LayerNorm}(x + \text{ffn_out})\end{split}\]</div>
 </section>
 </section>
 <section id="advanced-tabular-models">
-<h2>Advanced Tabular Models<a class="headerlink" href="#advanced-tabular-models" title="Link to this heading"></a></h2>
-<section id="tabnet">
-<h3>TabNet<a class="headerlink" href="#tabnet" title="Link to this heading"></a></h3>
+<h2>Advanced Tabular Models<a class="headerlink" href="#advanced-tabular-models" title="Permalink to this heading"></a></h2>
+<section id="module-TALENT.model.models.tabnet">
+<span id="tabnet"></span><h3>TabNet<a class="headerlink" href="#module-TALENT.model.models.tabnet" title="Permalink to this heading"></a></h3>
+<dl class="py class">
+<dt class="sig sig-object py" id="TALENT.model.models.tabnet.TabNetClassifier">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">TALENT.model.models.tabnet.</span></span><span class="sig-name descname"><span class="pre">TabNetClassifier</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.13)"><span class="pre">Any</span></a></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.13)"><span class="pre">Any</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#TALENT.model.models.tabnet.TabNetClassifier" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">TabModel</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="TALENT.model.models.tabnet.TabNetClassifier.compute_loss">
+<span class="sig-name descname"><span class="pre">compute_loss</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">y_pred</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_true</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#TALENT.model.models.tabnet.TabNetClassifier.compute_loss" title="Permalink to this definition"></a></dt>
+<dd><p>Compute the loss.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>y_score</strong> (a :tensor: <cite>torch.Tensor</cite>) – Score matrix</p></li>
+<li><p><strong>y_true</strong> (a :tensor: <cite>torch.Tensor</cite>) – Target matrix</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Loss value</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)">float</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="TALENT.model.models.tabnet.TabNetClassifier.predict_func">
+<span class="sig-name descname"><span class="pre">predict_func</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">outputs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#TALENT.model.models.tabnet.TabNetClassifier.predict_func" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="TALENT.model.models.tabnet.TabNetClassifier.predict_proba">
+<span class="sig-name descname"><span class="pre">predict_proba</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#TALENT.model.models.tabnet.TabNetClassifier.predict_proba" title="Permalink to this definition"></a></dt>
+<dd><p>Make predictions for classification on a batch (valid)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>X</strong> (a :tensor: <cite>torch.Tensor</cite> or matrix: <cite>scipy.sparse.csr_matrix</cite>) – Input data</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>res</strong></p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>np.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="TALENT.model.models.tabnet.TabNetClassifier.prepare_target">
+<span class="sig-name descname"><span class="pre">prepare_target</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">y</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#TALENT.model.models.tabnet.TabNetClassifier.prepare_target" title="Permalink to this definition"></a></dt>
+<dd><p>Prepare target before training.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>y</strong> (a :tensor: <cite>torch.Tensor</cite>) – Target matrix.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Converted target matrix.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><cite>torch.Tensor</cite></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="TALENT.model.models.tabnet.TabNetClassifier.stack_batches">
+<span class="sig-name descname"><span class="pre">stack_batches</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">list_y_true</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">list_y_score</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#TALENT.model.models.tabnet.TabNetClassifier.stack_batches" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="TALENT.model.models.tabnet.TabNetClassifier.update_fit_params">
+<span class="sig-name descname"><span class="pre">update_fit_params</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X_train</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_train</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">eval_set</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">weights</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#TALENT.model.models.tabnet.TabNetClassifier.update_fit_params" title="Permalink to this definition"></a></dt>
+<dd><p>Set attributes relative to fit function.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>X_train</strong> (<em>np.ndarray</em>) – Train set</p></li>
+<li><p><strong>y_train</strong> (<em>np.array</em>) – Train targets</p></li>
+<li><p><strong>eval_set</strong> (<em>list of tuple</em>) – List of eval tuple set (X, y).</p></li>
+<li><p><strong>weights</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><em>bool</em></a><em> or </em><em>dictionnary</em>) – 0 for no balancing
+1 for automated balancing</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="TALENT.model.models.tabnet.TabNetClassifier.weight_updater">
+<span class="sig-name descname"><span class="pre">weight_updater</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">weights</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#TALENT.model.models.tabnet.TabNetClassifier.weight_updater" title="Permalink to this definition"></a></dt>
+<dd><p>Updates weights dictionary according to target_mapper.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>weights</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><em>bool</em></a><em> or </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.13)"><em>dict</em></a>) – Given weights for balancing training.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Same bool if weights are bool, updated dict otherwise.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)">bool</a> or <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.13)">dict</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="TALENT.model.models.tabnet.TabNetRegressor">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">TALENT.model.models.tabnet.</span></span><span class="sig-name descname"><span class="pre">TabNetRegressor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.13)"><span class="pre">Any</span></a></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.13)"><span class="pre">Any</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#TALENT.model.models.tabnet.TabNetRegressor" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">TabModel</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="TALENT.model.models.tabnet.TabNetRegressor.compute_loss">
+<span class="sig-name descname"><span class="pre">compute_loss</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">y_pred</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_true</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#TALENT.model.models.tabnet.TabNetRegressor.compute_loss" title="Permalink to this definition"></a></dt>
+<dd><p>Compute the loss.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>y_score</strong> (a :tensor: <cite>torch.Tensor</cite>) – Score matrix</p></li>
+<li><p><strong>y_true</strong> (a :tensor: <cite>torch.Tensor</cite>) – Target matrix</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Loss value</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)">float</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="TALENT.model.models.tabnet.TabNetRegressor.predict_func">
+<span class="sig-name descname"><span class="pre">predict_func</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">outputs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#TALENT.model.models.tabnet.TabNetRegressor.predict_func" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="TALENT.model.models.tabnet.TabNetRegressor.prepare_target">
+<span class="sig-name descname"><span class="pre">prepare_target</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">y</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#TALENT.model.models.tabnet.TabNetRegressor.prepare_target" title="Permalink to this definition"></a></dt>
+<dd><p>Prepare target before training.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>y</strong> (a :tensor: <cite>torch.Tensor</cite>) – Target matrix.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Converted target matrix.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><cite>torch.Tensor</cite></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="TALENT.model.models.tabnet.TabNetRegressor.stack_batches">
+<span class="sig-name descname"><span class="pre">stack_batches</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">list_y_true</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">list_y_score</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#TALENT.model.models.tabnet.TabNetRegressor.stack_batches" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="TALENT.model.models.tabnet.TabNetRegressor.update_fit_params">
+<span class="sig-name descname"><span class="pre">update_fit_params</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X_train</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_train</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">eval_set</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">weights</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#TALENT.model.models.tabnet.TabNetRegressor.update_fit_params" title="Permalink to this definition"></a></dt>
+<dd><p>Set attributes relative to fit function.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>X_train</strong> (<em>np.ndarray</em>) – Train set</p></li>
+<li><p><strong>y_train</strong> (<em>np.array</em>) – Train targets</p></li>
+<li><p><strong>eval_set</strong> (<em>list of tuple</em>) – List of eval tuple set (X, y).</p></li>
+<li><p><strong>weights</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><em>bool</em></a><em> or </em><em>dictionnary</em>) – 0 for no balancing
+1 for automated balancing</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
 <dl class="py class">
 <dt class="sig sig-object py">
-<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">TabNetClassifier</span></span></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">TALENT.model.models.tabnet.</span></span><span class="sig-name descname"><span class="pre">TabNetClassifier</span></span></dt>
 <dd><p>Interpretable deep learning model with sequential attention mechanism for classification.</p>
 <p><strong>Mathematical Formulation:</strong></p>
 <p>TabNet uses sequential feature selection through sparsemax attention:</p>
@@ -641,7 +947,7 @@ x &amp;= \text{LayerNorm}(x + \text{ffn_out})\end{split}\]</div>
 
 <dl class="py class">
 <dt class="sig sig-object py">
-<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">TabNetRegressor</span></span></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">TALENT.model.models.tabnet.</span></span><span class="sig-name descname"><span class="pre">TabNetRegressor</span></span></dt>
 <dd><p>TabNet for regression tasks with mean squared error optimization.</p>
 <dl class="py method">
 <dt class="sig sig-object py">
@@ -657,12 +963,53 @@ x &amp;= \text{LayerNorm}(x + \text{ffn_out})\end{split}\]</div>
 </section>
 </section>
 <section id="tree-based-neural-models">
-<h2>Tree-Based Neural Models<a class="headerlink" href="#tree-based-neural-models" title="Link to this heading"></a></h2>
-<section id="grande-gradient-boosted-neural-decision-ensembles">
-<h3>GRANDE (Gradient-Boosted Neural Decision Ensembles)<a class="headerlink" href="#grande-gradient-boosted-neural-decision-ensembles" title="Link to this heading"></a></h3>
+<h2>Tree-Based Neural Models<a class="headerlink" href="#tree-based-neural-models" title="Permalink to this heading"></a></h2>
+<section id="module-TALENT.model.models.grande">
+<span id="grande-gradient-boosted-neural-decision-ensembles"></span><h3>GRANDE (Gradient-Boosted Neural Decision Ensembles)<a class="headerlink" href="#module-TALENT.model.models.grande" title="Permalink to this heading"></a></h3>
+<dl class="py class">
+<dt class="sig sig-object py" id="TALENT.model.models.grande.GRANDE">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">TALENT.model.models.grande.</span></span><span class="sig-name descname"><span class="pre">GRANDE</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.13)"><span class="pre">Any</span></a></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.13)"><span class="pre">Any</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#TALENT.model.models.grande.GRANDE" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="TALENT.model.models.grande.GRANDE.apply_preprocessing">
+<span class="sig-name descname"><span class="pre">apply_preprocessing</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#TALENT.model.models.grande.GRANDE.apply_preprocessing" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="TALENT.model.models.grande.GRANDE.build_model">
+<span class="sig-name descname"><span class="pre">build_model</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#TALENT.model.models.grande.GRANDE.build_model" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="TALENT.model.models.grande.GRANDE.entmax15">
+<span class="sig-name descname"><span class="pre">entmax15</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inputs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">axis</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-</span> <span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#TALENT.model.models.grande.GRANDE.entmax15" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="TALENT.model.models.grande.GRANDE.entmax_threshold_and_support">
+<span class="sig-name descname"><span class="pre">entmax_threshold_and_support</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inputs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">axis</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">-</span> <span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#TALENT.model.models.grande.GRANDE.entmax_threshold_and_support" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="TALENT.model.models.grande.GRANDE.forward">
+<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inputs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#TALENT.model.models.grande.GRANDE.forward" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="TALENT.model.models.grande.GRANDE.preprocess_data">
+<span class="sig-name descname"><span class="pre">preprocess_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X_train</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_train</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">X_val</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_val</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#TALENT.model.models.grande.GRANDE.preprocess_data" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="TALENT.model.models.grande.GRANDE.set_params">
+<span class="sig-name descname"><span class="pre">set_params</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#TALENT.model.models.grande.GRANDE.set_params" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
 <dl class="py class">
 <dt class="sig sig-object py">
-<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">GRANDE</span></span></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">TALENT.model.models.grande.</span></span><span class="sig-name descname"><span class="pre">GRANDE</span></span></dt>
 <dd><p>Tree-mimic neural network using gradient descent for decision tree simulation.</p>
 <p><strong>Mathematical Formulation:</strong></p>
 <p>GRANDE simulates decision trees using neural operations with entmax for sparse selection.</p>
@@ -728,11 +1075,32 @@ x &amp;= \text{LayerNorm}(x + \text{ffn_out})\end{split}\]</div>
 </dd></dl>
 
 </section>
-<section id="neural-oblivious-decision-ensembles-node">
-<h3>Neural Oblivious Decision Ensembles (NODE)<a class="headerlink" href="#neural-oblivious-decision-ensembles-node" title="Link to this heading"></a></h3>
+<section id="module-TALENT.model.models.node">
+<span id="neural-oblivious-decision-ensembles-node"></span><h3>Neural Oblivious Decision Ensembles (NODE)<a class="headerlink" href="#module-TALENT.model.models.node" title="Permalink to this heading"></a></h3>
+<dl class="py class">
+<dt class="sig sig-object py" id="TALENT.model.models.node.NODE">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">TALENT.model.models.node.</span></span><span class="sig-name descname"><span class="pre">NODE</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">d_in</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><span class="pre">int</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_layers</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><span class="pre">int</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">layer_dim</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><span class="pre">int</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">depth</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><span class="pre">int</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">tree_dim</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><span class="pre">int</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">choice_function</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">bin_function</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">d_out</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><span class="pre">int</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#TALENT.model.models.node.NODE" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code></p>
+<p>Initializes internal Module state, shared by both nn.Module and ScriptModule.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="TALENT.model.models.node.NODE.forward">
+<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x_num</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tensor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x_cat</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tensor</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tensor</span></span></span><a class="headerlink" href="#TALENT.model.models.node.NODE.forward" title="Permalink to this definition"></a></dt>
+<dd><p>Defines the computation performed at every call.</p>
+<p>Should be overridden by all subclasses.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Although the recipe for forward pass needs to be defined within
+this function, one should call the <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code> instance afterwards
+instead of this since the former takes care of running the
+registered hooks while the latter silently ignores them.</p>
+</div>
+</dd></dl>
+
+</dd></dl>
+
 <dl class="py class">
 <dt class="sig sig-object py">
-<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Node</span></span></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">TALENT.model.models.node.</span></span><span class="sig-name descname"><span class="pre">Node</span></span></dt>
 <dd><p>Neural implementation of oblivious decision trees with differentiable splits.</p>
 <dl class="py method">
 <dt class="sig sig-object py">
@@ -767,11 +1135,221 @@ x &amp;= \text{LayerNorm}(x + \text{ffn_out})\end{split}\]</div>
 </dd></dl>
 
 </section>
-<section id="grownet-gradient-boosting-with-neural-networks">
-<h3>GrowNet (Gradient Boosting with Neural Networks)<a class="headerlink" href="#grownet-gradient-boosting-with-neural-networks" title="Link to this heading"></a></h3>
+<section id="module-TALENT.model.models.grownet">
+<span id="grownet-gradient-boosting-with-neural-networks"></span><h3>GrowNet (Gradient Boosting with Neural Networks)<a class="headerlink" href="#module-TALENT.model.models.grownet" title="Permalink to this heading"></a></h3>
+<dl class="py class">
+<dt class="sig sig-object py" id="TALENT.model.models.grownet.DynamicNet">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">TALENT.model.models.grownet.</span></span><span class="sig-name descname"><span class="pre">DynamicNet</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lr</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">categories</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(in Python v3.13)"><span class="pre">Optional</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.13)"><span class="pre">List</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><span class="pre">int</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">d_embedding</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(in Python v3.13)"><span class="pre">Optional</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><span class="pre">int</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#TALENT.model.models.grownet.DynamicNet" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="TALENT.model.models.grownet.DynamicNet.add">
+<span class="sig-name descname"><span class="pre">add</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#TALENT.model.models.grownet.DynamicNet.add" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="TALENT.model.models.grownet.DynamicNet.embed_input">
+<span class="sig-name descname"><span class="pre">embed_input</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x_num</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x_cat</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#TALENT.model.models.grownet.DynamicNet.embed_input" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="TALENT.model.models.grownet.DynamicNet.forward">
+<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x_num</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x_cat</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#TALENT.model.models.grownet.DynamicNet.forward" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="TALENT.model.models.grownet.DynamicNet.forward_grad">
+<span class="sig-name descname"><span class="pre">forward_grad</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x_num</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x_cat</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#TALENT.model.models.grownet.DynamicNet.forward_grad" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="TALENT.model.models.grownet.DynamicNet.from_file">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">from_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">builder</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#TALENT.model.models.grownet.DynamicNet.from_file" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="TALENT.model.models.grownet.DynamicNet.parameters">
+<span class="sig-name descname"><span class="pre">parameters</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#TALENT.model.models.grownet.DynamicNet.parameters" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="TALENT.model.models.grownet.DynamicNet.to_cuda">
+<span class="sig-name descname"><span class="pre">to_cuda</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#TALENT.model.models.grownet.DynamicNet.to_cuda" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="TALENT.model.models.grownet.DynamicNet.to_double">
+<span class="sig-name descname"><span class="pre">to_double</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#TALENT.model.models.grownet.DynamicNet.to_double" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="TALENT.model.models.grownet.DynamicNet.to_eval">
+<span class="sig-name descname"><span class="pre">to_eval</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#TALENT.model.models.grownet.DynamicNet.to_eval" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="TALENT.model.models.grownet.DynamicNet.to_file">
+<span class="sig-name descname"><span class="pre">to_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#TALENT.model.models.grownet.DynamicNet.to_file" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="TALENT.model.models.grownet.DynamicNet.to_train">
+<span class="sig-name descname"><span class="pre">to_train</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#TALENT.model.models.grownet.DynamicNet.to_train" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="TALENT.model.models.grownet.DynamicNet.zero_grad">
+<span class="sig-name descname"><span class="pre">zero_grad</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#TALENT.model.models.grownet.DynamicNet.zero_grad" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="TALENT.model.models.grownet.ForwardType">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">TALENT.model.models.grownet.</span></span><span class="sig-name descname"><span class="pre">ForwardType</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">names</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">module</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">qualname</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">boundary</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#TALENT.model.models.grownet.ForwardType" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/enum.html#enum.Enum" title="(in Python v3.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Enum</span></code></a></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="TALENT.model.models.grownet.ForwardType.CASCADE">
+<span class="sig-name descname"><span class="pre">CASCADE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">2</span></em><a class="headerlink" href="#TALENT.model.models.grownet.ForwardType.CASCADE" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="TALENT.model.models.grownet.ForwardType.GRADIENT">
+<span class="sig-name descname"><span class="pre">GRADIENT</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">3</span></em><a class="headerlink" href="#TALENT.model.models.grownet.ForwardType.GRADIENT" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="TALENT.model.models.grownet.ForwardType.SIMPLE">
+<span class="sig-name descname"><span class="pre">SIMPLE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">0</span></em><a class="headerlink" href="#TALENT.model.models.grownet.ForwardType.SIMPLE" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="TALENT.model.models.grownet.ForwardType.STACKED">
+<span class="sig-name descname"><span class="pre">STACKED</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">1</span></em><a class="headerlink" href="#TALENT.model.models.grownet.ForwardType.STACKED" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="TALENT.model.models.grownet.MLP_2HL">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">TALENT.model.models.grownet.</span></span><span class="sig-name descname"><span class="pre">MLP_2HL</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dim_in</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dim_hidden1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dim_hidden2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dim_out</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sparse</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bn</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#TALENT.model.models.grownet.MLP_2HL" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code></p>
+<p>Initializes internal Module state, shared by both nn.Module and ScriptModule.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="TALENT.model.models.grownet.MLP_2HL.forward">
+<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lower_f</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#TALENT.model.models.grownet.MLP_2HL.forward" title="Permalink to this definition"></a></dt>
+<dd><p>Defines the computation performed at every call.</p>
+<p>Should be overridden by all subclasses.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Although the recipe for forward pass needs to be defined within
+this function, one should call the <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code> instance afterwards
+instead of this since the former takes care of running the
+registered hooks while the latter silently ignores them.</p>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="TALENT.model.models.grownet.MLP_2HL.get_model">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">get_model</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">stage</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">opt</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#TALENT.model.models.grownet.MLP_2HL.get_model" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="TALENT.model.models.grownet.SpLinear">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">TALENT.model.models.grownet.</span></span><span class="sig-name descname"><span class="pre">SpLinear</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_features</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_features</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bias</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#TALENT.model.models.grownet.SpLinear" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code></p>
+<p>Initializes internal Module state, shared by both nn.Module and ScriptModule.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="TALENT.model.models.grownet.SpLinear.forward">
+<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#TALENT.model.models.grownet.SpLinear.forward" title="Permalink to this definition"></a></dt>
+<dd><p>Defines the computation performed at every call.</p>
+<p>Should be overridden by all subclasses.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Although the recipe for forward pass needs to be defined within
+this function, one should call the <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code> instance afterwards
+instead of this since the former takes care of running the
+registered hooks while the latter silently ignores them.</p>
+</div>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="TALENT.model.models.grownet.SpLinearFunc">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">TALENT.model.models.grownet.</span></span><span class="sig-name descname"><span class="pre">SpLinearFunc</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#TALENT.model.models.grownet.SpLinearFunc" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Function</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="TALENT.model.models.grownet.SpLinearFunc.backward">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">backward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ctx</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">grad_output</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#TALENT.model.models.grownet.SpLinearFunc.backward" title="Permalink to this definition"></a></dt>
+<dd><p>Defines a formula for differentiating the operation with backward mode
+automatic differentiation (alias to the vjp function).</p>
+<p>This function is to be overridden by all subclasses.</p>
+<p>It must accept a context <code class="xref py py-attr docutils literal notranslate"><span class="pre">ctx</span></code> as the first argument, followed by
+as many outputs as the <a class="reference internal" href="#TALENT.model.models.grownet.SpLinearFunc.forward" title="TALENT.model.models.grownet.SpLinearFunc.forward"><code class="xref py py-func docutils literal notranslate"><span class="pre">forward()</span></code></a> returned (None will be passed in
+for non tensor outputs of the forward function),
+and it should return as many tensors, as there were inputs to
+<a class="reference internal" href="#TALENT.model.models.grownet.SpLinearFunc.forward" title="TALENT.model.models.grownet.SpLinearFunc.forward"><code class="xref py py-func docutils literal notranslate"><span class="pre">forward()</span></code></a>. Each argument is the gradient w.r.t the given output,
+and each returned value should be the gradient w.r.t. the
+corresponding input. If an input is not a Tensor or is a Tensor not
+requiring grads, you can just pass None as a gradient for that input.</p>
+<p>The context can be used to retrieve tensors saved during the forward
+pass. It also has an attribute <code class="xref py py-attr docutils literal notranslate"><span class="pre">ctx.needs_input_grad</span></code> as a tuple
+of booleans representing whether each input needs gradient. E.g.,
+<a class="reference internal" href="#TALENT.model.models.grownet.SpLinearFunc.backward" title="TALENT.model.models.grownet.SpLinearFunc.backward"><code class="xref py py-func docutils literal notranslate"><span class="pre">backward()</span></code></a> will have <code class="docutils literal notranslate"><span class="pre">ctx.needs_input_grad[0]</span> <span class="pre">=</span> <span class="pre">True</span></code> if the
+first input to <a class="reference internal" href="#TALENT.model.models.grownet.SpLinearFunc.forward" title="TALENT.model.models.grownet.SpLinearFunc.forward"><code class="xref py py-func docutils literal notranslate"><span class="pre">forward()</span></code></a> needs gradient computated w.r.t. the
+output.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="TALENT.model.models.grownet.SpLinearFunc.forward">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ctx</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">input</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">weight</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bias</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#TALENT.model.models.grownet.SpLinearFunc.forward" title="Permalink to this definition"></a></dt>
+<dd><p>This function is to be overridden by all subclasses. There are two ways
+to define forward:</p>
+<p>Usage 1 (Combined forward and ctx):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@staticmethod</span>
+<span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="n">ctx</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Any</span><span class="p">:</span>
+    <span class="k">pass</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>It must accept a context ctx as the first argument, followed by any
+number of arguments (tensors or other types).</p></li>
+<li><p>See <span class="xref std std-ref">combining-forward-context</span> for more details</p></li>
+</ul>
+<p>Usage 2 (Separate forward and ctx):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nd">@staticmethod</span>
+<span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Any</span><span class="p">:</span>
+    <span class="k">pass</span>
+
+<span class="nd">@staticmethod</span>
+<span class="k">def</span> <span class="nf">setup_context</span><span class="p">(</span><span class="n">ctx</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span> <span class="n">inputs</span><span class="p">:</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">Any</span><span class="p">,</span> <span class="o">...</span><span class="p">],</span> <span class="n">output</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="k">pass</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>The forward no longer accepts a ctx argument.</p></li>
+<li><p>Instead, you must also override the <code class="xref py py-meth docutils literal notranslate"><span class="pre">torch.autograd.Function.setup_context()</span></code>
+staticmethod to handle setting up the <code class="docutils literal notranslate"><span class="pre">ctx</span></code> object.
+<code class="docutils literal notranslate"><span class="pre">output</span></code> is the output of the forward, <code class="docutils literal notranslate"><span class="pre">inputs</span></code> are a Tuple of inputs
+to the forward.</p></li>
+<li><p>See <span class="xref std std-ref">extending-autograd</span> for more details</p></li>
+</ul>
+<p>The context can be used to store arbitrary data that can be then
+retrieved during the backward pass. Tensors should not be stored
+directly on <cite>ctx</cite> (though this is not currently enforced for
+backward compatibility). Instead, tensors should be saved either with
+<code class="xref py py-func docutils literal notranslate"><span class="pre">ctx.save_for_backward()</span></code> if they are intended to be used in
+<code class="docutils literal notranslate"><span class="pre">backward</span></code> (equivalently, <code class="docutils literal notranslate"><span class="pre">vjp</span></code>) or <code class="xref py py-func docutils literal notranslate"><span class="pre">ctx.save_for_forward()</span></code>
+if they are intended to be used for in <code class="docutils literal notranslate"><span class="pre">jvp</span></code>.</p>
+</dd></dl>
+
+</dd></dl>
+
 <dl class="py class">
 <dt class="sig sig-object py">
-<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">GrowNet</span></span></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">TALENT.model.models.grownet.</span></span><span class="sig-name descname"><span class="pre">GrowNet</span></span></dt>
 <dd><p>Gradient boosting framework with neural network weak learners.</p>
 <dl class="py method">
 <dt class="sig sig-object py">
@@ -800,12 +1378,39 @@ x &amp;= \text{LayerNorm}(x + \text{ffn_out})\end{split}\]</div>
 </section>
 </section>
 <section id="distance-based-models">
-<h2>Distance-Based Models<a class="headerlink" href="#distance-based-models" title="Link to this heading"></a></h2>
+<h2>Distance-Based Models<a class="headerlink" href="#distance-based-models" title="Permalink to this heading"></a></h2>
 <section id="modern-neighborhood-component-analysis-modernnca">
-<h3>Modern Neighborhood Component Analysis (ModernNCA)<a class="headerlink" href="#modern-neighborhood-component-analysis-modernnca" title="Link to this heading"></a></h3>
+<h3>Modern Neighborhood Component Analysis (ModernNCA)<a class="headerlink" href="#modern-neighborhood-component-analysis-modernnca" title="Permalink to this heading"></a></h3>
+<span class="target" id="module-TALENT.model.models.modernNCA"></span><dl class="py class">
+<dt class="sig sig-object py" id="TALENT.model.models.modernNCA.MLP_Block">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">TALENT.model.models.modernNCA.</span></span><span class="sig-name descname"><span class="pre">MLP_Block</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.13)"><span class="pre">Any</span></a></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.13)"><span class="pre">Any</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#TALENT.model.models.modernNCA.MLP_Block" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="TALENT.model.models.modernNCA.MLP_Block.forward">
+<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">torch.Tensor</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">torch.Tensor</span></span></span><a class="headerlink" href="#TALENT.model.models.modernNCA.MLP_Block.forward" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="TALENT.model.models.modernNCA.ModernNCA">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">TALENT.model.models.modernNCA.</span></span><span class="sig-name descname"><span class="pre">ModernNCA</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.13)"><span class="pre">Any</span></a></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.13)"><span class="pre">Any</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#TALENT.model.models.modernNCA.ModernNCA" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="TALENT.model.models.modernNCA.ModernNCA.forward">
+<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">candidate_x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">candidate_y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">is_train</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#TALENT.model.models.modernNCA.ModernNCA.forward" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="TALENT.model.models.modernNCA.ModernNCA.make_layer">
+<span class="sig-name descname"><span class="pre">make_layer</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#TALENT.model.models.modernNCA.ModernNCA.make_layer" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
 <dl class="py class">
 <dt class="sig sig-object py">
-<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">ModernNCA</span></span></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">TALENT.model.models.modernNCA.</span></span><span class="sig-name descname"><span class="pre">ModernNCA</span></span></dt>
 <dd><p>Neighborhood Component Analysis-inspired model for embedding-based predictions.</p>
 <p><strong>Mathematical Formulation:</strong></p>
 <p>ModernNCA learns embeddings for distance-based classification.</p>
@@ -878,12 +1483,97 @@ x &amp;= \text{LayerNorm}(x + \text{ffn_out})\end{split}\]</div>
 </section>
 </section>
 <section id="specialized-architectures">
-<h2>Specialized Architectures<a class="headerlink" href="#specialized-architectures" title="Link to this heading"></a></h2>
-<section id="excelformer-semi-permeable-attention">
-<h3>ExcelFormer (Semi-Permeable Attention)<a class="headerlink" href="#excelformer-semi-permeable-attention" title="Link to this heading"></a></h3>
+<h2>Specialized Architectures<a class="headerlink" href="#specialized-architectures" title="Permalink to this heading"></a></h2>
+<section id="module-TALENT.model.models.excelformer">
+<span id="excelformer-semi-permeable-attention"></span><h3>ExcelFormer (Semi-Permeable Attention)<a class="headerlink" href="#module-TALENT.model.models.excelformer" title="Permalink to this heading"></a></h3>
+<dl class="py class">
+<dt class="sig sig-object py" id="TALENT.model.models.excelformer.ExcelFormer">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">TALENT.model.models.excelformer.</span></span><span class="sig-name descname"><span class="pre">ExcelFormer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">d_numerical</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><span class="pre">int</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">token_bias</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><span class="pre">bool</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_layers</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><span class="pre">int</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">d_token</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><span class="pre">int</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_heads</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><span class="pre">int</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">attention_dropout</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)"><span class="pre">float</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">ffn_dropout</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)"><span class="pre">float</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">residual_dropout</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)"><span class="pre">float</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">prenormalization</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><span class="pre">bool</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">kv_compression</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(in Python v3.13)"><span class="pre">Optional</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)"><span class="pre">float</span></a><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">kv_compression_sharing</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(in Python v3.13)"><span class="pre">Optional</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">d_out</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><span class="pre">int</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">init_scale</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)"><span class="pre">float</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0.1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#TALENT.model.models.excelformer.ExcelFormer" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code></p>
+<p>ExcelFormer with All initialized by small value</p>
+<p>initial function: v4</p>
+<p>Initializes internal Module state, shared by both nn.Module and ScriptModule.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="TALENT.model.models.excelformer.ExcelFormer.forward">
+<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x_num</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tensor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x_cat</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mix_up</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><span class="pre">bool</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">beta</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mtype</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'feat_mix'</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tensor</span></span></span><a class="headerlink" href="#TALENT.model.models.excelformer.ExcelFormer.forward" title="Permalink to this definition"></a></dt>
+<dd><p>Defines the computation performed at every call.</p>
+<p>Should be overridden by all subclasses.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Although the recipe for forward pass needs to be defined within
+this function, one should call the <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code> instance afterwards
+instead of this since the former takes care of running the
+registered hooks while the latter silently ignores them.</p>
+</div>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="TALENT.model.models.excelformer.MultiheadAttention">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">TALENT.model.models.excelformer.</span></span><span class="sig-name descname"><span class="pre">MultiheadAttention</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">d</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><span class="pre">int</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_heads</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><span class="pre">int</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">dropout</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)"><span class="pre">float</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">init_scale</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)"><span class="pre">float</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0.01</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#TALENT.model.models.excelformer.MultiheadAttention" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code></p>
+<p>Initializes internal Module state, shared by both nn.Module and ScriptModule.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="TALENT.model.models.excelformer.MultiheadAttention.forward">
+<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x_q</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tensor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x_kv</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tensor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">key_compression</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(in Python v3.13)"><span class="pre">Optional</span></a><span class="p"><span class="pre">[</span></span><span class="pre">Linear</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value_compression</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(in Python v3.13)"><span class="pre">Optional</span></a><span class="p"><span class="pre">[</span></span><span class="pre">Linear</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tensor</span></span></span><a class="headerlink" href="#TALENT.model.models.excelformer.MultiheadAttention.forward" title="Permalink to this definition"></a></dt>
+<dd><p>Defines the computation performed at every call.</p>
+<p>Should be overridden by all subclasses.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Although the recipe for forward pass needs to be defined within
+this function, one should call the <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code> instance afterwards
+instead of this since the former takes care of running the
+registered hooks while the latter silently ignores them.</p>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="TALENT.model.models.excelformer.MultiheadAttention.get_attention_mask">
+<span class="sig-name descname"><span class="pre">get_attention_mask</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_shape</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">device</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#TALENT.model.models.excelformer.MultiheadAttention.get_attention_mask" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="TALENT.model.models.excelformer.Tokenizer">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">TALENT.model.models.excelformer.</span></span><span class="sig-name descname"><span class="pre">Tokenizer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">d_numerical</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><span class="pre">int</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">categories</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(in Python v3.13)"><span class="pre">Optional</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.13)"><span class="pre">List</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><span class="pre">int</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">d_token</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><span class="pre">int</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">bias</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><span class="pre">bool</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#TALENT.model.models.excelformer.Tokenizer" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code></p>
+<p>Initializes internal Module state, shared by both nn.Module and ScriptModule.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="TALENT.model.models.excelformer.Tokenizer.category_offsets">
+<span class="sig-name descname"><span class="pre">category_offsets</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(in Python v3.13)"><span class="pre">Optional</span></a><span class="p"><span class="pre">[</span></span><span class="pre">Tensor</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#TALENT.model.models.excelformer.Tokenizer.category_offsets" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="TALENT.model.models.excelformer.Tokenizer.forward">
+<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x_num</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Tensor</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tensor</span></span></span><a class="headerlink" href="#TALENT.model.models.excelformer.Tokenizer.forward" title="Permalink to this definition"></a></dt>
+<dd><p>Defines the computation performed at every call.</p>
+<p>Should be overridden by all subclasses.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Although the recipe for forward pass needs to be defined within
+this function, one should call the <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code> instance afterwards
+instead of this since the former takes care of running the
+registered hooks while the latter silently ignores them.</p>
+</div>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="TALENT.model.models.excelformer.Tokenizer.n_tokens">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">n_tokens</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><span class="pre">int</span></a></em><a class="headerlink" href="#TALENT.model.models.excelformer.Tokenizer.n_tokens" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="TALENT.model.models.excelformer.attenuated_kaiming_uniform_">
+<span class="sig-prename descclassname"><span class="pre">TALENT.model.models.excelformer.</span></span><span class="sig-name descname"><span class="pre">attenuated_kaiming_uniform_</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tensor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">a</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2.23606797749979</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scale</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'fan_in'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nonlinearity</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'leaky_relu'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#TALENT.model.models.excelformer.attenuated_kaiming_uniform_" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
 <dl class="py class">
 <dt class="sig sig-object py">
-<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">ExcelFormer</span></span></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">TALENT.model.models.excelformer.</span></span><span class="sig-name descname"><span class="pre">ExcelFormer</span></span></dt>
 <dd><p>Transformer with semi-permeable attention and mixup training capabilities.</p>
 <dl class="py method">
 <dt class="sig sig-object py">
@@ -941,11 +1631,138 @@ x &amp;= \text{LayerNorm}(x + \text{ffn_out})\end{split}\]</div>
 </dd></dl>
 
 </section>
-<section id="protogate-prototype-based-gating">
-<h3>ProtoGate (Prototype-Based Gating)<a class="headerlink" href="#protogate-prototype-based-gating" title="Link to this heading"></a></h3>
+<section id="module-TALENT.model.models.protogate">
+<span id="protogate-prototype-based-gating"></span><h3>ProtoGate (Prototype-Based Gating)<a class="headerlink" href="#module-TALENT.model.models.protogate" title="Permalink to this heading"></a></h3>
+<dl class="py class">
+<dt class="sig sig-object py" id="TALENT.model.models.protogate.DeactFunc">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">TALENT.model.models.protogate.</span></span><span class="sig-name descname"><span class="pre">DeactFunc</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.13)"><span class="pre">Any</span></a></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.13)"><span class="pre">Any</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#TALENT.model.models.protogate.DeactFunc" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="TALENT.model.models.protogate.DeactFunc.forward">
+<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#TALENT.model.models.protogate.DeactFunc.forward" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="TALENT.model.models.protogate.GatingNet">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">TALENT.model.models.protogate.</span></span><span class="sig-name descname"><span class="pre">GatingNet</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.13)"><span class="pre">Any</span></a></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.13)"><span class="pre">Any</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#TALENT.model.models.protogate.GatingNet" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code></p>
+<p>Gating Network for feature selection</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>input_dim</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><em>int</em></a>) – input dimension of the gating network</p></li>
+<li><p><strong>a</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)"><em>float</em></a>) – coefficient in hard relu activation function</p></li>
+<li><p><strong>sigma</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.13)"><em>float</em></a>) – std of the gaussion reparameterization noise</p></li>
+<li><p><strong>activation</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.13)"><em>str</em></a>) – activation function of the gating net: ‘relu’, ‘l_relu’, ‘sigmoid’, ‘tanh’, or ‘none’</p></li>
+<li><p><strong>hidden_layer_list</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.13)"><em>list</em></a>) – number of nodes for each hidden layer of the gating net, example: [200,200]</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="TALENT.model.models.protogate.GatingNet.forward">
+<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#TALENT.model.models.protogate.GatingNet.forward" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="TALENT.model.models.protogate.GatingNet.get_stochastic_gate">
+<span class="sig-name descname"><span class="pre">get_stochastic_gate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">alpha</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#TALENT.model.models.protogate.GatingNet.get_stochastic_gate" title="Permalink to this definition"></a></dt>
+<dd><p>This function replaced the feature_selector function in order to save Z</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="TALENT.model.models.protogate.GatingNet.hard_sigmoid">
+<span class="sig-name descname"><span class="pre">hard_sigmoid</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#TALENT.model.models.protogate.GatingNet.hard_sigmoid" title="Permalink to this definition"></a></dt>
+<dd><p>Segment-wise linear approximation of sigmoid.
+Faster than sigmoid.
+Returns <cite>0.</cite> if <cite>x &lt; -2.5</cite>, <cite>1.</cite> if <cite>x &gt; 2.5</cite>.
+In <cite>-2.5 &lt;= x &lt;= 2.5</cite>, returns <cite>0.2 * x + 0.5</cite>.
+# Arguments</p>
+<blockquote>
+<div><p>x: A tensor or variable.</p>
+</div></blockquote>
+<dl class="simple">
+<dt># Returns</dt><dd><p>A tensor.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="TALENT.model.models.protogate.HybridSort">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">TALENT.model.models.protogate.</span></span><span class="sig-name descname"><span class="pre">HybridSort</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.13)"><span class="pre">Any</span></a></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.13)"><span class="pre">Any</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#TALENT.model.models.protogate.HybridSort" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="TALENT.model.models.protogate.HybridSort.forward">
+<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">scores</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">torch.Tensor</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#TALENT.model.models.protogate.HybridSort.forward" title="Permalink to this definition"></a></dt>
+<dd><p>scores: elements to be sorted. Typical shape: batch_size x n x 1</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="TALENT.model.models.protogate.KNNNet">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">TALENT.model.models.protogate.</span></span><span class="sig-name descname"><span class="pre">KNNNet</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.13)"><span class="pre">Any</span></a></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.13)"><span class="pre">Any</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#TALENT.model.models.protogate.KNNNet" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="TALENT.model.models.protogate.KNNNet.forward">
+<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">query</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">neighbors</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tau</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1.0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#TALENT.model.models.protogate.KNNNet.forward" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="TALENT.model.models.protogate.PL">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">TALENT.model.models.protogate.</span></span><span class="sig-name descname"><span class="pre">PL</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.13)"><span class="pre">Any</span></a></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.13)"><span class="pre">Any</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#TALENT.model.models.protogate.PL" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Distribution</span></code></p>
+<p>scores. Shape: (batch_size x) n
+tau: temperature for the relaxation. Scalar.
+hard: use straight-through estimation if True</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="TALENT.model.models.protogate.PL.arg_constraints">
+<span class="sig-name descname"><span class="pre">arg_constraints</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{'scores':</span> <span class="pre">torch.distributions.constraints.positive,</span> <span class="pre">'tau':</span> <span class="pre">torch.distributions.constraints.positive}</span></em><a class="headerlink" href="#TALENT.model.models.protogate.PL.arg_constraints" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="TALENT.model.models.protogate.PL.has_rsample">
+<span class="sig-name descname"><span class="pre">has_rsample</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">True</span></em><a class="headerlink" href="#TALENT.model.models.protogate.PL.has_rsample" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="TALENT.model.models.protogate.PL.log_prob">
+<span class="sig-name descname"><span class="pre">log_prob</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#TALENT.model.models.protogate.PL.log_prob" title="Permalink to this definition"></a></dt>
+<dd><p>value: permutation matrix. shape: batch_size x n x n</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="TALENT.model.models.protogate.PL.mean">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">mean</span></span><a class="headerlink" href="#TALENT.model.models.protogate.PL.mean" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="TALENT.model.models.protogate.PL.relaxed_sort">
+<span class="sig-name descname"><span class="pre">relaxed_sort</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">inp</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#TALENT.model.models.protogate.PL.relaxed_sort" title="Permalink to this definition"></a></dt>
+<dd><p>inp: elements to be sorted. Typical shape: batch_size x n x 1</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="TALENT.model.models.protogate.PL.rsample">
+<span class="sig-name descname"><span class="pre">rsample</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sample_shape</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">log_score</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#TALENT.model.models.protogate.PL.rsample" title="Permalink to this definition"></a></dt>
+<dd><p>sample_shape: number of samples from the PL distribution. Scalar.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="TALENT.model.models.protogate.get_activation">
+<span class="sig-prename descclassname"><span class="pre">TALENT.model.models.protogate.</span></span><span class="sig-name descname"><span class="pre">get_activation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#TALENT.model.models.protogate.get_activation" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
 <dl class="py class">
 <dt class="sig sig-object py">
-<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">ProtoGate</span></span></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">TALENT.model.models.protogate.</span></span><span class="sig-name descname"><span class="pre">ProtoGate</span></span></dt>
 <dd><p>Prototype-based model with gating mechanisms for interpretable feature selection.</p>
 <dl class="py method">
 <dt class="sig sig-object py">
@@ -978,7 +1795,7 @@ x &amp;= \text{LayerNorm}(x + \text{ffn_out})\end{split}\]</div>
 
 <dl class="py class">
 <dt class="sig sig-object py">
-<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">GatingNet</span></span></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">TALENT.model.models.protogate.</span></span><span class="sig-name descname"><span class="pre">GatingNet</span></span></dt>
 <dd><p>Gating network for prototype-based feature selection.</p>
 <dl class="py method">
 <dt class="sig sig-object py">
@@ -1001,16 +1818,32 @@ x &amp;= \text{LayerNorm}(x + \text{ffn_out})\end{split}\]</div>
 </section>
 </section>
 <section id="retrieval-based-models">
-<h2>Retrieval-Based Models<a class="headerlink" href="#retrieval-based-models" title="Link to this heading"></a></h2>
-<section id="tabr-tabular-retrieval">
-<h3>TabR (Tabular Retrieval)<a class="headerlink" href="#tabr-tabular-retrieval" title="Link to this heading"></a></h3>
+<h2>Retrieval-Based Models<a class="headerlink" href="#retrieval-based-models" title="Permalink to this heading"></a></h2>
+<section id="module-TALENT.model.models.tabr">
+<span id="tabr-tabular-retrieval"></span><h3>TabR (Tabular Retrieval)<a class="headerlink" href="#module-TALENT.model.models.tabr" title="Permalink to this heading"></a></h3>
+<dl class="py class">
+<dt class="sig sig-object py" id="TALENT.model.models.tabr.TabR">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">TALENT.model.models.tabr.</span></span><span class="sig-name descname"><span class="pre">TabR</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.13)"><span class="pre">Any</span></a></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.13)"><span class="pre">Any</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#TALENT.model.models.tabr.TabR" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="TALENT.model.models.tabr.TabR.forward">
+<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x_num</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">torch.Tensor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x_cat</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(in Python v3.13)"><span class="pre">Optional</span></a><span class="p"><span class="pre">[</span></span><span class="pre">torch.Tensor</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(in Python v3.13)"><span class="pre">Optional</span></a><span class="p"><span class="pre">[</span></span><span class="pre">torch.Tensor</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">candidate_x_num</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(in Python v3.13)"><span class="pre">Optional</span></a><span class="p"><span class="pre">[</span></span><span class="pre">torch.Tensor</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">candidate_x_cat</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Optional" title="(in Python v3.13)"><span class="pre">Optional</span></a><span class="p"><span class="pre">[</span></span><span class="pre">torch.Tensor</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">candidate_y</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">torch.Tensor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">context_size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><span class="pre">int</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">is_train</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><span class="pre">bool</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">torch.Tensor</span></span></span><a class="headerlink" href="#TALENT.model.models.tabr.TabR.forward" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="TALENT.model.models.tabr.TabR.reset_parameters">
+<span class="sig-name descname"><span class="pre">reset_parameters</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#TALENT.model.models.tabr.TabR.reset_parameters" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
 <dl class="py class">
 <dt class="sig sig-object py">
-<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">TabR</span></span></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">TALENT.model.models.tabr.</span></span><span class="sig-name descname"><span class="pre">TabR</span></span></dt>
 <dd><p>KNN-attention hybrid model with retrieval-based predictions.</p>
 <dl class="py method">
 <dt class="sig sig-object py">
-<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n_num_features</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_cat_features</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_classes</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">context_size</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">normalization</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_embeddings</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">d_main</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">d_multiplier</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">encoder_n_blocks</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">predictor_n_blocks</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mixer_normalization</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dropout0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dropout1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">normalization</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">activation</span></span></em><span class="sig-paren">)</span></dt>
+<span class="sig-name descname"><span class="pre">__init__(n_num_features,</span> <span class="pre">n_cat_features,</span> <span class="pre">n_classes,</span> <span class="pre">context_size,</span> <span class="pre">normalization,</span> <span class="pre">num_embeddings,</span> <span class="pre">d_main,</span> <span class="pre">d_multiplier,</span> <span class="pre">encoder_n_blocks,</span> <span class="pre">predictor_n_blocks,</span> <span class="pre">mixer_normalization,</span> <span class="pre">dropout0,</span> <span class="pre">dropout1,</span> <span class="pre">normalization,</span> <span class="pre">activation)</span></span></dt>
 <dd><p>Initialize TabR architecture.</p>
 <p><strong>Parameters:</strong></p>
 <ul class="simple">
@@ -1049,12 +1882,90 @@ x &amp;= \text{LayerNorm}(x + \text{ffn_out})\end{split}\]</div>
 </section>
 </section>
 <section id="foundation-models">
-<h2>Foundation Models<a class="headerlink" href="#foundation-models" title="Link to this heading"></a></h2>
-<section id="tabpfn-tabular-prior-fitting-networks">
-<h3>TabPFN (Tabular Prior-Fitting Networks)<a class="headerlink" href="#tabpfn-tabular-prior-fitting-networks" title="Link to this heading"></a></h3>
+<h2>Foundation Models<a class="headerlink" href="#foundation-models" title="Permalink to this heading"></a></h2>
+<section id="module-TALENT.model.models.tabpfn">
+<span id="tabpfn-tabular-prior-fitting-networks"></span><h3>TabPFN (Tabular Prior-Fitting Networks)<a class="headerlink" href="#module-TALENT.model.models.tabpfn" title="Permalink to this heading"></a></h3>
+<dl class="py class">
+<dt class="sig sig-object py" id="TALENT.model.models.tabpfn.TabPFNClassifier">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">TALENT.model.models.tabpfn.</span></span><span class="sig-name descname"><span class="pre">TabPFNClassifier</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.13)"><span class="pre">Any</span></a></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.13)"><span class="pre">Any</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#TALENT.model.models.tabpfn.TabPFNClassifier" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">BaseEstimator</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">ClassifierMixin</span></code></p>
+<p>Initializes the classifier and loads the model.
+Depending on the arguments, the model is either loaded from memory, from a file, or downloaded from the
+repository if no model is found.</p>
+<p>Can also be used to compute gradients with respect to the inputs X_train and X_test. Therefore no_grad has to be
+set to False and no_preprocessing_mode must be True. Furthermore, X_train and X_test need to be given as
+torch.Tensors and their requires_grad parameter must be set to True.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>device</strong> – If the model should run on cuda or cpu.</p></li>
+<li><p><strong>base_path</strong> – Base path of the directory, from which the folders like models_diff can be accessed.</p></li>
+<li><p><strong>model_string</strong> – Name of the model. Used first to check if the model is already in memory, and if not,
+tries to load a model with that name from the models_diff directory. It looks for files named as
+follows: “prior_diff_real_checkpoint” + model_string + “_n_0_epoch_e.cpkt”, where e can be a number
+between 100 and 0, and is checked in a descending order.</p></li>
+<li><p><strong>N_ensemble_configurations</strong> – The number of ensemble configurations used for the prediction. Thereby the
+accuracy, but also the running time, increases with this number.</p></li>
+<li><p><strong>no_preprocess_mode</strong> – Specifies whether preprocessing is to be performed.</p></li>
+<li><p><strong>multiclass_decoder</strong> – If set to permutation, randomly shifts the classes for each ensemble configuration.</p></li>
+<li><p><strong>feature_shift_decoder</strong> – If set to true shifts the features for each ensemble configuration according to a
+random permutation.</p></li>
+<li><p><strong>only_inference</strong> – Indicates if the model should be loaded to only restore inference capabilities or also
+training capabilities. Note that the training capabilities are currently not being fully restored.</p></li>
+<li><p><strong>seed</strong> – Seed that is used for the prediction. Allows for a deterministic behavior of the predictions.</p></li>
+<li><p><strong>batch_size_inference</strong> – This parameter is a trade-off between performance and memory consumption.
+The computation done with different values for batch_size_inference is the same,
+but it is split into smaller/larger batches.</p></li>
+<li><p><strong>no_grad</strong> – If set to false, allows for the computation of gradients with respect to X_train and X_test.
+For this to correctly function no_preprocessing_mode must be set to true.</p></li>
+<li><p><strong>subsample_features</strong> – If set to true and the number of features in the dataset exceeds self.max_features (100),
+the features are subsampled to self.max_features.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="TALENT.model.models.tabpfn.TabPFNClassifier.fit">
+<span class="sig-name descname"><span class="pre">fit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">overwrite_warning</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#TALENT.model.models.tabpfn.TabPFNClassifier.fit" title="Permalink to this definition"></a></dt>
+<dd><p>Validates the training set and stores it.</p>
+<p>If clf.no_grad (default is True):
+X, y should be of type np.array
+else:
+X should be of type torch.Tensors (y can be np.array or torch.Tensor)</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="TALENT.model.models.tabpfn.TabPFNClassifier.load_result_minimal">
+<span class="sig-name descname"><span class="pre">load_result_minimal</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">i</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">e</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#TALENT.model.models.tabpfn.TabPFNClassifier.load_result_minimal" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="TALENT.model.models.tabpfn.TabPFNClassifier.models_in_memory">
+<span class="sig-name descname"><span class="pre">models_in_memory</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{}</span></em><a class="headerlink" href="#TALENT.model.models.tabpfn.TabPFNClassifier.models_in_memory" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="TALENT.model.models.tabpfn.TabPFNClassifier.predict">
+<span class="sig-name descname"><span class="pre">predict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">return_winning_probability</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">normalize_with_test</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#TALENT.model.models.tabpfn.TabPFNClassifier.predict" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="TALENT.model.models.tabpfn.TabPFNClassifier.predict_proba">
+<span class="sig-name descname"><span class="pre">predict_proba</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">normalize_with_test</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">return_logits</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#TALENT.model.models.tabpfn.TabPFNClassifier.predict_proba" title="Permalink to this definition"></a></dt>
+<dd><p>Predict the probabilities for the input X depending on the training set previously passed in the method fit.</p>
+<p>If no_grad is true in the classifier the function takes X as a numpy.ndarray. If no_grad is false X must be a
+torch tensor and is not fully checked.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="TALENT.model.models.tabpfn.TabPFNClassifier.remove_models_from_memory">
+<span class="sig-name descname"><span class="pre">remove_models_from_memory</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#TALENT.model.models.tabpfn.TabPFNClassifier.remove_models_from_memory" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
 <dl class="py class">
 <dt class="sig sig-object py">
-<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">TabPFNClassifier</span></span></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">TALENT.model.models.tabpfn.</span></span><span class="sig-name descname"><span class="pre">TabPFNClassifier</span></span></dt>
 <dd><p>Prior-fitting network for zero-shot tabular classification.</p>
 <dl class="py method">
 <dt class="sig sig-object py">
@@ -1098,12 +2009,33 @@ x &amp;= \text{LayerNorm}(x + \text{ffn_out})\end{split}\]</div>
 </section>
 </section>
 <section id="regularization-methods">
-<h2>Regularization Methods<a class="headerlink" href="#regularization-methods" title="Link to this heading"></a></h2>
+<h2>Regularization Methods<a class="headerlink" href="#regularization-methods" title="Permalink to this heading"></a></h2>
 <section id="tangos-regularization">
-<h3>TANGOS Regularization<a class="headerlink" href="#tangos-regularization" title="Link to this heading"></a></h3>
+<h3>TANGOS Regularization<a class="headerlink" href="#tangos-regularization" title="Permalink to this heading"></a></h3>
+<span class="target" id="module-TALENT.model.models.tangos"></span><dl class="py class">
+<dt class="sig sig-object py" id="TALENT.model.models.tangos.Tangos">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">TALENT.model.models.tangos.</span></span><span class="sig-name descname"><span class="pre">Tangos</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.13)"><span class="pre">Any</span></a></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.13)"><span class="pre">Any</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#TALENT.model.models.tangos.Tangos" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="TALENT.model.models.tangos.Tangos.cal_representation">
+<span class="sig-name descname"><span class="pre">cal_representation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#TALENT.model.models.tangos.Tangos.cal_representation" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="TALENT.model.models.tangos.Tangos.cal_tangos_loss">
+<span class="sig-name descname"><span class="pre">cal_tangos_loss</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#TALENT.model.models.tangos.Tangos.cal_tangos_loss" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="TALENT.model.models.tangos.Tangos.forward">
+<span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x_cat</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#TALENT.model.models.tangos.Tangos.forward" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
 <dl class="py class">
 <dt class="sig sig-object py">
-<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Tangos</span></span></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">TALENT.model.models.tangos.</span></span><span class="sig-name descname"><span class="pre">Tangos</span></span></dt>
 <dd><p>MLP with TANGOS regularization for neuron specialization.</p>
 <p><strong>Mathematical Formulation:</strong></p>
 <p>TANGOS applies spatial and spectral regularization to encourage neuron specialization:</p>
@@ -1164,7 +2096,7 @@ x &amp;= \text{LayerNorm}(x + \text{ffn_out})\end{split}\]</div>
 </section>
 </section>
 <section id="activation-functions-reference">
-<h2>Activation Functions Reference<a class="headerlink" href="#activation-functions-reference" title="Link to this heading"></a></h2>
+<h2>Activation Functions Reference<a class="headerlink" href="#activation-functions-reference" title="Permalink to this heading"></a></h2>
 <p><strong>Standard Activations:</strong></p>
 <div class="math notranslate nohighlight">
 \[\text{ReLU}(x) = \max(0, x)\]</div>
@@ -1188,7 +2120,7 @@ x &amp; \text{if } x &gt; 0 \\
 <p>where <span class="math notranslate nohighlight">\(\Delta^{K-1}\)</span> is the probability simplex.</p>
 </section>
 <section id="model-usage-examples">
-<h2>Model Usage Examples<a class="headerlink" href="#model-usage-examples" title="Link to this heading"></a></h2>
+<h2>Model Usage Examples<a class="headerlink" href="#model-usage-examples" title="Permalink to this heading"></a></h2>
 <p><strong>Basic MLP Usage:</strong></p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">TALENT.model.models.mlp</span> <span class="kn">import</span> <span class="n">MLP</span>
 
@@ -1331,7 +2263,7 @@ x &amp; \text{if } x &gt; 0 \\
 </div>
 </section>
 <section id="model-selection-guidelines">
-<h2>Model Selection Guidelines<a class="headerlink" href="#model-selection-guidelines" title="Link to this heading"></a></h2>
+<h2>Model Selection Guidelines<a class="headerlink" href="#model-selection-guidelines" title="Permalink to this heading"></a></h2>
 <p><strong>For Beginners:</strong>
 - <strong>MLP:</strong> Simple, fast, good baseline
 - <strong>ResNet:</strong> Better than MLP for deeper networks</p>

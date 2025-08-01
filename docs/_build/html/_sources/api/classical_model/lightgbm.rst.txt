@@ -1,59 +1,108 @@
-**classical_methods.lightgbm**
+====================================
+LightGBM
 ====================================
 
-LightGBM classical method implementation
+LightGBM classical method implementation.
 
+This section contains the LightGBM implementation for classification and regression tasks. LightGBM is a gradient boosting framework that uses tree-based learning algorithms and is designed to be distributed and efficient with the following advantages: faster training speed and higher efficiency, lower memory usage, better accuracy, support of parallel and GPU learning, and capability of handling large-scale data.
 
-Classes
-~~~~~~~
+.. automodule:: TALENT.model.classical_methods.lightgbm
+   :members:
+   :undoc-members:
+   :show-inheritance:
 
-.. code-block:: python
+.. class:: LightGBMMethod
+   :noindex:
 
-    class LightGBMMethod(XGBoostMethod)
+   LightGBM method for classification and regression tasks using gradient boosting.
+   
+   **Key Features:**
+   
+   - Uses LightGBM library for gradient boosting implementation
+   - Supports both classification and regression tasks
+   - Handles missing values automatically
+   - Provides feature importance analysis
+   - Supports early stopping to prevent overfitting
+   - Efficient implementation with parallel processing
+   - GPU acceleration support
+   
+   **Algorithm:**
+   
+   LightGBM is a gradient boosting framework that uses tree-based learning algorithms. It is designed to be distributed and efficient with the following advantages: faster training speed and higher efficiency, lower memory usage, better accuracy, support of parallel and GPU learning, and capability of handling large-scale data.
 
-LightGBM method for classification and regression tasks using gradient boosting.
+   .. method:: __init__(args, is_regression)
+      :noindex:
+      
+      Initialize the LightGBM method.
+      
+      **Parameters:**
+      
+      * **args** (*object*) -- Configuration arguments containing model settings
+      * **is_regression** (*bool*) -- Whether the task is regression (True) or classification (False)
 
+   .. method:: construct_model(model_config=None)
+      :noindex:
+      
+      Construct the LightGBM model instance.
+      
+      **Parameters:**
+      
+      * **model_config** (*dict, optional*) -- Model configuration parameters for LightGBM
+      
+      **Model Creation:**
+      
+      - For classification: creates `LGBMClassifier`
+      - For regression: creates `LGBMRegressor`
+      - Configures boosting parameters like learning rate, max depth, etc.
 
-Methods
-~~~~~~~
+   .. method:: fit(data, info, train=True, config=None)
+      :noindex:
+      
+      Train the LightGBM model on the provided data.
+      
+      **Parameters:**
+      
+      * **data** (*tuple*) -- Tuple containing (N, C, y) where N is numerical features, C is categorical features, y is labels
+      * **info** (*dict*) -- Dataset information
+      * **train** (*bool, default=True*) -- Whether to train the model or just load from checkpoint
+      * **config** (*dict, optional*) -- Additional configuration parameters
+      
+      **Returns:**
+      
+      * **time_cost** (*float*) -- Training time in seconds
+      
+      **Training Process:**
+      
+      1. **Data Preprocessing:** Handles missing values, categorical encoding, normalization
+      2. **Model Training:** Fits the LightGBM model with gradient boosting
+      3. **Model Saving:** Saves the trained model to disk for later use
 
-.. code-block:: python
+   .. method:: predict(data, info, model_name)
+      :noindex:
+      
+      Make predictions using the trained LightGBM model.
+      
+      **Parameters:**
+      
+      * **data** (*tuple*) -- Tuple containing (N, C, y) where N is numerical features, C is categorical features, y is labels
+      * **info** (*dict*) -- Dataset information
+      * **model_name** (*str*) -- Name of the model for saving/loading
+      
+      **Returns:**
+      
+      * **test_logit** (*array-like*) -- Test predictions (probabilities for classification, values for regression)
+      
+      **Prediction Process:**
+      
+      1. **Data Preprocessing:** Applies same preprocessing as training data
+      2. **Model Loading:** Loads the trained LightGBM model
+      3. **Prediction:** Generates predictions using the gradient boosting model
+      4. **Output:** Returns probabilities for classification or values for regression
 
-    LightGBMMethod.__init__(args, is_regression)
-    LightGBMMethod.construct_model(model_config=None)
-    LightGBMMethod.fit(data, info, train=True, config=None)
-    LightGBMMethod.predict(data, info, model_name)
+**Evaluation Metrics:**
 
-**Parameters:**
-
-* **args** *(object)* - Configuration arguments containing model settings
-* **is_regression** *(bool)* - Whether the task is regression (True) or classification (False)
-* **model_config** *(dict, optional)* - Model configuration parameters for LightGBM
-* **data** *(tuple)* - Tuple containing (N, C, y) where N is numerical features, C is categorical features, y is labels
-* **info** *(dict)* - Dataset information
-* **train** *(bool, default=True)* - Whether to train the model or just load from checkpoint
-* **config** *(dict, optional)* - Additional configuration parameters
-* **model_name** *(str)* - Name of the model for saving/loading
-
-**Returns:**
-
-* **time_cost** *(float)* - Training time in seconds (for fit method)
-* **vres** *(tuple)* - Evaluation metrics values
-* **metric_name** *(tuple)* - Names of the evaluation metrics
-* **test_logit** *(array-like)* - Test predictions (probabilities for classification, values for regression)
-
-**Notes:**
-
-- Uses LightGBM's LGBMClassifier for classification and LGBMRegressor for regression
-- Inherits from XGBoostMethod class for common functionality
-- Requires cat_policy to be different from 'indices'
-- Supports early stopping with validation set evaluation
-- Automatically handles data preprocessing including normalization and encoding
-- Saves trained model to pickle file for later use
-- For regression: returns MAE, R2, RMSE metrics
-- For classification: returns Accuracy, Avg_Precision, Avg_Recall, F1 metrics
-- Supports probability predictions for classification tasks
-- High-performance gradient boosting framework
+- **For regression:** returns MAE, R2, RMSE metrics
+- **For classification:** returns Accuracy, Avg_Precision, Avg_Recall, F1 metrics
 
 **References:**
 

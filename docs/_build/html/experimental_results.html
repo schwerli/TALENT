@@ -1,21 +1,21 @@
-
-
 <!DOCTYPE html>
-<html class="writer-html5" lang="en" data-content_root="./">
+<html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Experimental Results &mdash; LAMDA-TALENT  documentation</title>
-      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
-      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
-
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
   
-      <script src="_static/jquery.js?v=5d32c60e"></script>
-      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-      <script src="_static/documentation_options.js?v=5929fcd5"></script>
-      <script src="_static/doctools.js?v=9bcbadda"></script>
-      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="_static/doctools.js"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -28,15 +28,11 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-
-          
-          
-          <a href="index.html" class="icon icon-home">
-            LAMDA-TALENT
+            <a href="index.html" class="icon icon-home"> LAMDA-TALENT
           </a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -89,10 +85,9 @@
 <p class="caption" role="heading"><span class="caption-text">API Docs</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="api/core.html">Core Components</a></li>
-<li class="toctree-l1"><a class="reference internal" href="api/deep_learning.html">Deep Learning Models</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api/classical_methods.html">Classical Methods</a></li>
-<li class="toctree-l1"><a class="reference internal" href="api/classical_model/index.html">Classical Methods</a></li>
-<li class="toctree-l1"><a class="reference internal" href="api/lib/index.html">Library Components</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api/deep_learning.html">Deep Learning Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api/lib.html">Library Components</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Acknowledgements</span></p>
 <ul>
@@ -112,8 +107,8 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
-      <li class="breadcrumb-item active">Experimental Results</li>
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>Experimental Results</li>
       <li class="wy-breadcrumbs-aside">
             <a href="_sources/experimental_results.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -124,11 +119,11 @@
            <div itemprop="articleBody">
              
   <section id="experimental-results">
-<h1>Experimental Results<a class="headerlink" href="#experimental-results" title="Link to this heading"></a></h1>
+<h1>Experimental Results<a class="headerlink" href="#experimental-results" title="Permalink to this heading"></a></h1>
 <p>This section presents the experimental results from the TALENT benchmark, which evaluates various classical and deep learning methods on tabular data across multiple tasks, including binary classification, multi-class classification, and regression.</p>
 </section>
 <section id="evaluation-metrics">
-<h1>Evaluation Metrics<a class="headerlink" href="#evaluation-metrics" title="Link to this heading"></a></h1>
+<h1>Evaluation Metrics<a class="headerlink" href="#evaluation-metrics" title="Permalink to this heading"></a></h1>
 <p>TALENT evaluates the performance of models using the following metrics:</p>
 <ul class="simple">
 <li><p><strong>Accuracy</strong>: Used for classification tasks (binary and multi-class) to measure the proportion of correct predictions.</p></li>
@@ -138,29 +133,25 @@
 </ul>
 </section>
 <section id="results-summary">
-<h1>Results Summary<a class="headerlink" href="#results-summary" title="Link to this heading"></a></h1>
+<h1>Results Summary<a class="headerlink" href="#results-summary" title="Permalink to this heading"></a></h1>
 <p>Below are the summarized results for different task types (binary classification, multi-class classification, and regression) using various models in TALENT.</p>
 <p>The visualizations use average performance rank to compare models, where lower ranks represent better performance across the tasks.</p>
 <p>### Binary Classification</p>
 <p>The following figure summarizes the performance of different models on binary classification tasks.</p>
-<a class="reference internal image-reference" href="_images/binclass.png"><img alt="_images/binclass.png" class="align-center" src="_images/binclass.png" style="width: 600px;" />
-</a>
+<a class="reference internal image-reference" href="_images/binclass.png"><img alt="_images/binclass.png" class="align-center" src="_images/binclass.png" style="width: 600px;" /></a>
 <p>### Multi-class Classification</p>
 <p>The figure below shows the performance results on multi-class classification tasks.</p>
-<a class="reference internal image-reference" href="_images/multiclass.png"><img alt="_images/multiclass.png" class="align-center" src="_images/multiclass.png" style="width: 600px;" />
-</a>
+<a class="reference internal image-reference" href="_images/multiclass.png"><img alt="_images/multiclass.png" class="align-center" src="_images/multiclass.png" style="width: 600px;" /></a>
 <p>### Regression</p>
 <p>The results for regression tasks are presented in the figure below.</p>
-<a class="reference internal image-reference" href="_images/regression.png"><img alt="_images/regression.png" class="align-center" src="_images/regression.png" style="width: 600px;" />
-</a>
+<a class="reference internal image-reference" href="_images/regression.png"><img alt="_images/regression.png" class="align-center" src="_images/regression.png" style="width: 600px;" /></a>
 <p>### All Tasks Combined</p>
 <p>The following figure represents a combined evaluation of models across all task types (binary classification, multi-class classification, and regression).</p>
-<a class="reference internal image-reference" href="_images/all_tasks.png"><img alt="_images/all_tasks.png" class="align-center" src="_images/all_tasks.png" style="width: 600px;" />
-</a>
+<a class="reference internal image-reference" href="_images/all_tasks.png"><img alt="_images/all_tasks.png" class="align-center" src="_images/all_tasks.png" style="width: 600px;" /></a>
 <p>These results highlight the strengths and weaknesses of different models, offering insights into which methods are most suitable for various tabular prediction tasks.</p>
 </section>
 <section id="conclusion">
-<h1>Conclusion<a class="headerlink" href="#conclusion" title="Link to this heading"></a></h1>
+<h1>Conclusion<a class="headerlink" href="#conclusion" title="Permalink to this heading"></a></h1>
 <p>The experimental results demonstrate that TALENT provides a comprehensive and fair evaluation of both classical and deep learning methods on tabular data. The benchmarks serve as an effective tool for quickly assessing model strengths, weaknesses, and trade-offs between performance and model complexity.</p>
 <p>The visualizations presented in this section offer a clear overview of model performance across different tasks, helping practitioners and researchers make informed decisions when selecting models for their specific needs.</p>
 </section>

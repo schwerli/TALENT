@@ -1,21 +1,21 @@
-
-
 <!DOCTYPE html>
-<html class="writer-html5" lang="en" data-content_root="../">
+<html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Utils &mdash; LAMDA-TALENT  documentation</title>
-      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
-      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
-
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
   
-      <script src="../_static/jquery.js?v=5d32c60e"></script>
-      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-      <script src="../_static/documentation_options.js?v=5929fcd5"></script>
-      <script src="../_static/doctools.js?v=9bcbadda"></script>
-      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../_static/doctools.js"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -28,15 +28,11 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-
-          
-          
-          <a href="../index.html" class="icon icon-home">
-            LAMDA-TALENT
+            <a href="../index.html" class="icon icon-home"> LAMDA-TALENT
           </a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -124,9 +120,9 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
-          <li class="breadcrumb-item"><a href="core.html">Core Components</a></li>
-      <li class="breadcrumb-item active">Utils</li>
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="core.html">Core Components</a> &raquo;</li>
+      <li>Utils</li>
       <li class="wy-breadcrumbs-aside">
             <a href="../_sources/api/utils.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -136,13 +132,287 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="utils">
-<h1>Utils<a class="headerlink" href="#utils" title="Link to this heading"></a></h1>
+  <section id="module-TALENT.model.utils">
+<span id="utils"></span><h1>Utils<a class="headerlink" href="#module-TALENT.model.utils" title="Permalink to this heading"></a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="TALENT.model.utils.Averager">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">TALENT.model.utils.</span></span><span class="sig-name descname"><span class="pre">Averager</span></span><a class="headerlink" href="#TALENT.model.utils.Averager" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<p>A simple averager.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="TALENT.model.utils.Averager.add">
+<span class="sig-name descname"><span class="pre">add</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#TALENT.model.utils.Averager.add" title="Permalink to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">X</dt>
+<dd class="field-odd"><p>float, value to be added</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="TALENT.model.utils.Averager.item">
+<span class="sig-name descname"><span class="pre">item</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#TALENT.model.utils.Averager.item" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="TALENT.model.utils.Timer">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">TALENT.model.utils.</span></span><span class="sig-name descname"><span class="pre">Timer</span></span><a class="headerlink" href="#TALENT.model.utils.Timer" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.13)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="TALENT.model.utils.Timer.measure">
+<span class="sig-name descname"><span class="pre">measure</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">p</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#TALENT.model.utils.Timer.measure" title="Permalink to this definition"></a></dt>
+<dd><p>Measure the time since the last call to measure.</p>
+<dl class="field-list simple">
+<dt class="field-odd">P</dt>
+<dd class="field-odd"><p>int, period of printing the time</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="TALENT.model.utils.ensure_path">
+<span class="sig-prename descclassname"><span class="pre">TALENT.model.utils.</span></span><span class="sig-name descname"><span class="pre">ensure_path</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">remove</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#TALENT.model.utils.ensure_path" title="Permalink to this definition"></a></dt>
+<dd><p>Ensure a path exists.</p>
+<p>path: str, path to the directory
+remove: bool, whether to remove the directory if it exists</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="TALENT.model.utils.get_classical_args">
+<span class="sig-prename descclassname"><span class="pre">TALENT.model.utils.</span></span><span class="sig-name descname"><span class="pre">get_classical_args</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#TALENT.model.utils.get_classical_args" title="Permalink to this definition"></a></dt>
+<dd><p>Get the arguments for classical models.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>argparse.Namespace, arguments</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="TALENT.model.utils.get_deep_args">
+<span class="sig-prename descclassname"><span class="pre">TALENT.model.utils.</span></span><span class="sig-name descname"><span class="pre">get_deep_args</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#TALENT.model.utils.get_deep_args" title="Permalink to this definition"></a></dt>
+<dd><p>Get the arguments for deep learning models.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>argparse.Namespace, arguments</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="TALENT.model.utils.get_device">
+<span class="sig-prename descclassname"><span class="pre">TALENT.model.utils.</span></span><span class="sig-name descname"><span class="pre">get_device</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">torch.device</span></span></span><a class="headerlink" href="#TALENT.model.utils.get_device" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="TALENT.model.utils.get_method">
+<span class="sig-prename descclassname"><span class="pre">TALENT.model.utils.</span></span><span class="sig-name descname"><span class="pre">get_method</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#TALENT.model.utils.get_method" title="Permalink to this definition"></a></dt>
+<dd><p>Get the method class.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Model</dt>
+<dd class="field-odd"><p>str, model name</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>class, method class</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="TALENT.model.utils.load_config">
+<span class="sig-prename descclassname"><span class="pre">TALENT.model.utils.</span></span><span class="sig-name descname"><span class="pre">load_config</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">config_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#TALENT.model.utils.load_config" title="Permalink to this definition"></a></dt>
+<dd><p>Load the config file.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Args</dt>
+<dd class="field-odd"><p>argparse.Namespace, arguments</p>
+</dd>
+<dt class="field-even">Config</dt>
+<dd class="field-even"><p>dict, config file</p>
+</dd>
+<dt class="field-odd">Config_name</dt>
+<dd class="field-odd"><p>str, name of the config file</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>argparse.Namespace, arguments</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="TALENT.model.utils.merge_sampled_parameters">
+<span class="sig-prename descclassname"><span class="pre">TALENT.model.utils.</span></span><span class="sig-name descname"><span class="pre">merge_sampled_parameters</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sampled_parameters</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#TALENT.model.utils.merge_sampled_parameters" title="Permalink to this definition"></a></dt>
+<dd><p>Merge the sampled hyper-parameters.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Config</dt>
+<dd class="field-odd"><p>dict, configuration</p>
+</dd>
+<dt class="field-even">Sampled_parameters</dt>
+<dd class="field-even"><p>dict, sampled hyper-parameters</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="TALENT.model.utils.mkdir">
+<span class="sig-prename descclassname"><span class="pre">TALENT.model.utils.</span></span><span class="sig-name descname"><span class="pre">mkdir</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#TALENT.model.utils.mkdir" title="Permalink to this definition"></a></dt>
+<dd><p>Create a directory if it does not exist.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Path</dt>
+<dd class="field-odd"><p>str, path to the directory</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="TALENT.model.utils.pprint">
+<span class="sig-prename descclassname"><span class="pre">TALENT.model.utils.</span></span><span class="sig-name descname"><span class="pre">pprint</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#TALENT.model.utils.pprint" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="TALENT.model.utils.rmse">
+<span class="sig-prename descclassname"><span class="pre">TALENT.model.utils.</span></span><span class="sig-name descname"><span class="pre">rmse</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">prediction</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_info</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#TALENT.model.utils.rmse" title="Permalink to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Y</dt>
+<dd class="field-odd"><p>np.ndarray, ground truth</p>
+</dd>
+<dt class="field-even">Prediction</dt>
+<dd class="field-even"><p>np.ndarray, prediction</p>
+</dd>
+<dt class="field-odd">Y_info</dt>
+<dd class="field-odd"><p>dict, information about the target variable</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>float, root mean squared error</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="TALENT.model.utils.sample_parameters">
+<span class="sig-prename descclassname"><span class="pre">TALENT.model.utils.</span></span><span class="sig-name descname"><span class="pre">sample_parameters</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">trial</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">space</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">base_config</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#TALENT.model.utils.sample_parameters" title="Permalink to this definition"></a></dt>
+<dd><p>Sample hyper-parameters.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Trial</dt>
+<dd class="field-odd"><p>optuna.trial.Trial, trial</p>
+</dd>
+<dt class="field-even">Space</dt>
+<dd class="field-even"><p>dict, search space</p>
+</dd>
+<dt class="field-odd">Base_config</dt>
+<dd class="field-odd"><p>dict, base configuration</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>dict, sampled hyper-parameters</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="TALENT.model.utils.set_gpu">
+<span class="sig-prename descclassname"><span class="pre">TALENT.model.utils.</span></span><span class="sig-name descname"><span class="pre">set_gpu</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#TALENT.model.utils.set_gpu" title="Permalink to this definition"></a></dt>
+<dd><p>Set environment variable CUDA_VISIBLE_DEVICES</p>
+<dl class="field-list simple">
+<dt class="field-odd">X</dt>
+<dd class="field-odd"><p>str, GPU id</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="TALENT.model.utils.set_seeds">
+<span class="sig-prename descclassname"><span class="pre">TALENT.model.utils.</span></span><span class="sig-name descname"><span class="pre">set_seeds</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">base_seed</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.13)"><span class="pre">int</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">one_cuda_seed</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.13)"><span class="pre">bool</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.13)"><span class="pre">None</span></a></span></span><a class="headerlink" href="#TALENT.model.utils.set_seeds" title="Permalink to this definition"></a></dt>
+<dd><p>Set random seeds for reproducibility.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Base_seed</dt>
+<dd class="field-odd"><p>int, base seed</p>
+</dd>
+<dt class="field-even">One_cuda_seed</dt>
+<dd class="field-even"><p>bool, whether to set one seed for all GPUs</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="TALENT.model.utils.show_results">
+<span class="sig-prename descclassname"><span class="pre">TALENT.model.utils.</span></span><span class="sig-name descname"><span class="pre">show_results</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">info</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">metric_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">loss_list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">results_list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">time_list</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#TALENT.model.utils.show_results" title="Permalink to this definition"></a></dt>
+<dd><p>Show the results for deep learning models.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Args</dt>
+<dd class="field-odd"><p>argparse.Namespace, arguments</p>
+</dd>
+<dt class="field-even">Info</dt>
+<dd class="field-even"><p>dict, information about the dataset</p>
+</dd>
+<dt class="field-odd">Metric_name</dt>
+<dd class="field-odd"><p>list, names of the metrics</p>
+</dd>
+<dt class="field-even">Loss_list</dt>
+<dd class="field-even"><p>list, list of loss</p>
+</dd>
+<dt class="field-odd">Results_list</dt>
+<dd class="field-odd"><p>list, list of results</p>
+</dd>
+<dt class="field-even">Time_list</dt>
+<dd class="field-even"><p>list, list of time</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="TALENT.model.utils.show_results_classical">
+<span class="sig-prename descclassname"><span class="pre">TALENT.model.utils.</span></span><span class="sig-name descname"><span class="pre">show_results_classical</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">info</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">metric_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">results_list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">time_list</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#TALENT.model.utils.show_results_classical" title="Permalink to this definition"></a></dt>
+<dd><p>Show the results for classical models.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Args</dt>
+<dd class="field-odd"><p>argparse.Namespace, arguments</p>
+</dd>
+<dt class="field-even">Info</dt>
+<dd class="field-even"><p>dict, information about the dataset</p>
+</dd>
+<dt class="field-odd">Metric_name</dt>
+<dd class="field-odd"><p>list, names of the metrics</p>
+</dd>
+<dt class="field-even">Results_list</dt>
+<dd class="field-even"><p>list, list of results</p>
+</dd>
+<dt class="field-odd">Time_list</dt>
+<dd class="field-odd"><p>list, list of time</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="TALENT.model.utils.tune_hyper_parameters">
+<span class="sig-prename descclassname"><span class="pre">TALENT.model.utils.</span></span><span class="sig-name descname"><span class="pre">tune_hyper_parameters</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">opt_space</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">train_val_data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">info</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#TALENT.model.utils.tune_hyper_parameters" title="Permalink to this definition"></a></dt>
+<dd><p>Tune hyper-parameters.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Args</dt>
+<dd class="field-odd"><p>argparse.Namespace, arguments</p>
+</dd>
+<dt class="field-even">Opt_space</dt>
+<dd class="field-even"><p>dict, search space</p>
+</dd>
+<dt class="field-odd">Train_val_data</dt>
+<dd class="field-odd"><p>tuple, training and validation data</p>
+</dd>
+<dt class="field-even">Info</dt>
+<dd class="field-even"><p>dict, information about the dataset</p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>argparse.Namespace, arguments</p>
+</dd>
+</dl>
+</dd></dl>
+
 <section id="file-and-path-utilities">
-<h2>File and Path Utilities<a class="headerlink" href="#file-and-path-utilities" title="Link to this heading"></a></h2>
+<h2>File and Path Utilities<a class="headerlink" href="#file-and-path-utilities" title="Permalink to this heading"></a></h2>
 <dl class="py function">
 <dt class="sig sig-object py">
-<span class="sig-name descname"><span class="pre">mkdir</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span></dt>
+<span class="sig-prename descclassname"><span class="pre">TALENT.model.utils.</span></span><span class="sig-name descname"><span class="pre">mkdir</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span></dt>
 <dd><p>Create a directory if it does not exist.</p>
 <p><strong>Parameters:</strong></p>
 <ul class="simple">
@@ -156,7 +426,7 @@
 
 <dl class="py function">
 <dt class="sig sig-object py">
-<span class="sig-name descname"><span class="pre">set_gpu</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span></dt>
+<span class="sig-prename descclassname"><span class="pre">TALENT.model.utils.</span></span><span class="sig-name descname"><span class="pre">set_gpu</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span></dt>
 <dd><p>Set environment variable CUDA_VISIBLE_DEVICES to specify which GPU to use.</p>
 <p><strong>Parameters:</strong></p>
 <ul class="simple">
@@ -171,7 +441,7 @@
 
 <dl class="py function">
 <dt class="sig sig-object py">
-<span class="sig-name descname"><span class="pre">ensure_path</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">remove</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span></dt>
+<span class="sig-prename descclassname"><span class="pre">TALENT.model.utils.</span></span><span class="sig-name descname"><span class="pre">ensure_path</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">remove</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span></dt>
 <dd><p>Ensure a path exists, optionally removing existing directory.</p>
 <p><strong>Parameters:</strong></p>
 <ul class="simple">
@@ -184,10 +454,10 @@
 
 </section>
 <section id="random-seed-and-device-management">
-<h2>Random Seed and Device Management<a class="headerlink" href="#random-seed-and-device-management" title="Link to this heading"></a></h2>
+<h2>Random Seed and Device Management<a class="headerlink" href="#random-seed-and-device-management" title="Permalink to this heading"></a></h2>
 <dl class="py function">
 <dt class="sig sig-object py">
-<span class="sig-name descname"><span class="pre">set_seeds</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">base_seed</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">one_cuda_seed</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span></dt>
+<span class="sig-prename descclassname"><span class="pre">TALENT.model.utils.</span></span><span class="sig-name descname"><span class="pre">set_seeds</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">base_seed</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">one_cuda_seed</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span></dt>
 <dd><p>Set random seeds for reproducibility across all random number generators.</p>
 <p><strong>Parameters:</strong></p>
 <ul class="simple">
@@ -201,7 +471,7 @@ Each generator gets a different seed derived from the base_seed.</p>
 
 <dl class="py function">
 <dt class="sig sig-object py">
-<span class="sig-name descname"><span class="pre">get_device</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span></dt>
+<span class="sig-prename descclassname"><span class="pre">TALENT.model.utils.</span></span><span class="sig-name descname"><span class="pre">get_device</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span></dt>
 <dd><p>Get the appropriate device (GPU or CPU) for PyTorch operations.</p>
 <p><strong>Returns:</strong></p>
 <ul class="simple">
@@ -211,10 +481,10 @@ Each generator gets a different seed derived from the base_seed.</p>
 
 </section>
 <section id="evaluation-metrics">
-<h2>Evaluation Metrics<a class="headerlink" href="#evaluation-metrics" title="Link to this heading"></a></h2>
+<h2>Evaluation Metrics<a class="headerlink" href="#evaluation-metrics" title="Permalink to this heading"></a></h2>
 <dl class="py function">
 <dt class="sig sig-object py">
-<span class="sig-name descname"><span class="pre">rmse</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">prediction</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_info</span></span></em><span class="sig-paren">)</span></dt>
+<span class="sig-prename descclassname"><span class="pre">TALENT.model.utils.</span></span><span class="sig-name descname"><span class="pre">rmse</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">prediction</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_info</span></span></em><span class="sig-paren">)</span></dt>
 <dd><p>Calculate Root Mean Squared Error (RMSE) for regression tasks.</p>
 <p><strong>Parameters:</strong></p>
 <ul class="simple">
@@ -233,10 +503,10 @@ to denormalize the result.</p>
 
 </section>
 <section id="configuration-management">
-<h2>Configuration Management<a class="headerlink" href="#configuration-management" title="Link to this heading"></a></h2>
+<h2>Configuration Management<a class="headerlink" href="#configuration-management" title="Permalink to this heading"></a></h2>
 <dl class="py function">
 <dt class="sig sig-object py">
-<span class="sig-name descname"><span class="pre">load_config</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">config_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span></dt>
+<span class="sig-prename descclassname"><span class="pre">TALENT.model.utils.</span></span><span class="sig-name descname"><span class="pre">load_config</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">config_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span></dt>
 <dd><p>Load configuration file for model training and save current arguments.</p>
 <p><strong>Parameters:</strong></p>
 <ul class="simple">
@@ -254,10 +524,10 @@ to denormalize the result.</p>
 
 </section>
 <section id="hyperparameter-optimization">
-<h2>Hyperparameter Optimization<a class="headerlink" href="#hyperparameter-optimization" title="Link to this heading"></a></h2>
+<h2>Hyperparameter Optimization<a class="headerlink" href="#hyperparameter-optimization" title="Permalink to this heading"></a></h2>
 <dl class="py function">
 <dt class="sig sig-object py">
-<span class="sig-name descname"><span class="pre">sample_parameters</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">trial</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">space</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">base_config</span></span></em><span class="sig-paren">)</span></dt>
+<span class="sig-prename descclassname"><span class="pre">TALENT.model.utils.</span></span><span class="sig-name descname"><span class="pre">sample_parameters</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">trial</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">space</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">base_config</span></span></em><span class="sig-paren">)</span></dt>
 <dd><p>Sample hyperparameters from the search space using Optuna trial.</p>
 <p><strong>Parameters:</strong></p>
 <ul class="simple">
@@ -280,7 +550,7 @@ to denormalize the result.</p>
 
 <dl class="py function">
 <dt class="sig sig-object py">
-<span class="sig-name descname"><span class="pre">merge_sampled_parameters</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sampled_parameters</span></span></em><span class="sig-paren">)</span></dt>
+<span class="sig-prename descclassname"><span class="pre">TALENT.model.utils.</span></span><span class="sig-name descname"><span class="pre">merge_sampled_parameters</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sampled_parameters</span></span></em><span class="sig-paren">)</span></dt>
 <dd><p>Merge sampled hyperparameters into the base configuration.</p>
 <p><strong>Parameters:</strong></p>
 <ul class="simple">
@@ -293,10 +563,10 @@ to denormalize the result.</p>
 
 </section>
 <section id="argument-parsing">
-<h2>Argument Parsing<a class="headerlink" href="#argument-parsing" title="Link to this heading"></a></h2>
+<h2>Argument Parsing<a class="headerlink" href="#argument-parsing" title="Permalink to this heading"></a></h2>
 <dl class="py function">
 <dt class="sig sig-object py">
-<span class="sig-name descname"><span class="pre">get_classical_args</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span></dt>
+<span class="sig-prename descclassname"><span class="pre">TALENT.model.utils.</span></span><span class="sig-name descname"><span class="pre">get_classical_args</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span></dt>
 <dd><p>Parse command line arguments for classical machine learning models.</p>
 <p><strong>Returns:</strong></p>
 <ul class="simple">
@@ -322,7 +592,7 @@ to denormalize the result.</p>
 
 <dl class="py function">
 <dt class="sig sig-object py">
-<span class="sig-name descname"><span class="pre">get_deep_args</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span></dt>
+<span class="sig-prename descclassname"><span class="pre">TALENT.model.utils.</span></span><span class="sig-name descname"><span class="pre">get_deep_args</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span></dt>
 <dd><p>Parse command line arguments for deep learning models.</p>
 <p><strong>Returns:</strong></p>
 <ul class="simple">
@@ -344,10 +614,10 @@ to denormalize the result.</p>
 
 </section>
 <section id="results-display">
-<h2>Results Display<a class="headerlink" href="#results-display" title="Link to this heading"></a></h2>
+<h2>Results Display<a class="headerlink" href="#results-display" title="Permalink to this heading"></a></h2>
 <dl class="py function">
 <dt class="sig sig-object py">
-<span class="sig-name descname"><span class="pre">show_results_classical</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">info</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">metric_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">results_list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">time_list</span></span></em><span class="sig-paren">)</span></dt>
+<span class="sig-prename descclassname"><span class="pre">TALENT.model.utils.</span></span><span class="sig-name descname"><span class="pre">show_results_classical</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">info</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">metric_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">results_list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">time_list</span></span></em><span class="sig-paren">)</span></dt>
 <dd><p>Display results for classical machine learning models.</p>
 <p><strong>Parameters:</strong></p>
 <ul class="simple">
@@ -363,7 +633,7 @@ to denormalize the result.</p>
 
 <dl class="py function">
 <dt class="sig sig-object py">
-<span class="sig-name descname"><span class="pre">show_results</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">info</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">metric_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">loss_list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">results_list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">time_list</span></span></em><span class="sig-paren">)</span></dt>
+<span class="sig-prename descclassname"><span class="pre">TALENT.model.utils.</span></span><span class="sig-name descname"><span class="pre">show_results</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">info</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">metric_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">loss_list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">results_list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">time_list</span></span></em><span class="sig-paren">)</span></dt>
 <dd><p>Display results for deep learning models.</p>
 <p><strong>Parameters:</strong></p>
 <ul class="simple">
@@ -380,10 +650,10 @@ to denormalize the result.</p>
 
 </section>
 <section id="hyperparameter-tuning">
-<h2>Hyperparameter Tuning<a class="headerlink" href="#hyperparameter-tuning" title="Link to this heading"></a></h2>
+<h2>Hyperparameter Tuning<a class="headerlink" href="#hyperparameter-tuning" title="Permalink to this heading"></a></h2>
 <dl class="py function">
 <dt class="sig sig-object py">
-<span class="sig-name descname"><span class="pre">tune_hyper_parameters</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">opt_space</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">train_val_data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">info</span></span></em><span class="sig-paren">)</span></dt>
+<span class="sig-prename descclassname"><span class="pre">TALENT.model.utils.</span></span><span class="sig-name descname"><span class="pre">tune_hyper_parameters</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">opt_space</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">train_val_data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">info</span></span></em><span class="sig-paren">)</span></dt>
 <dd><p>Perform hyperparameter optimization using Optuna.</p>
 <p><strong>Parameters:</strong></p>
 <ul class="simple">
@@ -407,10 +677,10 @@ to denormalize the result.</p>
 
 </section>
 <section id="model-factory">
-<h2>Model Factory<a class="headerlink" href="#model-factory" title="Link to this heading"></a></h2>
+<h2>Model Factory<a class="headerlink" href="#model-factory" title="Permalink to this heading"></a></h2>
 <dl class="py function">
 <dt class="sig sig-object py">
-<span class="sig-name descname"><span class="pre">get_method</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span></em><span class="sig-paren">)</span></dt>
+<span class="sig-prename descclassname"><span class="pre">TALENT.model.utils.</span></span><span class="sig-name descname"><span class="pre">get_method</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span></em><span class="sig-paren">)</span></dt>
 <dd><p>Get the method class for a given model name.</p>
 <p><strong>Parameters:</strong></p>
 <ul class="simple">
@@ -430,10 +700,10 @@ to denormalize the result.</p>
 
 </section>
 <section id="utility-classes">
-<h2>Utility Classes<a class="headerlink" href="#utility-classes" title="Link to this heading"></a></h2>
+<h2>Utility Classes<a class="headerlink" href="#utility-classes" title="Permalink to this heading"></a></h2>
 <dl class="py class">
 <dt class="sig sig-object py">
-<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Averager</span></span></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">TALENT.model.utils.</span></span><span class="sig-name descname"><span class="pre">Averager</span></span></dt>
 <dd><p>A simple averager for tracking running averages.</p>
 <p><strong>Methods:</strong></p>
 <dl class="py method">
@@ -460,7 +730,7 @@ to denormalize the result.</p>
 
 <dl class="py class">
 <dt class="sig sig-object py">
-<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Timer</span></span></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">TALENT.model.utils.</span></span><span class="sig-name descname"><span class="pre">Timer</span></span></dt>
 <dd><p>A timer for measuring elapsed time.</p>
 <p><strong>Methods:</strong></p>
 <dl class="py method">
@@ -481,10 +751,10 @@ to denormalize the result.</p>
 
 </section>
 <section id="debugging-utilities">
-<h2>Debugging Utilities<a class="headerlink" href="#debugging-utilities" title="Link to this heading"></a></h2>
+<h2>Debugging Utilities<a class="headerlink" href="#debugging-utilities" title="Permalink to this heading"></a></h2>
 <dl class="py function">
 <dt class="sig sig-object py">
-<span class="sig-name descname"><span class="pre">pprint</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span></dt>
+<span class="sig-prename descclassname"><span class="pre">TALENT.model.utils.</span></span><span class="sig-name descname"><span class="pre">pprint</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span></dt>
 <dd><p>Pretty print an object using the PrettyPrinter.</p>
 <p><strong>Parameters:</strong></p>
 <ul class="simple">

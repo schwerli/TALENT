@@ -1,58 +1,107 @@
-**classical_methods.randomforest**
-========================================
+====================================
+Random Forest
+====================================
 
-Random Forest classical method implementation
+Random Forest classical method implementation.
 
+This section contains the Random Forest implementation for classification and regression tasks using ensemble of decision trees. Random Forest is an ensemble learning method that operates by constructing multiple decision trees and outputting the class that is the mode of the classes predicted by individual trees.
 
-Classes
-~~~~~~~
+.. automodule:: TALENT.model.classical_methods.randomforest
+   :members:
+   :undoc-members:
+   :show-inheritance:
 
-.. code-block:: python
+.. class:: RandomForestMethod
+   :noindex:
 
-    class RandomForestMethod(KnnMethod)
+   Random Forest method for classification and regression tasks using ensemble of decision trees.
+   
+   **Key Features:**
+   
+   - Uses sklearn's RandomForestClassifier for classification and RandomForestRegressor for regression
+   - Inherits from KnnMethod class for common functionality
+   - Supports both binary and multiclass classification
+   - Automatically handles data preprocessing including normalization and encoding
+   - Saves trained model to pickle file for later use
+   - Ensemble method that combines multiple decision trees
+   
+   **Algorithm:**
+   
+   Random Forest builds multiple decision trees during training and outputs the class that is the mode of the classes predicted by individual trees for classification, or the mean prediction for regression.
 
-Random Forest method for classification and regression tasks using ensemble of decision trees.
+   .. method:: __init__(args, is_regression)
+      :noindex:
+      
+      Initialize the Random Forest method.
+      
+      **Parameters:**
+      
+      * **args** (*object*) -- Configuration arguments containing model settings
+      * **is_regression** (*bool*) -- Whether the task is regression (True) or classification (False)
 
+   .. method:: construct_model(model_config=None)
+      :noindex:
+      
+      Construct the Random Forest model instance.
+      
+      **Parameters:**
+      
+      * **model_config** (*dict, optional*) -- Model configuration parameters for Random Forest
+      
+      **Model Creation:**
+      
+      - For classification: creates `RandomForestClassifier`
+      - For regression: creates `RandomForestRegressor`
+      - Configures ensemble parameters like number of trees, max depth, etc.
 
-Methods
-~~~~~~~
+   .. method:: fit(data, info, train=True, config=None)
+      :noindex:
+      
+      Train the Random Forest model on the provided data.
+      
+      **Parameters:**
+      
+      * **data** (*tuple*) -- Tuple containing (N, C, y) where N is numerical features, C is categorical features, y is labels
+      * **info** (*dict*) -- Dataset information
+      * **train** (*bool, default=True*) -- Whether to train the model or just load from checkpoint
+      * **config** (*dict, optional*) -- Additional configuration parameters
+      
+      **Returns:**
+      
+      * **time_cost** (*float*) -- Training time in seconds
+      
+      **Training Process:**
+      
+      1. **Data Preprocessing:** Handles missing values, categorical encoding, normalization
+      2. **Model Training:** Fits the Random Forest ensemble to the training data
+      3. **Model Saving:** Saves the trained model to disk for later use
 
-.. code-block:: python
+   .. method:: predict(data, info, model_name)
+      :noindex:
+      
+      Make predictions using the trained Random Forest model.
+      
+      **Parameters:**
+      
+      * **data** (*tuple*) -- Tuple containing (N, C, y) where N is numerical features, C is categorical features, y is labels
+      * **info** (*dict*) -- Dataset information
+      * **model_name** (*str*) -- Name of the model for saving/loading
+      
+      **Returns:**
+      
+      * **test_logit** (*array-like*) -- Test predictions (probabilities for classification, values for regression)
+      
+      **Prediction Process:**
+      
+      1. **Data Preprocessing:** Applies same preprocessing as training data
+      2. **Model Loading:** Loads the trained Random Forest model
+      3. **Prediction:** Generates predictions using the ensemble
+      4. **Output:** Returns probabilities for classification or values for regression
 
-    RandomForestMethod.__init__(args, is_regression)
-    RandomForestMethod.construct_model(model_config=None)
-    RandomForestMethod.fit(data, info, train=True, config=None)
-    RandomForestMethod.predict(data, info, model_name)
+**Evaluation Metrics:**
 
-**Parameters:**
-
-* **args** *(object)* - Configuration arguments containing model settings
-* **is_regression** *(bool)* - Whether the task is regression (True) or classification (False)
-* **model_config** *(dict, optional)* - Model configuration parameters for Random Forest
-* **data** *(tuple)* - Tuple containing (N, C, y) where N is numerical features, C is categorical features, y is labels
-* **info** *(dict)* - Dataset information
-* **train** *(bool, default=True)* - Whether to train the model or just load from checkpoint
-* **config** *(dict, optional)* - Additional configuration parameters
-* **model_name** *(str)* - Name of the model for saving/loading
-
-**Returns:**
-
-* **time_cost** *(float)* - Training time in seconds (for fit method)
-* **vres** *(tuple)* - Evaluation metrics values
-* **metric_name** *(tuple)* - Names of the evaluation metrics
-* **test_logit** *(array-like)* - Test predictions (probabilities for classification, values for regression)
-
-**Notes:**
-
-- Uses sklearn's RandomForestClassifier for classification and RandomForestRegressor for regression
-- Inherits from KnnMethod class for common functionality
-- Supports both binary and multiclass classification
-- Automatically handles data preprocessing including normalization and encoding
-- Saves trained model to pickle file for later use
-- For regression: returns MAE, R2, RMSE metrics
-- For classification: returns Accuracy, Avg_Precision, Avg_Recall, F1 metrics
-- Supports probability predictions for classification tasks
-- Ensemble method that combines multiple decision trees
+- **For regression:** returns MAE, R2, RMSE metrics
+- **For classification:** returns Accuracy, Avg_Precision, Avg_Recall, F1 metrics
 
 **References:**
 

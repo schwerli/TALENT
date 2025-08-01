@@ -50,5 +50,31 @@ Available Components
 - :doc:`TabPTM <lib/tabptm>`: Pre-trained models for tabular data
 - :doc:`DNNR <lib/dnnr>`: Deep nearest neighbor regression
 
+.. toctree::
+   :maxdepth: 2
+   :caption: Library Components:
+
+   lib/TData
+   lib/data
+   lib/num_embeddings
+   lib/tabnet
+   lib/tabpfn
+   lib/tabr
+   lib/tabm
+   lib/realmlp
+   lib/bishop
+   lib/node
+   lib/hyperfast
+   lib/excelformer
+   lib/danets
+   lib/tabcaps
+   lib/tabicl
+   lib/periodic_tab_dl
+   lib/trompt
+   lib/ptarl
+   lib/amformer
+   lib/tabptm
+   lib/dnnr
+
 
 

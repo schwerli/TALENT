@@ -1,21 +1,21 @@
-
-
 <!DOCTYPE html>
-<html class="writer-html5" lang="en" data-content_root="./">
+<html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Dependencies &mdash; LAMDA-TALENT  documentation</title>
-      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
-      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
-
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
   
-      <script src="_static/jquery.js?v=5d32c60e"></script>
-      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-      <script src="_static/documentation_options.js?v=5929fcd5"></script>
-      <script src="_static/doctools.js?v=9bcbadda"></script>
-      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="_static/doctools.js"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -28,15 +28,11 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-
-          
-          
-          <a href="index.html" class="icon icon-home">
-            LAMDA-TALENT
+            <a href="index.html" class="icon icon-home"> LAMDA-TALENT
           </a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -89,10 +85,9 @@
 <p class="caption" role="heading"><span class="caption-text">API Docs</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="api/core.html">Core Components</a></li>
-<li class="toctree-l1"><a class="reference internal" href="api/deep_learning.html">Deep Learning Models</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api/classical_methods.html">Classical Methods</a></li>
-<li class="toctree-l1"><a class="reference internal" href="api/classical_model/index.html">Classical Methods</a></li>
-<li class="toctree-l1"><a class="reference internal" href="api/lib/index.html">Library Components</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api/deep_learning.html">Deep Learning Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api/lib.html">Library Components</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Acknowledgements</span></p>
 <ul>
@@ -112,8 +107,8 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
-      <li class="breadcrumb-item active">Dependencies</li>
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>Dependencies</li>
       <li class="wy-breadcrumbs-aside">
             <a href="_sources/dependencies.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -124,11 +119,11 @@
            <div itemprop="articleBody">
              
   <section id="dependencies">
-<h1>Dependencies<a class="headerlink" href="#dependencies" title="Link to this heading"></a></h1>
+<h1>Dependencies<a class="headerlink" href="#dependencies" title="Permalink to this heading"></a></h1>
 <p>TALENT relies on the following dependencies to provide a comprehensive machine learning toolbox for tabular data analysis. Ensure that these packages are installed in your environment before using TALENT:</p>
 </section>
 <section id="python-libraries">
-<h1>Python Libraries<a class="headerlink" href="#python-libraries" title="Link to this heading"></a></h1>
+<h1>Python Libraries<a class="headerlink" href="#python-libraries" title="Permalink to this heading"></a></h1>
 <ol class="arabic simple">
 <li><p><a class="reference external" href="https://pytorch.org/">PyTorch</a> : The deep learning framework used for model development and training in TALENT.</p></li>
 <li><p><a class="reference external" href="https://scikit-learn.org/stable/">scikit-learn</a> : Provides classical machine learning models and utilities for data preprocessing and evaluation.</p></li>
@@ -139,12 +134,12 @@
 </ol>
 </section>
 <section id="optional-dependencies">
-<h1>Optional Dependencies<a class="headerlink" href="#optional-dependencies" title="Link to this heading"></a></h1>
+<h1>Optional Dependencies<a class="headerlink" href="#optional-dependencies" title="Permalink to this heading"></a></h1>
 <p>Some methods in TALENT require additional dependencies for specific tasks. If you intend to use the following methods, make sure to install these optional packages:</p>
 <ul>
 <li><p><a class="reference external" href="https://github.com/facebookresearch/faiss">faiss-gpu</a> : Required for <strong>TabR</strong> to efficiently handle nearest neighbor searches. Install via conda:</p>
 <blockquote>
-<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>install<span class="w"> </span>faiss-gpu<span class="w"> </span>-c<span class="w"> </span>pytorch
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda install faiss-gpu -c pytorch
 </pre></div>
 </div>
 </div></blockquote>
@@ -152,27 +147,27 @@
 </ul>
 </section>
 <section id="installation">
-<h1>Installation<a class="headerlink" href="#installation" title="Link to this heading"></a></h1>
+<h1>Installation<a class="headerlink" href="#installation" title="Permalink to this heading"></a></h1>
 <p>To install the necessary dependencies for TALENT, you can use the following commands:</p>
 <ol class="arabic">
 <li><p><strong>Using pip</strong>:</p>
 <p>Install the required libraries from the <cite>requirements.txt</cite> file:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </span>requirements.txt
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip install -r requirements.txt
 </pre></div>
 </div>
 </li>
 <li><p><strong>Using conda</strong>:</p>
 <p>If you are using <cite>conda</cite>, you can create a new environment and install the dependencies:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>create<span class="w"> </span>-n<span class="w"> </span>talent<span class="w"> </span><span class="nv">python</span><span class="o">=</span><span class="m">3</span>.10
-conda<span class="w"> </span>activate<span class="w"> </span>talent
-pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </span>requirements.txt
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda create -n talent <span class="nv">python</span><span class="o">=</span><span class="m">3</span>.10
+conda activate talent
+pip install -r requirements.txt
 </pre></div>
 </div>
 </li>
 </ol>
 </section>
 <section id="additional-notes">
-<h1>Additional Notes<a class="headerlink" href="#additional-notes" title="Link to this heading"></a></h1>
+<h1>Additional Notes<a class="headerlink" href="#additional-notes" title="Permalink to this heading"></a></h1>
 <p>Ensure that your Python version is compatible with the dependencies listed above. TALENT is tested with <strong>Python 3.10</strong> and <strong>PyTorch 2.0.1</strong>.</p>
 </section>
 
